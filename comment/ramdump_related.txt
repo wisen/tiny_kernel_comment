@@ -1,0 +1,9 @@
+MTK:
+
+ÐèÒª¿ªÆôºêCONFIG_MTK_AEE_MRDUMP
+
+echo Y > /sys/module/mrdump/parameters/enable
+echo emmc > /sys/module/mrdump/parameters/device
+echo sdcard > /sys/module/mrdump/parameters/device
+
+trigger: echo c > /proc/sysrq-trigger

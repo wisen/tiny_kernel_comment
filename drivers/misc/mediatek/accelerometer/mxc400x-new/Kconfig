@@ -1,0 +1,30 @@
+config MTK_MXC405XC
+	bool "MTK_MXC400X_Q35 for MediaTek package"
+	default n
+	help
+	  It support different accelerometer sensor.
+          If this option is set,
+	  it will support
+          MTK_MXC400X_Q35 Accelerometer.
+
+config MXC400X_Q35_LOWPASS
+	bool "MTK_MXC400X_Q35_LOWPASS for Mediatek package"
+	default n
+	help
+	Say Y here if you have MTK_MXC400X_Q35 touch panel MXC400X_Q35_LOWPASS.
+
+	If unsure, say N.
+
+	To compile this dirver as a module, choose M here: the
+	module will be called.
+
+config CUSTOM_KERNEL_SENSORHUB
+	bool "MTK_MXC400X_Q35 for Mediatek package"
+	default n
+	help
+	Say Y here if you have MTK_BMA222E_NEW touch panel CUSTOM_KERNEL_SENSORHUB.
+
+	If unsure, say N.
+
+	To compile this dirver as a module, choose M here: the
+	module will be called.

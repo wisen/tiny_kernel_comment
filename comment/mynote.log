@@ -1,0 +1,36 @@
+#wisen note for kernel understand
+1. //伙伴系统,slab机制和用户空间的内存管理有何关系?
+//首先伙伴系统和slab机制都是kernel space的内存管理机制
+//伙伴系统是用来分配和管理基于页帧的内存需求的
+//当用户空间的进程需要更小的内存的时候，需求就诞生了，这个时候用户空间的标准库中的
+//各种内存分配管理实现就产生了，流行的有ptmalloc,tcmalloc和jemalloc
+//kernel本身在很多场合也需要很小的内存，怎么办？kernel总不能用用户空间的标准库来管理
+//吧？于是slab就诞生了。slab可以将伙伴系统提供的页帧划分成更小的内存块，另外slab还
+//实现了slab缓存，提升内存利用效率.
+2.//从目前的code review来看, buddy系统的page回收的过程就是一个不断合并的过程，比如一个页从order0合并到
+//order1，再从order1合并到order2，这样一直下去。那么问题来了，kernel里面的compaction.c
+//中的逻辑是干吗的？
+3.当一个块被读入内存时，它要存储在一个缓冲区中，每个缓冲区与一个块对应，它相当于一个磁盘块在内存中的表示。
+另外，由于内核在处理数据时需要一些相关的控制信息，所以每个缓冲区都有一个叫做buffer_head的描述符来表示，
+被称为缓冲区头。
+4.经常看到systrace中有大量的uninterrupt sleep, 也就是block io. 这类问题可以先看是否有大量的后台进程与当前进程
+产生IO竞争，如果是，就得限制上限制后台进程策略了. 我们直到read都是同步的，写是异步的. 写操作不会block当前进程，
+但是read一定是要返回才能继续。所以systrace中的这些block io一般都是read操作被后台进程竞争了.
+5.systrace中的running比之前长的可能如下：
+	5.1 cpu的freq是不是没有之前的高
+	5.2 要搞清楚running是怎么计算的，真的是进程真正的running时间？cpu loading会影响进程的running时间吗？
+
+6.linux内核明确禁止浮点数运算，是从性能上的考虑，因为这样做可以省去在用户态与内核态之间进行切换时保存/恢复浮点寄存器
+FPU的操作。Linux内核编译模块时自动带上-mno-sse -mno-mmx -mno-sse2，这就是明确禁止了Linux内核无法使用浮点数。如果真的
+遇到需要浮点数的地方，也都是通过变通的方式来实现，比如在计算loading的时候：calc_load_n
+
+7. 系统负载的详细解释：http://tinylab.org/how-to-calc-load-and-part1/
+
+8. 一个进程的虚拟地址其实在编译(链接)完成已经确定了。
+静态链接分为两阶段(Two-pass Linking)，第一阶段先扫描所有目标文件，调整结构。将所有目标文件相同section合并，包括.symtab合并成全局.symtab，然后为每个section分配虚拟地址，再将全局.symtab中的符号进行置换成虚拟地址。
+
+这里如何将全局.symtab中的符号置换成虚拟地址呢？实际上，在分配section虚拟地址后，符号的虚拟地址按所在section虚拟地址加offset就可以计算出了。
+
+第二阶段将所有符号进行修正。通过重定位表找到所有section中需要被修正的符号位置，然后从全局.symtab查询出虚拟地址置换。
+
+每个section都会对应一个重定位段，这些重定位段组成一个重定位表。每个重定位表项叫做重定位入口(Relocation Entry)，它记录了所需重定向符号所在段的offset。
