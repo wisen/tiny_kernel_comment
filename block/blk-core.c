@@ -745,6 +745,7 @@ blk_init_allocated_queue(struct request_queue *q, request_fn_proc *rfn,
 	mutex_lock(&q->sysfs_lock);
 
 	/* init elevator */
+	//wisen: 这里会设置queue的默认elevator
 	if (elevator_init(q, NULL)) {
 		mutex_unlock(&q->sysfs_lock);
 		goto fail;
@@ -1563,7 +1564,15 @@ void init_request_from_bio(struct request *req, struct bio *bio)
 	req->ioprio = bio_prio(bio);
 	blk_rq_bio_prep(req->q, req, bio);
 }
-
+//wisen: generic_make_request->__generic_make_request(bio)->ret = q->make_request_fn(q, bio)
+//最终调到了queue的make_request_fn函数, 而一个块设备的queue的make_request_fn函数是在blk_init_queue中定义:
+//blk_init_queue
+//  -->blk_init_queue_node
+//    -->blk_init_allocated_queue
+//       -->blk_queue_make_request(q, blk_queue_bio);
+//所以块设备的make_request_fn默认的定义是blk_queue_bio
+//而其实make_request_fn(blk_queue_bio)要做的就是把上层的bio转化成queue,顺便做了一些merge动作，然后把这个queue传给块设备驱动层
+//我们也可以自己在块设备驱动中实现make_request_fn,比如zram就实现了自己的make_request_fn->zram_make_request
 void blk_queue_bio(struct request_queue *q, struct bio *bio)
 {
 	const bool sync = !!(bio->bi_rw & REQ_SYNC);

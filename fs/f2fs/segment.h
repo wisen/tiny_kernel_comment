@@ -118,11 +118,15 @@ enum {
  * LFS writes data sequentially with cleaning operations.
  * SSR (Slack Space Recycle) reuses obsolete space without cleaning operations.
  */
+ //两种block分配方式：
+ //LFS，数据就一直往新的block写，废弃的block就clean掉
+ //SSR，数据写到废弃的block上，重复利用废弃的block
 enum {
 	LFS = 0,
 	SSR
 };
 
+//gc模式，也就是cleaning模式
 /*
  * In the victim_sel_policy->gc_mode, there are two gc, aka cleaning, modes.
  * GC_CB is based on cost-benefit algorithm.

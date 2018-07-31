@@ -134,6 +134,21 @@ BUFFER_FNS(Lock, locked)
 BUFFER_FNS(Req, req)
 TAS_BUFFER_FNS(Req, req)
 BUFFER_FNS(Mapped, mapped)
+/*
+static inline void set_buffer_mapped(struct buffer_head *bh)
+{									
+	set_bit(BH_Mapped, &(bh)->b_state);	
+}									
+static inline void clear_buffer_mapped(struct buffer_head *bh)
+{							
+	clear_bit(BH_Mapped, &(bh)->b_state);
+}								
+static inline int buffer_mapped(const struct buffer_head *bh)
+{								
+	return test_bit(BH_Mapped, &(bh)->b_state);
+}
+
+*/
 BUFFER_FNS(New, new)
 BUFFER_FNS(Async_Read, async_read)
 BUFFER_FNS(Async_Write, async_write)

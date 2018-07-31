@@ -431,7 +431,7 @@ struct files_struct init_files = {
 	.count		= ATOMIC_INIT(1),
 	.fdt		= &init_files.fdtab,
 	.fdtab		= {
-		.max_fds	= NR_OPEN_DEFAULT,
+		.max_fds	= NR_OPEN_DEFAULT,//用一个字节的位来管理 32 or 64
 		.fd		= &init_files.fd_array[0],
 		.close_on_exec	= init_files.close_on_exec_init,
 		.open_fds	= init_files.open_fds_init,
@@ -653,7 +653,7 @@ static int alloc_fd(unsigned start, unsigned flags)
 
 int get_unused_fd_flags(unsigned flags)
 {
-	return __alloc_fd(current->files, 0, rlimit(RLIMIT_NOFILE), flags);
+	return __alloc_fd(current->files, 0, rlimit(RLIMIT_NOFILE)/*1024*/, flags);
 }
 EXPORT_SYMBOL(get_unused_fd_flags);
 

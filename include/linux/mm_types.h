@@ -101,6 +101,7 @@ struct page {
     //    c: 如果mapping != 0，bit[0] != 0，说明该page为匿名映射，mapping指向
     //        struct anon_vma对象。
     //    通过mapping恢复anon_vma的方法：anon_vma = (struct anon_vma *)(mapping - PAGE_MAPPING_ANON)。
+    // 关于mapping指针的低2位复用，可以参考PageAnon的实现，基本低2位没有被置位，那么它就是file page，被置位了就应该是anon page
 		struct address_space *mapping;	/* If low bit clear, points to
 						 * inode address_space, or NULL.
 						 * If page mapped as anonymous

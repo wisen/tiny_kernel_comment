@@ -413,6 +413,7 @@ struct address_space {
 	//页缓存的本质就是一个物理页框，因此每个页描述符中通过mmaping和index两个字段与高速
 	//缓存进行关联。mmaping指向页缓存所有者中的address_space对象。index表示以页大小为
 	//单位的偏移量，该偏移量表示页框内数据在磁盘文件中的偏移量。
+	//关于mapping指针的低2位复用，可以参考PageAnon的实现，基本低2位没有被置位，那么它就是file page，被置位了就应该是anon page
 	struct radix_tree_root	page_tree;	/* radix tree of all pages */
 	spinlock_t		tree_lock;	/* and lock protecting it */
 	atomic_t		i_mmap_writable;/* count VM_SHARED mappings */
@@ -553,6 +554,17 @@ struct posix_acl;
  * of the 'struct inode'
  */
 struct inode {
+//linux中字符设备，块设备，普通文件，目录，socket都是文件，那么这里的i_mode就用来区分这些具体文件类型
+/*
+#define S_IFMT  00170000
+#define S_IFSOCK 0140000
+#define S_IFLNK	 0120000
+#define S_IFREG  0100000
+#define S_IFBLK  0060000
+#define S_IFDIR  0040000
+#define S_IFCHR  0020000
+#define S_IFIFO  0010000
+*/
 	umode_t			i_mode;
 	unsigned short		i_opflags;
 	kuid_t			i_uid;
@@ -566,6 +578,8 @@ struct inode {
 
 	const struct inode_operations	*i_op;
 	struct super_block	*i_sb;
+	//i_mapping和i_data的目的是缓存文件内容，在address_space结构中使用radix tree来保存所有的page cache
+	//对文件的读写首先从i_mapping/i_data中寻找已经缓存的file cache
 	struct address_space	*i_mapping;
 
 #ifdef CONFIG_SECURITY
@@ -586,7 +600,7 @@ struct inode {
 		unsigned int __i_nlink;
 	};
 	dev_t			i_rdev;
-	loff_t			i_size;
+	loff_t			i_size;//文件长度
 	struct timespec		i_atime;
 	struct timespec		i_mtime;
 	struct timespec		i_ctime;
@@ -614,7 +628,7 @@ struct inode {
 		struct rcu_head		i_rcu;
 	};
 	u64			i_version;
-	atomic_t		i_count;
+	atomic_t		i_count;//inode的引用计数
 	atomic_t		i_dio_count;
 	atomic_t		i_writecount;
 #ifdef CONFIG_IMA
@@ -622,6 +636,8 @@ struct inode {
 #endif
 	const struct file_operations	*i_fop;	/* former ->i_op->default_file_ops */
 	struct file_lock	*i_flock;
+	//i_data指向一个address_space, address_space中的page_tree又指向目前缓存了多少的file page cache
+	//参考comment/inode_addressspace.png
 	struct address_space	i_data;
 #ifdef CONFIG_QUOTA
 	struct dquot		*i_dquot[MAXQUOTAS];
@@ -819,10 +835,12 @@ struct file {
 	unsigned int 		f_flags;
 	fmode_t			f_mode;
 	struct mutex		f_pos_lock;
+	//f_pos表示进程对文件操作的位置，比如进程读取文件前10字节，那么f_pos就指向第11字节
+	//这里就会引申出一个问题，那就是对于同一个文件，不同的进程应该有不同的file对象，不然f_pos就会乱，而且不同的进程对文件的权限也不一样
 	loff_t			f_pos;
 	struct fown_struct	f_owner;
 	const struct cred	*f_cred;
-	struct file_ra_state	f_ra;
+	struct file_ra_state	f_ra;//用于文件预读设置
 
 	u64			f_version;
 #ifdef CONFIG_SECURITY
@@ -836,6 +854,7 @@ struct file {
 	struct list_head	f_ep_links;
 	struct list_head	f_tfile_llink;
 #endif /* #ifdef CONFIG_EPOLL */
+    //这里的f_mapping和inode中的i_mapping/i_data应该是同样的作用，可以通过这个指针找到文件的所有缓存页。通过radix tree管理。
 	struct address_space	*f_mapping;
 } __attribute__((aligned(4)));	/* lest something weird decides that 2 is OK */
 
@@ -1210,21 +1229,24 @@ struct sb_writers {
 	struct lockdep_map	lock_map[SB_FREEZE_LEVELS];
 #endif
 };
-
+//超级块是具体文件系统超级块的内存抽象
+//每种文件系统都有一个超级块结构，系统中的所有文件系统的super block都会添加到全局变量super_blocks中。
+//sget可以根据提供的额文件系统的type从super_blocks中找到对于文件系统的super block，或者添加super block到super_blocks中。
 struct super_block {
+//s_list指向文件系统的super block本身，在创建super block的时候被添加到super_blocks链表中
 	struct list_head	s_list;		/* Keep this first */
 	dev_t			s_dev;		/* search index; _not_ kdev_t */
 	unsigned char		s_blocksize_bits;
-	unsigned long		s_blocksize;
-	loff_t			s_maxbytes;	/* Max file size */
+	unsigned long		s_blocksize;//文件系统块大小
+	loff_t			s_maxbytes;	/* Max file size 文件系统最大文件尺寸*/
 	struct file_system_type	*s_type;
-	const struct super_operations	*s_op;
+	const struct super_operations	*s_op;//具体的文件系统必须实现VFS中定义的super_operations
 	const struct dquot_operations	*dq_op;
 	const struct quotactl_ops	*s_qcop;
 	const struct export_operations *s_export_op;
 	unsigned long		s_flags;
 	unsigned long		s_magic;
-	struct dentry		*s_root;
+	struct dentry		*s_root;//指向文件系统根dentry的指针==============================
 	struct rw_semaphore	s_umount;
 	int			s_count;
 	atomic_t		s_active;
@@ -1233,7 +1255,7 @@ struct super_block {
 #endif
 	const struct xattr_handler **s_xattr;
 
-	struct list_head	s_inodes;	/* all inodes */
+	struct list_head	s_inodes;	/* all inodes *///通过它能遍历inode对象
 	struct hlist_bl_head	s_anon;		/* anonymous dentries for (nfs) exporting */
 	struct list_head	s_mounts;	/* list of mounts; _not_ for fs use */
 	struct block_device	*s_bdev;

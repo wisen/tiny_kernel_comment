@@ -555,6 +555,7 @@ int mmc_run_queue_thread(void *data)
 	int err;
 
 	pr_err("[CQ] start cmdq thread\n");
+	//mt_bio_queue_alloc(current);就是用来debug的
 	mt_bio_queue_alloc(current);
 	while (1) {
 		set_current_state(TASK_RUNNING);
@@ -711,6 +712,7 @@ static void __mmc_start_request(struct mmc_host *host, struct mmc_request *mrq)
 	}
 #endif
 
+	//mmc->ops = &mt_msdc_ops; .request = msdc_ops_request,
 	host->ops->request(host, mrq);
 }
 
@@ -2710,6 +2712,7 @@ static void _mmc_detect_change(struct mmc_host *host, unsigned long delay,
 		pm_wakeup_event(mmc_dev(host), 5000);
 
 	host->detect_change = 1;
+	//host->detect=mmc_rescan
 	mmc_schedule_delayed_work(&host->detect, delay);
 }
 
@@ -3290,6 +3293,16 @@ static int mmc_rescan_try_freq(struct mmc_host *host, unsigned freq)
 	mmc_send_if_cond(host, host->ocr_avail);
 
 	/* Order's important: probe SDIO, then SD, then MMC */
+	//SDIO就是有些不是SD或者MMC的外围设备但是也使用SDIO接口，先attach这类设备，为什么？
+	/*
+	MMC、SD、SDIO的技术本质是一样的（使用相同的总线规范，等等），都是从MMC规范演化而
+	来；MMC强调的是多媒体存储(MM，MultiMedia)，SD强调的是安全和数据保护(S，Secure)；
+	SDIO是从SD演化出来的，强调的是接口(IO，Input/Output)，不再关注另一端的具体形态(可以
+	是WIFI设备、Bluetooth设备、GPS等等)。
+	*/
+	//这里引申出一个问题，假如有很多外设都使用SDIO接口，并且都是独占的方式访问host,那么会不会导致emmc的throughput下降？
+	//后来看了下电路图，不会的，从目前的手机sch上看到，基本都是一个host controller对应一个sdio外设.比如MTK的6735上有2个Host controller
+	//那么MSDC0接emmc, MSDC1接micro SD card
 	if (!mmc_attach_sdio(host))
 		return 0;
 	if (!mmc_attach_sd(host))
@@ -3368,6 +3381,14 @@ int mmc_detect_card_removed(struct mmc_host *host)
 }
 EXPORT_SYMBOL(mmc_detect_card_removed);
 
+//这个函数说白了，就是用来检测是否有card 插入
+//其实在中断中必然也要走这个流程：mmc_gpio_cd_irqt
+/*
+et = devm_request_threaded_irq(&host->class_dev, irq,
+			NULL, mmc_gpio_cd_irqt,
+			IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_ONESHOT,
+			ctx->cd_label, host);
+*/
 void mmc_rescan(struct work_struct *work)
 {
 	struct mmc_host *host =
@@ -3428,6 +3449,8 @@ void mmc_rescan(struct work_struct *work)
 
 	mmc_claim_host(host);
 	for (i = 0; i < ARRAY_SIZE(freqs); i++) {
+		//虽然SDIO的数据传输速率可达100Mb/s以上，但在对卡进行激活的时候，必须在Low-Speed模式(400KHz)下进行。
+		//这里就通过400KHz、300KHz、200KHz、100KHz依次进行卡的扫描：
 		if (!mmc_rescan_try_freq(host, max(freqs[i], host->f_min)))
 			break;
 		if (freqs[i] <= host->f_min)

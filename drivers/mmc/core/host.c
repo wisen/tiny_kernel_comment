@@ -597,6 +597,7 @@ struct mmc_host *mmc_alloc_host(int extra, struct device *dev)
 
 	spin_lock_init(&host->lock);
 	init_waitqueue_head(&host->wq);
+	//注册了host的detect函数，用来检测卡的插拔
 	INIT_DELAYED_WORK(&host->detect, mmc_rescan);
 #if 1//#ifdef //
 	host->pm_notify.notifier_call = mmc_pm_notify;

@@ -8583,6 +8583,14 @@ int msdc_of_parse(struct mmc_host *mmc)
 	host->hw = kzalloc(sizeof(struct msdc_hw), GFP_KERNEL);
 
 	/*basic settings*/
+	//这里匹配host，在dsi中定义：
+	/*
+mtk-msdc.0 {
+            compatible = "simple-bus";
+            #address-cells = <1>; 
+
+	*/
+	//那么这里就定义了一个host,那么host id=0,host name=msdc0
 	if (0 == strcmp(np->name, "msdc0"))
 		host->id = 0;
 	else if (0 == strcmp(np->name, "msdc1"))
@@ -8670,6 +8678,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
 	}
 
 	/* Allocate MMC host for this device */
+	//wisen: 分配mmc_host结构
 	mmc = mmc_alloc_host(sizeof(struct msdc_host), &pdev->dev);
 	if (!mmc)
 		return -ENOMEM;
@@ -9307,6 +9316,23 @@ static const struct of_device_id msdc_of_ids[] = {
 #endif
 
 static struct platform_driver mt_msdc_driver = {
+	//platform驱动会根据dts中的compatible = "mediatek,mt6735-mmc";的名字来匹配，因为在mt6735.dsi中定义了2个mmc:
+	/*
+	            mmc0: msdc0@11120000 {
+                compatible = "mediatek,mt6580-mmc";
+                reg = <0x11120000 0x10000
+                    0x10001e84 0x2>;
+                interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_LOW>;
+                status = "disabled";
+                /* peter check when rainier ccf ready
+
+            };   
+
+            mmc1: msdc1@11130000 {
+                compatible = "mediatek,mt6580-mmc";
+
+	*/
+	//所以platform总线驱动对于emmc会匹配到2次，所以msdc_drv_probe会被调用2次
 	.probe = msdc_drv_probe,
 	.remove = msdc_drv_remove,
 #if 1//#ifdef //

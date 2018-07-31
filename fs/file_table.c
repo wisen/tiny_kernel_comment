@@ -68,7 +68,7 @@ static long get_nr_files(void)
  */
 unsigned long get_max_files(void)
 {
-	return files_stat.max_files;
+	return files_stat.max_files;//defaut is 8192,defined by NR_FILE in fs.h
 }
 EXPORT_SYMBOL_GPL(get_max_files);
 

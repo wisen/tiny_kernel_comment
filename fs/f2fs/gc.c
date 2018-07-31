@@ -49,7 +49,13 @@ static int gc_thread_func(void *data)
 			wait_ms = increase_sleep_time(gc_th, wait_ms);
 			continue;
 		}
+//wisen: 看看f2fs GC的条件：
+//1. GC当前没有在运行
+//2. 有足够多的脏segments
+//3. 当前系统的没有writeback pages，可以认为IO subsystem处于idle状态
+//4. 当前系统的没有request list，可以认为IO subsystem处于idel状态
 
+//我们同时要避免太频繁的触发gc，因为有时候一个segment可能不久后又会被用户更新，所以我们可以等等来确定正确的脏segemnts
 		/*
 		 * [GC triggering condition]
 		 * 0. GC is not conducted currently.
@@ -135,8 +141,12 @@ void stop_gc_thread(struct f2fs_sb_info *sbi)
 
 static int select_gc_type(struct f2fs_gc_kthread *gc_th, int gc_type)
 {
+//根据当前的GC type来选择gc mode
+//如果是BG GC，就选择GC_CB
+//如果是FG GC，就选择贪婪算法
 	int gc_mode = (gc_type == BG_GC) ? GC_CB : GC_GREEDY;
 
+//根据gc_idle来选择gc mode
 	if (gc_th && gc_th->gc_idle) {
 		if (gc_th->gc_idle == 1)
 			gc_mode = GC_CB;
@@ -704,6 +714,7 @@ gc_more:
 	if (unlikely(f2fs_cp_error(sbi)))
 		goto stop;
 
+//当系统free空间不足的时候，这个时候就要做FG GC了，并且更新GC的type，并写到checkpoint中
 	if (gc_type == BG_GC && has_not_enough_free_secs(sbi, nfree)) {
 		gc_type = FG_GC;
 		write_checkpoint(sbi, &cpc);

@@ -145,6 +145,7 @@ void mmc_gpiod_request_cd_irq(struct mmc_host *host)
 	if (host->slot.cd_irq >= 0 || !ctx || !ctx->cd_gpio)
 		return;
 
+	//获取mmc的中断号
 	irq = gpiod_to_irq(ctx->cd_gpio);
 
 	/*
@@ -156,6 +157,7 @@ void mmc_gpiod_request_cd_irq(struct mmc_host *host)
 		irq = -EINVAL;
 
 	if (irq >= 0) {
+		//注册mmc的中断处理函数mmc_gpio_cd_irqt
 		ret = devm_request_threaded_irq(&host->class_dev, irq,
 			NULL, mmc_gpio_cd_irqt,
 			IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_ONESHOT,

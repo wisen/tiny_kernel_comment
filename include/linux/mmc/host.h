@@ -341,6 +341,7 @@ struct mmc_host {
 	/* private data */
 	spinlock_t		lock;		/* lock for claim and bus ops */
 
+	//wisen：当前IO bus的一些设置
 	struct mmc_ios		ios;		/* current io bus settings */
 
 	/* group bitfields together to minimize padding */
@@ -364,6 +365,7 @@ struct mmc_host {
 
 	bool			trigger_card_event; /* card_event necessary */
 
+	//wisen: 挂在这个host下的device
 	struct mmc_card		*card;		/* device attached to this host */
 
 	wait_queue_head_t	wq;

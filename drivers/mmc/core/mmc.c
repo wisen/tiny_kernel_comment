@@ -1523,6 +1523,7 @@ static int mmc_init_card(struct mmc_host *host, u32 ocr,
 		goto free_card;
 
 	if (mmc_card_hs200(card)) {
+		//从下面这段可以看出要使用HS400 mode要从HS200 mode过渡
 		err = mmc_hs200_tuning(card);
 		if (err)
 			goto free_card;
@@ -2172,6 +2173,7 @@ int mmc_attach_mmc(struct mmc_host *host)
 	for (i = 0; i < 32; i++)
 		host->data_mrq_queued[i] = false;
 
+	//这里如果支持command queue，就注册一个线程来处理command queue
 	host->cmdq_thread = kthread_run(mmc_run_queue_thread, host, "exe_cq");
 #endif
 	err = mmc_add_card(host->card);

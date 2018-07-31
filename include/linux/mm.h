@@ -1002,6 +1002,8 @@ void page_address_init(void);
  *
  * PAGE_MAPPING_KSM without PAGE_MAPPING_ANON is currently never used.
  *
+ //这里有个令人困惑的东西是，page_mapping是指inode address_space中从磁盘映射的页
+ //相反，page_mapped是指用户虚拟空间的页被映射
  * Please note that, confusingly, "page_mapping" refers to the inode
  * address_space which maps the page from disk; whereas "page_mapped"
  * refers to user virtual address space into which the page is mapped.

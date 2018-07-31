@@ -104,16 +104,16 @@ extern unsigned int full_name_hash(const unsigned char *, unsigned int);
 #endif
 
 #define d_lock	d_lockref.lock
-
+//一个真是的文件可以有多个dentry，因为指向文件的路径可以有多个，但是inode只有一个
 struct dentry {
 	/* RCU lookup touched fields */
 	unsigned int d_flags;		/* protected by d_lock */
 	seqcount_t d_seq;		/* per dentry seqlock */
-	struct hlist_bl_node d_hash;	/* lookup hash list */
-	struct dentry *d_parent;	/* parent directory */
-	struct qstr d_name;
+	struct hlist_bl_node d_hash;	/* lookup hash list *///链接到dentry cache的hash链表
+	struct dentry *d_parent;	/* parent directory *///指向父dentry结构
+	struct qstr d_name;//打开一个文件的时候利用这个的d_name和用户输入的文件名比较来搜寻目标文件
 	struct inode *d_inode;		/* Where the name belongs to - NULL is
-					 * negative */
+					 * negative *///指向一个inode，这个inode和dentry共同描述一个普通文件或者目录
 	unsigned char d_iname[DNAME_INLINE_LEN];	/* small names */
 
 	/* Ref lookup also touches following */
@@ -124,7 +124,10 @@ struct dentry {
 	void *d_fsdata;			/* fs-specific data */
 
 	struct list_head d_lru;		/* LRU list */
+	//d_child是dentry自身的链表头，需要链接到父dentry的d_subdirs成员。当移动文件的时候，需要将dentry从旧的的父dentry链表上脱离
+	//然后链接到新的父dentry的d_subdirs上，这样dentry机构之间就构成了一颗目录树，可以参考__d_move实现
 	struct list_head d_child;	/* child of parent list */
+	//d_subdirs是子项的链表头，所有的子项都要链接到这个链表。
 	struct list_head d_subdirs;	/* our children */
 	/*
 	 * d_alias and d_rcu can share memory

@@ -22,7 +22,7 @@
 #define NR_OPEN_DEFAULT BITS_PER_LONG
 
 struct fdtable {
-	unsigned int max_fds;
+	unsigned int max_fds;//32¸öfd_arrays
 	struct file __rcu **fd;      /* current fd array */
 	unsigned long *close_on_exec;
 	unsigned long *open_fds;
@@ -56,7 +56,7 @@ struct files_struct {
 	int next_fd;
 	unsigned long close_on_exec_init[1];
 	unsigned long open_fds_init[1];
-	struct file __rcu * fd_array[NR_OPEN_DEFAULT];
+	struct file __rcu * fd_array[NR_OPEN_DEFAULT];//32¸öfd_array
 };
 
 struct file_operations;
