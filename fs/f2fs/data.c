@@ -113,6 +113,7 @@ static void __submit_merged_bio(struct f2fs_bio_info *io)
 		 * META_FLUSH is only from the checkpoint procedure, and we
 		 * should wait this metadata bio for FS consistency.
 		 */
+		 //META_FLUSH是checkpoint处理过程产生的，我们必须等待这种meta data完成，保证文件系统的一致性。
 		if (fio->type == META_FLUSH) {
 			DECLARE_COMPLETION_ONSTACK(wait);
 			io->sbi->wait_io = &wait;
@@ -136,7 +137,7 @@ void f2fs_submit_merged_bio(struct f2fs_sb_info *sbi,
 
 	down_write(&io->io_rwsem);
 
-	/* change META to META_FLUSH in the checkpoint procedure */
+	/* change META to META_FLUSH in the checkpoint procedure *///这在哪里change的？没看到...
 	if (type >= META_FLUSH) {
 		io->fio.type = META_FLUSH;
 		if (test_opt(sbi, NOBARRIER))

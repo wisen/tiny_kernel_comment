@@ -1232,6 +1232,11 @@ struct sb_writers {
 //超级块是具体文件系统超级块的内存抽象
 //每种文件系统都有一个超级块结构，系统中的所有文件系统的super block都会添加到全局变量super_blocks中。
 //sget可以根据提供的额文件系统的type从super_blocks中找到对于文件系统的super block，或者添加super block到super_blocks中。
+//“普通文件IO需要复制两次，内存映射文件mmap复制一次”，"普通文件IO是堆内操作，内存映射文件是堆外操作"
+//普通文件IO需要复制两次,说白了就是disk到kernel空间的page cache一次，kernel空间的page cache到用户空间进程的heap(用户malloc出来的buffer)一次
+//内存映射文件mmap复制一次,mmap只有一次页缓存的复制，从磁盘文件复制到也缓存中。
+//mmap会创建一个虚拟内存区域vm_area_struct，进程的task_struct维护着这个进程所有的虚拟内存区域信息，虚拟内存区域会更新相应的进程页表项，
+//让这些页表项直接指向页缓存所在的物理页page。mmap新建的这个虚拟内存区域和进程堆的虚拟内存区域不是同一个，所以mmap是在堆外空间。
 struct super_block {
 //s_list指向文件系统的super block本身，在创建super block的时候被添加到super_blocks链表中
 	struct list_head	s_list;		/* Keep this first */

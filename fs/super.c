@@ -445,6 +445,7 @@ retry:
 	spin_lock(&sb_lock);
 	if (test) {
 		hlist_for_each_entry(old, &type->fs_supers, s_instances) {
+			//test = test_bdev_super
 			if (!test(old, data))
 				continue;
 			if (!grab_super(old))
@@ -464,7 +465,8 @@ retry:
 			return ERR_PTR(-ENOMEM);
 		goto retry;
 	}
-		
+
+	//set = set_bdev_super,
 	err = set(s, data);
 	if (err) {
 		spin_unlock(&sb_lock);
@@ -475,10 +477,15 @@ retry:
 	s->s_type = type;
 	strlcpy(s->s_id, type->name, sizeof(s->s_id));
 	list_add_tail(&s->s_list, &super_blocks);
+	//将创建的superblock挂载到文件系统的fs_supers链表头部
+	//这里注意，多个设备可以使用相同的文件系统，所以这里的type->fs_supers下可能挂了很多的nodes,每个node都是一个super block
+	//type->fs_supers--->noden--->nodem...-->node2--->node1
+	//                    |        |           |        |
+	//                   sbn      sbm         sb2      sb1
 	hlist_add_head(&s->s_instances, &type->fs_supers);
 	spin_unlock(&sb_lock);
 	get_filesystem(type);
-	register_shrinker(&s->s_shrink);
+	register_shrinker(&s->s_shrink);//注册super block的shrink函数
 	return s;
 }
 
@@ -973,6 +980,7 @@ struct dentry *mount_bdev(struct file_system_type *fs_type,
 		error = -EBUSY;
 		goto error_bdev;
 	}
+	//sget寻找或者创建一个super block
 	s = sget(fs_type, test_bdev_super, set_bdev_super, flags | MS_NOSEC,
 		 bdev);
 	mutex_unlock(&bdev->bd_fsfreeze_mutex);
@@ -1002,6 +1010,7 @@ struct dentry *mount_bdev(struct file_system_type *fs_type,
 		s->s_mode = mode;
 		strlcpy(s->s_id, bdevname(bdev, b), sizeof(s->s_id));
 		sb_set_blocksize(s, block_size(bdev));
+		//fill_super = f2fs_fill_super
 		error = fill_super(s, data, flags & MS_SILENT ? 1 : 0);
 		if (error) {
 			deactivate_locked_super(s);
@@ -1105,6 +1114,8 @@ mount_fs(struct file_system_type *type, int flags, const char *name, void *data)
 			goto out_free_secdata;
 	}
 
+	//调用具体文件系统中的.mount函数，比如f2fs： f2fs_mount
+	//在具体文件的.mount函数中，最主要的function是要创建super block,并保存在全局变量super_blocks中去。
 	root = type->mount(type, flags, name, data);
 	if (IS_ERR(root)) {
 		error = PTR_ERR(root);

@@ -179,6 +179,7 @@ int vfs_fsync_range(struct file *file, loff_t start, loff_t end, int datasync)
 {
 	if (!file->f_op->fsync)
 		return -EINVAL;
+	//调用具体文件系统的fsync函数，以f2fs为例： .fsync		= f2fs_sync_file,
 	return file->f_op->fsync(file, start, end, datasync);
 }
 EXPORT_SYMBOL(vfs_fsync_range);
@@ -191,6 +192,17 @@ EXPORT_SYMBOL(vfs_fsync_range);
  * Write back data and metadata for @file to disk.  If @datasync is
  * set only metadata needed to access modified file data is written.
  */
+ /*
+fsync除了同步文件的修改内容（脏页），fsync还会同步文件的描述信息（metadata，包括size、访问时间st_atime & st_mtime等等），因为文件的数据和metadata
+通常存在硬盘的不同地方，因此fsync至少需要两次IO写操作，fsync的man page这样说：
+"Unfortunately fsync() will always initialize two write operations : one for the newly written data and another one in order to update the 
+modification time stored in the inode. If the modification time is not a part of the transaction concept fdatasync() can be used to avoid 
+unnecessary inode disk write operations."
+
+多余的一次IO操作，有多大影响呢？我们拿之前的机械硬盘来举例：
+硬盘驱动的平均寻道时间（Average seek time）大约是3~15ms，7200RPM硬盘的平均旋转延迟（Average rotational latency）大约为4ms，因此一次IO操作的耗时
+大约为10ms左右。
+*/
 int vfs_fsync(struct file *file, int datasync)
 {
 	return vfs_fsync_range(file, 0, LLONG_MAX, datasync);

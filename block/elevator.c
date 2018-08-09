@@ -412,6 +412,14 @@ void elv_dispatch_add_tail(struct request_queue *q, struct request *rq)
 }
 EXPORT_SYMBOL(elv_dispatch_add_tail);
 
+/*
+从整个IO路径的角度来看，elevator这层主要解决IO的QoS问题，通常需要解决如下两大问题：
+
+1）Bio的合并问题。主要考虑bio是否可以和scheduler中的某个request进行合并。因为从磁盘的角度来看，临近的请求需要合并，所有的IO需要顺序化处理，
+这样磁头才能往一个方向运行，避免无规则的乱序运行。
+2）Request的调度问题。request在何时可以从scheduler中取出，并且送入底层驱动程序继续进行处理？不同的应用可能需要不同的带宽资源，读写请求的带宽
+、延迟控制也可以不一样，因此，需要解决request的调度处理，从而可以更好的控制IO的QoS。
+*/
 int elv_merge(struct request_queue *q, struct request **req, struct bio *bio)
 {
 	struct elevator_queue *e = q->elevator;
@@ -424,13 +432,13 @@ int elv_merge(struct request_queue *q, struct request **req, struct bio *bio)
 	 * 	noxmerges: Only simple one-hit cache try
 	 * 	merges:	   All merge tries attempted
 	 */
-	if (blk_queue_nomerges(q))
+	if (blk_queue_nomerges(q))//请求队列不允许合并请求，则返回NO_MERGE
 		return ELEVATOR_NO_MERGE;
 
 	/*
 	 * First try one-hit cache.
 	 */
-	if (q->last_merge && elv_rq_merge_ok(q->last_merge, bio)) {
+	if (q->last_merge && elv_rq_merge_ok(q->last_merge, bio)) {//last_merge指向最近进行合并操作的request，并成功合并
 		ret = blk_try_merge(q->last_merge, bio);
 		if (ret != ELEVATOR_NO_MERGE) {
 			*req = q->last_merge;
@@ -444,12 +452,13 @@ int elv_merge(struct request_queue *q, struct request **req, struct bio *bio)
 	/*
 	 * See if our hash lookup can find a potential backmerge.
 	 */
-	__rq = elv_rqhash_find(q, bio->bi_iter.bi_sector);
+	__rq = elv_rqhash_find(q, bio->bi_iter.bi_sector);//根据bio的起始扇区号，通过rq的哈希表寻找一个request,可以将bio合并到request的尾部
 	if (__rq && elv_rq_merge_ok(__rq, bio)) {
 		*req = __rq;
 		return ELEVATOR_BACK_MERGE;
 	}
 
+	/*如果以上的方法不成功，则调用特定于io调度器的elevator_merge_fn函数寻找一个合适的request*/
 	//这里是具体电梯算法的merge算法，比如 cfq_merge
 	if (e->type->ops.elevator_merge_fn)
 		return e->type->ops.elevator_merge_fn(q, req, bio);
@@ -586,6 +595,8 @@ void elv_drain_elevator(struct request_queue *q)
 
 	lockdep_assert_held(q->queue_lock);
 
+	//3. Q3 调用具体的注册的elevator dispatch函数
+	//elevator_dispatch_fn =		cfq_dispatch_requests
 	while (q->elevator->type->ops.elevator_dispatch_fn(q, 1))
 		;
 	if (q->nr_sorted && printed++ < 10) {
@@ -619,12 +630,15 @@ void __elv_add_request(struct request_queue *q, struct request *rq, int where)
 	case ELEVATOR_INSERT_REQUEUE:
 	case ELEVATOR_INSERT_FRONT:
 		rq->cmd_flags |= REQ_SOFTBARRIER;
+		//2. Q2 将request加到elevator queue头
 		list_add(&rq->queuelist, &q->queue_head);
 		break;
 
 	case ELEVATOR_INSERT_BACK:
 		rq->cmd_flags |= REQ_SOFTBARRIER;
+		//3. Q3 
 		elv_drain_elevator(q);
+		//2. Q2 将request加到elevator queue尾
 		list_add_tail(&rq->queuelist, &q->queue_head);
 		/*
 		 * We kick the queue here for the following reasons.
@@ -636,6 +650,7 @@ void __elv_add_request(struct request_queue *q, struct request *rq, int where)
 		 *   with anything.  There's no point in delaying queue
 		 *   processing.
 		 */
+		//4. Q4 将request发送给设备驱动程序 
 		__blk_run_queue(q);
 		break;
 

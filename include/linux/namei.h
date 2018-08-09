@@ -11,20 +11,21 @@ struct vfsmount;
 enum { MAX_NESTED_LINKS = 8 };
 
 struct nameidata {
-	struct path	path;
-	struct qstr	last;
-	struct path	root;
-	struct inode	*inode; /* path.dentry.d_inode */
+	struct path	path;//保存当前搜索到的路径
+	struct qstr	last;//保存当前子路径名及其散列值；
+	struct path	root;//用来保存根目录的信息；
+	struct inode	*inode; /* path.dentry.d_inode *///指向当前找到的目录项的 inode 结构；
 	unsigned int	flags;
-	unsigned	seq, m_seq;
-	int		last_type;
-	unsigned	depth;
-	char *saved_names[MAX_NESTED_LINKS + 1];
+	unsigned	seq, m_seq;//seq 是相关目录项的顺序锁序号；是相关文件系统（其实是 mount）的顺序锁序号；
+	int		last_type;//表示当前节点类型；
+	unsigned	depth;//解析符号链接过程中的递归深度
+	char *saved_names[MAX_NESTED_LINKS + 1];//用来记录相应递归深度的符号链接的路径。
 };
 
 /*
  * Type of the last component on LOOKUP_PARENT
  */
+////分别代表了普通文件，根文件，.文件，..文件和符号链接文件
 enum {LAST_NORM, LAST_ROOT, LAST_DOT, LAST_DOTDOT, LAST_BIND};
 
 /*

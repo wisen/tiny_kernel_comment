@@ -490,6 +490,7 @@ ssize_t new_sync_write(struct file *filp, const char __user *buf, size_t len, lo
 
 	//这里是具体的文件系统的file_operations, 比如 f2fs_file_operations
 	//.write_iter	= generic_file_write_iter,
+	//1. 3--generic_file_write_iter
 	ret = filp->f_op->write_iter(&kiocb, &iter);
 	if (-EIOCBQUEUED == ret)
 		ret = wait_on_sync_kiocb(&kiocb);
@@ -530,6 +531,7 @@ ssize_t __kernel_write(struct file *file, const char *buf, size_t count, loff_t 
 
 EXPORT_SYMBOL(__kernel_write);
 
+//1. 1--vfs_write
 ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_t *pos)
 {
 	ssize_t ret;
@@ -554,6 +556,7 @@ ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_
 			//f2fs_file_operations中没有定义aio_write
 			ret = do_sync_write(file, buf, count, pos);
 		else
+			//1. 2--new_sync_write
 			ret = new_sync_write(file, buf, count, pos);
 		if (ret > 0) {
 			fsnotify_modify(file);

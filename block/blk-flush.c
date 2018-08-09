@@ -6,10 +6,14 @@
  *
  * This file is released under the GPLv2.
  *
+ REQ_{FLUSH|FUA} requests被分解成一个序列，这个序列包含三步- PREFLUSH, DATA and POSTFLUSH。
  * REQ_{FLUSH|FUA} requests are decomposed to sequences consisted of three
  * optional steps - PREFLUSH, DATA and POSTFLUSH - according to the request
  * properties and hardware capability.
  *
+ 如果一个request没有包含数据，那么只有REQ_FLUSH有意义，它意味着这是一个简单的flush request.
+ 如果一个request包含数据，REQ_FLUSH代表device cache必须被flush，在request中的数据被执行之前。
+ REQ_FUA意味着request中的数据在request完成之前必须保存在非易失设备上。
  * If a request doesn't have data, only REQ_FLUSH makes sense, which
  * indicates a simple flush request.  If there is data, REQ_FLUSH indicates
  * that the device cache should be flushed before the data is executed, and
@@ -20,12 +24,17 @@
  * difference.  The requests are either completed immediately if there's no
  * data or executed as normal requests otherwise.
  *
+ 如果设备有回写cache并且支持FUA，REQ_FLUSH会被转化成PREFLUSH，而REQ_FUA会跟着数据直接传下去(也就是直接传给设备)
  * If the device has writeback cache and supports FUA, REQ_FLUSH is
  * translated to PREFLUSH but REQ_FUA is passed down directly with DATA.
  *
+ 如果设备有回写cache但是不支持FUA，REQ_FLUSH会被转化成PREFLUSH，REQ_FUA转化成POSTFLUSH。
  * If the device has writeback cache and doesn't support FUA, REQ_FLUSH is
  * translated to PREFLUSH and REQ_FUA to POSTFLUSH.
  *
+ flush真正的执行是双buffer。无论一个request是不是需要执行PRE或者POSTFLUSH，它都queue到fq->flush_queue[fq->flush_pending_idx]。
+ 一旦某些条件达到，一个flush就会被触发，pending_idx会被拴住。当flush完成，所有的pending的request会进入下一个步骤。我们允许合并任何
+ 不同类型的FLUSH/FUA requests。
  * The actual execution of flush is double buffered.  Whenever a request
  * needs to execute PRE or POSTFLUSH, it queues at
  * fq->flush_queue[fq->flush_pending_idx].  Once certain criteria are met, a
@@ -34,24 +43,31 @@
  * step.  This allows arbitrary merging of different types of FLUSH/FUA
  * requests.
  *
+ 目前，下面的条件被用来决定是否触发一个flush：
  * Currently, the following conditions are used to determine when to issue
  * flush.
  *
+ 条件C1，在任何一个给定的时间，只能有一个flush被处理，这能使我们有足够的双buffer。
  * C1. At any given time, only one flush shall be in progress.  This makes
  *     double buffering sufficient.
  *
+ 条件C2，如果有任何的request正在按照序列执行他的data，那么flush会被延迟。这能避免对共享同一个PREFLUSH的requests触发不同的POSTFLUSHes。
  * C2. Flush is deferred if any request is executing DATA of its sequence.
  *     This avoids issuing separate POSTFLUSHes for requests which shared
  *     PREFLUSH.
  *
+ 条件C3，如果有一个request已经等了很长时间超过了FLUSH_PENDING_TIMEOUT，那么第二个条件可以忽略。
+ 这可以避免在有大量连续的FUA requests的时候被饿死。
  * C3. The second condition is ignored if there is a request which has
  *     waited longer than FLUSH_PENDING_TIMEOUT.  This is to avoid
  *     starvation in the unlikely case where there are continuous stream of
  *     FUA (without FLUSH) requests.
  *
+ 对于支持FUA的设备来说，它并不清楚C2(或者C3)是有益的。
  * For devices which support FUA, it isn't clear whether C2 (and thus C3)
  * is beneficial.
  *
+ 注意，带着data的一序列的FLUSH/FUA request会被完成两次。
  * Note that a sequenced FLUSH/FUA request with DATA is completed twice.
  * Once while executing DATA and again after the whole sequence is
  * complete.  The first completion updates the contained bio but doesn't

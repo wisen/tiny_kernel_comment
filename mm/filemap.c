@@ -269,6 +269,7 @@ static int filemap_check_errors(struct address_space *mapping)
  * these two operations is that if a dirty page/buffer is encountered, it must
  * be waited upon, and not just skipped over.
  */
+ //这个函数是用来回写mapping中所有的dirty pages的，当然这些dirty pages一定要在start，end的范围内
 int __filemap_fdatawrite_range(struct address_space *mapping, loff_t start,
 				loff_t end, int sync_mode)
 {
@@ -280,7 +281,7 @@ int __filemap_fdatawrite_range(struct address_space *mapping, loff_t start,
 		.range_end = end,
 	};
 
-	if (!mapping_cap_writeback_dirty(mapping))
+	if (!mapping_cap_writeback_dirty(mapping))//判断文件所在的设备是否支持回写能力
 		return 0;
 
 	ret = do_writepages(mapping, &wbc);
@@ -428,11 +429,13 @@ int filemap_write_and_wait_range(struct address_space *mapping,
 {
 	int err = 0;
 
-	if (mapping->nrpages) {
+	if (mapping->nrpages) {//address_space中有个page_tree保存的就是当前的inode中所有的page cache,nrpages就是这些page的数量
+	//所以函数filemap_write_and_wait_range的对象是当前的文件，也就是某个特定的inode,特定的address_space mapping,它不是针对整个文件系统的
 		err = __filemap_fdatawrite_range(mapping, lstart, lend,
 						 WB_SYNC_ALL);
 		/* See comment of filemap_write_and_wait() */
 		if (err != -EIO) {
+			//filemap_fdatawait_range是等待mapping中所有需要回写的page回写完毕
 			int err2 = filemap_fdatawait_range(mapping,
 						lstart, lend);
 			if (!err)
@@ -2568,6 +2571,7 @@ again:
 		pos += copied;
 		written += copied;
 
+		//1. 6--balance_dirty_pages_ratelimited
 		balance_dirty_pages_ratelimited(mapping);
 	} while (iov_iter_count(i));
 
@@ -2636,7 +2640,7 @@ ssize_t __generic_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
 		 */
 		pos += written;
 		count -= written;
-
+		//1. 5--generic_perform_write
 		status = generic_perform_write(file, from, pos);
 		/*
 		 * If generic_perform_write() returned a synchronous error
@@ -2696,6 +2700,7 @@ ssize_t generic_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
 	ssize_t ret;
 
 	mutex_lock(&inode->i_mutex);
+	//1. 4--__generic_file_write_iter
 	ret = __generic_file_write_iter(iocb, from);
 	mutex_unlock(&inode->i_mutex);
 

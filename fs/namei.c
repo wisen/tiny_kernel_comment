@@ -2164,7 +2164,7 @@ struct dentry *lookup_one_len(const char *name, struct dentry *base, int len)
 }
 EXPORT_SYMBOL(lookup_one_len);
 
-int user_path_at_empty(int dfd, const char __user *name, unsigned flags,
+int user_path_at_empty(int dfd/*AT_FDCWD*/, const char __user *name, unsigned flags/*LOOKUP_FOLLOW*/,
 		 struct path *path, int *empty)
 {
 	struct nameidata nd;
@@ -2185,7 +2185,7 @@ int user_path_at_empty(int dfd, const char __user *name, unsigned flags,
 int user_path_at(int dfd, const char __user *name, unsigned flags,
 		 struct path *path)
 {
-	return user_path_at_empty(dfd, name, flags, path, NULL);
+	return user_path_at_empty(dfd/*AT_FDCWD*/, name, flags/*LOOKUP_FOLLOW*/, path, NULL);
 }
 EXPORT_SYMBOL(user_path_at);
 

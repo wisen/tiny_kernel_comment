@@ -290,6 +290,7 @@ inline void __blk_run_queue_uncond(struct request_queue *q)
 	q->request_fn_active++;
 	//这里的q->request_fn就是driver向block core注册的
 	//mmc driver注册的是 mmc_request_fn
+	//ssd driver注册的是 scsi_request_fn
 	q->request_fn(q);
 	q->request_fn_active--;
 }
@@ -1573,6 +1574,14 @@ void init_request_from_bio(struct request *req, struct bio *bio)
 //所以块设备的make_request_fn默认的定义是blk_queue_bio
 //而其实make_request_fn(blk_queue_bio)要做的就是把上层的bio转化成queue,顺便做了一些merge动作，然后把这个queue传给块设备驱动层
 //我们也可以自己在块设备驱动中实现make_request_fn,比如zram就实现了自己的make_request_fn->zram_make_request
+
+
+
+//在linux的存储架构中有四类queue:
+//1. Q1: 每个线程/进程中的plug list，它是第一道闸
+//2. Q2: elevator中的queue，当plug list中的request流出后就会先到elevator中
+//3. Q3: device request queue的dispatch queue
+//4. Q4: block_device的queue
 void blk_queue_bio(struct request_queue *q, struct bio *bio)
 {
 	const bool sync = !!(bio->bi_rw & REQ_SYNC);
@@ -1588,6 +1597,14 @@ void blk_queue_bio(struct request_queue *q, struct bio *bio)
 	 */
 	//做DMA时的相关地址限制，可能该bio只能访问低端内存，因此需要将高端内存中
 	//的bio数据拷贝到低端内存中
+	/*
+在 IA-32 系统中，物理内存最开始的1GB 被称为“低端内存”，1GB 以上的部分称为“高端内存”。先前的Linux 核心版本要求通往存储设备的数据缓存必须放
+在物理RAM 的低端内存区域，即使是应用程序可以同时使用高端内存和低端内存也存在同样状况。这样，来自低端内存区域数据缓存的I/O 请求可以直接进行内存
+存取操作。但是，当应用程序发出一个I/O 请求，其中包含位于高端内存的数据缓存时，核心将强制在低端内存中分配一个临时数据缓存，并将位于高端内存的
+应用程序缓存数据复制到此处，这个数据缓存相当于一个跳转的buffer。例如一些老设备只能访问16M以下的内存，但DMA的目的地址却在16M以上时，就需要在设
+备能访问16M范围内设置一个buffer作为跳转。这种额外的数据拷贝被称为“bounce buffering”，会明显地降低I/O 密集的数据库应用的性能，因为大量分配的
+bounce buffers 会占用许多内存，而且bouncebuffer 的复制会增加系统内存总线的负荷。
+	*/
 	blk_queue_bounce(q, &bio);
 
 	if (bio_integrity_enabled(bio) && bio_integrity_prep(bio)) {
@@ -1597,20 +1614,41 @@ void blk_queue_bio(struct request_queue *q, struct bio *bio)
 
 	//屏障IO的主要作用是禁止IO调度程序进行排序,主要的应用场景是日志文件系统，
 	//对于日志文件系统，需要确保日志首先真实的写入到存储中后，再进行实际修改
-	//文件系统的操作。在提供bio的时候，增加REQ_FUA标签。判断如果是有REQ_FUA标签，
+	//文件系统的操作。在提供bio的时候，增加REQ_FUA标签。判断如果是有REQ_FUA（Forced Unit Access）标签，
 	//跳过io调度相关处理, 但是其实还是放到电梯里，但是把电梯的标志设为ELEVATOR_INSERT_FLUSH
+	//在f2fs的f2fs_submit_merged_bio中会对META_FLUSH类型的page加上REQ_FLUSH 和 REQ_FUA标志。
 	if (bio->bi_rw & (REQ_FLUSH | REQ_FUA)) {
 		spin_lock_irq(q->queue_lock);
 		where = ELEVATOR_INSERT_FLUSH;
 		goto get_rq;
 	}
+	/*
+	关于blk_queue_bio中的REQ_FLUSH以及REQ_FUA：
+硬盘在控制器上的一块内存芯片，其类型一般以SDRAM为主，具有极快的存取速度，它是硬盘内部存储和外界接口之间的缓冲器。由于硬盘的内部数据传输速度和外界介面传输速度不同，缓存在其中起到一个缓冲的作用。缓存的大小与速度是直接关系到硬盘的传输速度的重要因素，能够大幅度地提高硬盘整体性能。
+如果硬盘的cache启用了，那么很有可能写入的数据是写到了硬盘的cache中，而没有真正写到磁盘介质上。
+在linux下，查看磁盘cache是否开启可通过hdparm命令：
+
+#hdparm -W /dev/sdx    //是否开启cache，1为enable
+#hdparm -W 0 /dev/sdx //关闭cache
+#hdparm -W 1 /dev/sdx //enable cache
+blk_queue_bio判断如果是有REQ_FUA标签，跳过io调度相关处理
+
+	if (bio->bi_rw & (REQ_FLUSH | REQ_FUA)) {
+		spin_lock_irq(q->queue_lock);
+		where = ELEVATOR_INSERT_FLUSH;
+		goto get_rq;
+	}
+REQ_FLUSH：表示把磁盘cache中的data刷新到磁盘介质中，防止掉电丢失
+REQ_FUA （force unit access）：绕过磁盘cache，直接把数据写到磁盘介质中。
+	*/
 
 	/*
 	 * Check if we can merge with the plugged list before grabbing
 	 * any locks.
 	 */
-	//如果这个request_queue没有设置QUEUE_FLAG_NOMERGES，就尝试做merge
+	//如果这个request_queue没有设置QUEUE_FLAG_NOMERGES，就先尝试做线程自己的plug list中的merge
 	//如果merge成功了，就不继续往下了走了，等下次有io请求在一起往下走
+	//1. Q1 这里就是Q1的描述
 	if (!blk_queue_nomerges(q) &&
 	    blk_attempt_plug_merge(q, bio, &request_count))
 		return;
@@ -1618,15 +1656,18 @@ void blk_queue_bio(struct request_queue *q, struct bio *bio)
 	spin_lock_irq(q->queue_lock);
 
 	//在电梯算法中有2种merge, bio merge和request merge，两者有什么区别？
-	el_ret = elv_merge(q, &req, bio);
-	if (el_ret == ELEVATOR_BACK_MERGE) {
+	//1 bio先进入进程内部的unplug请求队列。如果这个线程没有unplug请求队列，那么IO request直接被送入elevator。
+	//1 在unplug请求队列中等待的request会在请求unplug的过程中被送入elevator的请求队列。
+	//2. Q2 这里就是Q2的描述
+	el_ret = elv_merge(q, &req, bio);//elv_merge是核心函数，找到bio前向或者后向合并的请求
+	if (el_ret == ELEVATOR_BACK_MERGE) {//进行后向合并操作
 		if (bio_attempt_back_merge(q, req, bio)) {
 			elv_bio_merged(q, req, bio);
 			if (!attempt_back_merge(q, req))
 				elv_merged_request(q, req, el_ret);
 			goto out_unlock;
 		}
-	} else if (el_ret == ELEVATOR_FRONT_MERGE) {
+	} else if (el_ret == ELEVATOR_FRONT_MERGE) {//进行前向合并操作
 		if (bio_attempt_front_merge(q, req, bio)) {
 			elv_bio_merged(q, req, bio);
 			if (!attempt_front_merge(q, req))
@@ -1635,7 +1676,7 @@ void blk_queue_bio(struct request_queue *q, struct bio *bio)
 		}
 	}
 
-get_rq:
+get_rq://无法找到对应的请求合并
 	/*
 	 * This sync check and mask will be re-done in init_request_from_bio(),
 	 * but we need to set it earlier to expose the sync flag to the
@@ -1649,7 +1690,7 @@ get_rq:
 	 * Grab a free request. This is might sleep but can not fail.
 	 * Returns with the queue unlocked.
 	 */
-	req = get_request(q, rw_flags, bio, GFP_NOIO);
+	req = get_request(q, rw_flags, bio, GFP_NOIO);//获取一个空的request请求
 	if (IS_ERR(req)) {
 		bio_endio(bio, PTR_ERR(req));	/* @q is dead */
 		goto out_unlock;
@@ -1661,7 +1702,7 @@ get_rq:
 	 * We don't worry about that case for efficiency. It won't happen
 	 * often, and the elevators are able to handle it.
 	 */
-	init_request_from_bio(req, bio);
+	init_request_from_bio(req, bio);//用这个bio来初始化刚才获取的空request请求
 
 	if (test_bit(QUEUE_FLAG_SAME_COMP, &q->queue_flags))
 		req->cpu = raw_smp_processor_id();
@@ -1676,6 +1717,7 @@ get_rq:
 			trace_block_plug(q);
 		else {
 			if (request_count >= BLK_MAX_REQUEST_COUNT) {
+				//2. Q2 将unplug队列中的request发送到elevator的队列中
 				blk_flush_plug_list(plug, false);
 				trace_block_plug(q);
 			}
@@ -1684,6 +1726,7 @@ get_rq:
 		blk_account_io_start(req, true);
 	} else {
 		spin_lock_irq(q->queue_lock);
+		//2. Q2 通过__elv_add_request将请求发送到elevator的队列中
 		add_acct_request(q, req, where);
 		//开始向driver提交请求
 		__blk_run_queue(q);
@@ -1906,13 +1949,55 @@ end_io:
  * a lower device by calling into generic_make_request recursively, which
  * means the bio should NOT be touched after the call to ->make_request_fn.
  */
+ /*
+这里解释下generic_make_request中的防嵌套原理：
+        假如一个进程A第一次调用generic_make_request，那么A->bio_list=NULL
+        这个时候一定会走到do .... while 循环，而在循环开始前， A->bio_list已经不等于NULL，A->bio_list=NULL
+        而如果这个时候A进程还在不断的产生bio请求，就是一次次的进入到generic_make_request
+        而从第二个bio开始到后续的A进程的bio都会被加到A->bio_list中。
+        而我们第一次提交bio时进入的do..while循环可以还在q->make_request_fn(q, bio);中，这样当q->make_request_fn(q, bio)执行完
+        出来的时候，直接从A->bio_list中pop就能得到bio2,bio3,乃至bion. 这个设计非常nice。
+
+        所以进程不断的产生bio请求，不断的generic_make_request(bio),都是先被存储在进程的bio_list中，那么这个bio_list是否有个大小限制呢？
+*/
 void generic_make_request(struct bio *bio)
 {
 	struct bio_list bio_list_on_stack;
 
 	if (!generic_make_request_checks(bio))
 		return;
+/*
+bio_list_add(bio_list, bio1):
+   bio_list            bio1
+ |   head   | --->|  bi_next  | ---> null
+ |   tail   | --->|           |
 
+bio_list_add(bio_list, bio2):
+   bio_list            bio1              bio2
+ |   head   | --->|  bi_next  | ---> |  bi_next  |  ---> null
+ |   tail   |     |           |      |           |
+      |                                    ↑
+      --------------------------------------
+
+bio_list_pop(bio_list)
+   bio_list            bio1                     bio2
+      --------------------------------------------
+      |                                          ↓
+ |   head   |     |  bi_next  | ---> null  |  bi_next  |  ---> null
+ |   tail   |     |           |            |           |
+      |                                          ↑
+      --------------------------------------------
+
+bio_list_pop(bio_list)
+   bio_list            bio1                    bio2
+      ----------------------------------------------------------
+      |                                                        ↓
+ |   head   |     |  bi_next  | ---> null  |  bi_next  |  ---> null
+ |   tail   |     |           |            |           |
+      |                                                        ↑
+      ----------------------------------------------------------
+
+*/
 	/*
 	 * We only want one ->make_request_fn to be active at a time, else
 	 * stack usage with stacked devices could be a problem.  So use
@@ -1951,8 +2036,8 @@ void generic_make_request(struct bio *bio)
 	do {
 		struct request_queue *q = bdev_get_queue(bio->bi_bdev);
 
-	//make_request_fn在blk-core.c中被 blk_init_allocated_queue 初始化为 blk_queue_bio
-	//make_request_fn在blk-core.c中被 blk_mq_init_queue 初始化为 blk_mq_make_request 或者 blk_sq_make_request
+	//make_request_fn在blk-core.c中被 blk_init_allocated_queue 初始化为 blk_queue_bio  --->  emmc driver走的是这条路线 blk_init_queue->blk_init_queue_node->blk_init_allocated_queue
+	//make_request_fn在blk-core.c中被 blk_mq_init_queue 初始化为 blk_mq_make_request 或者 blk_sq_make_request  ---> scsi,nvme等走的是这条路线
 	//mq或者sq, 取决于当前块设备层支持多个hardware queue还是单个hardware queue
 	//而blk_mq_init_queue一般在具体的硬件driver中调用，比如在scsi的driver中
 	//调用了scsi_mq_alloc_queue中就调用blk_mq_init_queue来注册mq或者sq
@@ -2327,6 +2412,8 @@ struct request *blk_peek_request(struct request_queue *q)
 		if (!q->prep_rq_fn)
 			break;
 
+		//blk_queue_prep_rq(mq->queue, mmc_prep_request);
+		//prep_rq_fn = mmc_prep_request
 		ret = q->prep_rq_fn(q, rq);
 		if (ret == BLKPREP_OK) {
 			break;

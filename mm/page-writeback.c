@@ -1867,6 +1867,7 @@ EXPORT_SYMBOL(tag_pages_for_writeback);
  * tag we set). The rule we follow is that TOWRITE tag can be cleared only
  * by the process clearing the DIRTY tag (and submitting the page for IO).
  */
+ //write_cache_pages既要考虑别的进程影响的带来的dirty page，还要考虑自身要sync的page以及已经存在的dirty pages.
 int write_cache_pages(struct address_space *mapping,
 		      struct writeback_control *wbc, writepage_t writepage,
 		      void *data)
@@ -1969,6 +1970,7 @@ continue_unlock:
 				goto continue_unlock;
 
 			trace_wbc_writepage(wbc, mapping->backing_dev_info);
+			//*writepage = __writepage
 			ret = (*writepage)(page, wbc, data);
 			if (unlikely(ret)) {
 				if (ret == AOP_WRITEPAGE_ACTIVATE) {
@@ -2031,6 +2033,10 @@ static int __writepage(struct page *page, struct writeback_control *wbc,
 		       void *data)
 {
 	struct address_space *mapping = data;
+	//这里开始调用具体的文件系统的writepage，比如f2fs:
+	//data: f2fs_write_data_page
+	//node: f2fs_write_node_page
+	//meta: f2fs_write_meta_page
 	int ret = mapping->a_ops->writepage(page, wbc);
 	mapping_set_error(mapping, ret);
 	return ret;
@@ -2053,7 +2059,11 @@ int generic_writepages(struct address_space *mapping,
 	/* deal with chardevs and other special file */
 	if (!mapping->a_ops->writepage)
 		return 0;
-
+/*
+这里解释下blk_start_plug和blk_finish_plug这对函数
+plug list是附着在进程上的一个list，进程会对自己的本身要回写的page做一个临时管理，到达一定数量了才会泄闸
+blk_start_plug就是在读写操作之前先把这个池子建立起来，blk_finish_plug是在读写操作完成后销毁这个池子。
+*/
 	blk_start_plug(&plug);
 	ret = write_cache_pages(mapping, wbc, __writepage, mapping);
 	blk_finish_plug(&plug);
