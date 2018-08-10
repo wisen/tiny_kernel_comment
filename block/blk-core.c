@@ -1617,6 +1617,10 @@ bounce buffers 会占用许多内存，而且bouncebuffer 的复制会增加系统内存总线的负荷。
 	//文件系统的操作。在提供bio的时候，增加REQ_FUA标签。判断如果是有REQ_FUA（Forced Unit Access）标签，
 	//跳过io调度相关处理, 但是其实还是放到电梯里，但是把电梯的标志设为ELEVATOR_INSERT_FLUSH
 	//在f2fs的f2fs_submit_merged_bio中会对META_FLUSH类型的page加上REQ_FLUSH 和 REQ_FUA标志。
+
+	/*
+     屏障IO在2.6.37上是
+	*/
 	if (bio->bi_rw & (REQ_FLUSH | REQ_FUA)) {
 		spin_lock_irq(q->queue_lock);
 		where = ELEVATOR_INSERT_FLUSH;
