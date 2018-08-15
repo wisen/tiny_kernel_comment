@@ -363,6 +363,7 @@ static struct task_struct *dup_task_struct(struct task_struct *orig)
 			current->pid, current->comm);
 		return NULL;
 	}
+	//这里分配了一个新的thread_info结构体
 	ti = alloc_thread_info_node(tsk, node);
 	if (!ti) {
 		pr_err("[%d:%s] fork fail at alloc_t_info_node, please check alloc_pages_node()\n",
@@ -370,12 +371,15 @@ static struct task_struct *dup_task_struct(struct task_struct *orig)
 		goto free_tsk;
 	}
 
+	//这里又将tsk指针指向原始的task_struct指针了
 	err = arch_dup_task_struct(tsk, orig);
 	if (err) {
 		pr_err("[%d:%s] fork fail at arch_dup_task_struct, err:%d\n",
 			current->pid, current->comm, err);
 		goto free_ti;
 	}
+	//把task中的stack指针指向新分配的thread_info
+	//所以dup_task_struct只是新分配了一个新的thread_info, 而task_struct并没有变化
 	tsk->stack = ti;
 
 #if 0//#ifdef CONFIG_MTK_SCHED_CMP_TGS//CONFIG_MTK_SCHED_CMP_TGS is not set
@@ -1737,6 +1741,14 @@ struct task_struct *fork_idle(int cpu)
  //wisen: clone->do_fork(clone_flags, newsp, 0, parent_tidptr, child_tidptr);
  //wisen: 这里摘取了一个starce输出的clone的flag：flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|CLONE_CHILD_CLEARTID
  //wisen: 从最终的review结果得出，fork会创建新的地址空间，而clone会共享父进程的地址空间
+//这里从libc中拷贝下fork和pthread_create分别传过来的flags:
+/*
+          fork中: CLONE_CHILD_SETTID | CLONE_CHILD_CLEARTID | SIGCHLD
+pthread_create中: CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM |
+      CLONE_SETTLS | CLONE_PARENT_SETTID | CLONE_CHILD_CLEARTID
+   */
+//还有个区别是fork传进来的stack_start为空，stack_size为0
+//pthread_create传进来的stack_start是已经通过mmap拿到的地址，大小也是确定的
 long do_fork(unsigned long clone_flags,
 	      unsigned long stack_start,
 	      unsigned long stack_size,

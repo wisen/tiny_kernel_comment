@@ -121,6 +121,8 @@ static int read_pages(struct address_space *mapping, struct file *filp,
 
 	blk_start_plug(&plug);
 
+	//先看看文件系统中是否有对应的readpages函数，有就调用
+	//.readpages	= f2fs_read_data_pages,
 	if (mapping->a_ops->readpages) {
 		ret = mapping->a_ops->readpages(filp, mapping, pages, nr_pages);
 		/* Clean up the remaining pages */
@@ -128,6 +130,7 @@ static int read_pages(struct address_space *mapping, struct file *filp,
 		goto out;
 	}
 
+	//如果没有readpages函数，那么就对每个page调用readpage函数
 	for (page_idx = 0; page_idx < nr_pages; page_idx++) {
 		struct page *page = list_to_page(pages);
 		list_del(&page->lru);
@@ -140,6 +143,7 @@ static int read_pages(struct address_space *mapping, struct file *filp,
 	ret = 0;
 
 out:
+	//在对所有申请pages提交读请求后，都是放在线程内部的plug list中的，这个时候做一次泄闸动作再合适不过了
 	blk_finish_plug(&plug);
 
 	return ret;
@@ -153,6 +157,9 @@ out:
  *
  * Returns the number of pages requested, or the maximum amount of I/O allowed.
  */
+//__do_page_cache_readahead先申请需要的pages，这个pages的数量跟预读算法有关，就是说pages的数量实际可能会远远大于我们原本要
+//读的page数量。而在__do_page_cache_readahea中先申请预读的pages，然后再通过read_pages来提交这些IOs。而这里会有个问题，如果
+//预读的数量过大，那么当系统IO loading过重的时候，这些预读的IOs更加加重了系统的IO loading.
 int __do_page_cache_readahead(struct address_space *mapping, struct file *filp,
 			pgoff_t offset, unsigned long nr_to_read,
 			unsigned long lookahead_size)
@@ -216,6 +223,7 @@ int __do_page_cache_readahead(struct address_space *mapping, struct file *filp,
 	 * will then handle the error.
 	 */
 	if (ret)
+	//将分配出来的pages通过read_pages一个一个提交io，并对每个page设置PG_locked位。
 		read_pages(mapping, filp, &page_pool, ret);
 	BUG_ON(!list_empty(&page_pool));
 out:

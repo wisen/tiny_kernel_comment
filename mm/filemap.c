@@ -620,6 +620,8 @@ int add_to_page_cache_lru(struct page *page, struct address_space *mapping,
 	void *shadow = NULL;
 	int ret;
 
+	//__set_page_locked就是对分配好的page设PG_locked位，这个PG_locked位很重要，这个位主要用于IO，IO之前会设置此位
+	//writeback和read complete之后会被cleared,IO完成后，调用unlock_page才会清除此位。
 	__set_page_locked(page);
 	ret = __add_to_page_cache_locked(page, mapping, offset,
 					 gfp_mask, &shadow);
@@ -693,11 +695,22 @@ EXPORT_SYMBOL(wait_on_page_bit);
 
 int wait_on_page_bit_killable(struct page *page, int bit_nr)
 {
+//bit_nr=PG_locked
+/*
+struct wait_bit_queue wait = {
+	.key = { .flags = &page->flags, .bit_nr = bit_nr, }
+	.wait = {
+		.private = current,
+		.func = wake_bit_function,
+		.task_list = &task_list,
+	},
+}
+*/
 	DEFINE_WAIT_BIT(wait, &page->flags, bit_nr);
 
 	if (!test_bit(bit_nr, &page->flags))
 		return 0;
-
+//__wait_on_bit一直在循环检测PG_locked这个bit
 	return __wait_on_bit(page_waitqueue(page), &wait,
 			     bit_wait_io, TASK_KILLABLE);
 }
@@ -1464,7 +1477,7 @@ static void shrink_readahead_size_eio(struct file *filp,
  * of the logic when it comes to error handling etc.
  */
  //do_generic_file_read是读文件的入口，接下来会调用mapping->a_ops->readpage
- //来作为实际的底层的入口.
+ //来作为实际的底层的入口. 
 static ssize_t do_generic_file_read(struct file *filp, loff_t *ppos,
 		struct iov_iter *iter, ssize_t written)
 {
@@ -1663,11 +1676,13 @@ no_cached_page:
 		 * Ok, it wasn't cached, so we need to create a new
 		 * page..
 		 */
+		 //到这里说明没有cache过的page，那么就重新分配一个page
 		page = page_cache_alloc_cold(mapping);
 		if (!page) {
 			error = -ENOMEM;
 			goto out;
 		}
+		//接着将这个分配的page加入到lru链表中，这里会对这个page设置PG_locked位
 		error = add_to_page_cache_lru(page, mapping,
 						index, GFP_KERNEL);
 		if (error) {

@@ -488,6 +488,48 @@ copy_thread(unsigned long clone_flags, unsigned long stack_start,
 
 	memset(&thread->cpu_context, 0, sizeof(struct cpu_context_save));
 
+	//这里贴一下PF_KTHREAD这个标志最初的解释，当然有些地方可能已经变了
+	/*
+	Introduce the new PF_KTHREAD flag to mark the kernel threads.  It is set
+		by INIT_TASK() and copied to the forked childs (we could set it in
+					kthreadd() along with PF_NOFREEZE instead).
+		This flag is cleared in do_execve(), before search_binary_handler().
+		Probably not the best place, we can do this in exec_mmap() or in
+		start_thread(), or clear it along with PF_FORKNOEXEC.  But I think this
+		doesn't matter in practice, and if do_execve() fails kthread should die
+		soon.
+	*/
+	//简单说就是在kernel里面通过kthreadd添加的都是kernel线程，而通过load elf binary进来执行的
+	//都是用户线程.
+	//这里做了下判断，不是kernel线程的情况下，并且把用户传进来的stack_start赋给SP
+	//这里还有一个情况是如果是fork的，那么stack_start是为空，那么这里就不会赋给ARM_sp,那么进程的
+	//stack_top是指向哪里呢？在什么地方赋值的呢？
+	//其实答案就在上面的struct pt_regs *childregs = task_pt_regs(p)这行
+	//如果是fork的话，在进入copy_thread之前，先做了dup_task_struct:
+	//p = dup_task_struct(current);就是将当前进程的task_struct拷贝了一份，然后在copy_thread的开头
+	//通过task_pt_regs拿到childregs,然后判断如果不是kernel线程，那么通过current_pt_regs重新将
+	//childregs赋值一次
+	//而如果是kernel线程的话，在dup_task_struct的时候通过setup_thread_stack设置了一个新分配的thread_info
+	//并且在dup_task_struct中指定了tsk->stack=ti,这个ti就是新分配的thread_info,而我们看task_pt_regs的实现：
+/*#define task_pt_regs(p) \
+	((struct pt_regs *)(THREAD_START_SP + task_stack_page(p)) - 1)
+#define task_stack_page(task)	((task)->stack)
+#define THREAD_START_SP		(THREAD_SIZE - 8)
+#define THREAD_SIZE_ORDER	1
+#define THREAD_SIZE		(PAGE_SIZE << THREAD_SIZE_ORDER)//4k左移1，就是8k
+*/
+//可以看到这里的SP指向了task->stack也就是thread_info内存的往上THREAD_SIZE-8处，所以看到32位的kernel线程的
+//栈还是很小的，只有8k-8大小
+/*
+kernel thread stack:
+ sp--->  ---------------
+              |
+              |
+            8k-8
+              |
+			  |
+         --------------- <----thread_info(task->stack)
+ */
 	if (likely(!(p->flags & PF_KTHREAD))) {
 		*childregs = *current_pt_regs();
 		childregs->ARM_r0 = 0;

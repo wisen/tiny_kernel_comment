@@ -475,6 +475,14 @@ static inline int lock_page_or_retry(struct page *page, struct mm_struct *mm,
 				     unsigned int flags)
 {
 	might_sleep();
+
+//它是先判断 page 的 PG_locked 标志位, 然后再设置该标志位, 即, 如果该 PG_locked 标志位没被设置, 
+//那么 trylock_page 返回true , 同时把该标志位置1. PG_locked 可以在定义的地方看到注释(inclued/linux/page_flag.h)
+/* 
+  * During initiation of disk I/O, PG_locked is set. This bit is set before I/O
+  * and cleared when writeback _starts_ or when read _completes_. PG_writeback
+  * is set before writeback starts and cleared when it finishes.
+*/
 	return trylock_page(page) || __lock_page_or_retry(page, mm, flags);
 }
 
