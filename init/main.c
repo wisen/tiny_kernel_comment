@@ -404,6 +404,11 @@ static noinline void __init_refok rest_init(void)
 	 * the init task will end up wanting to create kthreads, which, if
 	 * we schedule it before we create kthreadd, will OOPS.
 	 */
+//kernel启动后，启动的第一个进程是init, 第二个进程是kthreadd
+//kthreadd就是一个for循环，它从kthread_create_list中取出要执行的function
+//然后调用create_kthread为这个function创建线程。kernel里面的很多模块都不是
+//直接创建线程，而是将要执行的function挂载到kthread_create_list中,最后由
+//2号线程kthreadd来分别为他们创建线程,这里可以看看kswapd是怎么做的就知道了
 	kernel_thread(kernel_init, NULL, CLONE_FS);
 	numa_default_policy();
 	pid = kernel_thread(kthreadd, NULL, CLONE_FS | CLONE_FILES);

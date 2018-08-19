@@ -166,7 +166,7 @@ static void* __create_thread_mapped_space(size_t mmap_size, size_t stack_guard_s
   // Create a new private anonymous map.
   int prot = PROT_READ | PROT_WRITE;
   int flags = MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE;
-  //é€šè¿‡mmapæ¥ç”³è¯·åŒ¿åé¡µ
+  //Í¨¹ımmapÀ´ÉêÇëÄäÃûÒ³
   void* space = mmap(NULL, mmap_size, prot, flags, -1, 0);
   if (space == MAP_FAILED) {
     async_safe_format_log(ANDROID_LOG_WARN,
@@ -201,13 +201,13 @@ static int __allocate_thread(pthread_attr_t* attr, pthread_internal_t** threadp,
     if (__builtin_add_overflow(mmap_size, sizeof(pthread_internal_t), &mmap_size)) return EAGAIN;
     mmap_size = __BIONIC_ALIGN(mmap_size, PAGE_SIZE);
     attr->guard_size = __BIONIC_ALIGN(attr->guard_size, PAGE_SIZE);
-	//è¿™é‡Œçœ‹åˆ°stack_baseæ˜¯é€šè¿‡mmapæ¥ç”³è¯·å†…å­˜ç©ºé—´çš„
+	//ÕâÀï¿´µ½stack_baseÊÇÍ¨¹ımmapÀ´ÉêÇëÄÚ´æ¿Õ¼äµÄ
     attr->stack_base = __create_thread_mapped_space(mmap_size, attr->guard_size);
     if (attr->stack_base == NULL) {
       return EAGAIN;
     }
-	//è¿™é‡Œçš„stack_topå°±æ˜¯å°†æ¥è¦ä¼ ç»™kernelçš„stack_start
-	//é‚£è¿™é‡Œçš„mmap_sizeå°±æ˜¯è¿™ä¸ªç”¨æˆ·çº¿ç¨‹çš„æ ˆå¤§å°
+	//ÕâÀïµÄstack_top¾ÍÊÇ½«À´Òª´«¸økernelµÄstack_start
+	//ÄÇÕâÀïµÄmmap_size¾ÍÊÇÕâ¸öÓÃ»§Ïß³ÌµÄÕ»´óĞ¡
     stack_top = reinterpret_cast<uint8_t*>(attr->stack_base) + mmap_size;
   } else {
     // Remember the mmap size is zero and we don't need to free it.
@@ -268,13 +268,14 @@ static void* __do_nothing(void*) {
   return NULL;
 }
 
-//æˆ‘ä»¬çœ‹çœ‹pthread_createæœ€ç»ˆè°ƒç”¨çš„å“ªä¸ªsyscall?
-//ä»è¿™é‡Œçš„pthread_createçš„å‚æ•°æ¥çœ‹ï¼Œæˆ‘ä»¬å¯ä»¥ä¼ å…¥ä¸€ä¸ªpthread_attr_t,è¿™ä¸ª
-//ç»“æ„ä½“é‡Œé¢å¯ä»¥å®šä¹‰stack_baseå’Œstack_size
-//ä¹Ÿå°±æ˜¯è¯´æˆ‘ä»¬æˆ‘ä»¬åœ¨åˆ›å»ºä¸€ä¸ªç”¨æˆ·çº¿ç¨‹å‰ï¼Œæˆ‘ä»¬è‡ªå·±å¯ä»¥å…ˆmmapä¸€ä¸ªå†…å­˜ç©ºé—´
-//ç„¶åæŠŠè¿™ä¸ªç”³è¯·åˆ°çš„å†…å­˜ç©ºé—´çš„åœ°å€å’Œå¤§å°åˆ†åˆ«èµ‹ç»™stack_baseå’Œstack_size
-//æ¥ç€ä¼ ç»™pthread_create,è¿™æ ·æˆ‘ä»¬å°±è‡ªå·±å®šåˆ¶äº†ä¸€ä¸ªçº¿ç¨‹ï¼Œå®ƒçš„stackçš„åœ°å€å’Œ
-//å¤§å°æ˜¯æˆ‘ä»¬æŒ‡å®šçš„~~~nice
+//ÎÒÃÇ¿´¿´pthread_create×îÖÕµ÷ÓÃµÄÄÄ¸ösyscall?
+//´ÓÕâÀïµÄpthread_createµÄ²ÎÊıÀ´¿´£¬ÎÒÃÇ¿ÉÒÔ´«ÈëÒ»¸öpthread_attr_t,Õâ¸ö
+//½á¹¹ÌåÀïÃæ¿ÉÒÔ¶¨Òåstack_baseºÍstack_size
+//Ò²¾ÍÊÇËµÎÒÃÇÎÒÃÇÔÚ´´½¨Ò»¸öÓÃ»§Ïß³ÌÇ°£¬ÎÒÃÇ×Ô¼º¿ÉÒÔÏÈmmapÒ»¸öÄÚ´æ¿Õ¼ä
+//È»ºó°ÑÕâ¸öÉêÇëµ½µÄÄÚ´æ¿Õ¼äµÄµØÖ·ºÍ´óĞ¡·Ö±ğ¸³¸østack_baseºÍstack_size
+//½Ó×Å´«¸øpthread_create,ÕâÑùÎÒÃÇ¾Í×Ô¼º¶¨ÖÆÁËÒ»¸öÏß³Ì£¬ËüµÄstackµÄµØÖ·ºÍ
+//´óĞ¡ÊÇÎÒÃÇÖ¸¶¨µÄ~~~nice
+//Ïß³ÌÖĞµÄÓĞĞ©Ò³ÊÇÍ¨¹ımprotect±»±£»¤µÄ£¬ÕâÀïµÄÂß¼­ĞèÒª¿´¿´£¿
 __BIONIC_WEAK_FOR_NATIVE_BRIDGE
 int pthread_create(pthread_t* thread_out, pthread_attr_t const* attr,
                    void* (*start_routine)(void*), void* arg) {
@@ -290,9 +291,9 @@ int pthread_create(pthread_t* thread_out, pthread_attr_t const* attr,
 
   pthread_internal_t* thread = NULL;
   void* child_stack = NULL;
-  //è¿™é‡Œçš„child_stackå°±æ˜¯æˆ‘ä»¬åœ¨__allocate_threadä¸­æœ€ç»ˆå¾—åˆ°çš„æ ˆé¡¶stack_top
-  //åé¢ä¼šå°†è¿™ä¸ªæ ˆé¡¶child_stackä¼ ç»™cloneï¼Œä¼ ç»™kernelï¼Œæœ€ç»ˆèµ‹å€¼ç»™ARM_sp,ä¹Ÿ
-  //å°±æ˜¯spå¯„å­˜å™¨
+  //ÕâÀïµÄchild_stack¾ÍÊÇÎÒÃÇÔÚ__allocate_threadÖĞ×îÖÕµÃµ½µÄÕ»¶¥stack_top
+  //ºóÃæ»á½«Õâ¸öÕ»¶¥child_stack´«¸øclone£¬´«¸økernel£¬×îÖÕ¸³Öµ¸øARM_sp,Ò²
+  //¾ÍÊÇsp¼Ä´æÆ÷
   int result = __allocate_thread(&thread_attr, &thread, &child_stack);
   if (result != 0) {
     return result;
@@ -322,15 +323,15 @@ int pthread_create(pthread_t* thread_out, pthread_attr_t const* attr,
   __init_user_desc(&tls_descriptor, false, tls);
   tls = &tls_descriptor;
 #endif
-  //è¿™é‡Œè°ƒç”¨äº†cloneç³»ç»Ÿè°ƒç”¨ï¼Œä½†æ˜¯ä¼ å…¥çš„flagsä¸forkä¸­ä¼ ç»™cloneçš„flagsæœ‰åŒºåˆ«ï¼Œä¸‹é¢æ¯”è¾ƒä¸‹ï¼š
+  //ÕâÀïµ÷ÓÃÁËcloneÏµÍ³µ÷ÓÃ£¬µ«ÊÇ´«ÈëµÄflagsÓëforkÖĞ´«¸øcloneµÄflagsÓĞÇø±ğ£¬ÏÂÃæ±È½ÏÏÂ£º
   /*
-          forkä¸­: CLONE_CHILD_SETTID | CLONE_CHILD_CLEARTID | SIGCHLD
-pthread_createä¸­: CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM |
+          forkÖĞ: CLONE_CHILD_SETTID | CLONE_CHILD_CLEARTID | SIGCHLD
+pthread_createÖĞ: CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM |
       CLONE_SETTLS | CLONE_PARENT_SETTID | CLONE_CHILD_CLEARTID
    */
-  //è¿™é‡Œæ³¨æ„cloneçš„ç¬¬äºŒä¸ªå‚æ•°æ˜¯stack_start,è¿™é‡Œä¸ä¸ºç©ºï¼Œå®ƒçš„å€¼å’Œå®ƒçš„å¤§å°ç”±
-  //libcæ¥å†³å®šæˆ–è€…ç”¨æˆ·è‡ªå·±å†³å®š(é€šè¿‡thread_atträ¼ å…¥)
-  //æ¥ä¸‹æ¥çš„æµç¨‹è¦åˆ°kernelé‡Œé¢å»çœ‹do_forkçš„é€»è¾‘äº†
+  //ÕâÀï×¢ÒâcloneµÄµÚ¶ş¸ö²ÎÊıÊÇstack_start,ÕâÀï²»Îª¿Õ£¬ËüµÄÖµºÍËüµÄ´óĞ¡ÓÉ
+  //libcÀ´¾ö¶¨»òÕßÓÃ»§×Ô¼º¾ö¶¨(Í¨¹ıthread_attr´«Èë)
+  //½ÓÏÂÀ´µÄÁ÷³ÌÒªµ½kernelÀïÃæÈ¥¿´do_forkµÄÂß¼­ÁË
   int rc = clone(__pthread_start, child_stack, flags, thread, &(thread->tid), tls, &(thread->tid));
   if (rc == -1) {
     int clone_errno = errno;

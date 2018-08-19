@@ -1743,12 +1743,41 @@ struct task_struct *fork_idle(int cpu)
  //wisen: 从最终的review结果得出，fork会创建新的地址空间，而clone会共享父进程的地址空间
 //这里从libc中拷贝下fork和pthread_create分别传过来的flags:
 /*
+kernel thread flag: CLONE_FS | CLONE_FILES | SIGCHLD | CLONE_VM|CLONE_UNTRACED
           fork中: CLONE_CHILD_SETTID | CLONE_CHILD_CLEARTID | SIGCHLD
 pthread_create中: CLONE_VM | CLONE_FS | CLONE_FILES | CLONE_SIGHAND | CLONE_THREAD | CLONE_SYSVSEM |
       CLONE_SETTLS | CLONE_PARENT_SETTID | CLONE_CHILD_CLEARTID
    */
-//还有个区别是fork传进来的stack_start为空，stack_size为0
+//还有个区别是fork传进来的stack_start为空，stack_size为0,因为fork出来的
+//子进程从父进程那里继承了stack_size
 //pthread_create传进来的stack_start是已经通过mmap拿到的地址，大小也是确定的
+
+/*
+ 用户进程的创建有2种方式，一种是从父进程一直fork下去，一种是通过do_execv来解释elf文件，最终创建进程
+ 比如第一个用户进程init的创建就是通过do_execv来创建的，而init.rc中的各种service，deamon也是在init.cpp
+ 中最终通过execv来创建进程。
+ */
+/*
+下面说说内核线程与用户线程的区别:
+相同点:
+1. 都由do_fork()创建，每个线程都有独立的task_struct和内核栈；
+2. 都参与调度，内核线程也有优先级，会被调度器平等地换入换出;
+不同点：
+1. 内核线程只工作在内核态中；而用户线程则既可以运行在内核态（执行系统调用时），也可以运行在用户态；
+2. 内核线程没有用户空间，所以对于一个内核线程来说，它的0~3G的内存空间是空白的，它的current->mm是空的，与内核使用同一张页表；而用户线程则可以看到完整的0~4G内存空间。 
+ */
+//制定CLONE_VM flag时，copy_mm将把新task_struct中的mm和active_mm设置成与
+//current相同，同时增加mm_struct的使用者计数mm_users
+/*
+CLONE_FS:task_struct中利用fs（struct fs_struct *）记录了进程所在文件系统的根目录和当前目录信息，do_fork()时调用copy_fs()复制了这个结构；而对于轻量级进程则仅增加fs->count计数，与父进程共享相同的fs_struct。也就是说，轻量级进程没有独立的文件系统相关的信息，进程中任何一个线程改变当前目录、根目录等信息都将直接影响到其他线程。
+*/
+/*
+CLONE_FILES:一个进程可能打开了一些文件，在进程结构task_struct中利用files（struct files_struct *）来保存进程打开的文件结构（struct file）信息，do_fork()中调用了copy_files()来处理这个进程属性；轻量级进程与父进程是共享该结构的，copy_files()时仅增加files->count计数。这一共享使得任何线程都能访问进程所维护的打开文件，对它们的操作会直接反映到进程中的其他线程。
+*/
+/*
+CLONE_SIGHAND:每一个Linux进程都可以自行定义对信号的处理方式，在task_struct中的sig（struct signal_struct）中使用一个struct k_sigaction结构的数组来保存这个配置信息，do_fork()中的copy_sighand()负责复制该信息；轻量级进程不进行复制，而仅仅增加signal_struct::count计数，与父进程共享该结构。也就是说，子进程与父进程的信号处理方式完全相同，而且可以相互更改。
+*/
+//对于SMP系统，所有的进程fork出来后，都被分配到与父进程相同的cpu上，一直到该进程被调度时才会进行cpu选择。
 long do_fork(unsigned long clone_flags,
 	      unsigned long stack_start,
 	      unsigned long stack_size,
@@ -1840,6 +1869,7 @@ long do_fork(unsigned long clone_flags,
  */
 pid_t kernel_thread(int (*fn)(void *), void *arg, unsigned long flags)
 {
+	//kernel thread flag: CLONE_FS | CLONE_FILES | SIGCHLD | CLONE_VM|CLONE_UNTRACED
 	return do_fork(flags|CLONE_VM|CLONE_UNTRACED, (unsigned long)fn,
 		(unsigned long)arg, NULL, NULL);
 }

@@ -285,6 +285,7 @@ struct task_struct *kthread_create_on_node(int (*threadfn)(void *data),
 	list_add_tail(&create->list, &kthread_create_list);
 	spin_unlock(&kthread_create_lock);
 
+	//这里的kthreadd_task就是kthreadd
 	wake_up_process(kthreadd_task);
 	/*
 	 * Wait for completion in killable state, for I might be chosen by
@@ -509,6 +510,7 @@ int kthreadd(void *unused)
 			list_del_init(&create->list);
 			spin_unlock(&kthread_create_lock);
 
+			//这里就是将kthread_create_list中挂载的function创建kernel线程
 			create_kthread(create);
 
 			spin_lock(&kthread_create_lock);

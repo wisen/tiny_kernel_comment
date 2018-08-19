@@ -541,6 +541,7 @@ kernel thread stack:
 		thread->cpu_context.r5 = stack_start;
 		childregs->ARM_cpsr = SVC_MODE;
 	}
+//这里的pc指针被赋予ret_from_fork,ret_from_fork被定义在entry-common.S中
 	thread->cpu_context.pc = (unsigned long)ret_from_fork;
 	thread->cpu_context.sp = (unsigned long)childregs;
 
