@@ -9,6 +9,7 @@ enum {
 	ICQ_EXITED		= 1 << 2,
 };
 
+//io_cq是ioc和request_queue之间的纽带。他被电梯算法用来追踪(ioc-q)pair.
 /*
  * An io_cq (icq) is association between an io_context (ioc) and a
  * request_queue (q).  This is used by elevators which need to track

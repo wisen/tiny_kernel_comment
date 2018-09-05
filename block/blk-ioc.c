@@ -327,10 +327,11 @@ struct io_cq *ioc_lookup_icq(struct io_context *ioc, struct request_queue *q)
 	 * find a icq which points to us, it's guaranteed to be valid.
 	 */
 	rcu_read_lock();
+//ioc->icq_hint保存的是上次命中的icq,因为很可能这次要超照的icq就是上次的icq
 	icq = rcu_dereference(ioc->icq_hint);
 	if (icq && icq->q == q)
 		goto out;
-
+//如果ico->icq_hint不是我们来找的icq，那么就从树中查找
 	icq = radix_tree_lookup(&ioc->icq_tree, q->id);
 	if (icq && icq->q == q)
 		rcu_assign_pointer(ioc->icq_hint, icq);	/* allowed to race */

@@ -55,6 +55,7 @@ void __trace_note_message(struct blk_trace *, const char *fmt, ...);
 		if (unlikely(bt))					\
 			__trace_note_message(bt, fmt, ##__VA_ARGS__);	\
 	} while (0)
+
 #define BLK_TN_MAX_MSG		128
 
 extern void blk_add_driver_data(struct request_queue *q, struct request *rq,

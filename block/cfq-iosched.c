@@ -94,22 +94,34 @@ struct cfq_rb_root {
 /*
  * Per process-grouping structure
  */
+/*
+当多个进程向同一个块设备提交io请求的时候，cfq会对进程按照优先级进行
+   分组，进程的优先级信息存储在进程结构体的"unsigned short ioprio"位中，
+   如果该位没有进行设置，cfq按照进程的nice值计算出一个优先级。默认共有
+   8个优先级，对于每个优先级组，使用一个cfq_queue结构体进行表示。
+*/
 struct cfq_queue {
 	/* reference count */
 	int ref;
 	/* various state flags, see below */
 	unsigned int flags;
 	/* parent cfq_data */
+//cfqd:指向队列所属的cfq_data
 	struct cfq_data *cfqd;
 	/* service_tree member */
+//rb_node:用于将队列插入service_tree
 	struct rb_node rb_node;
 	/* service_tree key */
+//rb_key:红黑树节点关键值，用于确定队列在service_tree中的位置，该值要综合jiffies，进程的IO优先级等因素进行计算
 	unsigned long rb_key;
 	/* prio tree member */
+//p_node:用于将队列插入对应优先级的prio_tree
 	struct rb_node p_node;
 	/* prio tree root we belong to, if any */
+//p_root:对应的prio_tree树根
 	struct rb_root *p_root;
 	/* sorted list of pending requests */
+//sort_list:组织队列内的请求用的红黑树，按请求的起始扇区进行排序
 	struct rb_root sort_list;
 	/* if fifo isn't expired, next request to serve */
 	struct request *next_rq;
@@ -118,14 +130,17 @@ struct cfq_queue {
 	/* currently allocated requests */
 	int allocated[2];
 	/* fifo list of requests in sort_list */
+//fifo:组织队列内的请求用的链表头，按请求的响应期限排序
 	struct list_head fifo;
 
 	/* time when queue got scheduled in to dispatch first request. */
 	unsigned long dispatch_start;
 	unsigned int allocated_slice;
+//slice_dispatch:在时间片内发送的请求数
 	unsigned int slice_dispatch;
 	/* time when first request from queue completed and slice started. */
 	unsigned long slice_start;
+//slice_end:指明时间片何时消耗完
 	unsigned long slice_end;
 	long slice_resid;
 
@@ -135,6 +150,7 @@ struct cfq_queue {
 	int dispatched;
 
 	/* io prio of this group */
+//ioprio:进程的当前IO优先级
 	unsigned short ioprio, org_ioprio;
 	unsigned short ioprio_class;
 
@@ -307,8 +323,11 @@ struct cfq_io_cq {
  * Per block device queue structure
  */
 struct cfq_data {
-	struct request_queue *queue;
+	struct request_queue *queue;//指向块设备对应的request_queue
 	/* Root service tree for cfq_groups */
+/*
+service_tree:所有待调度的队列都被添加进该红黑树，等待调度获取时间片
+*/
 	struct cfq_rb_root grp_service_tree;
 	struct cfq_group *root_group;
 
@@ -325,8 +344,14 @@ struct cfq_data {
 	 * trees are used when determining if two or more queues are
 	 * interleaving requests (see cfq_close_cooperator).
 	 */
+/*
+prio_trees[CFQ_PRIO_LISTS]：对应8个优先级的红黑树，所有优先级类别为RT或BE的进程的同步请求队列，都会根据优先级添加至相应的红黑树.
+*/
 	struct rb_root prio_trees[CFQ_PRIO_LISTS];
 
+/*
+busy_queues:用于计算service_tree中有多少个队列在等待调度.
+*/
 	unsigned int busy_queues;
 	unsigned int busy_sync_queues;
 
@@ -353,12 +378,21 @@ struct cfq_data {
 	struct timer_list idle_slice_timer;
 	struct work_struct unplug_work;
 
+/*
+active_queue:指向当前占有块设备的队列.
+*/
 	struct cfq_queue *active_queue;
 	struct cfq_io_cq *active_cic;
 
 	/*
 	 * async queue for each priority case
 	 */
+//async_cfqq[2][IOPRIO_BE_NR]:对应RT和BE优先级类的16个异步请求队列
+//async_idle_cfqq:对应优先级类别为IDLE的异步请求队列
+//cfq中针对async类型的io定义了三种queue:
+//RT: async_cfqq[0]
+//BE: async_cfqq[1]
+//IDLE: async_idle_cfqq
 	struct cfq_queue *async_cfqq[2][IOPRIO_BE_NR];
 	struct cfq_queue *async_idle_cfqq;
 
@@ -367,10 +401,19 @@ struct cfq_data {
 	/*
 	 * tunables, see top of file
 	 */
+/*
+cfq_quantum：用于计算在一个队列的时间片内，最多发放多少个请求到底层的块设备。这个值当前默认是8。
+*/
 	unsigned int cfq_quantum;
+/*
+cfq_fifo_expire[2]：同步、异步请求的响应期限时间。
+*/
 	unsigned int cfq_fifo_expire[2];
 	unsigned int cfq_back_penalty;
 	unsigned int cfq_back_max;
+/*
+cfq_slice[2]：同步、异步请求队列的时间片长度。
+*/
 	unsigned int cfq_slice[2];
 	unsigned int cfq_slice_async_rq;
 	unsigned int cfq_slice_idle;
@@ -2285,12 +2328,15 @@ cfq_find_rq_fmerge(struct cfq_data *cfqd, struct bio *bio)
 	struct cfq_io_cq *cic;
 	struct cfq_queue *cfqq;
 
+//在进程的io_context中，找到进程特定于块设备的cfq_io_cq
 	cic = cfq_cic_lookup(cfqd, tsk->io_context);
 	if (!cic)
 		return NULL;
 
+	//先确定bio是属于sync还是async,找到对应的cfqq
 	cfqq = cic_to_cfqq(cic, cfq_bio_sync(bio));
 	if (cfqq)
+//然后根据bio的结束sector，从cfqq的sort_list中找到对应的request
 		return elv_rb_find(&cfqq->sort_list, bio_end_sector(bio));
 
 	return NULL;
@@ -2335,13 +2381,28 @@ static void cfq_remove_request(struct request *rq)
 	}
 }
 
+/*
+电梯算法调用cfq_merge函数判断一个新的请求是否能和以前的请求合并。
+   首先判断是否能进行后向合并。cfq_data中有一个哈希表，储存了所有可以
+   合并的请求，并且以请求的结束扇区号作为键值。所以，以当前请求的起始
+   扇区号作为键值进行搜索，如果能够搜到一个请求，则说明搜到的请求的结
+   束扇区号和当前请求的起始扇区号相等，可以进行后向合并。
+   如果没有找到能够进行后向合并的请求，则尝试寻找是否有能进行前向合并
+   的请求。以当前请求的结束扇区号为键值，在与当前请求的io优先级相等的
+   cfq_queue的红黑树中寻找。由于该红黑树中的成员是以请求的起始扇区号为
+   键值的，如果找到，说明可以进行前向合并。
+   cfq_merge的返回值会告诉调用它的函数是可以进行前向合并，还是后向合并，
+   还算不可以合并。如果可以合并，会将可用来合并的请求放到struct request **req中返回。
+*/
 static int cfq_merge(struct request_queue *q, struct request **req,
 		     struct bio *bio)
 {
 	struct cfq_data *cfqd = q->elevator->elevator_data;
 	struct request *__rq;
 
+	//通过cfq_find_rq_fmerge找到了可以把当前bio合并进去的request
 	__rq = cfq_find_rq_fmerge(cfqd, bio);
+	//这个可以合并的request确实存在，那么就调用elv_rq_merge_ok尝试合并
 	if (__rq && elv_rq_merge_ok(__rq, bio)) {
 		*req = __rq;
 		return ELEVATOR_FRONT_MERGE;
@@ -2350,6 +2411,15 @@ static int cfq_merge(struct request_queue *q, struct request **req,
 	return ELEVATOR_NO_MERGE;
 }
 
+/*
+所谓合并，就是将一个新传递进来的bio放到一个以前的request中。实际的
+   合并操作是在ll_rw_blc.c和elevator.c中完成的。在合并完成之后，电梯算
+   法会调用cfq_merged_request函数让cfq进行一些必要的更新。由于进行了合
+   并，request的起始扇区号和结束扇区号可能会发生变化，而cfq内部所用的
+   哈希表以及红黑树是以这两个值作为键值的。所以,cfq_merged_request的作
+   用就是检验这两个值是否变化，若变化了则以新的键值放置相应的数据结构
+   成员
+*/
 static void cfq_merged_request(struct request_queue *q, struct request *req,
 			       int type)
 {
@@ -2409,6 +2479,8 @@ static int cfq_allow_merge(struct request_queue *q, struct request *rq,
 	/*
 	 * Disallow merge of a sync bio into an async request.
 	 */
+//如果bio是同步的，rq是async的，那么返回，不允许sync的bio被合并到
+//async的rq中。
 	if (cfq_bio_sync(bio) && !rq_is_sync(rq))
 		return false;
 
@@ -2420,6 +2492,10 @@ static int cfq_allow_merge(struct request_queue *q, struct request *rq,
 	if (!cic)
 		return false;
 
+//这里根据bio的类型(sync或者async),分别放到cic中的cfqq中，
+//所以在cic中的cfqq的数组的定义：
+//cfqq[0]: async
+//cfqq[1]: sync
 	cfqq = cic_to_cfqq(cic, cfq_bio_sync(bio));
 	return cfqq == RQ_CFQQ(rq);
 }
@@ -3286,6 +3362,15 @@ static bool cfq_may_dispatch(struct cfq_data *cfqd, struct cfq_queue *cfqq)
  * Dispatch a request from cfqq, moving them to the request queue
  * dispatch list.
  */
+/*
+ 每当电梯算法要补充一些请求到请求队列上的时候，会调用
+  cfq_dispatch_request函数。
+  首先调用cfq_select_queue选择一个优先级队列，然后调
+  用__cfq_dispatch_requests函数将该优先级队列上的一部分请求放到请求队
+  列上。
+  选择优先级队列时，总是从最高等级的优先级队列开始选择，但每个等级都有
+  一个时间片，如果该等级的时间片到期，则选择下一个等级的队列。
+*/
 static bool cfq_dispatch_request(struct cfq_data *cfqd, struct cfq_queue *cfqq)
 {
 	struct request *rq;
@@ -3643,6 +3728,12 @@ out:
 static struct cfq_queue **
 cfq_async_queue_prio(struct cfq_data *cfqd, int ioprio_class, int ioprio)
 {
+/*
+从这个函数可以看出在cfq中针对异步io有3个queue：
+RT：cfqd->async_cfqq[0]
+BE: cfqd->async_cfqq[1]
+IDLE: cfqd->async_idle_cfqq
+*/
 	switch (ioprio_class) {
 	case IOPRIO_CLASS_RT:
 		return &cfqd->async_cfqq[0][ioprio];
@@ -3658,6 +3749,13 @@ cfq_async_queue_prio(struct cfq_data *cfqd, int ioprio_class, int ioprio)
 	}
 }
 
+/*
+cfq_get_queue函数计算当前进程的io优先级，并检察当前块设备的struct
+  cfq_data结构中有没有对应该优先级的cfq_queue，有的话就返回，没有的话
+  就分配一个新的。然后调用cic_set_cfqq函数让当前进程的cfq_io_context指
+  向该cfq_queue。
+  接下来分配一个新的对应于当前请求的struct cfq_rq结构。
+*/
 static struct cfq_queue *
 cfq_get_queue(struct cfq_data *cfqd, bool is_sync, struct cfq_io_cq *cic,
 	      struct bio *bio, gfp_t gfp_mask)
@@ -3677,6 +3775,7 @@ cfq_get_queue(struct cfq_data *cfqd, bool is_sync, struct cfq_io_cq *cic,
 		cfqq = *async_cfqq;
 	}
 
+	//如果还未分配对应类型的cfqq,就重新分配一个
 	if (!cfqq)
 		cfqq = cfq_find_alloc_queue(cfqd, is_sync, cic, bio, gfp_mask);
 
@@ -3944,14 +4043,50 @@ cfq_rq_enqueued(struct cfq_data *cfqd, struct cfq_queue *cfqq,
 	}
 }
 
+/*
+
+调用完cfq_set_request函数后，电梯算法会调用cfq_insert_request将新提
+  交的请求插入到cfq的数据结构中。
+  首先检查cfq_queue的优先级是否改变，如果改变将相应的信息更新。然后将
+  该请求对应的cfq_rq插入到以cfq_queue的"struct rb_root sort_list"为根
+  的红黑树中。将请求按照提交时间的先后顺序放到cfq_queue的fifo链表上，
+  如果该请求是可合并的，则将请求放到cfq_data的哈希表中，在合并请求时，
+  会用到该哈希表。最后，调用cfq_crq_enqueued函数更新一些时间戳以及统计
+  信息。
+*/
 static void cfq_insert_request(struct request_queue *q, struct request *rq)
 {
 	struct cfq_data *cfqd = q->elevator->elevator_data;
 	struct cfq_queue *cfqq = RQ_CFQQ(rq);
-
+/*
+ cfq支持cgroup机制，可以区别对待属于不同cgroup的进程发下的io，给他们分
+ 配不同的带宽。但这样会对效率造成比较大的影响。因为每个进程发送下来的读
+ 写请求的位置可能差别很大，这样就会造成磁盘磁头来回的移动。所以，cfq提
+ 供了这样一个参数，当group_isolation为0的时候，就把所有属于
+ SYNC_NOIDLE_WORKLOAD类型的cfq_queue都移动到root_group这个cgroup中。每
+ 个进程都有几个它自己的cfq_queue，进程发送下来的IO，会根据IO的种类分别
+ 放到不同的cfq_queue中去。从函数cfqq_type里我们可以看到怎么判断cfq_queue的种
+ 类的.
+ */
+/*
+	blk_add_trace_msg((cfqd)->queue, "cfq%d%c%c %s " fmt, (cfqq)->pid, \
+			cfq_cfqq_sync((cfqq)) ? 'S' : 'A',		\
+			cfqq_type((cfqq)) == SYNC_NOIDLE_WORKLOAD ? 'N' : ' ',\
+			  __pbuf, ##args);
+*/
+//从cfq_log_cfqq的定义可以看出"cfq2941SN insert_request"中2941是进程的pid, S是sync的意思
+//A是异步的意思，N是"不是idle类型的同步IO"
+	/*
+	 如果cfq_queue里面放的是异步的IO,那么它就是ASYNC_WORKLOAD类的，如果
+	 cfq_queue里面放的不是idle类型的IO（优先级最低的一种IO，只在空闲时才处
+	 理），那么它就是SYNC_NOIDLE_WORKLOAD类型的，否则（也就是idle类型的IO），它
+	 就是SYNC_WORKLOAD类型的。
+	 */
 	cfq_log_cfqq(cfqd, cfqq, "insert_request");
 	cfq_init_prio_data(cfqq, RQ_CIC(rq));
-
+/*
+当一个request创建初始化，就要将其插入到相应的队列中，cfq_insert_request()函数完成这个功能，和deadline调度器相似，request会被放入两个队列里，一个是按照起始扇区号排列的红黑树(sort_list)，一个是按响应期限排列的链表(fifo)
+*/
 	rq->fifo_time = jiffies + cfqd->cfq_fifo_expire[rq_is_sync(rq)];
 	list_add_tail(&rq->queuelist, &cfqq->fifo);
 	cfq_add_rq_rb(rq);
@@ -4216,6 +4351,22 @@ split_cfqq(struct cfq_io_cq *cic, struct cfq_queue *cfqq)
 /*
  * Allocate cfq data structures associated with this request.
  */
+/*
+每当有一个新的io请求提交之后，电梯算法都会调用cfq_set_request函数让
+  cfq为该请求分配必要的资源。
+  首先调用cfq_get_io_context函数获取一个struct cfq_io_context结构，如
+  果没有的话cfq_get_io_context函数会分配一个新的。
+  接下来看cfq_io_context的"struct cfq_queue *cfqq"位有没有包含一个
+  struct cfq_queue，如果没有的话就调用cfq_get_queue函数。
+  cfq_get_queue函数计算当前进程的io优先级，并检察当前块设备的struct
+  cfq_data结构中有没有对应该优先级的cfq_queue，有的话就返回，没有的话
+  就分配一个新的。然后调用cic_set_cfqq函数让当前进程的cfq_io_context指
+  向该cfq_queue。
+  接下来分配一个新的对应于当前请求的struct cfq_rq结构。 
+ */ 
+/*
+在通用层__make_request()函数中，如果bio找不到接收对象，那么就要重新创建一个request来接收它。分配一个request必须进行初始化，需要调用cfq_set_request()函数。
+*/
 static int
 cfq_set_request(struct request_queue *q, struct request *rq, struct bio *bio,
 		gfp_t gfp_mask)
@@ -4559,6 +4710,78 @@ STORE_FUNCTION(cfq_target_latency_store, &cfqd->cfq_target_latency, 1, UINT_MAX,
 
 #define CFQ_ATTR(name) \
 	__ATTR(name, S_IRUGO|S_IWUSR, cfq_##name##_show, cfq_##name##_store)
+
+/*
+ 下面解释下cfq中可以tuning的参数的含义:
+1. quantum
+ 除了idle类型的IO是一个一个的放到块设备的queue里面之外，sync和async类
+ 型的IO每次都是批量放入queue里面的。quantum就是一次批处理的数量。
+
+2. fifo_expire_async 和 fifo_expire_sync
+ cfq对不同进程发下来的IO分时间片进行处理，但在处理同一个进程发下来的
+ IO时，采用与dead line类似的做法。尽量按照减小磁头移动的方式选择IO，
+ 但如果有些IO等待的时间太久了的话，就转而处理这些等待太久的IO。
+ fifo_expire_async和fifo_expire_sync就是分别用来设置async类型IO和sync
+ 类型IO的超时时间的。
+
+3. back_seek_max 和 back_seek_penalty
+  这两个参数是用来确定，对于给定的两个IO，哪个更适合作为“下一个”IO被
+  传送给设备。判定的方法就是谁距离磁头更近。磁头的位置就是上一次IO完成
+  的位置。比如磁头的位置last是sector 100。两个IO，io1的起始扇区号是105，
+  io2的起始扇区号是110那么，io1距离磁头更近，下一次要发送IO，就先发io1，
+  再发io2。
+  如果io1的起始扇区号是90，io2的起始扇区号是110呢？两个io距离磁头的距离
+  都是10，这时该如何选择呢？一般来说，把磁头向前移动（从扇区100向扇区
+  90移动）需要花费的时间要多一些，所以cfq倾向于选择向后移动（从扇区100
+  向扇区110移动）。
+  如果io1的起始扇区号是95，io2的起始扇区号是110呢？虽然io1在磁头的前面，
+  io2在磁头的后面，但io1距离磁头更近一些，这时该如何选择呢？具体的判断
+  方法就用到了back_seek_penalty。比如io1在磁头的前面，距离磁头的距离是
+  s1，io2在磁头的后面，距离磁头的距离是s2，如果s1*back_seek_penalty小于
+  s2，就认为io1距离磁头比较近，否则，就认为io2距离磁头比较近。
+  如果io1在磁头的前面，而io2在磁头的后面，但io1距离磁头太远了，超过了
+  back_seek_max，那么无论io2是不是距离磁头更远，都选择io2。
+
+4. slice_async，slice_sync，和 slice_async_rq
+  每个进程发下来的IO都被分成三类：异步，同步，idle。cfq先处理所有进程
+  发下来的同步IO，然后处理所有进程发下来的异步IO,最后处理idle IO。进一
+  步的，同步和异步的IO又被分别分成了8个不同等级的优先级。同一个进程发
+  送下来的同步IO，都有同样的优先级，异步的也是如此。对于每个进程的IO，
+  都被组织到一个叫做cfq_queue的结构体中。对于一个进程发送下来的IO，所
+  有的同步IO有一个cfq_queue，所有的异步IO有另一个cfq_queue。cfq会给每
+  个cfq_queue都分配一个时间片。比如当一个进程的同步IO的时间片用完后，就
+  开始发送另一个进程的同步IO。时间片的大小由两个因素决定，一个是IO的优
+  先级，这是和进程的IO优先级相关的，如果进程没有设置IO优先级，就按照
+  nice值成正比计算出一个，另一个因素就是slice_async和slice_sync这两个
+  参数。如果这两个参数越大，那么所有异步和同步IO的时间片粒度就越大，反
+  之则粒度越小。对于异步IO，还有一个限制，如果在一个时间片内，已经发送
+  的异步IO总数大于slice_async_rq，那么也视为时间片到期。idle类型的IO没
+  有时间片，每次只发送一个。
+  注意，这里说的异步IO和linux内核提供的AIO机制是两码事，一点关系都没有。
+  一般来说，用户进程发送的读操作和设置direct标志的写操作都是sync类型的
+  IO，普通的写操作会写道cache里面，再由内核进程通过cache发送到IO调度器
+  的是async类型的IO。
+
+5. slice_idle
+  在cfq中，最后被处理的IO是idle类型的IO，当调度器中已经没有任何的同步
+  或异步类型的IO，并且这种状况已经持续了slice_idle这么长的时间，那么
+  cfq就认为现在处于idle状态了，就发送一个idle类型的IO，然后再等待
+  slice_idle这么长的时间，如果还是没有其他IO，就再发送一个idle类型的IO。
+  补充一下，这个参数，以及所有本文中提到的和时间有关的参数，单位都是毫秒。
+
+6. group_idle
+  当这个参数被设置之后，每当属于一个cgroup的进程的IO都提交完了，但时间
+  片还没有耗尽，那么不会马上提交属于另一个cgroup的IO，而是会等待
+  group_idle这么长的时间，如果在这个时间段内，该cgroup又有IO提交了进来，
+  那么就继续处理。
+  这个参数的引入是为了针对磁盘阵列或者固态硬盘这样的设备做优化用的，参
+  看这篇文章：
+  [http://lwn.net/Articles/395769/]
+
+7. low_latenncy
+  如果这个参数被设置了，那么当前面计算出的cfq_queue的时间片大于
+  low_latency时，会把时间片强行设置为low_latency。
+ */
 
 static struct elv_fs_entry cfq_attrs[] = {
 	CFQ_ATTR(quantum),

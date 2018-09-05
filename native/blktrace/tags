@@ -1,0 +1,1881 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACT_TO_STRING	blkrawverify.c	61;"	d	file:
+ADD_STAT	btt/iostat.c	37;"	d	file:
+ALL	Makefile	/^ALL = $(PROGS) $(SCRIPTS) btt\/btt btreplay\/btrecord btreplay\/btreplay \\$/;"	m
+ALL_CFLAGS	Makefile	/^ALL_CFLAGS = $(CFLAGS) -D_GNU_SOURCE -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64$/;"	m
+BARRIER_H	barrier.h	2;"	d
+BIT_END	btt/globals.h	42;"	d
+BIT_START	btt/globals.h	41;"	d
+BIT_TIME	btt/globals.h	39;"	d
+BKT_WIDTH	btt/unplug_hist.c	23;"	d	file:
+BLKIOMON_D2C_BUCKETS	blkiomon.h	32;"	d
+BLKIOMON_H	blkiomon.h	24;"	d
+BLKIOMON_SIZE_BUCKETS	blkiomon.h	31;"	d
+BLKTRACEAPI_H	blktrace_api.h	2;"	d
+BLKTRACESETUP	blktrace_api.h	131;"	d
+BLKTRACESTART	blktrace_api.h	132;"	d
+BLKTRACESTOP	blktrace_api.h	133;"	d
+BLKTRACETEARDOWN	blktrace_api.h	134;"	d
+BLKTRACE_H	blktrace.h	2;"	d
+BLK_DATADIR	blkiomon.c	306;"	d	file:
+BLK_IO_TRACE_MAGIC	blktrace_api.h	89;"	d
+BLK_IO_TRACE_VERSION	blktrace_api.h	90;"	d
+BLK_TA_ABORT	blktrace_api.h	82;"	d
+BLK_TA_BACKMERGE	blktrace_api.h	68;"	d
+BLK_TA_BOUNCE	blktrace_api.h	80;"	d
+BLK_TA_COMPLETE	blktrace_api.h	74;"	d
+BLK_TA_DRV_DATA	blktrace_api.h	83;"	d
+BLK_TA_FRONTMERGE	blktrace_api.h	69;"	d
+BLK_TA_GETRQ	blktrace_api.h	70;"	d
+BLK_TA_INSERT	blktrace_api.h	78;"	d
+BLK_TA_ISSUE	blktrace_api.h	73;"	d
+BLK_TA_PLUG	blktrace_api.h	75;"	d
+BLK_TA_QUEUE	blktrace_api.h	67;"	d
+BLK_TA_REMAP	blktrace_api.h	81;"	d
+BLK_TA_REQUEUE	blktrace_api.h	72;"	d
+BLK_TA_SLEEPRQ	blktrace_api.h	71;"	d
+BLK_TA_SPLIT	blktrace_api.h	79;"	d
+BLK_TA_UNPLUG_IO	blktrace_api.h	76;"	d
+BLK_TA_UNPLUG_TIMER	blktrace_api.h	77;"	d
+BLK_TC_ACT	blktrace_api.h	30;"	d
+BLK_TC_AHEAD	blktrace_api.h	/^	BLK_TC_AHEAD	= 1 << 11,	\/* readahead *\/$/;"	e	enum:__anon2
+BLK_TC_BARRIER	blktrace_api.h	/^	BLK_TC_BARRIER	= 1 << 2,	\/* barrier *\/$/;"	e	enum:__anon2
+BLK_TC_COMPLETE	blktrace_api.h	/^	BLK_TC_COMPLETE	= 1 << 7,	\/* completions *\/$/;"	e	enum:__anon2
+BLK_TC_DISCARD	blktrace_api.h	/^	BLK_TC_DISCARD	= 1 << 13,	\/* discard requests *\/$/;"	e	enum:__anon2
+BLK_TC_DRV_DATA	blktrace_api.h	/^	BLK_TC_DRV_DATA	= 1 << 14,	\/* binary driver data *\/$/;"	e	enum:__anon2
+BLK_TC_END	blktrace_api.h	/^	BLK_TC_END	= 1 << 15,	\/* only 16-bits, reminder *\/$/;"	e	enum:__anon2
+BLK_TC_FS	blktrace_api.h	/^	BLK_TC_FS	= 1 << 8,	\/* fs requests *\/$/;"	e	enum:__anon2
+BLK_TC_ISSUE	blktrace_api.h	/^	BLK_TC_ISSUE	= 1 << 6,	\/* issue *\/$/;"	e	enum:__anon2
+BLK_TC_META	blktrace_api.h	/^	BLK_TC_META	= 1 << 12,	\/* metadata *\/$/;"	e	enum:__anon2
+BLK_TC_NOTIFY	blktrace_api.h	/^	BLK_TC_NOTIFY	= 1 << 10,	\/* special message *\/$/;"	e	enum:__anon2
+BLK_TC_PC	blktrace_api.h	/^	BLK_TC_PC	= 1 << 9,	\/* pc requests *\/$/;"	e	enum:__anon2
+BLK_TC_QUEUE	blktrace_api.h	/^	BLK_TC_QUEUE	= 1 << 4,	\/* queueing\/merging *\/$/;"	e	enum:__anon2
+BLK_TC_READ	blktrace_api.h	/^	BLK_TC_READ	= 1 << 0,	\/* reads *\/$/;"	e	enum:__anon2
+BLK_TC_REQUEUE	blktrace_api.h	/^	BLK_TC_REQUEUE	= 1 << 5,	\/* requeueing *\/$/;"	e	enum:__anon2
+BLK_TC_SHIFT	blktrace_api.h	29;"	d
+BLK_TC_SYNC	blktrace_api.h	/^	BLK_TC_SYNC	= 1 << 3,	\/* sync *\/$/;"	e	enum:__anon2
+BLK_TC_WRITE	blktrace_api.h	/^	BLK_TC_WRITE	= 1 << 1,	\/* writes *\/$/;"	e	enum:__anon2
+BLK_TN_MESSAGE	blktrace_api.h	87;"	d
+BLK_TN_PROCESS	blktrace_api.h	85;"	d
+BLK_TN_TIMESTAMP	blktrace_api.h	86;"	d
+BT_MAX_PKTS	btreplay/btrecord.h	26;"	d
+BUF_NR	blktrace.c	61;"	d	file:
+BUF_SIZE	blktrace.c	60;"	d	file:
+BUILD_BLKTRACE	Android.mk	/^BUILD_BLKTRACE := false$/;"	m
+CC	Makefile	/^CC	= gcc$/;"	m
+CC	btreplay/Makefile	/^CC	= gcc$/;"	m
+CC	btt/Makefile	/^CC	= gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS	= -Wall -O2 -g -W$/;"	m
+CFLAGS	btreplay/Makefile	/^CFLAGS	= -Wall -W -O2 -g$/;"	m
+CFLAGS	btt/Makefile	/^CFLAGS	= -Wall -W -O2 -g$/;"	m
+CHECK_MAGIC	blktrace.h	64;"	d
+CMP	strverscmp.c	80;"	d	file:
+COMPARE_MASK_MAP	act_mask.c	5;"	d	file:
+CPUS_PER_LONG	blkparse.c	305;"	d	file:
+CPU_BIT	blkparse.c	307;"	d	file:
+CPU_IDX	blkparse.c	306;"	d	file:
+DEBUGFS_TYPE	blktrace.c	65;"	d	file:
+DECLARE_MASK_MAP	act_mask.c	4;"	d	file:
+DEC_STAT	btt/iostat.c	31;"	d	file:
+DEF_LEN	btt/mmap.c	33;"	d	file:
+DEV_HASH	btt/devs.c	25;"	d	file:
+DOCTMP	btreplay/doc/Makefile	/^DOCTMP  = btreplay.log btreplay.aux btreplay.dvi btreplay.toc$/;"	m
+DOCTMP	btt/doc/Makefile	/^DOCTMP	= btt.log btt.aux btt.dvi btt.toc btt.tex.bak$/;"	m
+DOCTMP	doc/Makefile	/^DOCTMP	= blktrace.log blktrace.aux blktrace.dvi$/;"	m
+DOUBLE_TO_NANO_ULL	blktrace.h	18;"	d
+Default output per action	doc/blktrace.tex	/^The default output for all event types includes this header.$/;"	P
+ERR_ARGS	btreplay/btrecord.c	183;"	d	file:
+ERR_ARGS	btreplay/btreplay.c	210;"	d	file:
+ERR_SYSCALL	btreplay/btrecord.c	184;"	d	file:
+ERR_SYSCALL	btreplay/btreplay.c	211;"	d	file:
+EXCESS_BKT	btt/unplug_hist.c	25;"	d	file:
+FILE_VBUF_SIZE	blktrace.c	63;"	d	file:
+HEADER	blkparse_fmt.c	16;"	d	file:
+INCS	btreplay/Makefile	/^INCS	= -I. -I.. -I..\/btt$/;"	m
+INCS	btt/Makefile	/^INCS	= -I. -I..$/;"	m
+INC_BAD	blkrawverify.c	135;"	d	file:
+INC_STAT	btt/iostat.c	25;"	d	file:
+INIT_LIST_HEAD	btt/list.h	/^static inline void INIT_LIST_HEAD(struct list_head *list)$/;"	f
+INLINE_DECLARE	btt/misc.c	31;"	d	file:
+INSTALL	Makefile	/^INSTALL = install$/;"	m
+IN_SKIP	blkparse.c	457;"	d	file:
+IOP_A	btt/globals.h	/^	IOP_A = 2,$/;"	e	enum:iop_type
+IOP_C	btt/globals.h	/^	IOP_C = 6,$/;"	e	enum:iop_type
+IOP_D	btt/globals.h	/^	IOP_D = 5,$/;"	e	enum:iop_type
+IOP_G	btt/globals.h	/^	IOP_G = 3,$/;"	e	enum:iop_type
+IOP_I	btt/globals.h	/^	IOP_I = 8,$/;"	e	enum:iop_type
+IOP_M	btt/globals.h	/^	IOP_M = 4,$/;"	e	enum:iop_type
+IOP_Q	btt/globals.h	/^	IOP_Q = 0,$/;"	e	enum:iop_type
+IOP_R	btt/globals.h	/^	IOP_R = 7,$/;"	e	enum:iop_type
+IOP_READ	btt/globals.h	43;"	d
+IOP_RW	btt/globals.h	44;"	d
+IOP_S	btt/globals.h	/^	IOP_S = 9$/;"	e	enum:iop_type
+IOP_X	btt/globals.h	/^	IOP_X = 1,$/;"	e	enum:iop_type
+Introduction	btreplay/doc/btreplay.tex	/^\\tableofcontents\\thispagestyle{empty}\\newpage$/;"	s
+JHASH_GOLDEN_RATIO	jhash.h	52;"	d
+JHASH_RANDOM	blkparse.c	303;"	d	file:
+LEN	strverscmp.c	81;"	d	file:
+LIBS	Makefile	/^LIBS	= -lpthread$/;"	m
+LIBS	btreplay/Makefile	/^LIBS	= -laio -lrt$/;"	m
+LIBS	btt/Makefile	/^LIBS	= $(PLIBS) $(ELIBS)$/;"	m
+LIST_HEAD	btt/list.h	40;"	d
+LIST_HEAD_INIT	btt/list.h	38;"	d
+LIST_POISON1	btt/list.h	31;"	d
+LIST_POISON2	btt/list.h	32;"	d
+LOCAL_CFLAGS	Android.mk	/^LOCAL_CFLAGS := -O2 -g -W -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_ANDROID_$/;"	m
+LOCAL_CFLAGS	Android.mk	/^LOCAL_CFLAGS := -O2 -g -W -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64$/;"	m
+LOCAL_CFLAGS	btt/Android.mk	/^LOCAL_CFLAGS := -O2 -g -W -Wall -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 \\$/;"	m
+LOCAL_C_INCLUDES	Android.mk	/^LOCAL_C_INCLUDES := external\/blktrace\/$/;"	m
+LOCAL_C_INCLUDES	btt/Android.mk	/^LOCAL_C_INCLUDES := external\/blktrace external\/blktrace\/btt$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := blkparse$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := blkrawverify$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := blktrace$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := verify_blkparse$/;"	m
+LOCAL_MODULE	btt/Android.mk	/^LOCAL_MODULE := btt$/;"	m
+LOCAL_MODULE_TAGS	Android.mk	/^LOCAL_MODULE_TAGS :=$/;"	m
+LOCAL_MODULE_TAGS	btt/Android.mk	/^LOCAL_MODULE_TAGS :=$/;"	m
+LOCAL_PATH	Android.mk	/^LOCAL_PATH := $(call my-dir)$/;"	m
+LOCAL_PATH	btt/Android.mk	/^LOCAL_PATH := $(call my-dir)$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := blkparse.c blkparse_fmt.c rbtree.c act_mask.c strverscmp.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := blkrawverify.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := blktrace.c act_mask.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := verify_blkparse.c$/;"	m
+LOCAL_SRC_FILES	btt/Android.mk	/^LOCAL_SRC_FILES := args.c bt_timeline.c devmap.c devs.c dip_rb.c iostat.c \\$/;"	m
+LOCAL_SYSTEM_SHARED_LIBRARIES	Android.mk	/^LOCAL_SYSTEM_SHARED_LIBRARIES := libc$/;"	m
+LOCAL_SYSTEM_SHARED_LIBRARIES	btt/Android.mk	/^LOCAL_SYSTEM_SHARED_LIBRARIES := libc$/;"	m
+MAJOR	blktrace.h	13;"	d
+MAX_BKT	btt/unplug_hist.c	24;"	d	file:
+MAX_CPUS	verify_blkparse.c	7;"	d	file:
+MINOR	blktrace.h	14;"	d
+MINORBITS	blktrace.h	11;"	d
+MINORMASK	blktrace.h	12;"	d
+MS_HASH	blkparse.c	2249;"	d	file:
+NANO_SECONDS	blktrace.h	17;"	d
+NBKTS	btt/unplug_hist.c	26;"	d	file:
+NS_TICKS	btreplay/btreplay.c	284;"	d	file:
+N_ACTS	blkrawverify.c	80;"	d	file:
+N_DEV_HASH	btt/devs.c	24;"	d	file:
+N_HIST_BKTS	btt/globals.h	37;"	d
+N_IOP_TYPES	btt/globals.h	61;"	d
+N_TRACES	blkrawverify.c	54;"	d	file:
+Net_client	blktrace.c	/^	Net_client,$/;"	e	enum:__anon1	file:
+Net_none	blktrace.c	/^	Net_none = 0,$/;"	e	enum:__anon1	file:
+Net_server	blktrace.c	/^	Net_server,$/;"	e	enum:__anon1	file:
+OBJS	btt/Makefile	/^OBJS	= args.o bt_timeline.o devmap.o devs.o dip_rb.o iostat.o latency.o \\$/;"	m
+OCFLAGS	btreplay/Makefile	/^OCFLAGS	= -UCOUNT_IOS -UDEBUG -DNDEBUG$/;"	m
+OD_AVG	btt/output.c	285;"	d	file:
+PPI_HASH_MASK	blkparse.c	102;"	d	file:
+PPI_HASH_SHIFT	blkparse.c	100;"	d	file:
+PPI_HASH_SIZE	blkparse.c	101;"	d	file:
+PPM_HASH_MASK	blkparse.c	83;"	d	file:
+PPM_HASH_SHIFT	blkparse.c	81;"	d	file:
+PPM_HASH_SIZE	blkparse.c	82;"	d	file:
+PROGS	Makefile	/^PROGS	= blkparse blktrace verify_blkparse blkrawverify blkiomon$/;"	m
+PROGS	btreplay/Makefile	/^PROGS	= btrecord btreplay$/;"	m
+PROGS	btt/Makefile	/^PROGS	= btt$/;"	m
+Q2D_MAX_HISTO	btt/q2d.c	27;"	d	file:
+RB_BATCH_DEFAULT	blkparse.c	287;"	d	file:
+RB_BLACK	rbtree.h	103;"	d
+RB_RED	rbtree.h	102;"	d
+RB_ROOT	rbtree.h	140;"	d
+RPMBUILD	Makefile	/^RPMBUILD = rpmbuild$/;"	m
+SCRIPTS	Makefile	/^SCRIPTS	= btrace$/;"	m
+SECONDS	blktrace.h	16;"	d
+SETBUFFER_SIZE	btt/args.c	30;"	d	file:
+STATS_H	stats.h	23;"	d
+SUB_STAT	btt/iostat.c	44;"	d	file:
+SUPPORTED_VERSION	blktrace.h	65;"	d
+SWAP_BITS	blkrawverify.c	123;"	d	file:
+S_F	strverscmp.c	76;"	d	file:
+S_I	strverscmp.c	75;"	d	file:
+S_N	strverscmp.c	74;"	d	file:
+S_OPTS	blkiomon.c	596;"	d	file:
+S_OPTS	blkparse.c	2657;"	d	file:
+S_OPTS	blktrace.c	329;"	d	file:
+S_OPTS	btreplay/btrecord.c	122;"	d	file:
+S_OPTS	btreplay/btreplay.c	1376;"	d	file:
+S_OPTS	btt/args.c	32;"	d	file:
+S_Z	strverscmp.c	77;"	d	file:
+TAR	Makefile	/^TAR = tar$/;"	m
+TO_MSEC	btt/globals.h	47;"	d
+TO_SEC	btt/globals.h	46;"	d
+TRACE_HASH_SIZE	blkiomon.c	82;"	d	file:
+TRACE_NET_PORT	blktrace.c	66;"	d	file:
+TRACE_TO_STRING	blkrawverify.c	38;"	d	file:
+Th_error	blktrace.c	/^	Th_error$/;"	e	enum:thread_status	file:
+Th_leaving	blktrace.c	/^	Th_leaving,$/;"	e	enum:thread_status	file:
+Th_running	blktrace.c	/^	Th_running,$/;"	e	enum:thread_status	file:
+Trace Action Specifiers	doc/blktrace.tex	/^definitions:$/;"	b
+UNUPDATE_AVGS	btt/inlines.h	194;"	d
+UPDATE_AVGS	btt/inlines.h	182;"	d
+UPDATE_AVGS_N	btt/inlines.h	188;"	d
+VALID_SPECS	blkparse_fmt.c	14;"	d	file:
+XCFLAGS	btreplay/Makefile	/^XCFLAGS	= -D_GNU_SOURCE -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64$/;"	m
+XCFLAGS	btt/Makefile	/^XCFLAGS	= -D_GNU_SOURCE -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64$/;"	m
+_GNU_SOURCE	btreplay/btrecord.c	36;"	d	file:
+_GNU_SOURCE	btreplay/btreplay.c	43;"	d	file:
+_LINUX_JHASH_H	jhash.h	2;"	d
+_LINUX_LIST_H	btt/list.h	2;"	d
+_LINUX_RBTREE_H	rbtree.h	95;"	d
+__BLK_TA_ABORT	blktrace_api.h	/^	__BLK_TA_ABORT,			\/* request aborted *\/$/;"	e	enum:__anon3
+__BLK_TA_BACKMERGE	blktrace_api.h	/^	__BLK_TA_BACKMERGE,		\/* back merged to existing rq *\/$/;"	e	enum:__anon3
+__BLK_TA_BOUNCE	blktrace_api.h	/^	__BLK_TA_BOUNCE,		\/* bio was bounced *\/$/;"	e	enum:__anon3
+__BLK_TA_COMPLETE	blktrace_api.h	/^	__BLK_TA_COMPLETE,		\/* completed by driver *\/$/;"	e	enum:__anon3
+__BLK_TA_DRV_DATA	blktrace_api.h	/^	__BLK_TA_DRV_DATA,		\/* binary driver data *\/$/;"	e	enum:__anon3
+__BLK_TA_FRONTMERGE	blktrace_api.h	/^	__BLK_TA_FRONTMERGE,		\/* front merge to existing rq *\/$/;"	e	enum:__anon3
+__BLK_TA_GETRQ	blktrace_api.h	/^	__BLK_TA_GETRQ,			\/* allocated new request *\/$/;"	e	enum:__anon3
+__BLK_TA_INSERT	blktrace_api.h	/^	__BLK_TA_INSERT,		\/* insert request *\/$/;"	e	enum:__anon3
+__BLK_TA_ISSUE	blktrace_api.h	/^	__BLK_TA_ISSUE,			\/* sent to driver *\/$/;"	e	enum:__anon3
+__BLK_TA_PLUG	blktrace_api.h	/^	__BLK_TA_PLUG,			\/* queue was plugged *\/$/;"	e	enum:__anon3
+__BLK_TA_QUEUE	blktrace_api.h	/^	__BLK_TA_QUEUE = 1,		\/* queued *\/$/;"	e	enum:__anon3
+__BLK_TA_REMAP	blktrace_api.h	/^	__BLK_TA_REMAP,			\/* bio was remapped *\/$/;"	e	enum:__anon3
+__BLK_TA_REQUEUE	blktrace_api.h	/^	__BLK_TA_REQUEUE,		\/* request requeued *\/$/;"	e	enum:__anon3
+__BLK_TA_SLEEPRQ	blktrace_api.h	/^	__BLK_TA_SLEEPRQ,		\/* sleeping on rq allocation *\/$/;"	e	enum:__anon3
+__BLK_TA_SPLIT	blktrace_api.h	/^	__BLK_TA_SPLIT,			\/* bio was split *\/$/;"	e	enum:__anon3
+__BLK_TA_UNPLUG_IO	blktrace_api.h	/^	__BLK_TA_UNPLUG_IO,		\/* queue was unplugged by io *\/$/;"	e	enum:__anon3
+__BLK_TA_UNPLUG_TIMER	blktrace_api.h	/^	__BLK_TA_UNPLUG_TIMER,		\/* queue was unplugged by timer *\/$/;"	e	enum:__anon3
+__BLK_TN_MESSAGE	blktrace_api.h	/^	__BLK_TN_MESSAGE,               \/* Character string message *\/$/;"	e	enum:blktrace_notify
+__BLK_TN_PROCESS	blktrace_api.h	/^	__BLK_TN_PROCESS = 0,		\/* establish pid\/name mapping *\/$/;"	e	enum:blktrace_notify
+__BLK_TN_TIMESTAMP	blktrace_api.h	/^	__BLK_TN_TIMESTAMP,		\/* include system clock *\/$/;"	e	enum:blktrace_notify
+__BTRECORD_H__	btreplay/btrecord.h	22;"	d
+__account_c	blkparse.c	/^static inline void __account_c(struct io_stats *ios, int rw, int bytes)$/;"	f	file:
+__account_issue	blkparse.c	/^static inline void __account_issue(struct io_stats *ios, int rw,$/;"	f	file:
+__account_m	blkparse.c	/^static inline void __account_m(struct io_stats *ios, struct blk_io_trace *t,$/;"	f	file:
+__account_pc_c	blkparse.c	/^static inline void __account_pc_c(struct io_stats *ios, int rw)$/;"	f	file:
+__account_pc_issue	blkparse.c	/^static inline void __account_pc_issue(struct io_stats *ios, int rw,$/;"	f	file:
+__account_pc_queue	blkparse.c	/^static inline void __account_pc_queue(struct io_stats *ios,$/;"	f	file:
+__account_pc_requeue	blkparse.c	/^static inline void __account_pc_requeue(struct io_stats *ios,$/;"	f	file:
+__account_queue	blkparse.c	/^static inline void __account_queue(struct io_stats *ios, struct blk_io_trace *t,$/;"	f	file:
+__account_requeue	blkparse.c	/^static inline void __account_requeue(struct io_stats *ios,$/;"	f	file:
+__account_unplug	blkparse.c	/^static inline void __account_unplug(struct io_stats *ios, int timer)$/;"	f	file:
+__add_input_file	btreplay/btrecord.c	/^static void __add_input_file(int cpu, char *devnm, char *file_name)$/;"	f	file:
+__add_trace	btt/trace.c	/^static void __add_trace(struct io *iop)$/;"	f	file:
+__author__	btt/btt_plot.py	/^__author__ = 'Alan D. Brunelle <alan.brunelle@hp.com>'$/;"	v
+__bswap_16	blktrace.h	67;"	d
+__bswap_32	blktrace.h	68;"	d
+__bswap_64	blktrace.h	69;"	d
+__destroy	btt/devs.c	/^static void __destroy(struct rb_node *n)$/;"	f	file:
+__destroy	btt/proc.c	/^static void __destroy(struct rb_node *n, int free_name, int free_pip)$/;"	f	file:
+__destroy	btt/seek.c	/^static void __destroy(struct rb_node *n)$/;"	f	file:
+__destroy_heads	btt/devs.c	/^static void __destroy_heads(struct rb_root *roots)$/;"	f	file:
+__dip_exit	btt/devs.c	/^void __dip_exit(struct d_info *dip)$/;"	f
+__dip_find	btt/devs.c	/^struct d_info *__dip_find(__u32 device)$/;"	f
+__dip_output_actQ	btt/output.c	/^void __dip_output_actQ(struct d_info *dip, void *arg)$/;"	f
+__dip_output_actQ_all	btt/output.c	/^void __dip_output_actQ_all(FILE *ofp, struct actQ_info *p)$/;"	f
+__dip_output_plug	btt/output.c	/^void __dip_output_plug(struct d_info *dip, void *arg)$/;"	f
+__dip_output_plug_all	btt/output.c	/^void __dip_output_plug_all(FILE *ofp, struct plug_info *p)$/;"	f
+__dip_output_plug_nios	btt/output.c	/^void __dip_output_plug_nios(struct d_info *dip, void *arg)$/;"	f
+__dip_output_uplug_all	btt/output.c	/^void __dip_output_uplug_all(FILE *ofp, struct nios_plug_info *p)$/;"	f
+__dump_iop	btt/inlines.h	/^static inline void __dump_iop(FILE *ofp, struct io *iop, int extra_nl)$/;"	f
+__dump_iop2	btt/inlines.h	/^static inline void __dump_iop2(FILE *ofp, struct io *a_iop, struct io *l_iop)$/;"	f
+__dump_stats	btt/iostat.c	/^void __dump_stats(__u64 stamp, int all, struct d_info *dip, struct stats_t *asp)$/;"	f
+__dump_stats_t	btt/iostat.c	/^static void __dump_stats_t(__u64 stamp, struct stats_t *asp, int all)$/;"	f	file:
+__find_input_files	btreplay/btreplay.c	/^static void __find_input_files(struct dev_info *dip)$/;"	f	file:
+__find_process_name	btt/proc.c	/^struct p_info *__find_process_name(char *name)$/;"	f
+__find_process_pid	btt/proc.c	/^struct p_info * __find_process_pid(__u32 pid)$/;"	f
+__find_track	blkparse.c	/^static struct io_track *__find_track(struct per_dev_info *pdi, __u64 sector)$/;"	f	file:
+__foreach	btt/proc.c	/^static void __foreach(struct rb_node *n, void (*f)(struct p_info *, void *),$/;"	f	file:
+__get_root	btt/inlines.h	/^static inline struct rb_root *__get_root(struct d_info *dip, enum iop_type type)$/;"	f
+__insert	btt/seek.c	/^static void __insert(struct rb_root *root, long long sectors)$/;"	f	file:
+__jhash_final	jhash.h	40;"	d
+__jhash_mix	jhash.h	29;"	d
+__kernel_dmb	barrier.h	27;"	d
+__kernel_dmb_t	barrier.h	/^  typedef void (__kernel_dmb_t)(void);$/;"	t
+__list_add	btt/list.h	/^static inline void __list_add(struct list_head *new,$/;"	f
+__list_del	btt/list.h	/^static inline void __list_del(struct list_head * prev, struct list_head * next)$/;"	f
+__list_for_each	btt/list.h	127;"	d
+__list_splice	btt/list.h	/^static inline void __list_splice(struct list_head *list,$/;"	f
+__median	btt/seek.c	/^static int __median(struct rb_node *n, long long sofar, long long target,$/;"	f	file:
+__mode	btt/seek.c	/^static void __mode(struct rb_node *n, struct mode *mp)$/;"	f	file:
+__net_recv_data	blktrace.c	/^static int __net_recv_data(int fd, void *buf, unsigned int len)$/;"	f	file:
+__od	btt/output.c	/^struct __od {$/;"	s	file:
+__oda	btt/output.c	/^struct __oda {$/;"	s	file:
+__ohead_data	btt/output.c	/^struct __ohead_data {$/;"	s	file:
+__op	btt/output.c	/^struct __op {$/;"	s	file:
+__opa	btt/output.c	/^struct __opa {$/;"	s	file:
+__out	btt/trace_complete.c	/^static inline void __out(FILE *ofp, __u64 tm, enum iop_type type,$/;"	f	file:
+__output_avg	btt/output.c	/^void __output_avg(FILE *ofp, char *hdr, struct avg_info *ap, int do_easy)$/;"	f
+__output_dev	btt/output.c	/^void __output_dev(struct d_info *dip, void *arg)$/;"	f
+__output_dip_avg	btt/output.c	/^void __output_dip_avg(struct d_info *dip, void *arg)$/;"	f
+__output_dip_merge_ratio	btt/output.c	/^void __output_dip_merge_ratio(struct d_info *dip, void *arg)$/;"	f
+__output_dip_prep_ohead	btt/output.c	/^void __output_dip_prep_ohead(struct d_info *dip, void *arg)$/;"	f
+__output_dip_q2q_seek_info	btt/output.c	/^void __output_dip_q2q_seek_info(struct d_info *dip, void *arg)$/;"	f
+__output_dip_seek_info	btt/output.c	/^void __output_dip_seek_info(struct d_info *dip, void *arg)$/;"	f
+__output_pip_avg	btt/output.c	/^void __output_pip_avg(struct p_info *pip, void *arg)$/;"	f
+__output_procs	btt/output.c	/^void __output_procs(struct p_info *pip, void *arg)$/;"	f
+__output_q2d_histo	btt/output.c	/^void __output_q2d_histo(struct d_info *dip, void *arg)$/;"	f
+__output_ranges	btt/output.c	/^void __output_ranges(FILE *ofp, struct list_head *head_p, float base)$/;"	f
+__process_trace_bufs	blktrace.c	/^static void __process_trace_bufs(void)$/;"	f	file:
+__put_trace_last	blkparse.c	/^static inline void __put_trace_last(struct per_dev_info *pdi, struct trace *t)$/;"	f	file:
+__q2d	btt/output.c	/^struct __q2d {$/;"	s	file:
+__rb_erase_color	rbtree.c	/^static void __rb_erase_color(struct rb_node *node, struct rb_node *parent,$/;"	f	file:
+__rb_rotate_left	rbtree.c	/^static void __rb_rotate_left(struct rb_node *node, struct rb_root *root)$/;"	f	file:
+__rb_rotate_right	rbtree.c	/^static void __rb_rotate_right(struct rb_node *node, struct rb_root *root)$/;"	f	file:
+__region_exit	btt/inlines.h	/^static inline void __region_exit(struct list_head *range_head)$/;"	f
+__rot	jhash.h	26;"	d
+__set_cv	btreplay/btreplay.c	/^static inline void __set_cv(pthread_mutex_t *pmp, pthread_cond_t *pcp,$/;"	f	file:
+__stop_trace	blktrace.c	/^static int __stop_trace(int fd)$/;"	f	file:
+__update_odp	btt/output.c	254;"	d	file:
+__wait_cv	btreplay/btreplay.c	/^static inline void __wait_cv(pthread_mutex_t *pmp, pthread_cond_t *pcp,$/;"	f	file:
+_avg	btt/btt_plot.py	/^		def _avg(vals):$/;"	f	function:get_data.avg
+a_head	btt/globals.h	/^	struct list_head f_head, a_head;$/;"	m	struct:io	typeref:struct:io::
+abs_start_time	blkparse.c	/^struct timespec		abs_start_time;$/;"	v	typeref:struct:timespec
+acc_factor	btreplay/btreplay.c	/^static unsigned acc_factor = 1;		\/\/ Int: Acceleration factor$/;"	v	file:
+account_c	blkparse.c	/^static inline void account_c(struct blk_io_trace *t, struct per_cpu_info *pci,$/;"	f	file:
+account_issue	blkparse.c	/^static inline void account_issue(struct blk_io_trace *t,$/;"	f	file:
+account_m	blkparse.c	/^static inline void account_m(struct blk_io_trace *t, struct per_cpu_info *pci,$/;"	f	file:
+account_pc_c	blkparse.c	/^static inline void account_pc_c(struct blk_io_trace *t,$/;"	f	file:
+account_pc_issue	blkparse.c	/^static inline void account_pc_issue(struct blk_io_trace *t,$/;"	f	file:
+account_pc_queue	blkparse.c	/^static inline void account_pc_queue(struct blk_io_trace *t,$/;"	f	file:
+account_pc_requeue	blkparse.c	/^static inline void account_pc_requeue(struct blk_io_trace *t,$/;"	f	file:
+account_queue	blkparse.c	/^static inline void account_queue(struct blk_io_trace *t,$/;"	f	file:
+account_requeue	blkparse.c	/^static inline void account_requeue(struct blk_io_trace *t,$/;"	f	file:
+account_unplug	blkparse.c	/^static inline void account_unplug(struct blk_io_trace *t,$/;"	f	file:
+ack_open_close	blktrace.c	/^static void ack_open_close(int fd, char *buts_name)$/;"	f	file:
+actQ_info	btt/output.c	/^struct actQ_info {$/;"	s	file:
+actQ_info	btt/output.c	/^} actQ_info;$/;"	v	typeref:struct:actQ_info
+act_info	blkrawverify.c	/^struct act_info {$/;"	s	file:
+act_mask	blkparse.c	/^static unsigned int act_mask = -1U;$/;"	v	file:
+act_mask	blktrace.c	/^static int act_mask = ~0U;$/;"	v	file:
+act_mask	blktrace_api.h	/^	__u16 act_mask;			\/* input *\/$/;"	m	struct:blk_user_trace_setup
+act_to_str	blkrawverify.c	/^static char *act_to_str(__u32 action)$/;"	f	file:
+action	blkiomon.c	/^static int action(int a)$/;"	f	file:
+action	blktrace_api.h	/^	__u32 action;		\/* what happened *\/$/;"	m	struct:blk_io_trace
+acts	blkrawverify.c	/^static struct act_info acts[] = {$/;"	v	typeref:struct:act_info	file:
+add_buf	btt/misc.c	/^void add_buf(void *buf)$/;"	f
+add_devpath	blktrace.c	/^static int add_devpath(char *path)$/;"	f	file:
+add_file	btt/misc.c	/^void add_file(FILE *fp, char *oname)$/;"	f
+add_format_spec	blkparse_fmt.c	/^int add_format_spec(char *option)$/;"	f
+add_input_dev	btreplay/btreplay.c	/^static void add_input_dev(char *devnm)$/;"	f	file:
+add_input_file	btreplay/btrecord.c	/^static void add_input_file(char *devnm)$/;"	f	file:
+add_input_file	btreplay/btreplay.c	/^static void add_input_file(int cpu, char *devnm, char *file_name)$/;"	f	file:
+add_legend	btt/btt_plot.py	/^add_legend	= True$/;"	v
+add_ppi_to_hash	blkparse.c	/^static inline void add_ppi_to_hash(struct per_process_info *ppi)$/;"	f	file:
+add_ppi_to_list	blkparse.c	/^static inline void add_ppi_to_list(struct per_process_info *ppi)$/;"	f	file:
+add_ppm_hash	blkparse.c	/^static struct process_pid_map *add_ppm_hash(pid_t pid, const char *name)$/;"	f	file:
+add_seek_mode_info	btt/output.c	/^void add_seek_mode_info(struct o_seek_info *sip, struct mode *mp)$/;"	f
+add_trace	btt/trace.c	/^void add_trace(struct io *iop)$/;"	f
+add_trace_buf	blktrace.c	/^static inline void add_trace_buf(struct devpath *dpp, int cpu,$/;"	f	file:
+addr	blktrace.c	/^	struct sockaddr_in addr;$/;"	m	struct:net_server_s	typeref:struct:net_server_s::sockaddr_in	file:
+ai_dip_t	btt/output.c	/^typedef struct avg_info *ai_dip_t;$/;"	t	typeref:struct:avg_info	file:
+ai_pip_t	btt/output.c	/^typedef struct avg_info *ai_pip_t;$/;"	t	typeref:struct:avg_info	file:
+all_avgs	btt/bt_timeline.c	/^struct avgs_info all_avgs;$/;"	v	typeref:struct:avgs_info
+all_bufs	btt/misc.c	/^LIST_HEAD(all_bufs);$/;"	v
+all_devmaps	btt/devmap.c	/^LIST_HEAD(all_devmaps);$/;"	v
+all_devs	btt/bt_timeline.c	/^LIST_HEAD(all_devs);$/;"	v
+all_head	btt/globals.h	/^	struct list_head all_head, hash_head;$/;"	m	struct:d_info	typeref:struct:d_info::list_head
+all_ios	btt/bt_timeline.c	/^LIST_HEAD(all_ios);$/;"	v
+all_procs	btt/bt_timeline.c	/^LIST_HEAD(all_procs);$/;"	v
+all_regions	btt/bt_timeline.c	/^struct region_info all_regions = {$/;"	v	typeref:struct:region_info
+all_stats	btt/globals.h	/^	struct stats stats, all_stats;$/;"	m	struct:d_info	typeref:struct:d_info::
+alloc_trace_buf	blktrace.c	/^static inline struct trace_buf *alloc_trace_buf(int cpu, int bufsize)$/;"	f	file:
+allocation_time	blkparse.c	/^	unsigned long long allocation_time;$/;"	m	struct:io_track	file:
+aqd_alloc	btt/aqd.c	/^void *aqd_alloc(char *str)$/;"	f
+aqd_complete	btt/aqd.c	/^void aqd_complete(void *info, double ts)$/;"	f
+aqd_free	btt/aqd.c	/^void aqd_free(void *info)$/;"	f
+aqd_handle	btt/globals.h	/^	void *q2d_priv, *aqd_handle;$/;"	m	struct:d_info
+aqd_info	btt/aqd.c	/^struct aqd_info {$/;"	s	file:
+aqd_issue	btt/aqd.c	/^void aqd_issue(void *info, double ts)$/;"	f
+aqd_name	btt/bt_timeline.c	/^char *sps_name, *aqd_name, *q2d_name, *per_io_trees;$/;"	v
+avg	btt/btt_plot.py	/^	def avg(xs, ys):$/;"	f	function:get_data
+avg	btt/globals.h	/^	double avg;$/;"	m	struct:avg_info
+avg2string	btt/output.c	/^static inline char *avg2string(struct avg_info *ap, char *string)$/;"	f	file:
+avg_info	btt/globals.h	/^struct avg_info {$/;"	s
+avg_unupdate	btt/inlines.h	/^static inline void avg_unupdate(struct avg_info *ap, __u64 t)$/;"	f
+avg_update	btt/inlines.h	/^static inline void avg_update(struct avg_info *ap, __u64 t)$/;"	f
+avg_update_n	btt/inlines.h	/^static inline void avg_update_n(struct avg_info *ap, __u64 t, int n)$/;"	f
+avgqu_sz	btt/globals.h	/^	double avgrq_sz, avgqu_sz, await, svctm, p_util;$/;"	m	struct:stats_t
+avgrq_sz	btt/globals.h	/^	double avgrq_sz, avgqu_sz, await, svctm, p_util;$/;"	m	struct:stats_t
+avgs	btt/globals.h	/^	struct avgs_info avgs;$/;"	m	struct:d_info	typeref:struct:d_info::avgs_info
+avgs	btt/globals.h	/^	struct avgs_info avgs;$/;"	m	struct:p_info	typeref:struct:p_info::avgs_info
+avgs_info	btt/globals.h	/^struct avgs_info {$/;"	s
+avgs_ofp	btt/bt_timeline.c	/^FILE *rngs_ofp, *avgs_ofp, *xavgs_ofp, *per_io_ofp, *msgs_ofp;$/;"	v
+await	btt/globals.h	/^	double avgrq_sz, avgqu_sz, await, svctm, p_util;$/;"	m	struct:stats_t
+backwards	blkparse.c	/^	int backwards;$/;"	m	struct:per_dev_info	file:
+base	btt/btt_plot.py	/^				base = get_base(file)$/;"	v
+base	btt/output.c	/^	float base;$/;"	m	struct:__od	file:
+base	btt/output.c	/^	float base;$/;"	m	struct:__op	file:
+be16_to_cpu	blktrace.h	72;"	d
+be16_to_cpu	blktrace.h	79;"	d
+be32_to_cpu	blktrace.h	73;"	d
+be32_to_cpu	blktrace.h	80;"	d
+be64_to_cpu	blktrace.h	74;"	d
+be64_to_cpu	blktrace.h	81;"	d
+bidir	blkiomon.h	/^	__u64 bidir;$/;"	m	struct:blkiomon_stat
+bin_output_msgs	blkparse.c	/^static int bin_output_msgs = 1;$/;"	v	file:
+binary	blkiomon.c	/^static struct output drvdata, human, binary, debug;$/;"	v	typeref:struct:	file:
+bindir	Makefile	/^bindir = $(prefix)\/bin$/;"	m
+bit	blkiomon.c	/^	struct blk_io_trace bit;$/;"	m	struct:trace	typeref:struct:trace::blk_io_trace	file:
+bit	blkparse.c	/^	struct blk_io_trace *bit;$/;"	m	struct:trace	typeref:struct:trace::blk_io_trace	file:
+bit_alloc	blkparse.c	/^static inline struct blk_io_trace *bit_alloc(void)$/;"	f	file:
+bit_alloc_cache	blkparse.c	/^static unsigned int bit_alloc_cache;$/;"	v	file:
+bit_alloc_list	blkparse.c	/^static struct blk_io_trace *bit_alloc_list;$/;"	v	typeref:struct:blk_io_trace	file:
+bit_field	blkrawverify.c	/^	int bit_field;$/;"	m	struct:trace_info	file:
+bit_free	blkparse.c	/^static inline void bit_free(struct blk_io_trace *bit)$/;"	f	file:
+blk_io_trace	blktrace_api.h	/^struct blk_io_trace {$/;"	s
+blk_io_trace_remap	blktrace_api.h	/^struct blk_io_trace_remap {$/;"	s
+blk_user_trace_setup	blktrace_api.h	/^struct blk_user_trace_setup {$/;"	s
+blkiomon_account	blkiomon.c	/^static int blkiomon_account(struct blk_io_trace *bit_d,$/;"	f	file:
+blkiomon_alloc_dstat	blkiomon.c	/^static struct dstat *blkiomon_alloc_dstat(void)$/;"	f	file:
+blkiomon_alloc_trace	blkiomon.c	/^static struct trace *blkiomon_alloc_trace(void)$/;"	f	file:
+blkiomon_debug	blkiomon.c	/^static void blkiomon_debug(void)$/;"	f	file:
+blkiomon_do_fifo	blkiomon.c	/^static int blkiomon_do_fifo(void)$/;"	f	file:
+blkiomon_do_trace	blkiomon.c	/^static struct trace *blkiomon_do_trace(struct trace *t)$/;"	f	file:
+blkiomon_dump_drvdata	blkiomon.c	/^static int blkiomon_dump_drvdata(struct blk_io_trace *bit, void *pdu_buf)$/;"	f	file:
+blkiomon_fetch_trace	blkiomon.c	/^static struct trace *blkiomon_fetch_trace(struct blk_io_trace *bit)$/;"	f	file:
+blkiomon_find_dstat	blkiomon.c	/^static struct dstat *blkiomon_find_dstat(struct rb_search *search, __u32 device)$/;"	f	file:
+blkiomon_free_trace	blkiomon.c	/^static void blkiomon_free_trace(struct trace *t)$/;"	f	file:
+blkiomon_get_dstat	blkiomon.c	/^static struct dstat *blkiomon_get_dstat(__u32 device)$/;"	f	file:
+blkiomon_interval	blkiomon.c	/^static void *blkiomon_interval(void *data)$/;"	f	file:
+blkiomon_open_msg_q	blkiomon.c	/^static int blkiomon_open_msg_q(void)$/;"	f	file:
+blkiomon_open_output	blkiomon.c	/^static int blkiomon_open_output(struct output *out)$/;"	f	file:
+blkiomon_output	blkiomon.c	/^static struct dstat *blkiomon_output(struct dstat *head, struct timespec *ts)$/;"	f	file:
+blkiomon_output_binary	blkiomon.c	/^static int blkiomon_output_binary(struct dstat *dstat)$/;"	f	file:
+blkiomon_output_msg_q	blkiomon.c	/^static int blkiomon_output_msg_q(struct dstat *dstat)$/;"	f	file:
+blkiomon_signal	blkiomon.c	/^static void blkiomon_signal(int signal)$/;"	f	file:
+blkiomon_stat	blkiomon.h	/^struct blkiomon_stat {$/;"	s
+blkiomon_stat_init	blkiomon.h	/^static inline void blkiomon_stat_init(struct blkiomon_stat *bstat)$/;"	f
+blkiomon_stat_merge	blkiomon.h	/^static inline void blkiomon_stat_merge(struct blkiomon_stat *dst,$/;"	f
+blkiomon_stat_print	blkiomon.h	/^static inline void blkiomon_stat_print(FILE *fp, struct blkiomon_stat *p)$/;"	f
+blkiomon_stat_to_be	blkiomon.h	/^static inline void blkiomon_stat_to_be(struct blkiomon_stat *bstat)$/;"	f
+blkiomon_store_trace	blkiomon.c	/^static void blkiomon_store_trace(struct trace *t)$/;"	f	file:
+blkiomon_version	blkiomon.c	/^static char blkiomon_version[] = "0.3";$/;"	v	file:
+blkmax	btt/output.c	/^	unsigned long long nq, nd, blkmin, blkmax, total;$/;"	m	struct:__anon4	file:
+blkmin	btt/output.c	/^	unsigned long long nq, nd, blkmin, blkmax, total;$/;"	m	struct:__anon4	file:
+blkparse_version	blkparse.c	/^static char blkparse_version[] = "1.0.1";$/;"	v	file:
+blks	btt/globals.h	/^	struct avg_info blks;		\/* Blocks transferred *\/$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+blktrace.h Definitions	doc/blktrace.tex	/^to help understand some of the outputs and command-line options above.$/;"	u
+blktrace.h Routines	doc/blktrace.tex	/^\\end{tabular}$/;"	u
+blktrace_net_hdr	blktrace.c	/^struct blktrace_net_hdr {$/;"	s	file:
+blktrace_notify	blktrace_api.h	/^enum blktrace_notify {$/;"	g
+blktrace_version	blktrace.c	/^static char blktrace_version[] = "2.0.0";$/;"	v	file:
+bno_dump	btt/bno_dump.c	/^struct bno_dump {$/;"	s	file:
+bno_dump_add	btt/bno_dump.c	/^void bno_dump_add(void *handle, struct io *iop)$/;"	f
+bno_dump_alloc	btt/bno_dump.c	/^void *bno_dump_alloc(__u32 device)$/;"	f
+bno_dump_free	btt/bno_dump.c	/^void bno_dump_free(void *param)$/;"	f
+bno_dump_handle	btt/globals.h	/^	void *q2q_handle, *seek_handle, *bno_dump_handle, *up_hist_handle;$/;"	m	struct:d_info
+bno_dump_name	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+bno_dump_open	btt/bno_dump.c	/^static FILE *bno_dump_open(__u32 device, char rwc)$/;"	f	file:
+bno_dump_write	btt/bno_dump.c	/^static inline void bno_dump_write(FILE *fp, struct io *iop)$/;"	f	file:
+bt_timeline_version	btt/bt_timeline.c	/^char bt_timeline_version[] = "2.08";$/;"	v
+btver_mjr	btreplay/btrecord.h	/^static int btver_mjr = 1;$/;"	v
+btver_mnr	btreplay/btrecord.h	/^static int btver_mnr = 0;$/;"	v
+btver_sub	btreplay/btrecord.h	/^static int btver_sub = 0;$/;"	v
+buf	blkiomon.c	/^	char *buf;$/;"	m	struct:output	file:
+buf	blktrace.c	/^	void *buf;$/;"	m	struct:trace_buf	file:
+buf	btt/misc.c	/^	void *buf;$/;"	m	struct:buf_info	file:
+buf_alloc	btreplay/btreplay.c	/^static inline void *buf_alloc(size_t nbytes)$/;"	f	file:
+buf_info	btt/misc.c	/^struct buf_info {$/;"	s	file:
+buf_nr	blktrace.c	/^	u32 buf_nr;		\/* client buf_nr for this trace  *\/$/;"	m	struct:blktrace_net_hdr	file:
+buf_nr	blktrace.c	/^	unsigned long buf_size, buf_nr;$/;"	m	struct:mmap_info	file:
+buf_nr	blktrace.c	/^static unsigned long buf_nr = BUF_NR;$/;"	v	file:
+buf_nr	blktrace_api.h	/^	__u32 buf_nr;			\/* input *\/$/;"	m	struct:blk_user_trace_setup
+buf_size	blktrace.c	/^	u32 buf_size;		\/* client buf_size for this trace  *\/$/;"	m	struct:blktrace_net_hdr	file:
+buf_size	blktrace.c	/^	unsigned long buf_size, buf_nr;$/;"	m	struct:mmap_info	file:
+buf_size	blktrace.c	/^static unsigned long buf_size = BUF_SIZE;$/;"	v	file:
+buf_size	blktrace_api.h	/^	__u32 buf_size;			\/* input *\/$/;"	m	struct:blk_user_trace_setup
+build_date	btreplay/btrecord.c	/^static char build_date[] = __DATE__ " at "__TIME__;$/;"	v	file:
+build_date	btreplay/btreplay.c	/^static char build_date[] = __DATE__ " at "__TIME__;$/;"	v	file:
+bunch_done	btreplay/btrecord.c	/^static inline int bunch_done(struct io_stream *stream, struct io_spec *spec)$/;"	f	file:
+bunch_output_hdr	btreplay/btrecord.c	/^static inline void bunch_output_hdr(struct io_stream *stream)$/;"	f	file:
+bunch_output_pkts	btreplay/btrecord.c	/^static inline void bunch_output_pkts(struct io_stream *stream)$/;"	f	file:
+bunches	btreplay/btrecord.c	/^	__u64 start_time, last_time, bunches, pkts;$/;"	m	struct:io_stream	file:
+buts_name	blktrace.c	/^	char *buts_name;		\/* name returned from bt kernel code *\/$/;"	m	struct:devpath	file:
+buts_name	blktrace.c	/^	char buts_name[32];	\/* trace name *\/$/;"	m	struct:blktrace_net_hdr	file:
+bytes	blktrace_api.h	/^	__u32 bytes;		\/* transfer length *\/$/;"	m	struct:blk_io_trace
+bytes	btreplay/btrecord.c	/^	__u32 bytes;$/;"	m	struct:io_spec	file:
+bytes_left	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+c_nsec	btt/globals.h	/^	__u32 d_nsec, c_nsec;$/;"	m	struct:io
+c_sec	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+c_time	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+cfp	btt/bno_dump.c	/^	FILE *rfp, *wfp, *cfp;$/;"	m	struct:bno_dump	file:
+cfp	btt/seek.c	/^	FILE *rfp, *wfp, *cfp, *sps_fp;$/;"	m	struct:seeki	file:
+ch	blktrace.c	/^	struct cl_host *ch;$/;"	m	struct:cl_conn	typeref:struct:cl_conn::cl_host	file:
+ch	blktrace.c	/^	struct cl_host *ch;$/;"	m	struct:devpath	typeref:struct:devpath::cl_host	file:
+ch_add_connection	blktrace.c	/^static void ch_add_connection(struct net_server_s *ns, struct cl_host *ch,$/;"	f	file:
+ch_head	blktrace.c	/^	struct list_head ch_head, ns_head;$/;"	m	struct:cl_conn	typeref:struct:cl_conn::list_head	file:
+ch_list	blktrace.c	/^	struct list_head ch_list;$/;"	m	struct:net_server_s	typeref:struct:net_server_s::list_head	file:
+ch_rem_connection	blktrace.c	/^static void ch_rem_connection(struct net_server_s *ns, struct cl_host *ch,$/;"	f	file:
+check	btt/btt_plot.py	/^	def check(mn, mx, v):$/;"	f	function:get_data
+check_cpu_map	blkparse.c	/^static int check_cpu_map(struct per_dev_info *pdi)$/;"	f	file:
+check_current_skips	blkparse.c	/^static int check_current_skips(struct per_cpu_info *pci, unsigned long seq)$/;"	f	file:
+check_data_endianness	blktrace.h	/^static inline int check_data_endianness(u32 magic)$/;"	f
+check_sequence	blkparse.c	/^static int check_sequence(struct per_dev_info *pdi, struct trace *t, int force)$/;"	f	file:
+check_stopwatch	blkparse.c	/^static inline int check_stopwatch(struct blk_io_trace *bit)$/;"	f	file:
+check_time	blkparse.c	/^static void check_time(struct per_dev_info *pdi, struct blk_io_trace *bit)$/;"	f	file:
+cl_conn	blktrace.c	/^struct cl_conn {$/;"	s	file:
+cl_connect_time	blktrace.c	/^	time_t cl_connect_time;$/;"	m	struct:devpath	file:
+cl_fds	blktrace.c	/^static int *cl_fds;$/;"	v	file:
+cl_host	blktrace.c	/^struct cl_host {$/;"	s	file:
+cl_id	blktrace.c	/^	u32 cl_id;		\/* id for set of client per-cpu connections *\/$/;"	m	struct:blktrace_net_hdr	file:
+cl_id	blktrace.c	/^	u32 cl_id;$/;"	m	struct:devpath	file:
+cl_in_addr	blktrace.c	/^	struct in_addr cl_in_addr;$/;"	m	struct:cl_host	typeref:struct:cl_host::in_addr	file:
+cl_opens	blktrace.c	/^	int connects, ndevs, cl_opens;$/;"	m	struct:cl_host	file:
+clean_allocs	btt/misc.c	/^void clean_allocs(void)$/;"	f
+clean_bufs	btt/misc.c	/^static void clean_bufs(void)$/;"	f	file:
+clean_files	btt/misc.c	/^static void clean_files(void)$/;"	f	file:
+clean_trace_bufs	blktrace.c	/^static void clean_trace_bufs(void)$/;"	f	file:
+cleanup_ifile	btt/mmap.c	/^void cleanup_ifile(void)$/;"	f
+clear_events	blktrace.c	/^static void clear_events(struct pollfd *pfd)$/;"	f	file:
+close_client_connections	blktrace.c	/^static void close_client_connections(void)$/;"	f	file:
+close_iop	blktrace.c	/^static void close_iop(struct io_info *iop)$/;"	f	file:
+close_ios	blktrace.c	/^static void close_ios(struct tracer *tp)$/;"	f	file:
+cmd	btt/bno_plot.py	/^		cmd = '\/usr\/bin\/gnuplot %s\/plot.cmds -' % tmpdir$/;"	v
+cmd	btt/bno_plot.py	/^		cmd = cmd.split(None)$/;"	v
+collect_pdi_skips	blkparse.c	/^static void collect_pdi_skips(struct per_dev_info *pdi)$/;"	f	file:
+color	btt/btt_plot.py	/^	def color(idx, style):$/;"	f	function:generate_output
+comm	blkparse.c	/^	char comm[16];$/;"	m	struct:process_pid_map	file:
+completion_time	blkparse.c	/^	unsigned long long completion_time;$/;"	m	struct:io_track	file:
+cond	btreplay/btreplay.c	/^	pthread_cond_t cond;$/;"	m	struct:thr_info	file:
+conn_list	blktrace.c	/^	struct list_head conn_list;$/;"	m	struct:cl_host	typeref:struct:cl_host::list_head	file:
+conn_list	blktrace.c	/^	struct list_head conn_list;$/;"	m	struct:net_server_s	typeref:struct:net_server_s::list_head	file:
+connect_time	blktrace.c	/^	time_t connect_time;$/;"	m	struct:cl_conn	file:
+connects	blktrace.c	/^	int connects, ndevs, cl_opens;$/;"	m	struct:cl_host	file:
+connects	blktrace.c	/^	int listen_fd, connects, nchs;$/;"	m	struct:net_server_s	file:
+container_of	btt/list.h	21;"	d
+container_of	rbtree.h	120;"	d
+convert_to_cpu	btt/mmap.c	/^static inline size_t convert_to_cpu(struct blk_io_trace *t,$/;"	f	file:
+cpu	blkparse.c	/^	unsigned int cpu;$/;"	m	struct:ms_stream	file:
+cpu	blktrace.c	/^	int cpu, len;$/;"	m	struct:trace_buf	file:
+cpu	blktrace.c	/^	int cpu, nios;$/;"	m	struct:tracer	file:
+cpu	blktrace.c	/^	u32 cpu;		\/* for which cpu *\/$/;"	m	struct:blktrace_net_hdr	file:
+cpu	blktrace.h	/^	unsigned int cpu;$/;"	m	struct:per_cpu_info
+cpu	blktrace_api.h	/^	__u32 cpu;		\/* on what cpu did it happen *\/$/;"	m	struct:blk_io_trace
+cpu	btreplay/btrecord.c	/^	int cpu, ifd;$/;"	m	struct:ifile_info	file:
+cpu	btreplay/btreplay.c	/^	int cpu, ifd, ofd, iterations;$/;"	m	struct:thr_info	file:
+cpu_is_online	blkparse.c	/^static inline int cpu_is_online(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+cpu_map	blkparse.c	/^	unsigned long *cpu_map;$/;"	m	struct:per_dev_info	file:
+cpu_map_max	blkparse.c	/^	unsigned int cpu_map_max;$/;"	m	struct:per_dev_info	file:
+cpu_mark_offline	blkparse.c	/^static inline void cpu_mark_offline(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+cpu_mark_online	blkparse.c	/^static void cpu_mark_online(struct per_dev_info *pdi, unsigned int cpu)$/;"	f	file:
+cpu_to_be16	blktrace.h	75;"	d
+cpu_to_be16	blktrace.h	82;"	d
+cpu_to_be32	blktrace.h	76;"	d
+cpu_to_be32	blktrace.h	83;"	d
+cpu_to_be64	blktrace.h	77;"	d
+cpu_to_be64	blktrace.h	84;"	d
+cpus	blkparse.c	/^	struct per_cpu_info *cpus;$/;"	m	struct:per_dev_info	typeref:struct:per_dev_info::per_cpu_info	file:
+cpus_to_use	btreplay/btreplay.c	/^static int cpus_to_use = -1;		\/\/ Number of CPUs to use$/;"	v	file:
+cranges	btt/globals.h	/^	struct list_head cranges;$/;"	m	struct:region_info	typeref:struct:region_info::list_head
+cread_kb	blktrace.h	/^	unsigned long long qread_kb, qwrite_kb, cread_kb, cwrite_kb;$/;"	m	struct:io_stats
+creads	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+creads_pc	blktrace.h	/^	unsigned long rrqueue_pc, wrqueue_pc, creads_pc, cwrites_pc;$/;"	m	struct:io_stats
+ctx	btreplay/btreplay.c	/^	io_context_t ctx;$/;"	m	struct:thr_info	file:
+cur	btreplay/btrecord.c	/^	struct io_bunch *cur;$/;"	m	struct:io_stream	typeref:struct:io_stream::io_bunch	file:
+cur	btt/mmap.c	/^static off_t cur_min, cur, cur_max, total_size;$/;"	v	file:
+cur_depth	blkparse.c	/^	unsigned int cur_depth[2];$/;"	m	struct:per_dev_info	file:
+cur_dev	btt/globals.h	/^	int cur_qusz, cur_dev;$/;"	m	struct:stats
+cur_map	btt/mmap.c	/^static void *cur_map = MAP_FAILED;$/;"	v	file:
+cur_max	btt/mmap.c	/^static off_t cur_min, cur, cur_max, total_size;$/;"	v	file:
+cur_min	btt/mmap.c	/^static off_t cur_min, cur, cur_max, total_size;$/;"	v	file:
+cur_qusz	btt/globals.h	/^	int cur_qusz, cur_dev;$/;"	m	struct:stats
+cvt_pdu_remap	btt/trace_remap.c	/^static inline void cvt_pdu_remap(struct blk_io_trace_remap *rp)$/;"	f	file:
+cwrite_kb	blktrace.h	/^	unsigned long long qread_kb, qwrite_kb, cread_kb, cwrite_kb;$/;"	m	struct:io_stats
+cwrites	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+cwrites_pc	blktrace.h	/^	unsigned long rrqueue_pc, wrqueue_pc, creads_pc, cwrites_pc;$/;"	m	struct:io_stats
+cy_users	btt/globals.h	/^	int cy_users;$/;"	m	struct:io_list
+d2c	btt/globals.h	/^	struct avg_info d2c;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+d2c	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::	file:
+d2c_hist	blkiomon.h	/^	__u32 d2c_hist[BLKIOMON_D2C_BUCKETS];$/;"	m	struct:blkiomon_stat
+d2c_hist	blkiomon.h	/^static struct histlog2 d2c_hist = {$/;"	v	typeref:struct:histlog2
+d2c_name	btt/bt_timeline.c	/^char *d2c_name, *q2c_name, *per_io_name, *unplug_hist_name;$/;"	v
+d2c_ofp	btt/globals.h	/^	FILE *q2d_ofp, *d2c_ofp, *q2c_ofp, *pit_fp;$/;"	m	struct:d_info
+d2c_plat_handle	btt/globals.h	/^	void *q2d_plat_handle, *q2c_plat_handle, *d2c_plat_handle;$/;"	m	struct:d_info
+d2c_r	blkiomon.h	/^	struct minmax d2c_r;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+d2c_w	blkiomon.h	/^	struct minmax d2c_w;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+d_histo	btt/bt_timeline.c	/^__u64 q_histo[N_HIST_BKTS], d_histo[N_HIST_BKTS];$/;"	v
+d_info	btt/globals.h	/^struct d_info {$/;"	s
+d_nsec	btt/globals.h	/^	__u32 d_nsec, c_nsec;$/;"	m	struct:io
+d_sec	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+d_time	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+data_is_native	blkiomon.c	/^int data_is_native = -1;$/;"	v
+data_is_native	blkparse.c	/^int data_is_native = -1;$/;"	v
+data_is_native	blkrawverify.c	/^int data_is_native = -1;$/;"	v
+data_is_native	blktrace.c	/^int data_is_native = -1;$/;"	v
+data_is_native	btreplay/btrecord.c	/^int data_is_native;				\/\/ Indicates whether to swap$/;"	v
+data_is_native	btt/mmap.c	/^int data_is_native = -1;$/;"	v
+data_queued	blktrace.c	/^	unsigned long long data_queued;$/;"	m	struct:io_info	file:
+data_read	blktrace.c	/^	unsigned long long data_read;$/;"	m	struct:pdc_stats	file:
+dbg_ping	btt/misc.c	/^void dbg_ping(void) {}$/;"	f
+debug	blkiomon.c	/^static struct output drvdata, human, binary, debug;$/;"	v	typeref:struct:	file:
+debugfs_path	blktrace.c	/^static char *debugfs_path = "\/sys\/kernel\/debug";$/;"	v	file:
+decr_entries	blktrace.c	/^static void decr_entries(int handled)$/;"	f	file:
+def_iterations	btreplay/btreplay.c	/^static int def_iterations = 1;		\/\/ Default number of iterations$/;"	v	file:
+del_tracers	blktrace.c	/^static void del_tracers(void)$/;"	f	file:
+delta	stats.h	/^	int delta;$/;"	m	struct:histlog2
+dev	blkparse.c	/^	dev_t dev;$/;"	m	struct:per_dev_info	file:
+dev	btt/unplug_hist.c	/^	__u32 dev;$/;"	m	struct:hist_bkt	file:
+dev_heads	btt/devs.c	/^struct list_head	dev_heads[N_DEV_HASH];$/;"	v	typeref:struct:list_head
+dev_info	btreplay/btreplay.c	/^struct dev_info {$/;"	s	file:
+dev_map_add	btt/devmap.c	/^static int dev_map_add(char *line)$/;"	f	file:
+dev_map_exit	btt/devmap.c	/^void dev_map_exit(void)$/;"	f
+dev_map_find	btt/devmap.c	/^char *dev_map_find(__u32 device)$/;"	f
+dev_map_read	btt/devmap.c	/^int dev_map_read(char *fname)$/;"	f
+device	blkiomon.h	/^	__u32 device;$/;"	m	struct:blkiomon_stat
+device	blktrace_api.h	/^	__u32 device;		\/* device identifier (dev_t) *\/$/;"	m	struct:blk_io_trace
+device	btt/devmap.c	/^	char device[32], devno[32];$/;"	m	struct:devmap	file:
+device	btt/globals.h	/^	__u32 device;$/;"	m	struct:d_info
+device_done	blktrace.c	/^static void device_done(struct devpath *dpp, int ncpus)$/;"	f	file:
+device_from	blktrace_api.h	/^	__u32 device_from;$/;"	m	struct:blk_io_trace_remap
+device_to	blktrace_api.h	/^	__u32 device_to;$/;"	m	struct:blk_io_trace_remap
+devices	blkparse.c	/^static struct per_dev_info *devices;$/;"	v	typeref:struct:per_dev_info	file:
+devices	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+devmap	btt/devmap.c	/^struct devmap {$/;"	s	file:
+devmap	btt/globals.h	/^	char *devmap;$/;"	m	struct:d_info
+devnm	btreplay/btrecord.c	/^	char *devnm, *file_name;$/;"	m	struct:ifile_info	file:
+devnm	btreplay/btreplay.c	/^	char *devnm, *file_name;$/;"	m	struct:thr_info	file:
+devnm	btreplay/btreplay.c	/^	char *devnm;$/;"	m	struct:dev_info	file:
+devno	btt/devmap.c	/^	char device[32], devno[32];$/;"	m	struct:devmap	file:
+devpath	blktrace.c	/^struct devpath {$/;"	s	file:
+devpaths	blktrace.c	/^	struct list_head devpaths;$/;"	m	struct:cl_host	typeref:struct:cl_host::list_head	file:
+dip	btt/globals.h	/^	struct d_info *dip;$/;"	m	struct:io	typeref:struct:io::d_info
+dip_alloc	btt/devs.c	/^struct d_info *dip_alloc(__u32 device, struct io *iop)$/;"	f
+dip_cleanup	btt/devs.c	/^void dip_cleanup(void)$/;"	f
+dip_d2c_avg	btt/output.c	/^ai_dip_t dip_d2c_avg(struct d_info *dip) { return &dip->avgs.d2c; }$/;"	f
+dip_exit	btt/devs.c	/^void dip_exit(void)$/;"	f
+dip_find_sec	btt/devs.c	/^struct io *dip_find_sec(struct d_info *dip, enum iop_type type, __u64 sec)$/;"	f
+dip_foreach	btt/devs.c	/^void dip_foreach(struct io *iop, enum iop_type type,$/;"	f
+dip_foreach_list	btt/devs.c	/^void dip_foreach_list(struct io *iop, enum iop_type type, struct list_head *hd)$/;"	f
+dip_foreach_out	btt/devs.c	/^void dip_foreach_out(void (*func)(struct d_info *, void *), void *arg)$/;"	f
+dip_g2i_avg	btt/output.c	/^ai_dip_t dip_g2i_avg(struct d_info *dip) { return &dip->avgs.g2i; }$/;"	f
+dip_i2d_avg	btt/output.c	/^ai_dip_t dip_i2d_avg(struct d_info *dip) { return &dip->avgs.i2d; }$/;"	f
+dip_plug	btt/devs.c	/^void dip_plug(__u32 dev, double cur_time)$/;"	f
+dip_q2a_avg	btt/output.c	/^ai_dip_t dip_q2a_avg(struct d_info *dip) { return &dip->avgs.q2a; }$/;"	f
+dip_q2a_dm_avg	btt/output.c	/^ai_dip_t dip_q2a_dm_avg(struct d_info *dip) { return &dip->avgs.q2a_dm; }$/;"	f
+dip_q2c_avg	btt/output.c	/^ai_dip_t dip_q2c_avg(struct d_info *dip) { return &dip->avgs.q2c; }$/;"	f
+dip_q2c_dm_avg	btt/output.c	/^ai_dip_t dip_q2c_dm_avg(struct d_info *dip) { return &dip->avgs.q2c_dm; }$/;"	f
+dip_q2g_avg	btt/output.c	/^ai_dip_t dip_q2g_avg(struct d_info *dip) { return &dip->avgs.q2g; }$/;"	f
+dip_q2m_avg	btt/output.c	/^ai_dip_t dip_q2m_avg(struct d_info *dip) { return &dip->avgs.q2m; }$/;"	f
+dip_q2q_avg	btt/output.c	/^ai_dip_t dip_q2q_avg(struct d_info *dip) { return &dip->avgs.q2q; }$/;"	f
+dip_q2q_dm_avg	btt/output.c	/^ai_dip_t dip_q2q_dm_avg(struct d_info *dip) { return &dip->avgs.q2q_dm; }$/;"	f
+dip_rb_fe	btt/inlines.h	/^static inline void dip_rb_fe(struct d_info *dip, enum iop_type type,$/;"	f
+dip_rb_find_sec	btt/inlines.h	/^static inline struct io *dip_rb_find_sec(struct d_info *dip,$/;"	f
+dip_rb_ins	btt/inlines.h	/^static inline int dip_rb_ins(struct d_info *dip, struct io *iop)$/;"	f
+dip_rb_mkhds	btt/devs.c	/^static inline void *dip_rb_mkhds(void)$/;"	f	file:
+dip_rb_rem	btt/inlines.h	/^static inline void dip_rb_rem(struct io *iop)$/;"	f
+dip_s2g_avg	btt/output.c	/^ai_dip_t dip_s2g_avg(struct d_info *dip) { return &dip->avgs.s2g; }$/;"	f
+dip_unplug	btt/devs.c	/^void dip_unplug(__u32 dev, double cur_time, __u64 nios_up)$/;"	f
+dip_unplug_tm	btt/devs.c	/^void dip_unplug_tm(__u32 dev, double cur_time, __u64 nios_up)$/;"	f
+dip_update_q	btt/inlines.h	/^static inline void dip_update_q(struct d_info *dip, struct io *iop)$/;"	f
+dispatch_time	blkparse.c	/^	unsigned long long dispatch_time;$/;"	m	struct:io_track	file:
+display_io_track	btt/trace_complete.c	/^static void display_io_track(FILE *ofp, struct io *iop)$/;"	f	file:
+do_fifo	blkparse.c	/^static int do_fifo(void)$/;"	f	file:
+do_file	blkparse.c	/^static int do_file(void)$/;"	f	file:
+do_output_dip_seek_info	btt/output.c	/^static void do_output_dip_seek_info(struct d_info *dip, FILE *ofp, int is_q2q)$/;"	f	file:
+do_pipe	blkparse.c	/^static void do_pipe(int fd)$/;"	f	file:
+done	blkparse.c	/^static volatile int done;$/;"	v	file:
+done	blktrace.c	/^static volatile int done;$/;"	v	file:
+done	btt/bt_timeline.c	/^int verbose, done, time_bounded, output_all_data, seek_absolute;$/;"	v
+dp_cond	blktrace.c	/^static pthread_cond_t dp_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+dp_entries	blktrace.c	/^static volatile int dp_entries;$/;"	v	file:
+dp_mutex	blktrace.c	/^static pthread_mutex_t dp_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+dpp	blktrace.c	/^	struct devpath *dpp;$/;"	m	struct:io_info	typeref:struct:io_info::devpath	file:
+dpp	blktrace.c	/^	struct devpath *dpp;$/;"	m	struct:trace_buf	typeref:struct:trace_buf::devpath	file:
+dpp_free	blktrace.c	/^static void dpp_free(struct devpath *dpp)$/;"	f	file:
+driverdata	blkiomon.c	/^static long leftover = 0, driverdata = 0, match = 0, mismatch = 0, sequence = 0;$/;"	v	file:
+drops	blktrace.c	/^	unsigned long long drops;$/;"	m	struct:devpath	file:
+drvdata	blkiomon.c	/^static struct output drvdata, human, binary, debug;$/;"	v	typeref:struct:output	file:
+dstat	blkiomon.c	/^struct dstat {$/;"	s	file:
+dstat_curr	blkiomon.c	/^static int dstat_curr = 0;$/;"	v	file:
+dstat_list	blkiomon.c	/^static struct dstat *dstat_list[2] = {};$/;"	v	typeref:struct:dstat	file:
+dstat_msg	blkiomon.c	/^struct dstat_msg {$/;"	s	file:
+dstat_mutex	blkiomon.c	/^static pthread_mutex_t dstat_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+dstat_tree	blkiomon.c	/^static struct rb_root dstat_tree[2] = { RB_ROOT, RB_ROOT };$/;"	v	typeref:struct:rb_root	file:
+du64_to_nsec	btreplay/btreplay.c	/^static inline long long unsigned du64_to_nsec(__u64 du64)$/;"	f	file:
+du64_to_sec	btreplay/btreplay.c	/^static inline long long unsigned du64_to_sec(__u64 du64)$/;"	f	file:
+dump_binary	blkparse.c	/^static char *dump_binary;$/;"	v	file:
+dump_bit	blkiomon.c	/^static void dump_bit(struct trace *t, const char *descr)$/;"	f	file:
+dump_bits	blkiomon.c	/^static void dump_bits(struct trace *t1, struct trace *t2, const char *descr)$/;"	f	file:
+dump_fp	blkparse.c	/^static FILE *dump_fp;$/;"	v	file:
+dump_hdr	btt/iostat.c	/^static void dump_hdr(void)$/;"	f	file:
+dump_io_stats	blkparse.c	/^static void dump_io_stats(struct per_dev_info *pdi, struct io_stats *ios,$/;"	f	file:
+dump_pdu	blkparse_fmt.c	/^static char *dump_pdu(unsigned char *pdu_buf, int pdu_len)$/;"	f	file:
+dump_trace	blkparse.c	/^static void dump_trace(struct blk_io_trace *t, struct per_cpu_info *pci,$/;"	f	file:
+dump_trace	blkrawverify.c	/^static void dump_trace(FILE *ofp, char *prefix, struct blk_io_trace *bit)$/;"	f	file:
+dump_trace_fs	blkparse.c	/^static void dump_trace_fs(struct blk_io_trace *t, struct per_dev_info *pdi,$/;"	f	file:
+dump_trace_pc	blkparse.c	/^static void dump_trace_pc(struct blk_io_trace *t, struct per_dev_info *pdi,$/;"	f	file:
+dump_wait_stats	blkparse.c	/^static void dump_wait_stats(struct per_process_info *ppi)$/;"	f	file:
+easy_parse_avgs	btt/bt_timeline.c	/^int easy_parse_avgs, ignore_remaps;$/;"	v
+end	blkparse.c	/^	unsigned long start, end;$/;"	m	struct:skip_info	file:
+end	btt/globals.h	/^	__u64 start, end;$/;"	m	struct:range_info
+end_lba	blktrace_api.h	/^	__u64 end_lba;$/;"	m	struct:blk_user_trace_setup
+end_time	btt/globals.h	/^	double start_time, last_plug, plugged_time, end_time;$/;"	m	struct:d_info
+error	blktrace_api.h	/^	__u16 error;		\/* completion error *\/$/;"	m	struct:blk_io_trace
+events	blkparse.c	/^	unsigned long long events;$/;"	m	struct:per_dev_info	file:
+exe_match	btt/output.c	/^static inline int exe_match(char *exe, char *name)$/;"	f	file:
+exes	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+exit_tracing	blktrace.c	/^static void exit_tracing(void)$/;"	f	file:
+f_head	btt/globals.h	/^	struct list_head f_head, a_head;$/;"	m	struct:io	typeref:struct:io::list_head
+fatal	btreplay/btrecord.c	/^static inline void fatal(const char *errstring, const int exitval,$/;"	f	file:
+fatal	btreplay/btreplay.c	/^static inline void fatal(const char *errstring, const int exitval,$/;"	f	file:
+fatal	btt/btt_plot.py	/^def fatal(msg):$/;"	f
+fd	blktrace.c	/^	int fd, idx, ncpus;$/;"	m	struct:devpath	file:
+fd	blktrace.c	/^	int fd, ncpus;$/;"	m	struct:cl_conn	file:
+fd	blktrace.h	/^	int fd;$/;"	m	struct:per_cpu_info
+fd	btt/mmap.c	/^static int fd;$/;"	v	file:
+fdblock	blktrace.h	/^	int fdblock;$/;"	m	struct:per_cpu_info
+file_info	btt/misc.c	/^struct file_info {$/;"	s	file:
+file_name	btreplay/btrecord.c	/^	char *devnm, *file_name;$/;"	m	struct:ifile_info	file:
+file_name	btreplay/btrecord.c	/^	char *file_name, *vfn;$/;"	m	struct:io_stream	file:
+file_name	btreplay/btreplay.c	/^	char *devnm, *file_name;$/;"	m	struct:thr_info	file:
+files	btt/btt_plot.py	/^			files = get_files(t)$/;"	v
+files	btt/btt_plot.py	/^	files = parse_args(sys.argv)$/;"	v
+files_to_clean	btt/misc.c	/^LIST_HEAD(files_to_clean);$/;"	v
+fill_ofname	blktrace.c	/^static int fill_ofname(struct io_info *iop, int cpu)$/;"	f	file:
+fill_rwbs	blkparse_fmt.c	/^static inline void fill_rwbs(char *rwbs, struct blk_io_trace *t)$/;"	f	file:
+find_genesis	blkparse.c	/^static void find_genesis(void)$/;"	f	file:
+find_input_devs	btreplay/btreplay.c	/^static void find_input_devs(char *idir)$/;"	f	file:
+find_input_files	btreplay/btrecord.c	/^static void find_input_files(char *idir)$/;"	f	file:
+find_input_files	btreplay/btreplay.c	/^static void find_input_files(void)$/;"	f	file:
+find_mask_map	act_mask.c	/^int find_mask_map(char *string)$/;"	f
+find_ppi	blkparse.c	/^static struct per_process_info *find_ppi(pid_t pid)$/;"	f	file:
+find_ppi_by_name	blkparse.c	/^static struct per_process_info *find_ppi_by_name(char *name)$/;"	f	file:
+find_ppi_by_pid	blkparse.c	/^static struct per_process_info *find_ppi_by_pid(pid_t pid)$/;"	f	file:
+find_ppm	blkparse.c	/^static struct process_pid_map *find_ppm(pid_t pid)$/;"	f	file:
+find_process	btt/proc.c	/^struct p_info *find_process(__u32 pid, char *name)$/;"	f
+find_process_io_stats	blkparse.c	/^static struct io_stats *find_process_io_stats(pid_t pid)$/;"	f	file:
+find_process_name	blkparse.c	/^char *find_process_name(pid_t pid)$/;"	f
+find_records	btreplay/btreplay.c	/^static int find_records = 0;		\/\/ Boolean: Find record files auto$/;"	v	file:
+find_stopwatch_interval	blkparse.c	/^static int find_stopwatch_interval(char *string)$/;"	f	file:
+find_traces	btreplay/btrecord.c	/^static int find_traces = 0;			\/\/ Boolean: Find traces in dir$/;"	v	file:
+find_track	blkparse.c	/^static struct io_track *find_track(struct per_dev_info *pdi, pid_t pid,$/;"	f	file:
+first	blkparse.c	/^	struct trace *first, *last;$/;"	m	struct:ms_stream	typeref:struct:ms_stream::trace	file:
+first	stats.h	/^	int first;$/;"	m	struct:histlog2
+first_reported_time	blkparse.c	/^	unsigned long long first_reported_time;$/;"	m	struct:per_dev_info	file:
+first_ts	btt/plat.c	/^	double first_ts, last_ts, tl;$/;"	m	struct:plat_info	file:
+fld	btt/bno_plot.py	/^			fld = line.split(None)$/;"	v
+flush_subbuf_net	blktrace.c	/^static int flush_subbuf_net(struct trace_buf *tbp)$/;"	f	file:
+fn	blkiomon.c	/^	char *fn;$/;"	m	struct:output	file:
+fname	blktrace.h	/^	char fname[128];$/;"	m	struct:per_cpu_info
+fo	btt/bno_plot.py	/^		fo = open(t, 'w')$/;"	v
+fo	btt/bno_plot.py	/^	fo = open('%s\/plot.cmds' % tmpdir, 'w')$/;"	v
+fp	blkiomon.c	/^	FILE *fp;$/;"	m	struct:output	file:
+fp	btt/aqd.c	/^	FILE *fp;$/;"	m	struct:aqd_info	file:
+fp	btt/plat.c	/^	FILE *fp;$/;"	m	struct:plat_info	file:
+free_bilinks	btt/bt_timeline.c	/^LIST_HEAD(free_bilinks);$/;"	v
+free_iocbs	btreplay/btreplay.c	/^	struct list_head head, free_iocbs, used_iocbs;$/;"	m	struct:thr_info	typeref:struct:thr_info::	file:
+free_ios	btt/bt_timeline.c	/^LIST_HEAD(free_ios);$/;"	v
+free_tracer_heads	blktrace.c	/^static void free_tracer_heads(struct devpath *dpp)$/;"	f	file:
+from_dev	btreplay/btreplay.c	/^	char *from_dev, *to_dev;$/;"	m	struct:map_dev	file:
+fs_buf	blktrace.c	/^	void *fs_buf;$/;"	m	struct:mmap_info	file:
+fs_buf_len	blktrace.c	/^	unsigned long long fs_size, fs_max_size, fs_off, fs_buf_len;$/;"	m	struct:mmap_info	file:
+fs_max_size	blktrace.c	/^	unsigned long long fs_size, fs_max_size, fs_off, fs_buf_len;$/;"	m	struct:mmap_info	file:
+fs_off	blktrace.c	/^	unsigned long long fs_size, fs_max_size, fs_off, fs_buf_len;$/;"	m	struct:mmap_info	file:
+fs_size	blktrace.c	/^	unsigned long long fs_size, fs_max_size, fs_off, fs_buf_len;$/;"	m	struct:mmap_info	file:
+func	btt/output.c	/^	ai_dip_t (*func)(struct d_info *);$/;"	m	struct:__oda	file:
+func	btt/output.c	/^	ai_pip_t (*func)(struct p_info *);$/;"	m	struct:__opa	file:
+g2i	btt/globals.h	/^	struct avg_info g2i;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+g2i	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::	file:
+g_time	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+gen_labels	btt/btt_plot.py	/^def gen_labels(db, ax, type):$/;"	f
+gen_legends	btt/btt_plot.py	/^	def gen_legends(a, legends):$/;"	f	function:generate_output
+gen_title	btt/btt_plot.py	/^def gen_title(fig, type, title_str):$/;"	f
+gen_ylabel	btt/btt_plot.py	/^	def gen_ylabel(ax, type):$/;"	f	function:gen_labels
+generate_all	btt/btt_plot.py	/^generate_all	= False$/;"	v
+generate_output	btt/btt_plot.py	/^def generate_output(type, db):$/;"	f
+genesis	btreplay/btrecord.c	/^	__u64 tpkts, genesis;$/;"	m	struct:ifile_info	file:
+genesis	btreplay/btrecord.h	/^	__u64 genesis;$/;"	m	struct:io_file_hdr
+genesis	btreplay/btreplay.c	/^static __u64 genesis = ~0;		\/\/ Earliest time seen$/;"	v	file:
+genesis	btt/bt_timeline.c	/^time_t genesis, last_vtrace;$/;"	v
+genesis_time	blkparse.c	/^static unsigned long long genesis_time;$/;"	v	file:
+get_all_drops	blktrace.c	/^static void get_all_drops(void)$/;"	f	file:
+get_base	btt/btt_plot.py	/^get_base 	= lambda file: file[file.find('_')+1:file.rfind('_')]$/;"	v
+get_btversion	btreplay/btrecord.h	/^static inline void get_btversion(__u64 version, int *mjr, int *mnr, int *sub)$/;"	f
+get_cpu_info	blkparse.c	/^static struct per_cpu_info *get_cpu_info(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+get_data	btt/btt_plot.py	/^def get_data(files):$/;"	f
+get_dev_info	blkparse.c	/^static struct per_dev_info *get_dev_info(dev_t dev)$/;"	f	file:
+get_dev_name	blkparse.c	/^static char *get_dev_name(struct per_dev_info *pdi, char *buffer, int size)$/;"	f	file:
+get_drops	blktrace.c	/^static int get_drops(struct devpath *dpp)$/;"	f	file:
+get_files	btt/btt_plot.py	/^def get_files(type):$/;"	f
+get_magic	blkparse.c	/^static inline __u32 get_magic(struct blk_io_trace *bit)$/;"	f	file:
+get_ncpus	btreplay/btreplay.c	/^static void get_ncpus(void)$/;"	f	file:
+get_nio_up	btt/trace_plug.c	/^static __u64 get_nio_up(struct io *u_iop)$/;"	f	file:
+get_pdu_int	blkparse_fmt.c	/^static unsigned int get_pdu_int(struct blk_io_trace *t)$/;"	f	file:
+get_pdu_remap	blkparse_fmt.c	/^static void get_pdu_remap(struct blk_io_trace *t, struct blk_io_trace_remap *r)$/;"	f	file:
+get_pdulen	blkparse.c	/^static inline __u16 get_pdulen(struct blk_io_trace *bit)$/;"	f	file:
+gettime	btreplay/btreplay.c	/^static inline __u64 gettime(void)$/;"	f	file:
+handle	blkparse.c	/^static int handle(struct ms_stream *msp)$/;"	f	file:
+handle_args	blktrace.c	/^static int handle_args(int argc, char *argv[])$/;"	f	file:
+handle_args	btreplay/btrecord.c	/^void handle_args(int argc, char *argv[])$/;"	f
+handle_args	btreplay/btreplay.c	/^static void handle_args(int argc, char *argv[])$/;"	f	file:
+handle_args	btt/args.c	/^void handle_args(int argc, char *argv[])$/;"	f
+handle_client_data	blktrace.c	/^static void handle_client_data(struct net_server_s *ns, int events)$/;"	f	file:
+handle_complete	btt/trace_complete.c	/^static void handle_complete(struct io *c_iop)$/;"	f	file:
+handle_g	btt/trace_im.c	/^static void handle_g(struct io *g_iop)$/;"	f	file:
+handle_i	btt/trace_im.c	/^static void handle_i(struct io *i_iop)$/;"	f	file:
+handle_issue	btt/trace_issue.c	/^static void handle_issue(struct io *d_iop)$/;"	f	file:
+handle_list	blktrace.c	/^static int (*handle_list)(struct tracer_devpath_head *, struct list_head *);$/;"	v	file:
+handle_list_file	blktrace.c	/^static int handle_list_file(struct tracer_devpath_head *hd,$/;"	f	file:
+handle_list_net	blktrace.c	/^handle_list_net(__attribute__((__unused__))struct tracer_devpath_head *hd,$/;"	f	file:
+handle_m	btt/trace_im.c	/^static void handle_m(struct io *m_iop)$/;"	f	file:
+handle_mem_failure	blktrace.c	/^static int handle_mem_failure(size_t length)$/;"	f	file:
+handle_notify	blkparse.c	/^static void handle_notify(struct blk_io_trace *bit)$/;"	f	file:
+handle_open_failure	blktrace.c	/^static int handle_open_failure(void)$/;"	f	file:
+handle_open_failure	btt/misc.c	/^static int handle_open_failure(void)$/;"	f	file:
+handle_pfds	blktrace.c	/^static int (*handle_pfds)(struct tracer *, int, int);$/;"	v	file:
+handle_pfds_entries	blktrace.c	/^static int handle_pfds_entries(struct tracer *tp, int nevs, int force_read)$/;"	f	file:
+handle_pfds_file	blktrace.c	/^static int handle_pfds_file(struct tracer *tp, int nevs, int force_read)$/;"	f	file:
+handle_pfds_netclient	blktrace.c	/^static int handle_pfds_netclient(struct tracer *tp, int nevs, int force_read)$/;"	f	file:
+handle_queue	btt/trace_queue.c	/^static void handle_queue(struct io *q_iop)$/;"	f	file:
+handle_requeue	btt/trace_requeue.c	/^static void handle_requeue(struct io *r_iop)$/;"	f	file:
+handle_s	btt/trace_im.c	/^static void handle_s(struct io *s_iop)$/;"	f	file:
+handle_sigint	blkparse.c	/^static void handle_sigint(__attribute__((__unused__)) int sig)$/;"	f	file:
+handle_sigint	blktrace.c	/^static void handle_sigint(__attribute__((__unused__)) int sig)$/;"	f	file:
+hash_head	btt/globals.h	/^	struct list_head all_head, hash_head;$/;"	m	struct:d_info	typeref:struct:d_info::
+hash_next	blkparse.c	/^	struct per_process_info *hash_next, *list_next;$/;"	m	struct:per_process_info	typeref:struct:per_process_info::per_process_info	file:
+hash_next	blkparse.c	/^	struct process_pid_map *hash_next, *list_next;$/;"	m	struct:process_pid_map	typeref:struct:process_pid_map::process_pid_map	file:
+have_drv_data	blkparse.c	/^static int have_drv_data = 0;$/;"	v	file:
+hdr	btreplay/btrecord.h	/^	struct io_bunch_hdr hdr;$/;"	m	struct:io_bunch	typeref:struct:io_bunch::io_bunch_hdr
+head	blktrace.c	/^	struct list_head head;$/;"	m	struct:cl_host	typeref:struct:cl_host::list_head	file:
+head	blktrace.c	/^	struct list_head head;$/;"	m	struct:devpath	typeref:struct:devpath::list_head	file:
+head	blktrace.c	/^	struct list_head head;$/;"	m	struct:trace_buf	typeref:struct:trace_buf::list_head	file:
+head	blktrace.c	/^	struct list_head head;$/;"	m	struct:tracer	typeref:struct:tracer::list_head	file:
+head	blktrace.c	/^	struct list_head head;$/;"	m	struct:tracer_devpath_head	typeref:struct:tracer_devpath_head::list_head	file:
+head	btreplay/btrecord.c	/^	struct list_head head;$/;"	m	struct:ifile_info	typeref:struct:ifile_info::list_head	file:
+head	btreplay/btreplay.c	/^	struct list_head head, free_iocbs, used_iocbs;$/;"	m	struct:thr_info	typeref:struct:thr_info::list_head	file:
+head	btreplay/btreplay.c	/^	struct list_head head;$/;"	m	struct:dev_info	typeref:struct:dev_info::list_head	file:
+head	btreplay/btreplay.c	/^	struct list_head head;$/;"	m	struct:iocb_pkt	typeref:struct:iocb_pkt::list_head	file:
+head	btreplay/btreplay.c	/^	struct list_head head;$/;"	m	struct:map_dev	typeref:struct:map_dev::list_head	file:
+head	btt/devmap.c	/^	struct list_head head;$/;"	m	struct:devmap	typeref:struct:devmap::list_head	file:
+head	btt/globals.h	/^	struct list_head head;		\/* on: qranges OR cranges *\/$/;"	m	struct:range_info	typeref:struct:range_info::list_head
+head	btt/globals.h	/^	struct list_head head;$/;"	m	struct:io_list	typeref:struct:io_list::list_head
+head	btt/misc.c	/^	struct list_head head;$/;"	m	struct:buf_info	typeref:struct:buf_info::list_head	file:
+head	btt/misc.c	/^	struct list_head head;$/;"	m	struct:file_info	typeref:struct:file_info::list_head	file:
+head	btt/output.c	/^	struct seek_mode_info *head;$/;"	m	struct:o_seek_info	typeref:struct:o_seek_info::seek_mode_info	file:
+heads	blktrace.c	/^	struct tracer_devpath_head *heads;$/;"	m	struct:devpath	typeref:struct:devpath::tracer_devpath_head	file:
+heads	btt/globals.h	/^	void *heads;$/;"	m	struct:d_info
+hist	btt/unplug_hist.c	/^	int hist[NBKTS * sizeof(int)];$/;"	m	struct:hist_bkt	file:
+hist_bkt	btt/unplug_hist.c	/^struct hist_bkt {$/;"	s	file:
+histlog2	stats.h	/^struct histlog2 {$/;"	s
+histlog2_account	stats.h	/^static inline void histlog2_account(__u32 *bucket, __u32 val,$/;"	f
+histlog2_index	stats.h	/^static inline int histlog2_index(__u64 val, struct histlog2 *h)$/;"	f
+histlog2_merge	stats.h	/^static inline void histlog2_merge(struct histlog2 *h, __u32 *dst, __u32 *src)$/;"	f
+histlog2_print	stats.h	/^static inline void histlog2_print(FILE *fp, const char *s, __u32 a[],$/;"	f
+histlog2_to_be	stats.h	/^static inline void histlog2_to_be(__u32 a[], struct histlog2 *h)$/;"	f
+histlog2_upper_limit	stats.h	/^static inline __u64 histlog2_upper_limit(int index, struct histlog2 *h)$/;"	f
+histo_idx	btt/inlines.h	/^static inline int histo_idx(__u64 nbytes)$/;"	f
+histos	btt/q2d.c	/^	unsigned long histos[Q2D_MAX_HISTO + 1];$/;"	m	struct:q2d_info	file:
+hostname	blktrace.c	/^	char *hostname;$/;"	m	struct:cl_host	file:
+hostname	blktrace.c	/^static char hostname[MAXHOSTNAMELEN];$/;"	v	file:
+hostname_addr	blktrace.c	/^static struct sockaddr_in hostname_addr;$/;"	v	typeref:struct:sockaddr_in	file:
+human	blkiomon.c	/^static struct output drvdata, human, binary, debug;$/;"	v	typeref:struct:	file:
+i2d	btt/globals.h	/^	struct avg_info i2d;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+i2d	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::	file:
+i_time	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+ibase	btreplay/btreplay.c	/^static char *ibase = "replay";		\/\/ Input base name$/;"	v	file:
+idir	btreplay/btrecord.c	/^static char *idir = ".";			\/\/ Input directory base$/;"	v	file:
+idir	btreplay/btreplay.c	/^static char *idir = ".";		\/\/ Input directory base$/;"	v	file:
+idle_time	btt/globals.h	/^	double last_qu_change, last_dev_change, tot_qusz, idle_time;$/;"	m	struct:stats
+idx	blktrace.c	/^	int fd, idx, ncpus;$/;"	m	struct:devpath	file:
+ifd	blktrace.c	/^	int ifd, ofd;$/;"	m	struct:io_info	file:
+ifd	btreplay/btrecord.c	/^	int cpu, ifd;$/;"	m	struct:ifile_info	file:
+ifd	btreplay/btreplay.c	/^	int cpu, ifd, ofd, iterations;$/;"	m	struct:thr_info	file:
+ifile_info	btreplay/btrecord.c	/^struct ifile_info {$/;"	s	file:
+ifn	blktrace.c	/^	char ifn[MAXPATHLEN + 64];$/;"	m	struct:io_info	file:
+ifp	blkiomon.c	/^static FILE *ifp;$/;"	v	file:
+ignore_remaps	btt/bt_timeline.c	/^int easy_parse_avgs, ignore_remaps;$/;"	v
+iip	btreplay/btrecord.c	/^	struct ifile_info *iip;$/;"	m	struct:io_stream	typeref:struct:io_stream::ifile_info	file:
+in_addr_eq	blktrace.c	/^static inline int in_addr_eq(struct in_addr a, struct in_addr b)$/;"	f	file:
+incr_entries	blktrace.c	/^static inline void incr_entries(int entries_handled)$/;"	f	file:
+increase_limit	blktrace.c	/^static int increase_limit(int resource, rlim_t increase)$/;"	f	file:
+increase_limit	btt/misc.c	/^static int increase_limit(int resource, rlim_t increase)$/;"	f	file:
+init_dev_heads	btt/devs.c	/^void init_dev_heads(void)$/;"	f
+init_mmap_info	blktrace.c	/^static void init_mmap_info(struct mmap_info *mip)$/;"	f	file:
+input_dir	blkparse.c	/^static char *input_dir;$/;"	v	file:
+input_name	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+insert	btt/proc.c	/^static void insert(struct p_info *pip)$/;"	f	file:
+insert_name	btt/proc.c	/^static void insert_name(struct p_info *that)$/;"	f	file:
+insert_pid	btt/proc.c	/^static void insert_pid(struct p_info *that, __u32 pid)$/;"	f	file:
+insert_skip	blkparse.c	/^static void insert_skip(struct per_cpu_info *pci, unsigned long start,$/;"	f	file:
+interval	blkiomon.c	/^static int interval = -1;$/;"	v	file:
+interval_thread	blkiomon.c	/^static pthread_t interval_thread;$/;"	v	file:
+io	btt/globals.h	/^struct io {$/;"	s
+io_alloc	btt/inlines.h	/^static inline struct io *io_alloc(void)$/;"	f
+io_bunch	btreplay/btrecord.h	/^struct io_bunch {$/;"	s
+io_bunch_add	btreplay/btrecord.c	/^static void io_bunch_add(struct io_stream *stream, struct io_spec *spec)$/;"	f	file:
+io_bunch_create	btreplay/btrecord.c	/^static inline void io_bunch_create(struct io_stream *stream, __u64 start_time)$/;"	f	file:
+io_bunch_hdr	btreplay/btrecord.h	/^struct io_bunch_hdr {$/;"	s
+io_file_hdr	btreplay/btrecord.h	/^struct io_file_hdr {$/;"	s
+io_first_list	btt/inlines.h	/^static inline struct io *io_first_list(struct list_head *head)$/;"	f
+io_free	btt/inlines.h	/^static inline void io_free(struct io *iop)$/;"	f
+io_free_all	btt/inlines.h	/^static inline void io_free_all(void)$/;"	f
+io_info	blktrace.c	/^struct io_info {$/;"	s	file:
+io_list	btt/globals.h	/^struct io_list {$/;"	s
+io_pkt	btreplay/btrecord.h	/^struct io_pkt {$/;"	s
+io_release	btt/inlines.h	/^static inline void io_release(struct io *iop)$/;"	f
+io_setup	btt/inlines.h	/^static inline int io_setup(struct io *iop, enum iop_type type)$/;"	f
+io_spec	btreplay/btrecord.c	/^struct io_spec {$/;"	s	file:
+io_stats	blkparse.c	/^	struct io_stats io_stats;$/;"	m	struct:per_dev_info	typeref:struct:per_dev_info::io_stats	file:
+io_stats	blkparse.c	/^	struct io_stats io_stats;$/;"	m	struct:per_process_info	typeref:struct:per_process_info::io_stats	file:
+io_stats	blktrace.h	/^	struct io_stats io_stats;$/;"	m	struct:per_cpu_info	typeref:struct:per_cpu_info::io_stats
+io_stats	blktrace.h	/^struct io_stats {$/;"	s
+io_stream	btreplay/btrecord.c	/^struct io_stream {$/;"	s	file:
+io_track	blkparse.c	/^struct io_track {$/;"	s	file:
+io_unplugs	blktrace.h	/^	unsigned long io_unplugs, timer_unplugs;$/;"	m	struct:io_stats
+iocb	btreplay/btreplay.c	/^	struct iocb iocb;$/;"	m	struct:iocb_pkt	typeref:struct:iocb_pkt::iocb	file:
+iocb_init	btreplay/btreplay.c	/^static void iocb_init(struct thr_info *tip, struct iocb_pkt *iocbp)$/;"	f	file:
+iocb_pkt	btreplay/btreplay.c	/^struct iocb_pkt {$/;"	s	file:
+iocb_setup	btreplay/btreplay.c	/^static void iocb_setup(struct iocb_pkt *iocbp, int rw, int n, long long off)$/;"	f	file:
+iocbs_map	btreplay/btreplay.c	/^static void iocbs_map(struct thr_info *tip, struct iocb **list, $/;"	f	file:
+iop	btt/globals.h	/^	struct io *iop;$/;"	m	struct:io_list	typeref:struct:io_list::io
+iop_open	blktrace.c	/^static int iop_open(struct io_info *iop, int cpu)$/;"	f	file:
+iop_rem_dip	btt/devs.c	/^void iop_rem_dip(struct io *iop)$/;"	f
+iop_type	btt/globals.h	/^enum iop_type {$/;"	g
+ios	blktrace.c	/^	struct io_info *ios;$/;"	m	struct:devpath	typeref:struct:devpath::io_info	file:
+ios	blktrace.c	/^	struct io_info *ios;$/;"	m	struct:tracer	typeref:struct:tracer::io_info	file:
+ios	btt/globals.h	/^	__u64 rqm[2], ios[2], sec[2], wait, svctm;$/;"	m	struct:stats
+ios_s	btt/globals.h	/^	double rqm_s[2], ios_s[2], sec_s[2];$/;"	m	struct:stats_t
+iostat_check_time	btt/iostat.c	/^void iostat_check_time(__u64 stamp)$/;"	f
+iostat_complete	btt/iostat.c	/^void iostat_complete(struct io *q_iop, struct io *c_iop)$/;"	f
+iostat_dump_stats	btt/iostat.c	/^void iostat_dump_stats(__u64 stamp, int all)$/;"	f
+iostat_getrq	btt/iostat.c	/^void iostat_getrq(struct io *iop)$/;"	f
+iostat_init	btt/iostat.c	/^void iostat_init(void)$/;"	f
+iostat_interval	btt/iostat.c	/^__u64 iostat_interval = 1000000000;$/;"	v
+iostat_issue	btt/iostat.c	/^void iostat_issue(struct io *iop)$/;"	f
+iostat_last_stamp	btt/iostat.c	/^__u64 last_start, iostat_last_stamp;$/;"	v
+iostat_merge	btt/iostat.c	/^void iostat_merge(struct io *iop)$/;"	f
+iostat_name	btt/iostat.c	/^char *iostat_name = NULL;$/;"	v
+iostat_ofp	btt/iostat.c	/^FILE *iostat_ofp = NULL;$/;"	v
+iread_kb	blktrace.h	/^	unsigned long long iread_kb, iwrite_kb;$/;"	m	struct:io_stats
+iread_kb_pc	blktrace.h	/^	unsigned long long qread_kb_pc, qwrite_kb_pc, iread_kb_pc, iwrite_kb_pc;$/;"	m	struct:io_stats
+ireads	blktrace.h	/^	unsigned long ireads, iwrites, rrqueue, wrqueue;$/;"	m	struct:io_stats
+ireads_pc	blktrace.h	/^	unsigned long qreads_pc, qwrites_pc, ireads_pc, iwrites_pc;$/;"	m	struct:io_stats
+is_done	blkparse.c	295;"	d	file:
+is_done	blktrace.c	/^	volatile int status, is_done;$/;"	m	struct:tracer	file:
+is_pipe	blkparse.c	/^static int is_pipe(const char *str)$/;"	f	file:
+is_plugged	btt/globals.h	/^	int is_plugged, nplugs, nplugs_t;$/;"	m	struct:d_info
+is_reap_done	btreplay/btreplay.c	/^static inline int is_reap_done(struct thr_info *tip)$/;"	f	file:
+is_remapper	blkparse.c	/^static inline int is_remapper(struct per_dev_info *pdi)$/;"	f	file:
+is_send_done	btreplay/btreplay.c	/^static inline int is_send_done(struct thr_info *tip)$/;"	f	file:
+iter_done_cond	btreplay/btreplay.c	/^static pthread_cond_t iter_done_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+iter_done_mutex	btreplay/btreplay.c	/^static pthread_mutex_t iter_done_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+iter_start	btreplay/btreplay.c	/^static volatile int iter_start = 0;$/;"	v	file:
+iter_start_cond	btreplay/btreplay.c	/^static pthread_cond_t iter_start_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+iter_start_mutex	btreplay/btreplay.c	/^static pthread_mutex_t iter_start_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+iterations	btreplay/btreplay.c	/^	int cpu, ifd, ofd, iterations;$/;"	m	struct:thr_info	file:
+iwrite_kb	blktrace.h	/^	unsigned long long iread_kb, iwrite_kb;$/;"	m	struct:io_stats
+iwrite_kb_pc	blktrace.h	/^	unsigned long long qread_kb_pc, qwrite_kb_pc, iread_kb_pc, iwrite_kb_pc;$/;"	m	struct:io_stats
+iwrites	blktrace.h	/^	unsigned long ireads, iwrites, rrqueue, wrqueue;$/;"	m	struct:io_stats
+iwrites_pc	blktrace.h	/^	unsigned long qreads_pc, qwrites_pc, ireads_pc, iwrites_pc;$/;"	m	struct:io_stats
+jhash	jhash.h	/^static inline u32 jhash(const void *key, u32 length, u32 initval)$/;"	f
+jhash2	jhash.h	/^static inline u32 jhash2(u32 *k, u32 length, u32 initval)$/;"	f
+jhash_1word	jhash.h	/^static inline u32 jhash_1word(u32 a, u32 initval)$/;"	f
+jhash_2words	jhash.h	/^static inline u32 jhash_2words(u32 a, u32 b, u32 initval)$/;"	f
+jhash_3words	jhash.h	/^static inline u32 jhash_3words(u32 a, u32 b, u32 c, u32 initval)$/;"	f
+kill_running_trace	blktrace.c	/^static int kill_running_trace;$/;"	v	file:
+l_opts	blkiomon.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+l_opts	blkparse.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+l_opts	blktrace.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+l_opts	btreplay/btrecord.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+l_opts	btreplay/btreplay.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+l_opts	btt/args.c	/^static struct option l_opts[] = {$/;"	v	typeref:struct:option	file:
+label  sec  act-table	doc/blktrace.tex	/^\\end{tabular}$/;"	b
+label  sec  act-table	doc/blktrace.tex	/^\\newpage$/;"	b
+label  sec  appendix	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:appendix}Sample \\texttt{btt}$/;"	s
+label  sec  blktrace-kg	doc/blktrace.tex	/^\\newpage\\section*{\\label{sec:blktrace-kg}Appendix: blktrace Kernel Guide}$/;"	s
+label  sec  bno_plot	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:bno_plot}bno\\_plot.py}$/;"	s
+label  sec  cmd-line	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:cmd-line}Command Line}$/;"	s
+label  sec  default-output	doc/blktrace.tex	/^a 'B' (for barrier operations) or 'S' (for synchronous operations).$/;"	b
+label  sec  detailed-data	btt/doc/btt.tex	/^\\newpage$/;"	u
+label  sec  dhist	btt/doc/btt.tex	/^  \\end{figure}$/;"	u
+label  sec  getting-started	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:getting-started}Getting Started}$/;"	s
+label  sec  hist	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:hist}Histogram Data Files}$/;"	s
+label  sec  intro	btt/doc/btt.tex	/^\\maketitle$/;"	s
+label  sec  intro	doc/blktrace.tex	/^\\maketitle$/;"	s
+label  sec  iostat	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:iostat}iostat Data File}$/;"	s
+label  sec  lat	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:lat}\\label{sec:lat-q2d}\\label{sec:lat-q2c}\\label{sec:lat-d2c}Latency Data Files}$/;"	s
+label  sec  o-A	btt/doc/btt.tex	/^  section~\\ref{sec:seek} for more details about seek distances.$/;"	u
+label  sec  o-B	btt/doc/btt.tex	/^  detail you can specify this option.$/;"	u
+label  sec  o-B	btt/doc/btt.tex	/^\\end{document}$/;"	u
+label  sec  o-D	btt/doc/btt.tex	/^  more data points provided.$/;"	u
+label  sec  o-I	btt/doc/btt.tex	/^  binary trace files.$/;"	u
+label  sec  o-L	btt/doc/btt.tex	/^  discussed in section~\\ref{sec:lat-d2c}.$/;"	u
+label  sec  o-M	btt/doc/btt.tex	/^  \\end{quote}$/;"	u
+label  sec  o-P	btt/doc/btt.tex	/^  discussed in section~\\ref{sec:per-io}.$/;"	u
+label  sec  o-Q	btt/doc/btt.tex	/^  discussed in section~\\ref{sec:lat-q2c}.$/;"	u
+label  sec  o-S	btt/doc/btt.tex	/^  discussed in section~\\ref{sec:seek}.$/;"	u
+label  sec  o-V	btt/doc/btt.tex	/^  up\\_hist} specified on the command line: \\texttt{up\\_hist\\_008,032.dat}.$/;"	u
+label  sec  o-X	btt/doc/btt.tex	/^\\end{verbatim}$/;"	u
+label  sec  o-a	btt/doc/btt.tex	/^\\end{verbatim}$/;"	u
+label  sec  o-d	btt/doc/btt.tex	/^  \\end{description}$/;"	u
+label  sec  o-e	btt/doc/btt.tex	/^  for devices 8,0 and 8,8 would then be: \\texttt{"8,0:8,8"}.$/;"	u
+label  sec  o-h	btt/doc/btt.tex	/^  would be \\texttt{"-e mkfs.ext3,mount"}.$/;"	u
+label  sec  o-i	btt/doc/btt.tex	/^  section~\\ref{sec:cmd-line}.$/;"	u
+label  sec  o-l	btt/doc/btt.tex	/^  on the output produced.$/;"	u
+label  sec  o-m	btt/doc/btt.tex	/^  average latency over that period.$/;"	u
+label  sec  o-o	btt/doc/btt.tex	/^  Internal option, still under construction.$/;"	u
+label  sec  o-p	btt/doc/btt.tex	/^  this option this data is redirected to the file specified.$/;"	u
+label  sec  o-q	btt/doc/btt.tex	/^time values are separated from the Q time values with a vertical bar.$/;"	u
+label  sec  o-r	btt/doc/btt.tex	/^  and decremented when a \\emph{complete} is performed.$/;"	u
+label  sec  o-s	btt/doc/btt.tex	/^  Ignore remap traces; older kernels did not implement the full remap PDU.$/;"	u
+label  sec  o-tT	btt/doc/btt.tex	/^  section~\\ref{sec:iostat}.$/;"	u
+label  sec  o-u	btt/doc/btt.tex	/^  specified) and end time (or the end of the run) specified.$/;"	u
+label  sec  o-v	btt/doc/btt.tex	/^  Prints out the \\texttt{btt} version, and exits.$/;"	u
+label  sec  o-z	btt/doc/btt.tex	/^  \\end{verbatim}$/;"	u
+label  sec  output-overview	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:output-overview}Output Overview}$/;"	s
+label  sec  per-io	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:per-io}Per-IO Data File}$/;"	s
+label  sec  qhist	btt/doc/btt.tex	/^  column (Y values) represents the number of IOs of that size.$/;"	u
+label  sec  seek	btt/doc/btt.tex	/^\\newpage\\section{\\label{sec:seek}Seek Data Files}$/;"	s
+label  sec  sps-spec	btt/doc/btt.tex	/^\\newpage\\subsection{\\label{sec:sps-spec}Seeks Per Second}$/;"	u
+last	blkparse.c	/^	struct trace *first, *last;$/;"	m	struct:ms_stream	typeref:struct:ms_stream::	file:
+last_allowed_time	blkparse.c	/^static unsigned long long last_allowed_time;$/;"	v	file:
+last_dev_change	btt/globals.h	/^	double last_qu_change, last_dev_change, tot_qusz, idle_time;$/;"	m	struct:stats
+last_end	btt/seek.c	/^	long long last_start, last_end;$/;"	m	struct:seeki	file:
+last_plug	btt/globals.h	/^	double start_time, last_plug, plugged_time, end_time;$/;"	m	struct:d_info
+last_q	btt/bt_timeline.c	/^__u64 last_q = (__u64)-1;$/;"	v
+last_q	btt/globals.h	/^	__u64 last_q, n_qs, n_ds;$/;"	m	struct:d_info
+last_q	btt/globals.h	/^	__u64 last_q;$/;"	m	struct:p_info
+last_qu_change	btt/globals.h	/^	double last_qu_change, last_dev_change, tot_qusz, idle_time;$/;"	m	struct:stats
+last_read_time	blkparse.c	/^	unsigned long long last_read_time;$/;"	m	struct:per_dev_info	file:
+last_reported_time	blkparse.c	/^	unsigned long long last_reported_time;$/;"	m	struct:per_dev_info	file:
+last_sequence	blktrace.h	/^	unsigned long last_sequence;$/;"	m	struct:per_cpu_info
+last_start	btt/iostat.c	/^__u64 last_start, iostat_last_stamp;$/;"	v
+last_start	btt/seek.c	/^	long long last_start, last_end;$/;"	m	struct:seeki	file:
+last_time	btreplay/btrecord.c	/^	__u64 start_time, last_time, bunches, pkts;$/;"	m	struct:io_stream	file:
+last_ts	btt/plat.c	/^	double first_ts, last_ts, tl;$/;"	m	struct:plat_info	file:
+last_vtrace	btt/bt_timeline.c	/^time_t genesis, last_vtrace;$/;"	v
+latency_alloc	btt/latency.c	/^void latency_alloc(struct d_info *dip)$/;"	f
+latency_d2c	btt/latency.c	/^void latency_d2c(struct d_info *dip, __u64 tstamp, __u64 latency)$/;"	f
+latency_open	btt/latency.c	/^FILE *latency_open(__u32 device, char *name, char *post)$/;"	f
+latency_out	btt/latency.c	/^static inline void latency_out(FILE *ofp, __u64 tstamp, __u64 latency)$/;"	f	file:
+latency_q2c	btt/latency.c	/^void latency_q2c(struct d_info *dip, __u64 tstamp, __u64 latency)$/;"	f
+latency_q2d	btt/latency.c	/^void latency_q2d(struct d_info *dip, __u64 tstamp, __u64 latency)$/;"	f
+leftover	blkiomon.c	/^static long leftover = 0, driverdata = 0, match = 0, mismatch = 0, sequence = 0;$/;"	v	file:
+len	blktrace.c	/^	int cpu, len;$/;"	m	struct:trace_buf	file:
+len	blktrace.c	/^	u32 len;		\/* length of following trace data *\/$/;"	m	struct:blktrace_net_hdr	file:
+len	btt/mmap.c	/^static size_t len;$/;"	v	file:
+linked	btt/globals.h	/^	int linked;$/;"	m	struct:io
+list_add	btt/list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
+list_add_tail	btt/list.h	/^static inline void list_add_tail(struct list_head *new, struct list_head *head)$/;"	f
+list_del	btt/list.h	/^static inline void list_del(struct list_head *entry)$/;"	f
+list_empty	btt/list.h	/^static inline int list_empty(const struct list_head *head)$/;"	f
+list_entry	btt/list.h	146;"	d
+list_first	btt/list.h	/^static inline struct list_head *list_first(const struct list_head *head)$/;"	f
+list_for_each_safe	btt/list.h	136;"	d
+list_head	btt/list.h	/^struct list_head {$/;"	s
+list_len	btt/list.h	/^static inline int list_len(struct list_head *head_p)$/;"	f
+list_move_tail	btt/list.h	/^static inline void list_move_tail(struct list_head *list,$/;"	f
+list_next	blkparse.c	/^	struct per_process_info *hash_next, *list_next;$/;"	m	struct:per_process_info	typeref:struct:per_process_info::	file:
+list_next	blkparse.c	/^	struct process_pid_map *hash_next, *list_next;$/;"	m	struct:process_pid_map	typeref:struct:process_pid_map::	file:
+list_replace	btt/list.h	/^static inline void list_replace(struct list_head *old,$/;"	f
+list_replace_init	btt/list.h	/^static inline void list_replace_init(struct list_head *old,$/;"	f
+list_splice	btt/list.h	/^static inline void list_splice(struct list_head *list, struct list_head *head)$/;"	f
+listen_fd	blktrace.c	/^	int listen_fd, connects, nchs;$/;"	m	struct:net_server_s	file:
+lock_on_cpu	blktrace.c	/^static int lock_on_cpu(int cpu)$/;"	f	file:
+log_action	blkparse.c	/^static void log_action(struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f	file:
+log_complete	blkparse.c	/^static void log_complete(struct per_dev_info *pdi, struct per_cpu_info *pci,$/;"	f	file:
+log_generic	blkparse.c	/^static void log_generic(struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f	file:
+log_insert	blkparse.c	/^static void log_insert(struct per_dev_info *pdi, struct per_cpu_info *pci,$/;"	f	file:
+log_issue	blkparse.c	/^static void log_issue(struct per_dev_info *pdi, struct per_cpu_info *pci,$/;"	f	file:
+log_merge	blkparse.c	/^static void log_merge(struct per_dev_info *pdi, struct per_cpu_info *pci,$/;"	f	file:
+log_pc	blkparse.c	/^static void log_pc(struct per_cpu_info *pci, struct blk_io_trace *t, char *act)$/;"	f	file:
+log_queue	blkparse.c	/^static void log_queue(struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f	file:
+log_split	blkparse.c	/^static void log_split(struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f	file:
+log_track_complete	blkparse.c	/^static unsigned long long log_track_complete(struct per_dev_info *pdi,$/;"	f	file:
+log_track_frontmerge	blkparse.c	/^static void log_track_frontmerge(struct per_dev_info *pdi,$/;"	f	file:
+log_track_getrq	blkparse.c	/^static void log_track_getrq(struct per_dev_info *pdi, struct blk_io_trace *t)$/;"	f	file:
+log_track_insert	blkparse.c	/^static unsigned long long log_track_insert(struct per_dev_info *pdi,$/;"	f	file:
+log_track_issue	blkparse.c	/^static unsigned long long log_track_issue(struct per_dev_info *pdi,$/;"	f	file:
+log_track_queue	blkparse.c	/^static void log_track_queue(struct per_dev_info *pdi, struct blk_io_trace *t)$/;"	f	file:
+log_unplug	blkparse.c	/^static void log_unplug(struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f	file:
+long_form	act_mask.c	/^	char *long_form;$/;"	m	struct:mask_map	file:
+longest_allocation_wait	blkparse.c	/^	unsigned long long longest_allocation_wait[2];$/;"	m	struct:per_process_info	file:
+longest_completion_wait	blkparse.c	/^	unsigned long long longest_completion_wait[2];$/;"	m	struct:per_process_info	file:
+longest_dispatch_wait	blkparse.c	/^	unsigned long long longest_dispatch_wait[2];$/;"	m	struct:per_process_info	file:
+m2d	btt/globals.h	/^	struct avg_info m2d;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+m_time	btt/globals.h	/^	__u64 bytes_left, g_time, i_time, m_time, d_time, c_time, d_sec, c_sec;$/;"	m	struct:io
+magic	blktrace.c	/^	u32 magic;		\/* same as trace magic *\/$/;"	m	struct:blktrace_net_hdr	file:
+magic	blktrace_api.h	/^	__u32 magic;		\/* MAGIC << 8 | version *\/$/;"	m	struct:blk_io_trace
+main	blkiomon.c	/^int main(int argc, char *argv[])$/;"	f
+main	blkparse.c	/^int main(int argc, char *argv[])$/;"	f
+main	blkrawverify.c	/^int main(int argc, char *argv[])$/;"	f
+main	blktrace.c	/^int main(int argc, char *argv[])$/;"	f
+main	btreplay/btrecord.c	/^int main(int argc, char *argv[])$/;"	f
+main	btreplay/btreplay.c	/^int main(int argc, char *argv[])$/;"	f
+main	btt/bt_timeline.c	/^int main(int argc, char *argv[])$/;"	f
+main	verify_blkparse.c	/^int main(int argc, char *argv[])$/;"	f
+make_dev_hdr	btt/misc.c	/^char *make_dev_hdr(char *pad, size_t len, struct d_info *dip, int add_parens)$/;"	f
+make_timespec	blktrace.c	/^static inline void make_timespec(struct timespec *tsp, long delta_msec)$/;"	f	file:
+mandir	Makefile	/^mandir = $(prefix)\/man$/;"	m
+map_dev	btreplay/btreplay.c	/^static char *map_dev(char *from_dev)$/;"	f	file:
+map_dev	btreplay/btreplay.c	/^struct map_dev {$/;"	s	file:
+mask	act_mask.c	/^	int mask;$/;"	m	struct:mask_map	file:
+mask_map	act_mask.c	/^struct mask_map {$/;"	s	file:
+mask_maps	act_mask.c	/^static struct mask_map mask_maps[] = {$/;"	v	typeref:struct:mask_map	file:
+match	blkiomon.c	/^static long leftover = 0, driverdata = 0, match = 0, mismatch = 0, sequence = 0;$/;"	v	file:
+match	btreplay/btrecord.c	/^static inline int match(__u32 action)$/;"	f	file:
+max	blktrace.h	21;"	d
+max	btt/globals.h	/^	__u64 min, max, total;$/;"	m	struct:avg_info
+max	stats.h	/^	__u64 max;$/;"	m	struct:minmax
+max_bunch_tm	btreplay/btrecord.c	/^static __u64 max_bunch_tm = (10 * 1000 * 1000);	\/\/ 10 milliseconds$/;"	v	file:
+max_cpus	blktrace.c	/^	u32 max_cpus;$/;"	m	struct:blktrace_net_hdr	file:
+max_depth	blkparse.c	/^	unsigned int max_depth[2];$/;"	m	struct:per_dev_info	file:
+max_pkts_per_bunch	btreplay/btrecord.c	/^static __u64 max_pkts_per_bunch = 8;		\/\/ Default # of pkts per bunch$/;"	v	file:
+mean	btt/output.c	/^	double mean;$/;"	m	struct:o_seek_info	file:
+median	btt/output.c	/^	long long nseeks, median;$/;"	m	struct:o_seek_info	file:
+merge_data	btt/output.c	/^} merge_data;$/;"	v	typeref:struct:__anon4
+min	blktrace.h	20;"	d
+min	btreplay/btreplay.c	/^static inline int min(int a, int b)$/;"	f	file:
+min	btt/globals.h	/^	__u64 min, max, total;$/;"	m	struct:avg_info
+min	stats.h	/^	__u64 min;$/;"	m	struct:minmax
+min_len	btt/mmap.c	/^static inline size_t min_len(size_t a, size_t b)$/;"	f	file:
+minl	btreplay/btreplay.c	/^static inline long minl(long a, long b)$/;"	f	file:
+minmax	stats.h	/^struct minmax {$/;"	s
+minmax_account	stats.h	/^static inline void minmax_account(struct minmax *mm, __u64 value)$/;"	f
+minmax_avg	stats.h	/^static inline double minmax_avg(struct minmax *mm)$/;"	f
+minmax_init	stats.h	/^static inline void minmax_init(struct minmax *mm)$/;"	f
+minmax_merge	stats.h	/^static inline void minmax_merge(struct minmax *dst, struct minmax *src)$/;"	f
+minmax_print	stats.h	/^static inline int minmax_print(FILE *fp, const char *s, struct minmax *mm)$/;"	f
+minmax_to_be	stats.h	/^static inline void minmax_to_be(struct minmax *mm)$/;"	f
+minmax_var	stats.h	/^static inline double minmax_var(struct minmax *mm)$/;"	f
+mismatch	blkiomon.c	/^static long leftover = 0, driverdata = 0, match = 0, mismatch = 0, sequence = 0;$/;"	v	file:
+mk_btversion	btreplay/btrecord.h	/^static inline __u64 mk_btversion(int mjr, int mnr, int sub)$/;"	f
+mkhandle	btt/devs.c	/^static inline char *mkhandle(char *str, __u32 device, char *post)$/;"	f	file:
+mmap_info	blktrace.c	/^	struct mmap_info mmap_info;$/;"	m	struct:io_info	typeref:struct:io_info::mmap_info	file:
+mmap_info	blktrace.c	/^struct mmap_info {$/;"	s	file:
+mode	btt/globals.h	/^struct mode {$/;"	s
+mode	btt/output.c	/^	long long mode;$/;"	m	struct:seek_mode_info	file:
+modes	btt/globals.h	/^	long long *modes;$/;"	m	struct:mode
+more_than_one	blkparse.c	/^	int more_than_one;$/;"	m	struct:per_process_info	file:
+most_seeks	btt/globals.h	/^	int most_seeks, nmds;$/;"	m	struct:mode
+move_map	btt/mmap.c	/^static int move_map(void)$/;"	f	file:
+mread_kb	blktrace.h	/^	unsigned long long mread_kb, mwrite_kb;$/;"	m	struct:io_stats
+mreads	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+ms_alloc	blkparse.c	/^static struct ms_stream *ms_alloc(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+ms_deq	blkparse.c	/^static inline void ms_deq(struct ms_stream *msp)$/;"	f	file:
+ms_hash	blkparse.c	/^struct ms_stream *ms_hash[256];$/;"	v	typeref:struct:ms_stream
+ms_head	blkparse.c	/^struct ms_stream *ms_head;$/;"	v	typeref:struct:ms_stream
+ms_peek	blkparse.c	/^static inline struct trace *ms_peek(struct ms_stream *msp)$/;"	f	file:
+ms_peek_time	blkparse.c	/^static inline __u64 ms_peek_time(struct ms_stream *msp)$/;"	f	file:
+ms_prime	blkparse.c	/^static int ms_prime(struct ms_stream *msp)$/;"	f	file:
+ms_resort	blkparse.c	/^static inline void ms_resort(struct ms_stream *msp)$/;"	f	file:
+ms_sort	blkparse.c	/^static void ms_sort(struct ms_stream *msp)$/;"	f	file:
+ms_stream	blkparse.c	/^struct ms_stream {$/;"	s	file:
+msg	blkiomon.c	/^	struct dstat_msg msg;$/;"	m	struct:dstat	typeref:struct:dstat::dstat_msg	file:
+msg_id	blkiomon.c	/^static long msg_id = -1;$/;"	v	file:
+msg_q	blkiomon.c	/^static int msg_q_id = -1, msg_q = -1;$/;"	v	file:
+msg_q_id	blkiomon.c	/^static int msg_q_id = -1, msg_q = -1;$/;"	v	file:
+msg_q_name	blkiomon.c	/^static char *msg_q_name = NULL;$/;"	v	file:
+msgs_ofp	btt/bt_timeline.c	/^FILE *rngs_ofp, *avgs_ofp, *xavgs_ofp, *per_io_ofp, *msgs_ofp;$/;"	v
+mt_cond	blktrace.c	/^static pthread_cond_t mt_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+mt_mutex	blktrace.c	/^static pthread_mutex_t mt_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+mtype	blkiomon.c	/^	long mtype;$/;"	m	struct:dstat_msg	file:
+mutex	blktrace.c	/^	pthread_mutex_t mutex;$/;"	m	struct:tracer_devpath_head	file:
+mutex	btreplay/btreplay.c	/^	pthread_mutex_t mutex;$/;"	m	struct:thr_info	file:
+mwrite_kb	blktrace.h	/^	unsigned long long mread_kb, mwrite_kb;$/;"	m	struct:io_stats
+mwrites	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+my_accept	blktrace.c	/^static int my_accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen)$/;"	f	file:
+my_btversion	btreplay/btrecord.h	/^static char my_btversion[] = "1.0.0";$/;"	v
+my_fopen	blktrace.c	/^static FILE *my_fopen(const char *path, const char *mode)$/;"	f	file:
+my_fopen	btt/misc.c	/^FILE *my_fopen(const char *path, const char *mode)$/;"	f
+my_mlock	blktrace.c	/^static int my_mlock(const void *addr, size_t len)$/;"	f	file:
+my_mmap	blktrace.c	/^static void *my_mmap(void *addr, size_t length, int prot, int flags, int fd,$/;"	f	file:
+my_open	blktrace.c	/^static int my_open(const char *path, int flags)$/;"	f	file:
+my_open	btt/misc.c	/^int my_open(const char *path, int flags)$/;"	f
+my_socket	blktrace.c	/^static int my_socket(int domain, int type, int protocol)$/;"	f	file:
+n	btt/globals.h	/^	double n;$/;"	m	struct:stats_t
+n	btt/globals.h	/^	int n;$/;"	m	struct:avg_info
+n	btt/output.c	/^	int n;$/;"	m	struct:__ohead_data	file:
+n	btt/output.c	/^	int n;$/;"	m	struct:__q2d	file:
+n_actQs	btt/output.c	/^int n_actQs;$/;"	v
+n_act_q	btt/globals.h	/^	__u64 n_act_q, t_act_q;	\/* # currently active when Q comes in *\/$/;"	m	struct:d_info
+n_devs	btt/bt_timeline.c	/^unsigned int n_devs;$/;"	v
+n_ds	btt/globals.h	/^	__u64 last_q, n_qs, n_ds;$/;"	m	struct:d_info
+n_iters_done	btreplay/btreplay.c	/^static volatile int n_iters_done = 0;$/;"	v	file:
+n_merges	btt/output.c	/^int n_merges = 0;$/;"	v
+n_nios_uplugs	btt/output.c	/^__u64 n_nios_uplugs, n_nios_uplugs_t;$/;"	v
+n_nios_uplugs_t	btt/output.c	/^__u64 n_nios_uplugs, n_nios_uplugs_t;$/;"	v
+n_plugs	btt/output.c	/^	long n_plugs, n_unplugs_t;$/;"	m	struct:plug_info	file:
+n_plugs	btt/output.c	/^int n_plugs;$/;"	v
+n_qs	btt/globals.h	/^	__u64 last_q, n_qs, n_ds;$/;"	m	struct:d_info
+n_reclaims_done	btreplay/btreplay.c	/^static volatile int n_reclaims_done = 0;$/;"	v	file:
+n_replays_done	btreplay/btreplay.c	/^static volatile int n_replays_done = 0;$/;"	v	file:
+n_replays_ready	btreplay/btreplay.c	/^static volatile int n_replays_ready = 0;$/;"	v	file:
+n_seeks	btt/output.c	/^int n_seeks;$/;"	v
+n_traces	btt/bt_timeline.c	/^unsigned long n_traces;$/;"	v
+n_unplugs_t	btt/output.c	/^	long n_plugs, n_unplugs_t;$/;"	m	struct:plug_info	file:
+na	btt/aqd.c	/^	int na;		\/* # active *\/$/;"	m	struct:aqd_info	file:
+naios	btreplay/btreplay.c	/^static int naios = 512;			\/\/ Number of AIOs per thread$/;"	v	file:
+naios_free	btreplay/btreplay.c	/^	volatile long naios_out, naios_free;$/;"	m	struct:thr_info	file:
+naios_out	btreplay/btreplay.c	/^	volatile long naios_out, naios_free;$/;"	m	struct:thr_info	file:
+name	blkparse.c	/^	char *name;$/;"	m	struct:per_dev_info	file:
+name	blktrace_api.h	/^	char name[32];			\/* output *\/$/;"	m	struct:blk_user_trace_setup
+name	btt/globals.h	/^	char *name;$/;"	m	struct:p_info
+name	btt/proc.c	/^		char *name;$/;"	m	union:pn_info::__anon5	file:
+name_fixup	blkparse.c	/^static int name_fixup(char *name)$/;"	f	file:
+nb_sec	btreplay/btreplay.c	/^static int nb_sec = 512;		\/\/ Number of bytes per sector$/;"	v	file:
+nbunches	btreplay/btrecord.h	/^	__u64 nbunches;$/;"	m	struct:io_file_hdr
+nbytes	btreplay/btrecord.h	/^	__u64 nbytes;$/;"	m	struct:io_pkt
+nbytes	btreplay/btreplay.c	/^	int nbytes;$/;"	m	struct:iocb_pkt	file:
+nc	blktrace.c	/^	struct cl_conn *nc;	\/* Server network connection *\/$/;"	m	struct:io_info	typeref:struct:io_info::cl_conn	file:
+nc_add_dpp	blktrace.c	/^static struct devpath *nc_add_dpp(struct cl_conn *nc,$/;"	f	file:
+nc_find_dpp	blktrace.c	/^static struct devpath *nc_find_dpp(struct cl_conn *nc,$/;"	f	file:
+nchs	blktrace.c	/^	int listen_fd, connects, nchs;$/;"	m	struct:net_server_s	file:
+ncpus	blkparse.c	/^	int ncpus;$/;"	m	struct:per_dev_info	file:
+ncpus	blktrace.c	/^	int fd, idx, ncpus;$/;"	m	struct:devpath	file:
+ncpus	blktrace.c	/^	int fd, ncpus;$/;"	m	struct:cl_conn	file:
+ncpus	blktrace.c	/^static int ncpus;$/;"	v	file:
+ncpus	btreplay/btreplay.c	/^static int ncpus = 0;			\/\/ Number of CPUs in the system$/;"	v	file:
+nd	btt/output.c	/^	unsigned long long nq, nd, blkmin, blkmax, total;$/;"	m	struct:__anon4	file:
+ndevices	blkparse.c	/^static int ndevices;$/;"	v	file:
+ndevs	blktrace.c	/^	int connects, ndevs, cl_opens;$/;"	m	struct:cl_host	file:
+ndevs	blktrace.c	/^static int ndevs;$/;"	v	file:
+nelems	blktrace.h	/^	unsigned int nelems;$/;"	m	struct:per_cpu_info
+net_add_client_host	blktrace.c	/^static struct cl_host *net_add_client_host(struct net_server_s *ns,$/;"	f	file:
+net_add_connection	blktrace.c	/^static void net_add_connection(struct net_server_s *ns)$/;"	f	file:
+net_ch_remove	blktrace.c	/^static void net_ch_remove(struct cl_host *ch, int ncpus)$/;"	f	file:
+net_client_data	blktrace.c	/^static int net_client_data(struct cl_conn *nc)$/;"	f	file:
+net_client_read_data	blktrace.c	/^static void net_client_read_data(struct cl_conn *nc, struct devpath *dpp,$/;"	f	file:
+net_client_use_send	blktrace.c	/^static inline int net_client_use_send(void)$/;"	f	file:
+net_client_use_sendfile	blktrace.c	/^static inline int net_client_use_sendfile(void)$/;"	f	file:
+net_close_connection	blktrace.c	/^static void net_close_connection(int *fd)$/;"	f	file:
+net_find_client_host	blktrace.c	/^static struct cl_host *net_find_client_host(struct net_server_s *ns,$/;"	f	file:
+net_get_header	blktrace.c	/^static int net_get_header(struct cl_conn *nc, struct blktrace_net_hdr *bnh)$/;"	f	file:
+net_mode	blktrace.c	/^static int net_mode;$/;"	v	file:
+net_port	blktrace.c	/^static int net_port = TRACE_NET_PORT;$/;"	v	file:
+net_recv_data	blktrace.c	/^static int net_recv_data(int fd, void *buf, unsigned int len)$/;"	f	file:
+net_send_close	blktrace.c	/^static void net_send_close(int fd, char *buts_name, int drops)$/;"	f	file:
+net_send_data	blktrace.c	/^static int net_send_data(int fd, void *buf, unsigned int buf_len)$/;"	f	file:
+net_send_drops	blktrace.c	/^static void net_send_drops(int fd)$/;"	f	file:
+net_send_header	blktrace.c	/^static int net_send_header(int fd, int cpu, char *buts_name, int len)$/;"	f	file:
+net_send_open	blktrace.c	/^static void net_send_open(int fd, int cpu, char *buts_name)$/;"	f	file:
+net_send_open_close	blktrace.c	/^static void net_send_open_close(int fd, int cpu, char *buts_name, int len)$/;"	f	file:
+net_sendfile	blktrace.c	/^static int net_sendfile(struct io_info *iop)$/;"	f	file:
+net_sendfile_data	blktrace.c	/^static inline int net_sendfile_data(struct tracer *tp, struct io_info *iop)$/;"	f	file:
+net_server	blktrace.c	/^static int net_server(void)$/;"	f	file:
+net_server_handle_connections	blktrace.c	/^static int net_server_handle_connections(struct net_server_s *ns)$/;"	f	file:
+net_server_s	blktrace.c	/^struct net_server_s {$/;"	s	file:
+net_setup_addr	blktrace.c	/^static int net_setup_addr(void)$/;"	f	file:
+net_setup_client	blktrace.c	/^static int net_setup_client(void)$/;"	f	file:
+net_setup_pfds	blktrace.c	/^static void net_setup_pfds(struct net_server_s *ns)$/;"	f	file:
+net_use_sendfile	blktrace.c	/^static int net_use_sendfile = 1;$/;"	v	file:
+nevents	blktrace.c	/^	unsigned long long nevents;$/;"	m	struct:pdc_stats	file:
+next	blkiomon.c	/^	struct dstat *next;$/;"	m	struct:dstat	typeref:struct:dstat::dstat	file:
+next	blkiomon.c	/^	struct trace *next;$/;"	m	struct:trace	typeref:struct:trace::trace	file:
+next	blkparse.c	/^	struct ms_stream *next;$/;"	m	struct:ms_stream	typeref:struct:ms_stream::ms_stream	file:
+next	blkparse.c	/^	struct skip_info *prev, *next;$/;"	m	struct:skip_info	typeref:struct:skip_info::	file:
+next	blkparse.c	/^	struct trace *next;$/;"	m	struct:trace	typeref:struct:trace::trace	file:
+next	btt/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+next	btt/output.c	/^	struct seek_mode_info *next;$/;"	m	struct:seek_mode_info	typeref:struct:seek_mode_info::seek_mode_info	file:
+next_bunch	btreplay/btreplay.c	/^static int next_bunch(struct thr_info *tip, struct io_bunch *bunch)$/;"	f	file:
+next_io	btreplay/btrecord.c	/^static int next_io(struct ifile_info *iip, struct io_spec *spec)$/;"	f	file:
+next_t	btt/mmap.c	/^static struct blk_io_trace *next_t;$/;"	v	typeref:struct:blk_io_trace	file:
+next_trace	btt/mmap.c	/^int next_trace(struct blk_io_trace *t, void **pdu)$/;"	f
+nfiles	blkparse.c	/^	int nfiles;$/;"	m	struct:per_dev_info	file:
+nfiles	btreplay/btreplay.c	/^static int nfiles = 0;			\/\/ Number of files to handle$/;"	v	file:
+nfree_current	btreplay/btreplay.c	/^static int nfree_current(struct thr_info *tip)$/;"	f	file:
+nhistos	btt/q2d.c	/^	unsigned long nhistos;$/;"	m	struct:q2d_info	file:
+nios	blktrace.c	/^	int cpu, nios;$/;"	m	struct:tracer	file:
+nios_plug_info	btt/output.c	/^struct nios_plug_info {$/;"	s	file:
+nios_plug_info	btt/output.c	/^} nios_plug_info;$/;"	v	typeref:struct:nios_plug_info
+nios_up	btt/globals.h	/^	__u64 nios_up, nios_upt;$/;"	m	struct:d_info
+nios_upt	btt/globals.h	/^	__u64 nios_up, nios_upt;$/;"	m	struct:d_info
+nl	btt/plat.c	/^	long nl;$/;"	m	struct:plat_info	file:
+nmds	btt/globals.h	/^	int most_seeks, nmds;$/;"	m	struct:mode
+no_stalls	btreplay/btreplay.c	/^static int no_stalls = 0;		\/\/ Boolean: Disable pre-stalls$/;"	v	file:
+node	blkiomon.c	/^	struct rb_node node;$/;"	m	struct:dstat	typeref:struct:dstat::rb_node	file:
+node	blkiomon.c	/^	struct rb_node node;$/;"	m	struct:trace	typeref:struct:trace::rb_node	file:
+node_ptr	blkiomon.c	/^	struct rb_node **node_ptr;$/;"	m	struct:rb_search	typeref:struct:rb_search::rb_node	file:
+npkts	btreplay/btrecord.h	/^	__u64 npkts;$/;"	m	struct:io_bunch_hdr
+nplugs	btt/globals.h	/^	int is_plugged, nplugs, nplugs_t;$/;"	m	struct:d_info
+nplugs_t	btt/globals.h	/^	int is_plugged, nplugs, nplugs_t;$/;"	m	struct:d_info
+nq	btt/output.c	/^	unsigned long long nq, nd, blkmin, blkmax, total;$/;"	m	struct:__anon4	file:
+ns	blktrace.c	/^	struct net_server_s *ns;$/;"	m	struct:cl_host	typeref:struct:cl_host::net_server_s	file:
+ns_head	blktrace.c	/^	struct list_head ch_head, ns_head;$/;"	m	struct:cl_conn	typeref:struct:cl_conn::	file:
+nseeks	btt/output.c	/^	int nseeks;$/;"	m	struct:seek_mode_info	file:
+nseeks	btt/output.c	/^	long long nseeks, median;$/;"	m	struct:o_seek_info	file:
+nseeks	btt/seek.c	/^	int nseeks;$/;"	m	struct:seek_bkt	file:
+nseeks	btt/seek.c	/^	unsigned long nseeks;$/;"	m	struct:sps_bkt	file:
+nthreads_error	blktrace.c	/^static volatile int nthreads_error;$/;"	v	file:
+nthreads_leaving	blktrace.c	/^static volatile int nthreads_leaving;$/;"	v	file:
+nthreads_running	blktrace.c	/^static volatile int nthreads_running;$/;"	v	file:
+num	stats.h	/^	__u64 num;$/;"	m	struct:minmax
+num	stats.h	/^	int num;$/;"	m	struct:histlog2
+o_seek_info	btt/output.c	/^struct o_seek_info {$/;"	s	file:
+obase	btreplay/btrecord.c	/^static char *obase = "replay";			\/\/ Output file base$/;"	v	file:
+obuf	blktrace.c	/^	char *obuf;$/;"	m	struct:io_info	file:
+odir	btreplay/btrecord.c	/^static char *odir = ".";			\/\/ Output directory base$/;"	v	file:
+ofd	blktrace.c	/^	int ifd, ofd;$/;"	m	struct:io_info	file:
+ofd	btreplay/btreplay.c	/^	int cpu, ifd, ofd, iterations;$/;"	m	struct:thr_info	file:
+offsetof	btt/list.h	10;"	d
+offsetof	rbtree.h	113;"	d
+offsetof	rbtree.h	115;"	d
+offsetof	rbtree.h	117;"	d
+ofn	blktrace.c	/^	char ofn[MAXPATHLEN + 64];$/;"	m	struct:io_info	file:
+ofp	blkparse.c	/^FILE *ofp = NULL;$/;"	v
+ofp	blktrace.c	/^	FILE *ofp;$/;"	m	struct:io_info	file:
+ofp	btreplay/btrecord.c	/^	FILE *ofp, *vfp;$/;"	m	struct:io_stream	file:
+ofp	btt/misc.c	/^	FILE *ofp;$/;"	m	struct:file_info	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:__od	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:__oda	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:__op	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:__opa	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:__q2d	file:
+ofp	btt/output.c	/^	FILE *ofp;$/;"	m	struct:ohead_data	file:
+ohead_data	btt/output.c	/^struct ohead_data {$/;"	s	file:
+oname	btt/misc.c	/^	char *oname;$/;"	m	struct:file_info	file:
+open_client_connections	blktrace.c	/^static int open_client_connections(void)$/;"	f	file:
+open_ios	blktrace.c	/^static int open_ios(struct tracer *tp)$/;"	f	file:
+open_pit	btt/devs.c	/^static inline FILE *open_pit(char *str)$/;"	f	file:
+output	blkiomon.c	/^struct output {$/;"	s	file:
+output_actQ_info	btt/output.c	/^void output_actQ_info(FILE *ofp)$/;"	f
+output_all_data	btt/bt_timeline.c	/^int verbose, done, time_bounded, output_all_data, seek_absolute;$/;"	v
+output_avgs	btt/output.c	/^int output_avgs(FILE *ofp)$/;"	f
+output_binary	blkparse.c	/^static void output_binary(void *buf, int len)$/;"	f	file:
+output_devs	btt/output.c	/^float output_devs(FILE *ofp, float base)$/;"	f
+output_dip_avg	btt/output.c	/^void output_dip_avg(FILE *ofp, char *hdr, ai_dip_t (*func)(struct d_info *))$/;"	f
+output_dip_merge_ratio	btt/output.c	/^void output_dip_merge_ratio(FILE *ofp)$/;"	f
+output_dip_prep_ohead	btt/output.c	/^void output_dip_prep_ohead(FILE *ofp)$/;"	f
+output_dip_q2q_seek_info	btt/output.c	/^void output_dip_q2q_seek_info(FILE *ofp)$/;"	f
+output_dip_seek_info	btt/output.c	/^void output_dip_seek_info(FILE *ofp)$/;"	f
+output_dir	blktrace.c	/^static char *output_dir;$/;"	v	file:
+output_file	btt/btt_plot.py	/^				output_file = 'bnos_%s.png' % base$/;"	v
+output_file	btt/btt_plot.py	/^output_file	= None$/;"	v
+output_hdr	btt/output.c	/^void output_hdr(FILE *ofp, char *hdr)$/;"	f
+output_histos	btt/output.c	/^void output_histos(void)$/;"	f
+output_name	blkparse.c	/^static char *output_name;$/;"	v	file:
+output_name	blktrace.c	/^static char *output_name;$/;"	v	file:
+output_name	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+output_pip_avg	btt/output.c	/^void output_pip_avg(FILE *ofp, char *hdr, ai_pip_t (*func)(struct p_info *))$/;"	f
+output_plug_info	btt/output.c	/^void output_plug_info(FILE *ofp)$/;"	f
+output_procs	btt/output.c	/^float output_procs(FILE *ofp, float base)$/;"	f
+output_q2d_histo	btt/output.c	/^void output_q2d_histo(FILE *ofp)$/;"	f
+output_ranges	btt/output.c	/^int output_ranges(FILE *ofp)$/;"	f
+output_regions	btt/output.c	/^int output_regions(FILE *ofp, char *header, struct region_info *reg,$/;"	f
+output_section_hdr	btt/output.c	/^void output_section_hdr(FILE *ofp, char *hdr)$/;"	f
+output_seek_mode_info	btt/output.c	/^void output_seek_mode_info(FILE *ofp, struct o_seek_info *sip)$/;"	f
+override_format	blkparse_fmt.c	/^static char *override_format[256];$/;"	v	file:
+p_info	btt/globals.h	/^struct p_info {$/;"	s
+p_util	btt/globals.h	/^	double avgrq_sz, avgqu_sz, await, svctm, p_util;$/;"	m	struct:stats_t
+page_size	blktrace.c	/^	u32 page_size;		\/* client page_size for this trace  *\/$/;"	m	struct:blktrace_net_hdr	file:
+pagesize	blktrace.c	/^	int pagesize;$/;"	m	struct:mmap_info	file:
+pagesize	blktrace.c	/^static int pagesize;$/;"	v	file:
+parent	blkiomon.c	/^	struct rb_node *parent;$/;"	m	struct:rb_search	typeref:struct:rb_search::rb_node	file:
+parse_args	btt/bno_plot.py	/^def parse_args(in_args):$/;"	f
+parse_args	btt/btt_plot.py	/^def parse_args(args):$/;"	f
+parse_field	blkparse_fmt.c	/^static char *parse_field(char *act, struct per_cpu_info *pci,$/;"	f	file:
+path	blktrace.c	/^	char *path;			\/* path to device special file *\/$/;"	m	struct:devpath	file:
+pct_done	btt/mmap.c	/^double pct_done(void)$/;"	f
+pdc_dr_update	blktrace.c	/^static inline void pdc_dr_update(struct devpath *dpp, int cpu, int data_read)$/;"	f	file:
+pdc_nev_update	blktrace.c	/^static inline void pdc_nev_update(struct devpath *dpp, int cpu, int nevents)$/;"	f	file:
+pdc_stats	blktrace.c	/^struct pdc_stats {$/;"	s	file:
+pdi	blkparse.c	/^	struct per_dev_info *pdi;$/;"	m	struct:ms_stream	typeref:struct:ms_stream::per_dev_info	file:
+pdu	btt/globals.h	/^	void *pdu;$/;"	m	struct:io
+pdu_len	blktrace_api.h	/^	__u16 pdu_len;		\/* length of data after this trace *\/$/;"	m	struct:blk_io_trace
+pdu_rest_is_zero	blkparse_fmt.c	/^static inline int pdu_rest_is_zero(unsigned char *pdu, int len)$/;"	f	file:
+pdu_start	blkparse_fmt.c	143;"	d	file:
+per_cpu_info	blktrace.h	/^struct per_cpu_info {$/;"	s
+per_dev_info	blkparse.c	/^struct per_dev_info {$/;"	s	file:
+per_device_and_cpu_stats	blkparse.c	/^static int per_device_and_cpu_stats = 1;$/;"	v	file:
+per_io_name	btt/bt_timeline.c	/^char *d2c_name, *q2c_name, *per_io_name, *unplug_hist_name;$/;"	v
+per_io_ofp	btt/bt_timeline.c	/^FILE *rngs_ofp, *avgs_ofp, *xavgs_ofp, *per_io_ofp, *msgs_ofp;$/;"	v
+per_io_trees	btt/bt_timeline.c	/^char *sps_name, *aqd_name, *q2d_name, *per_io_trees;$/;"	v
+per_process_info	blkparse.c	/^struct per_process_info {$/;"	s	file:
+per_process_stats	blkparse.c	/^static int per_process_stats;$/;"	v	file:
+pfds	blktrace.c	/^	struct pollfd *pfds;$/;"	m	struct:net_server_s	typeref:struct:net_server_s::pollfd	file:
+pfds	blktrace.c	/^	struct pollfd *pfds;$/;"	m	struct:tracer	typeref:struct:tracer::pollfd	file:
+pfp	blktrace.c	/^static FILE *pfp;$/;"	v	file:
+pgsize	btreplay/btreplay.c	/^static size_t pgsize;			\/\/ System Page size$/;"	v	file:
+pgsz	btt/mmap.c	/^static long pgsz;$/;"	v	file:
+pid	blkparse.c	/^	pid_t pid;$/;"	m	struct:process_pid_map	file:
+pid	blktrace_api.h	/^	__u32 pid;		\/* who did it *\/$/;"	m	struct:blk_io_trace
+pid	blktrace_api.h	/^	__u32 pid;$/;"	m	struct:blk_user_trace_setup
+pid	btt/bno_plot.py	/^	pid = os.fork()$/;"	v
+pid	btt/globals.h	/^	__u32 pid;$/;"	m	struct:p_info
+pid	btt/proc.c	/^		__u32 pid;$/;"	m	union:pn_info::__anon5	file:
+pin_to_cpu	btreplay/btreplay.c	/^static void pin_to_cpu(struct thr_info *tip)$/;"	f	file:
+pip	btt/globals.h	/^	struct p_info *pip;$/;"	m	struct:io	typeref:struct:io::p_info
+pip	btt/proc.c	/^	struct p_info *pip;$/;"	m	struct:pn_info	typeref:struct:pn_info::p_info	file:
+pip_alloc	btt/proc.c	/^static inline struct p_info *pip_alloc(void)$/;"	f	file:
+pip_d2c_avg	btt/output.c	/^ai_pip_t pip_d2c_avg(struct p_info *pip) { return &pip->avgs.d2c; }$/;"	f
+pip_exit	btt/proc.c	/^void pip_exit(void)$/;"	f
+pip_foreach_out	btt/proc.c	/^void pip_foreach_out(void (*f)(struct p_info *, void *), void *arg)$/;"	f
+pip_g2i_avg	btt/output.c	/^ai_pip_t pip_g2i_avg(struct p_info *pip) { return &pip->avgs.g2i; }$/;"	f
+pip_i2d_avg	btt/output.c	/^ai_pip_t pip_i2d_avg(struct p_info *pip) { return &pip->avgs.i2d; }$/;"	f
+pip_q2a_avg	btt/output.c	/^ai_pip_t pip_q2a_avg(struct p_info *pip) { return &pip->avgs.q2a; }$/;"	f
+pip_q2a_dm_avg	btt/output.c	/^ai_pip_t pip_q2a_dm_avg(struct p_info *pip) { return &pip->avgs.q2a_dm; }$/;"	f
+pip_q2c_avg	btt/output.c	/^ai_pip_t pip_q2c_avg(struct p_info *pip) { return &pip->avgs.q2c; }$/;"	f
+pip_q2c_dm_avg	btt/output.c	/^ai_pip_t pip_q2c_dm_avg(struct p_info *pip) { return &pip->avgs.q2c_dm; }$/;"	f
+pip_q2g_avg	btt/output.c	/^ai_pip_t pip_q2g_avg(struct p_info *pip) { return &pip->avgs.q2g; }$/;"	f
+pip_q2m_avg	btt/output.c	/^ai_pip_t pip_q2m_avg(struct p_info *pip) { return &pip->avgs.q2m; }$/;"	f
+pip_q2q_avg	btt/output.c	/^ai_pip_t pip_q2q_avg(struct p_info *pip) { return &pip->avgs.q2q; }$/;"	f
+pip_q2q_dm_avg	btt/output.c	/^ai_pip_t pip_q2q_dm_avg(struct p_info *pip) { return &pip->avgs.q2q_dm; }$/;"	f
+pip_s2g_avg	btt/output.c	/^ai_pip_t pip_s2g_avg(struct p_info *pip) { return &pip->avgs.s2g; }$/;"	f
+pip_update_q	btt/proc.c	/^void pip_update_q(struct io *iop)$/;"	f
+pipe	blkiomon.c	/^	int pipe;$/;"	m	struct:output	file:
+piped_output	blktrace.c	/^static int piped_output;$/;"	v	file:
+pipeline	blkparse.c	/^static int pipeline;$/;"	v	file:
+pipename	blkparse.c	/^static char *pipename;$/;"	v	file:
+pit_fp	btt/globals.h	/^	FILE *q2d_ofp, *d2c_ofp, *q2c_ofp, *pit_fp;$/;"	m	struct:d_info
+pkts	btreplay/btrecord.c	/^	__u64 start_time, last_time, bunches, pkts;$/;"	m	struct:io_stream	file:
+pkts	btreplay/btrecord.h	/^	struct io_pkt pkts[BT_MAX_PKTS];$/;"	m	struct:io_bunch	typeref:struct:io_bunch::io_pkt
+plat_alloc	btt/plat.c	/^void *plat_alloc(char *str)$/;"	f
+plat_free	btt/plat.c	/^void plat_free(void *info)$/;"	f
+plat_freq	btt/bt_timeline.c	/^double plat_freq = 0.0;$/;"	v
+plat_info	btt/plat.c	/^struct plat_info {$/;"	s	file:
+plat_x2c	btt/plat.c	/^void plat_x2c(void *info, __u64 ts, __u64 latency)$/;"	f
+plot_cmd	btt/bno_plot.py	/^	plot_cmd = None$/;"	v
+plot_size	btt/btt_plot.py	/^plot_size	= [10.9, 8.4]	# inches...$/;"	v
+plug_info	btt/output.c	/^struct plug_info {$/;"	s	file:
+plug_info	btt/output.c	/^} plug_info;$/;"	v	typeref:struct:plug_info
+plugged_time	btt/globals.h	/^	double start_time, last_plug, plugged_time, end_time;$/;"	m	struct:d_info
+pn_info	btt/proc.c	/^struct pn_info {$/;"	s	file:
+ppi_hash	blkparse.c	/^static inline int ppi_hash(struct per_process_info *ppi)$/;"	f	file:
+ppi_hash_by_pid	blkparse.c	/^static int ppi_hash_by_pid = 1;$/;"	v	file:
+ppi_hash_name	blkparse.c	/^static inline int ppi_hash_name(const char *name)$/;"	f	file:
+ppi_hash_pid	blkparse.c	/^static inline int ppi_hash_pid(pid_t pid)$/;"	f	file:
+ppi_hash_table	blkparse.c	/^static struct per_process_info *ppi_hash_table[PPI_HASH_SIZE];$/;"	v	typeref:struct:per_process_info	file:
+ppi_list	blkparse.c	/^static struct per_process_info *ppi_list;$/;"	v	typeref:struct:per_process_info	file:
+ppi_list_entries	blkparse.c	/^static int ppi_list_entries;$/;"	v	file:
+ppi_name_compare	blkparse.c	/^static int ppi_name_compare(const void *p1, const void *p2)$/;"	f	file:
+ppm	blkparse.c	/^	struct process_pid_map *ppm;$/;"	m	struct:io_track	typeref:struct:io_track::process_pid_map	file:
+ppm	blkparse.c	/^	struct process_pid_map *ppm;$/;"	m	struct:per_process_info	typeref:struct:per_process_info::process_pid_map	file:
+ppm_hash_pid	blkparse.c	/^static inline int ppm_hash_pid(pid_t pid)$/;"	f	file:
+ppm_hash_table	blkparse.c	/^static struct process_pid_map *ppm_hash_table[PPM_HASH_SIZE];$/;"	v	typeref:struct:process_pid_map	file:
+pre_culling	btt/globals.h	/^	int pre_culling;$/;"	m	struct:d_info
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+prev	blkparse.c	/^	struct skip_info *prev, *next;$/;"	m	struct:skip_info	typeref:struct:skip_info::skip_info	file:
+prev	blktrace.c	/^	struct trace_buf *prev;$/;"	m	struct:tracer_devpath_head	typeref:struct:tracer_devpath_head::trace_buf	file:
+prev	btt/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+print_field	blkparse_fmt.c	/^static void print_field(char *act, struct per_cpu_info *pci,$/;"	f	file:
+print_time	blkparse_fmt.c	/^print_time(unsigned long long timestamp)$/;"	f	file:
+process	blkrawverify.c	/^static int process(FILE **fp, char *devname, char *file, unsigned int cpu)$/;"	f	file:
+process	btreplay/btrecord.c	/^static void process(struct ifile_info *iip)$/;"	f	file:
+process	btt/bt_timeline.c	/^int process(void)$/;"	f
+process_alloc	btt/proc.c	/^void process_alloc(__u32 pid, char *name)$/;"	f
+process_bunch	btreplay/btreplay.c	/^static void process_bunch(struct thr_info *tip, struct io_bunch *bunch)$/;"	f	file:
+process_default	blkparse_fmt.c	/^static void process_default(char *act, struct per_cpu_info *pci,$/;"	f	file:
+process_fmt	blkparse_fmt.c	/^void process_fmt(char *act, struct per_cpu_info *pci, struct blk_io_trace *t,$/;"	f
+process_pid_map	blkparse.c	/^struct process_pid_map {$/;"	s	file:
+process_trace_bufs	blktrace.c	/^static void process_trace_bufs(void)$/;"	f	file:
+progs	btt/btt_plot.py	/^progs		= [ 'btt_plot_%s.py' % t for t in types ]$/;"	v
+put_trace	blkparse.c	/^static void put_trace(struct per_dev_info *pdi, struct trace *t)$/;"	f	file:
+q2a	btt/globals.h	/^	struct avg_info q2a;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2a_dm	btt/globals.h	/^        struct avg_info q2a_dm;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2c	btt/globals.h	/^	struct avg_info q2c;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2c	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::	file:
+q2c_dm	btt/globals.h	/^        struct avg_info q2c_dm;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2c_name	btt/bt_timeline.c	/^char *d2c_name, *q2c_name, *per_io_name, *unplug_hist_name;$/;"	v
+q2c_ofp	btt/globals.h	/^	FILE *q2d_ofp, *d2c_ofp, *q2c_ofp, *pit_fp;$/;"	m	struct:d_info
+q2c_plat_handle	btt/globals.h	/^	void *q2d_plat_handle, *q2c_plat_handle, *d2c_plat_handle;$/;"	m	struct:d_info
+q2d_acc	btt/q2d.c	/^void q2d_acc(void *a1, void *a2)$/;"	f
+q2d_all	btt/output.c	/^	void *q2d_all;$/;"	m	struct:__q2d	file:
+q2d_alloc	btt/q2d.c	/^void *q2d_alloc(void)$/;"	f
+q2d_display	btt/q2d.c	/^void q2d_display(FILE *fp, void *priv)$/;"	f
+q2d_display_dashes	btt/q2d.c	/^void q2d_display_dashes(FILE *fp)$/;"	f
+q2d_display_header	btt/q2d.c	/^void q2d_display_header(FILE *fp)$/;"	f
+q2d_free	btt/q2d.c	/^void q2d_free(void *priv)$/;"	f
+q2d_histo_add	btt/q2d.c	/^void q2d_histo_add(void *priv, __u64 q2d_in)$/;"	f
+q2d_info	btt/q2d.c	/^struct q2d_info {$/;"	s	file:
+q2d_name	btt/bt_timeline.c	/^char *sps_name, *aqd_name, *q2d_name, *per_io_trees;$/;"	v
+q2d_ofp	btt/globals.h	/^	FILE *q2d_ofp, *d2c_ofp, *q2c_ofp, *pit_fp;$/;"	m	struct:d_info
+q2d_ok	btt/q2d.c	/^int q2d_ok(void *priv)$/;"	f
+q2d_plat_handle	btt/globals.h	/^	void *q2d_plat_handle, *q2c_plat_handle, *d2c_plat_handle;$/;"	m	struct:d_info
+q2d_priv	btt/globals.h	/^	void *q2d_priv, *aqd_handle;$/;"	m	struct:d_info
+q2g	btt/globals.h	/^	struct avg_info q2g;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2g	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::__ohead_data	file:
+q2m	btt/globals.h	/^	struct avg_info q2m;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2m	btt/output.c	/^	struct __ohead_data q2g, g2i, q2m, i2d, d2c, q2c;$/;"	m	struct:ohead_data	typeref:struct:ohead_data::	file:
+q2q	btt/globals.h	/^        struct avg_info q2q;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2q_dm	btt/globals.h	/^        struct avg_info q2q_dm;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+q2q_handle	btt/globals.h	/^	void *q2q_handle, *seek_handle, *bno_dump_handle, *up_hist_handle;$/;"	m	struct:d_info
+q_histo	btt/bt_timeline.c	/^__u64 q_histo[N_HIST_BKTS], d_histo[N_HIST_BKTS];$/;"	v
+qranges	btt/globals.h	/^	struct list_head qranges;$/;"	m	struct:region_info	typeref:struct:region_info::list_head
+qread_kb	blktrace.h	/^	unsigned long long qread_kb, qwrite_kb, cread_kb, cwrite_kb;$/;"	m	struct:io_stats
+qread_kb_pc	blktrace.h	/^	unsigned long long qread_kb_pc, qwrite_kb_pc, iread_kb_pc, iwrite_kb_pc;$/;"	m	struct:io_stats
+qreads	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+qreads_pc	blktrace.h	/^	unsigned long qreads_pc, qwrites_pc, ireads_pc, iwrites_pc;$/;"	m	struct:io_stats
+queue_time	blkparse.c	/^	unsigned long long queue_time;$/;"	m	struct:io_track	file:
+qwrite_kb	blktrace.h	/^	unsigned long long qread_kb, qwrite_kb, cread_kb, cwrite_kb;$/;"	m	struct:io_stats
+qwrite_kb_pc	blktrace.h	/^	unsigned long long qread_kb_pc, qwrite_kb_pc, iread_kb_pc, iwrite_kb_pc;$/;"	m	struct:io_stats
+qwrites	blktrace.h	/^	unsigned long qreads, qwrites, creads, cwrites, mreads, mwrites;$/;"	m	struct:io_stats
+qwrites_pc	blktrace.h	/^	unsigned long qreads_pc, qwrites_pc, ireads_pc, iwrites_pc;$/;"	m	struct:io_stats
+range_delta	btt/bt_timeline.c	/^double range_delta = 0.1;$/;"	v
+range_info	btt/globals.h	/^struct range_info {$/;"	s
+rb_batch	blkparse.c	/^static unsigned int rb_batch = RB_BATCH_DEFAULT;$/;"	v	file:
+rb_color	rbtree.h	125;"	d
+rb_entry	rbtree.h	141;"	d
+rb_erase	rbtree.c	/^void rb_erase(struct rb_node *node, struct rb_root *root)$/;"	f
+rb_find_sec	btt/dip_rb.c	/^struct io *rb_find_sec(struct rb_root *root, __u64 sec)$/;"	f
+rb_first	rbtree.c	/^struct rb_node *rb_first(struct rb_root *root)$/;"	f
+rb_foreach	btt/dip_rb.c	/^void rb_foreach(struct rb_node *n, struct io *iop,$/;"	f
+rb_insert	btt/dip_rb.c	/^int rb_insert(struct rb_root *root, struct io *iop)$/;"	f
+rb_insert_color	rbtree.c	/^void rb_insert_color(struct rb_node *node, struct rb_root *root)$/;"	f
+rb_is_black	rbtree.h	127;"	d
+rb_is_red	rbtree.h	126;"	d
+rb_last	blktrace.h	/^	struct rb_root rb_last;$/;"	m	struct:per_cpu_info	typeref:struct:per_cpu_info::rb_root
+rb_last	rbtree.c	/^struct rb_node *rb_last(struct rb_root *root)$/;"	f
+rb_last_entries	blktrace.h	/^	unsigned long rb_last_entries;$/;"	m	struct:per_cpu_info
+rb_left	rbtree.h	/^	struct rb_node *rb_left;$/;"	m	struct:rb_node	typeref:struct:rb_node::rb_node
+rb_link_node	rbtree.h	/^static inline void rb_link_node(struct rb_node * node, struct rb_node * parent,$/;"	f
+rb_next	rbtree.c	/^struct rb_node *rb_next(struct rb_node *node)$/;"	f
+rb_node	blkparse.c	/^	struct rb_node rb_node;$/;"	m	struct:io_track	typeref:struct:io_track::rb_node	file:
+rb_node	blkparse.c	/^	struct rb_node rb_node;$/;"	m	struct:trace	typeref:struct:trace::rb_node	file:
+rb_node	btt/globals.h	/^	struct rb_node rb_node;$/;"	m	struct:io	typeref:struct:io::rb_node
+rb_node	btt/proc.c	/^	struct rb_node rb_node;$/;"	m	struct:pn_info	typeref:struct:pn_info::rb_node	file:
+rb_node	btt/seek.c	/^	struct rb_node rb_node;$/;"	m	struct:seek_bkt	typeref:struct:seek_bkt::rb_node	file:
+rb_node	rbtree.h	/^	struct rb_node *rb_node;$/;"	m	struct:rb_root	typeref:struct:rb_root::rb_node
+rb_node	rbtree.h	/^struct rb_node$/;"	s
+rb_parent	rbtree.h	124;"	d
+rb_parent_color	rbtree.h	/^	unsigned long  rb_parent_color;$/;"	m	struct:rb_node
+rb_prev	rbtree.c	/^struct rb_node *rb_prev(struct rb_node *node)$/;"	f
+rb_replace_node	rbtree.c	/^void rb_replace_node(struct rb_node *victim, struct rb_node *new,$/;"	f
+rb_right	rbtree.h	/^	struct rb_node *rb_right;$/;"	m	struct:rb_node	typeref:struct:rb_node::rb_node
+rb_root	rbtree.h	/^struct rb_root$/;"	s
+rb_search	blkiomon.c	/^struct rb_search {$/;"	s	file:
+rb_set_black	rbtree.h	129;"	d
+rb_set_color	rbtree.h	/^static inline void rb_set_color(struct rb_node *rb, int color)$/;"	f
+rb_set_parent	rbtree.h	/^static inline void rb_set_parent(struct rb_node *rb, struct rb_node *p)$/;"	f
+rb_set_red	rbtree.h	128;"	d
+rb_sort_entries	blkparse.c	/^static unsigned long rb_sort_entries;$/;"	v	file:
+rb_sort_root	blkparse.c	/^static struct rb_root rb_sort_root;$/;"	v	typeref:struct:rb_root	file:
+rb_track	blkparse.c	/^	struct rb_root rb_track;$/;"	m	struct:per_dev_info	typeref:struct:per_dev_info::rb_root	file:
+read_data	blkparse.c	/^static int read_data(int fd, void *buffer, int bytes, int block, int *fdblock)$/;"	f	file:
+read_err	blktrace.c	/^static inline void read_err(int cpu, char *ifn)$/;"	f	file:
+read_events	blkparse.c	/^static int read_events(int fd, int always_block, int *fdblock)$/;"	f	file:
+read_map_devs	btreplay/btreplay.c	/^static void read_map_devs(char *file_name)$/;"	f	file:
+read_sequence	blkparse.c	/^	unsigned long read_sequence;$/;"	m	struct:trace	file:
+read_sequence	blkparse.c	/^static unsigned long read_sequence;$/;"	v	file:
+ready	blktrace.c	/^	unsigned int ready;$/;"	m	struct:io_info	file:
+reap_done	btreplay/btreplay.c	/^	volatile int send_wait, reap_wait, send_done, reap_done;$/;"	m	struct:thr_info	file:
+reap_wait	btreplay/btreplay.c	/^	volatile int send_wait, reap_wait, send_done, reap_done;$/;"	m	struct:thr_info	file:
+reap_wait_aios	btreplay/btreplay.c	/^static int reap_wait_aios(struct thr_info *tip)$/;"	f	file:
+rec_thread	btreplay/btreplay.c	/^	pthread_t sub_thread, rec_thread;$/;"	m	struct:thr_info	file:
+reclaim_done_cond	btreplay/btreplay.c	/^static pthread_cond_t reclaim_done_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+reclaim_done_mutex	btreplay/btreplay.c	/^static pthread_mutex_t reclaim_done_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+reclaim_ios	btreplay/btreplay.c	/^static void reclaim_ios(struct thr_info *tip, long naios_out)$/;"	f	file:
+region_exit	btt/inlines.h	/^static inline void region_exit(struct region_info *reg)$/;"	f
+region_info	btt/globals.h	/^struct region_info {$/;"	s
+region_init	btt/inlines.h	/^static inline void region_init(struct region_info *reg)$/;"	f
+regions	btt/globals.h	/^	struct region_info regions;$/;"	m	struct:d_info	typeref:struct:d_info::region_info
+regions	btt/globals.h	/^	struct region_info regions;$/;"	m	struct:p_info	typeref:struct:p_info::region_info
+rel_devpaths	blktrace.c	/^static void rel_devpaths(void)$/;"	f	file:
+release_map_devs	btreplay/btreplay.c	/^static void release_map_devs(void)$/;"	f	file:
+rem_input_dev	btreplay/btreplay.c	/^static void rem_input_dev(struct dev_info *dip)$/;"	f	file:
+rem_input_file	btreplay/btrecord.c	/^static void rem_input_file(struct ifile_info *iip)$/;"	f	file:
+rem_input_file	btreplay/btreplay.c	/^static void rem_input_file(struct thr_info *tip)$/;"	f	file:
+rem_input_files	btreplay/btreplay.c	/^static void rem_input_files(void)$/;"	f	file:
+remapper_dev	btt/inlines.h	/^static inline int remapper_dev(__u32 dev)$/;"	f
+remove_sip	blkparse.c	/^static void remove_sip(struct per_cpu_info *pci, struct skip_info *sip)$/;"	f	file:
+replay_done_cond	btreplay/btreplay.c	/^static pthread_cond_t replay_done_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+replay_done_mutex	btreplay/btreplay.c	/^static pthread_mutex_t replay_done_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+replay_ready_cond	btreplay/btreplay.c	/^static pthread_cond_t replay_ready_cond = PTHREAD_COND_INITIALIZER;$/;"	v	file:
+replay_ready_mutex	btreplay/btreplay.c	/^static pthread_mutex_t replay_ready_mutex = PTHREAD_MUTEX_INITIALIZER;$/;"	v	file:
+replay_rec	btreplay/btreplay.c	/^static void *replay_rec(void *arg)$/;"	f	file:
+replay_sub	btreplay/btreplay.c	/^static void *replay_sub(void *arg)$/;"	f	file:
+reset_input_file	btreplay/btreplay.c	/^static void reset_input_file(struct thr_info *tip)$/;"	f	file:
+resize_cpu_info	blkparse.c	/^static void resize_cpu_info(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+resize_devices	blkparse.c	/^static int resize_devices(char *name)$/;"	f	file:
+rfp	btt/bno_dump.c	/^	FILE *rfp, *wfp, *cfp;$/;"	m	struct:bno_dump	file:
+rfp	btt/seek.c	/^	FILE *rfp, *wfp, *cfp, *sps_fp;$/;"	m	struct:seeki	file:
+rgenesis	btreplay/btreplay.c	/^static __u64 rgenesis;			\/\/ Our start time$/;"	v	file:
+rngs_ofp	btt/bt_timeline.c	/^FILE *rngs_ofp, *avgs_ofp, *xavgs_ofp, *per_io_ofp, *msgs_ofp;$/;"	v
+root	btt/seek.c	/^	struct rb_root root;$/;"	m	struct:seeki	typeref:struct:seeki::rb_root	file:
+root_name	btt/proc.c	/^struct rb_root root_pid, root_name;$/;"	v	typeref:struct:
+root_pid	btt/proc.c	/^struct rb_root root_pid, root_name;$/;"	v	typeref:struct:rb_root
+rqm	btt/globals.h	/^	__u64 rqm[2], ios[2], sec[2], wait, svctm;$/;"	m	struct:stats
+rqm_s	btt/globals.h	/^	double rqm_s[2], ios_s[2], sec_s[2];$/;"	m	struct:stats_t
+rrqueue	blktrace.h	/^	unsigned long ireads, iwrites, rrqueue, wrqueue;$/;"	m	struct:io_stats
+rrqueue_pc	blktrace.h	/^	unsigned long rrqueue_pc, wrqueue_pc, creads_pc, cwrites_pc;$/;"	m	struct:io_stats
+run_tracers	blktrace.c	/^static int run_tracers(void)$/;"	f	file:
+rw	btreplay/btrecord.c	/^	int rw;$/;"	m	struct:io_spec	file:
+rw	btreplay/btrecord.h	/^	__u32 rw;$/;"	m	struct:io_pkt
+s2g	btt/globals.h	/^	struct avg_info s2g;$/;"	m	struct:avgs_info	typeref:struct:avgs_info::avg_info
+s_time	btt/globals.h	/^	__u64 s_time;$/;"	m	struct:io
+sec	btt/globals.h	/^	__u64 rqm[2], ios[2], sec[2], wait, svctm;$/;"	m	struct:stats
+sec_s	btt/globals.h	/^	double rqm_s[2], ios_s[2], sec_s[2];$/;"	m	struct:stats_t
+sector	blkparse.c	/^	__u64 sector;$/;"	m	struct:io_track	file:
+sector	blktrace_api.h	/^	__u64 sector;		\/* disk offset *\/$/;"	m	struct:blk_io_trace
+sector	btreplay/btrecord.c	/^	__u64 sector;$/;"	m	struct:io_spec	file:
+sector	btreplay/btrecord.h	/^	__u64 sector;$/;"	m	struct:io_pkt
+sector_from	blktrace_api.h	/^	__u64 sector_from;$/;"	m	struct:blk_io_trace_remap
+sectors	btt/seek.c	/^	long long sectors;$/;"	m	struct:seek_bkt	file:
+seek_absolute	btt/bt_timeline.c	/^int verbose, done, time_bounded, output_all_data, seek_absolute;$/;"	v
+seek_bkt	btt/seek.c	/^struct seek_bkt {$/;"	s	file:
+seek_dist	btt/seek.c	/^long long seek_dist(struct seeki *sip, struct io *iop)$/;"	f
+seek_handle	btt/globals.h	/^	void *q2q_handle, *seek_handle, *bno_dump_handle, *up_hist_handle;$/;"	m	struct:d_info
+seek_info	btt/output.c	/^} seek_info;$/;"	v	typeref:struct:o_seek_info
+seek_mode_info	btt/output.c	/^struct seek_mode_info {$/;"	s	file:
+seek_name	btt/bt_timeline.c	/^char *devices, *exes, *input_name, *output_name, *seek_name, *bno_dump_name;$/;"	v
+seek_open	btt/seek.c	/^static FILE *seek_open(char *str, char rw)$/;"	f	file:
+seeki	btt/seek.c	/^struct seeki {$/;"	s	file:
+seeki_add	btt/seek.c	/^void seeki_add(void *handle, struct io *iop)$/;"	f
+seeki_alloc	btt/seek.c	/^void *seeki_alloc(char *str)$/;"	f
+seeki_free	btt/seek.c	/^void seeki_free(void *param)$/;"	f
+seeki_mean	btt/seek.c	/^double seeki_mean(void *handle)$/;"	f
+seeki_median	btt/seek.c	/^long long seeki_median(void *handle)$/;"	f
+seeki_mode	btt/seek.c	/^int seeki_mode(void *handle, struct mode *mp)$/;"	f
+seeki_nseeks	btt/seek.c	/^long long seeki_nseeks(void *handle)$/;"	f
+send_done	btreplay/btreplay.c	/^	volatile int send_wait, reap_wait, send_done, reap_done;$/;"	m	struct:thr_info	file:
+send_wait	btreplay/btreplay.c	/^	volatile int send_wait, reap_wait, send_done, reap_done;$/;"	m	struct:thr_info	file:
+seq_skips	blkparse.c	/^	unsigned long long seq_skips;$/;"	m	struct:per_dev_info	file:
+sequence	blkiomon.c	/^	long sequence;$/;"	m	struct:trace	file:
+sequence	blkiomon.c	/^static long leftover = 0, driverdata = 0, match = 0, mismatch = 0, sequence = 0;$/;"	v	file:
+sequence	blktrace_api.h	/^	__u32 sequence;		\/* event number *\/$/;"	m	struct:blk_io_trace
+set_all_format_specs	blkparse_fmt.c	/^void set_all_format_specs(char *option)$/;"	f
+set_iter_done	btreplay/btreplay.c	/^static inline void set_iter_done(void)$/;"	f	file:
+set_reclaim_done	btreplay/btreplay.c	/^static inline void set_reclaim_done(void)$/;"	f	file:
+set_replay_done	btreplay/btreplay.c	/^static inline void set_replay_done(void)$/;"	f	file:
+set_replay_ready	btreplay/btreplay.c	/^static inline void set_replay_ready(void)$/;"	f	file:
+set_signal_done	btreplay/btreplay.c	/^static void set_signal_done(__attribute__((__unused__))int signum)$/;"	f	file:
+set_vbuf	blktrace.c	/^static int set_vbuf(struct io_info *iop, int mode, size_t size)$/;"	f	file:
+setup_buts	blktrace.c	/^static void setup_buts(void)$/;"	f	file:
+setup_file	blkparse.c	/^static int setup_file(struct per_dev_info *pdi, int cpu)$/;"	f	file:
+setup_ifile	btt/mmap.c	/^void setup_ifile(char *fname)$/;"	f
+setup_mmap	blktrace.c	/^static int setup_mmap(int fd, unsigned int maxlen, struct mmap_info *mip)$/;"	f	file:
+setup_ofile	btt/args.c	/^static FILE *setup_ofile(char *fname)$/;"	f	file:
+setup_signal	btreplay/btreplay.c	/^static inline void setup_signal(int signum, sighandler_t handler)$/;"	f	file:
+setup_tracer_devpaths	blktrace.c	/^static int setup_tracer_devpaths(void)$/;"	f	file:
+short_form	act_mask.c	/^	char *short_form;$/;"	m	struct:mask_map	file:
+show_device_and_cpu_stats	blkparse.c	/^static void show_device_and_cpu_stats(void)$/;"	f	file:
+show_entries_rb	blkparse.c	/^static void show_entries_rb(int force)$/;"	f	file:
+show_process_stats	blkparse.c	/^static void show_process_stats(void)$/;"	f	file:
+show_stats	blkparse.c	/^static void show_stats(void)$/;"	f	file:
+show_stats	blktrace.c	/^static void show_stats(struct list_head *devpaths)$/;"	f	file:
+show_usage	blktrace.c	/^static void show_usage(char *prog)$/;"	f	file:
+signal_done	btreplay/btreplay.c	/^static volatile int signal_done = 0;	\/\/ Boolean: Signal'ed, need to quit$/;"	v	file:
+size_cnv	blkparse.c	/^static char *size_cnv(char *dst, unsigned long long num, int in_kb)$/;"	f	file:
+size_hist	blkiomon.h	/^	__u32 size_hist[BLKIOMON_SIZE_BUCKETS];$/;"	m	struct:blkiomon_stat
+size_hist	blkiomon.h	/^static struct histlog2 size_hist = {$/;"	v	typeref:struct:histlog2
+size_r	blkiomon.h	/^	struct minmax size_r;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+size_w	blkiomon.h	/^	struct minmax size_w;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+skip_info	blkparse.c	/^struct skip_info {$/;"	s	file:
+skips	blkparse.c	/^	unsigned long skips;$/;"	m	struct:per_dev_info	file:
+skips_head	blktrace.h	/^	struct skip_info *skips_head;$/;"	m	struct:per_cpu_info	typeref:struct:per_cpu_info::skip_info
+skips_tail	blktrace.h	/^	struct skip_info *skips_tail;$/;"	m	struct:per_cpu_info	typeref:struct:per_cpu_info::skip_info
+smallest_seq_read	blktrace.h	/^	unsigned long smallest_seq_read;$/;"	m	struct:per_cpu_info
+sort_entries	blkparse.c	/^static int sort_entries(unsigned long long *youngest)$/;"	f	file:
+sort_process_list	blkparse.c	/^static void sort_process_list(void)$/;"	f	file:
+sos	stats.h	/^	__u64 sos;$/;"	m	struct:minmax
+sps	btt/seek.c	/^	struct sps_bkt sps;$/;"	m	struct:seeki	typeref:struct:seeki::sps_bkt	file:
+sps_add	btt/seek.c	/^static void sps_add(struct seeki *sip, double t)$/;"	f	file:
+sps_bkt	btt/seek.c	/^struct sps_bkt {$/;"	s	file:
+sps_emit	btt/seek.c	/^static void sps_emit(struct seeki *sip)$/;"	f	file:
+sps_fp	btt/seek.c	/^	FILE *rfp, *wfp, *cfp, *sps_fp;$/;"	m	struct:seeki	file:
+sps_name	btt/bt_timeline.c	/^char *sps_name, *aqd_name, *q2d_name, *per_io_trees;$/;"	v
+stall	btreplay/btreplay.c	/^static void stall(struct thr_info *tip, long long oclock)$/;"	f	file:
+start	blkparse.c	/^	unsigned long start, end;$/;"	m	struct:skip_info	file:
+start	btt/globals.h	/^	__u64 start, end;$/;"	m	struct:range_info
+start_buts	blktrace.c	/^static void start_buts(void)$/;"	f	file:
+start_iter	btreplay/btreplay.c	/^static inline void start_iter(void)$/;"	f	file:
+start_lba	blktrace_api.h	/^	__u64 start_lba;$/;"	m	struct:blk_user_trace_setup
+start_time	btreplay/btrecord.c	/^	__u64 start_time, last_time, bunches, pkts;$/;"	m	struct:io_stream	file:
+start_time	btt/globals.h	/^	double start_time, last_plug, plugged_time, end_time;$/;"	m	struct:d_info
+start_timestamp	blkparse.c	/^static unsigned long long start_timestamp;$/;"	v	file:
+start_tracer	blktrace.c	/^static int start_tracer(int cpu)$/;"	f	file:
+start_tracers	blktrace.c	/^static void start_tracers(void)$/;"	f	file:
+stat	blkiomon.c	/^	struct blkiomon_stat stat;$/;"	m	struct:dstat_msg	typeref:struct:dstat_msg::blkiomon_stat	file:
+stats	blktrace.c	/^	struct pdc_stats *stats;$/;"	m	struct:devpath	typeref:struct:devpath::pdc_stats	file:
+stats	btt/globals.h	/^	struct stats stats, all_stats;$/;"	m	struct:d_info	typeref:struct:d_info::stats
+stats	btt/globals.h	/^struct stats {$/;"	s
+stats_printed	blkparse.c	/^static int stats_printed;$/;"	v	file:
+stats_t	btt/globals.h	/^struct stats_t {$/;"	s
+status	blktrace.c	/^	volatile int status, is_done;$/;"	m	struct:tracer	file:
+std_open	btt/args.c	/^static FILE *std_open(char *output_name, char *sfx, char *msg)$/;"	f	file:
+stop_tracers	blktrace.c	/^static void stop_tracers(void)$/;"	f	file:
+stop_watch	blktrace.c	/^static int stop_watch;$/;"	v	file:
+stopwatch_end	blkparse.c	/^static unsigned long long stopwatch_end = -1ULL;	\/* "infinity" *\/$/;"	v	file:
+stopwatch_start	blkparse.c	/^static unsigned long long stopwatch_start;	\/* start from zero by default *\/$/;"	v	file:
+store_barrier	barrier.h	11;"	d
+store_barrier	barrier.h	13;"	d
+store_barrier	barrier.h	15;"	d
+store_barrier	barrier.h	17;"	d
+store_barrier	barrier.h	19;"	d
+store_barrier	barrier.h	21;"	d
+store_barrier	barrier.h	23;"	d
+store_barrier	barrier.h	28;"	d
+store_barrier	barrier.h	5;"	d
+store_barrier	barrier.h	7;"	d
+store_barrier	barrier.h	9;"	d
+stream_add_io	btreplay/btrecord.c	/^static void stream_add_io(struct io_stream *stream, struct io_spec *spec)$/;"	f	file:
+stream_close	btreplay/btrecord.c	/^static void stream_close(struct io_stream *stream)$/;"	f	file:
+stream_flush	btreplay/btrecord.c	/^static void stream_flush(struct io_stream *stream)$/;"	f	file:
+stream_open	btreplay/btrecord.c	/^static struct io_stream *stream_open(struct ifile_info *iip)$/;"	f	file:
+string	blkrawverify.c	/^	char *string;$/;"	m	struct:act_info	file:
+string	blkrawverify.c	/^	char *string;$/;"	m	struct:trace_info	file:
+strverscmp	strverscmp.c	/^strverscmp (const char *s1, const char *s2)$/;"	f
+sub_thread	btreplay/btreplay.c	/^	pthread_t sub_thread, rec_thread;$/;"	m	struct:thr_info	file:
+sum	stats.h	/^	__u64 sum;$/;"	m	struct:minmax
+svctm	btt/globals.h	/^	__u64 rqm[2], ios[2], sec[2], wait, svctm;$/;"	m	struct:stats
+svctm	btt/globals.h	/^	double avgrq_sz, avgqu_sz, await, svctm, p_util;$/;"	m	struct:stats_t
+t	btt/bno_plot.py	/^		t = '%s\/%s' % (tmpdir, f)$/;"	v
+t	btt/bno_plot.py	/^		t = t[t.rfind('\/')+1:]$/;"	v
+t	btt/globals.h	/^	struct blk_io_trace t;$/;"	m	struct:io	typeref:struct:io::blk_io_trace
+t_act_q	btt/globals.h	/^	__u64 n_act_q, t_act_q;	\/* # currently active when Q comes in *\/$/;"	m	struct:d_info
+t_act_qs	btt/output.c	/^	__u64 t_act_qs;$/;"	m	struct:actQ_info	file:
+t_aend	btt/bt_timeline.c	/^double t_astart, t_aend;$/;"	v
+t_alloc	blkparse.c	/^static inline struct trace *t_alloc(void)$/;"	f	file:
+t_alloc_cache	blkparse.c	/^static unsigned int t_alloc_cache;$/;"	v	file:
+t_alloc_list	blkparse.c	/^static struct trace *t_alloc_list;$/;"	v	typeref:struct:trace	file:
+t_astart	btt/bt_timeline.c	/^double t_astart, t_aend;$/;"	v
+t_free	blkparse.c	/^static inline void t_free(struct trace *t)$/;"	f	file:
+t_kb	blktrace.h	24;"	d
+t_last	btt/seek.c	/^	double t_start, t_last;$/;"	m	struct:sps_bkt	file:
+t_percent	btt/output.c	/^	double t_percent;$/;"	m	struct:plug_info	file:
+t_pthread_cond_wait	blktrace.c	/^static void t_pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex)$/;"	f	file:
+t_qs	btt/output.c	/^	__u64 t_qs;$/;"	m	struct:actQ_info	file:
+t_sec	blktrace.h	23;"	d
+t_start	btt/seek.c	/^	double t_start, t_last;$/;"	m	struct:sps_bkt	file:
+tb_combine	blktrace.c	/^static struct trace_buf *tb_combine(struct trace_buf *prev,$/;"	f	file:
+tdelta	btt/inlines.h	/^static inline __u64 tdelta(__u64 from, __u64 to)$/;"	f
+text_output	blkparse.c	/^static int text_output = 1;$/;"	v	file:
+texttt  bno  _plot.py	btt/doc/btt.tex	/^page~\\pageref{fig:bno_plot}.$/;"	u
+thash	blkiomon.c	/^struct trace *thash[TRACE_HASH_SIZE] = {};$/;"	v	typeref:struct:trace
+thr_info	btreplay/btreplay.c	/^struct thr_info {$/;"	s	file:
+thread	blktrace.c	/^	pthread_t thread;$/;"	m	struct:tracer	file:
+thread_main	blktrace.c	/^static void *thread_main(void *arg)$/;"	f	file:
+thread_status	blktrace.c	/^enum thread_status {$/;"	g	file:
+thrput_r	blkiomon.h	/^	struct minmax thrput_r;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+thrput_w	blkiomon.h	/^	struct minmax thrput_w;$/;"	m	struct:blkiomon_stat	typeref:struct:blkiomon_stat::minmax
+time	blkiomon.h	/^	__u64 time;$/;"	m	struct:blkiomon_stat
+time	blktrace_api.h	/^	__u64 time;		\/* in nanoseconds *\/$/;"	m	struct:blk_io_trace
+time	btreplay/btrecord.c	/^	__u64 time;$/;"	m	struct:io_spec	file:
+time_bounded	btt/bt_timeline.c	/^int verbose, done, time_bounded, output_all_data, seek_absolute;$/;"	v
+time_stamp	btreplay/btrecord.h	/^	__u64 time_stamp;$/;"	m	struct:io_bunch_hdr
+timer_unplugs	blktrace.h	/^	unsigned long io_unplugs, timer_unplugs;$/;"	m	struct:io_stats
+tip	btreplay/btreplay.c	/^	struct thr_info *tip;$/;"	m	struct:iocb_pkt	typeref:struct:iocb_pkt::thr_info	file:
+tip_init	btreplay/btreplay.c	/^static void tip_init(struct thr_info *tip)$/;"	f	file:
+tip_release	btreplay/btreplay.c	/^static void tip_release(struct thr_info *tip)$/;"	f	file:
+title_str	btt/btt_plot.py	/^				title_str = 'Block Numbers Accessed: %s' % base$/;"	v
+title_str	btt/btt_plot.py	/^title_str	= None$/;"	v
+tl	btt/plat.c	/^	double first_ts, last_ts, tl;$/;"	m	struct:plat_info	file:
+tmpdir	btt/bno_plot.py	/^	tmpdir = tempfile.mktemp()$/;"	v
+to_dev	btreplay/btreplay.c	/^	char *from_dev, *to_dev;$/;"	m	struct:map_dev	file:
+tot_nios_up	btt/output.c	/^	__u64 tot_nios_up, tot_nios_up_t;$/;"	m	struct:nios_plug_info	file:
+tot_nios_up_t	btt/output.c	/^	__u64 tot_nios_up, tot_nios_up_t;$/;"	m	struct:nios_plug_info	file:
+tot_qusz	btt/globals.h	/^	double last_qu_change, last_dev_change, tot_qusz, idle_time;$/;"	m	struct:stats
+tot_seeks	btt/seek.c	/^	long long tot_seeks;$/;"	m	struct:seeki	file:
+total	btt/globals.h	/^	__u64 min, max, total;$/;"	m	struct:avg_info
+total	btt/output.c	/^	__u64 total;$/;"	m	struct:__ohead_data	file:
+total	btt/output.c	/^	unsigned long long nq, nd, blkmin, blkmax, total;$/;"	m	struct:__anon4	file:
+total_pkts	btreplay/btrecord.h	/^	__u64 total_pkts;$/;"	m	struct:io_file_hdr
+total_sectors	btt/seek.c	/^	double total_sectors;$/;"	m	struct:seeki	file:
+total_size	btt/mmap.c	/^static off_t cur_min, cur, cur_max, total_size;$/;"	v	file:
+touch_memory	btreplay/btreplay.c	/^static inline void touch_memory(char *buf, size_t bsize)$/;"	f	file:
+tpkts	btreplay/btrecord.c	/^	__u64 tpkts, genesis;$/;"	m	struct:ifile_info	file:
+trace	blkiomon.c	/^struct trace {$/;"	s	file:
+trace	blkparse.c	/^struct trace {$/;"	s	file:
+trace_buf	blktrace.c	/^struct trace_buf {$/;"	s	file:
+trace_complete	btt/trace_complete.c	/^void trace_complete(struct io *c_iop)$/;"	f
+trace_getrq	btt/trace_im.c	/^void trace_getrq(struct io *g_iop)$/;"	f
+trace_info	blkrawverify.c	/^struct trace_info {$/;"	s	file:
+trace_insert	btt/trace_im.c	/^void trace_insert(struct io *i_iop)$/;"	f
+trace_issue	btt/trace_issue.c	/^void trace_issue(struct io *d_iop)$/;"	f
+trace_list	blkparse.c	/^static struct trace *trace_list;$/;"	v	typeref:struct:trace	file:
+trace_merge	btt/trace_im.c	/^void trace_merge(struct io *m_iop)$/;"	f
+trace_message	btt/trace.c	/^static void trace_message(struct io *iop)$/;"	f	file:
+trace_plug	btt/trace_plug.c	/^void trace_plug(struct io *p_iop)$/;"	f
+trace_queue	btt/trace_queue.c	/^void trace_queue(struct io *q_iop)$/;"	f
+trace_rb_find	blkparse.c	/^static struct trace *trace_rb_find(dev_t device, unsigned long sequence,$/;"	f	file:
+trace_rb_find_last	blkparse.c	/^static inline struct trace *trace_rb_find_last(struct per_dev_info *pdi,$/;"	f	file:
+trace_rb_insert	blkparse.c	/^static inline int trace_rb_insert(struct trace *t, struct rb_root *root)$/;"	f	file:
+trace_rb_insert_last	blkparse.c	/^static int trace_rb_insert_last(struct per_dev_info *pdi, struct trace *t)$/;"	f	file:
+trace_rb_insert_sort	blkparse.c	/^static inline int trace_rb_insert_sort(struct trace *t)$/;"	f	file:
+trace_remap	btt/trace_remap.c	/^void trace_remap(struct io *a_iop)$/;"	f
+trace_requeue	btt/trace_requeue.c	/^void trace_requeue(struct io *r_iop)$/;"	f
+trace_sleeprq	btt/trace_im.c	/^void trace_sleeprq(struct io *s_iop)$/;"	f
+trace_to_cpu	blktrace.h	/^static inline void trace_to_cpu(struct blk_io_trace *t)$/;"	f
+trace_unplug_io	btt/trace_plug.c	/^void trace_unplug_io(struct io *u_iop)$/;"	f
+trace_unplug_timer	btt/trace_plug.c	/^void trace_unplug_timer(struct io *ut_iop)$/;"	f
+tracer	blktrace.c	/^struct tracer {$/;"	s	file:
+tracer_devpath_head	blktrace.c	/^struct tracer_devpath_head {$/;"	s	file:
+tracer_signal_ready	blktrace.c	/^static void tracer_signal_ready(struct tracer *tp,$/;"	f	file:
+tracer_wait_unblock	blktrace.c	/^static void tracer_wait_unblock(struct tracer *tp)$/;"	f	file:
+tracers_run	blktrace.c	/^static volatile int tracers_run;$/;"	v	file:
+traces	blkrawverify.c	/^static struct trace_info traces[] = {$/;"	v	typeref:struct:trace_info	file:
+track_ios	blkparse.c	/^static int track_ios;$/;"	v	file:
+track_rb_insert	blkparse.c	/^static inline int track_rb_insert(struct per_dev_info *pdi,struct io_track *iot)$/;"	f	file:
+ts2ns	btreplay/btreplay.c	/^static inline __u64 ts2ns(struct timespec *ts)$/;"	f	file:
+tv2dbl	btt/bt_timeline.c	/^static inline double tv2dbl(struct timeval *tv)$/;"	f	file:
+tv2ns	btreplay/btreplay.c	/^static inline __u64 tv2ns(struct timeval *tp)$/;"	f	file:
+type	btt/btt_plot.py	/^type		= None$/;"	v
+type	btt/globals.h	/^	enum iop_type type;$/;"	m	struct:io	typeref:enum:io::iop_type
+type2c	btt/inlines.h	/^static inline int type2c(enum iop_type type)$/;"	f
+types	btt/btt_plot.py	/^types		= [ 'aqd', 'q2d', 'd2c', 'q2c', 'bnos' ]$/;"	v
+u	btt/proc.c	/^	}  u;$/;"	m	struct:pn_info	typeref:union:pn_info::__anon5	file:
+u32	blktrace.h	/^typedef __u32 u32;$/;"	t
+u8	blktrace.h	/^typedef __u8 u8;$/;"	t
+unblock_tracers	blktrace.c	/^static void unblock_tracers(void)$/;"	f	file:
+unplug	btt/devs.c	/^static inline void unplug(struct d_info *dip, double cur_time)$/;"	f	file:
+unplug_hist_add	btt/unplug_hist.c	/^void unplug_hist_add(struct io *u_iop)$/;"	f
+unplug_hist_alloc	btt/unplug_hist.c	/^void *unplug_hist_alloc(__u32 device)$/;"	f
+unplug_hist_free	btt/unplug_hist.c	/^void unplug_hist_free(void *arg)$/;"	f
+unplug_hist_name	btt/bt_timeline.c	/^char *d2c_name, *q2c_name, *per_io_name, *unplug_hist_name;$/;"	v
+unupdate_g2i	btt/inlines.h	/^static inline void unupdate_g2i(struct io *iop, __u64 i_time)$/;"	f
+unupdate_i2d	btt/inlines.h	/^static inline void unupdate_i2d(struct io *iop, __u64 d_time)$/;"	f
+unupdate_m2d	btt/inlines.h	/^static inline void unupdate_m2d(struct io *iop, __u64 d_time)$/;"	f
+unupdate_q2g	btt/inlines.h	/^static inline void unupdate_q2g(struct io *iop, __u64 g_time)$/;"	f
+unupdate_q2m	btt/inlines.h	/^static inline void unupdate_q2m(struct io *iop, __u64 m_time)$/;"	f
+up	blkiomon.c	/^static int up = 1;$/;"	v	file:
+up_hist_handle	btt/globals.h	/^	void *q2q_handle, *seek_handle, *bno_dump_handle, *up_hist_handle;$/;"	m	struct:d_info
+update_blks	btt/inlines.h	/^static inline void update_blks(struct io *iop)$/;"	f
+update_cregion	btt/inlines.h	/^static inline void update_cregion(struct region_info *reg, __u64 time)$/;"	f
+update_d2c	btt/inlines.h	/^static inline void update_d2c(struct io *iop, __u64 c_time)$/;"	f
+update_d_histo	btt/inlines.h	/^static inline void update_d_histo(__u64 nbytes)$/;"	f
+update_g2i	btt/inlines.h	/^static inline void update_g2i(struct io *iop, __u64 i_time)$/;"	f
+update_i2d	btt/inlines.h	/^static inline void update_i2d(struct io *iop, __u64 d_time)$/;"	f
+update_idle_time	btt/iostat.c	/^static void update_idle_time(struct d_info *dip, double now, int force)$/;"	f	file:
+update_lq	btt/inlines.h	/^static inline void update_lq(__u64 *last_q, struct avg_info *avg, __u64 time)$/;"	f
+update_m2d	btt/inlines.h	/^static inline void update_m2d(struct io *iop, __u64 d_time)$/;"	f
+update_q2a	btt/inlines.h	/^static inline void update_q2a(struct io *iop, __u64 a_time)$/;"	f
+update_q2c	btt/inlines.h	/^static inline void update_q2c(struct io *iop, __u64 c_time)$/;"	f
+update_q2g	btt/inlines.h	/^static inline void update_q2g(struct io *iop, __u64 g_time)$/;"	f
+update_q2m	btt/inlines.h	/^static inline void update_q2m(struct io *iop, __u64 m_time)$/;"	f
+update_q_histo	btt/inlines.h	/^static inline void update_q_histo(__u64 nbytes)$/;"	f
+update_qregion	btt/inlines.h	/^static inline void update_qregion(struct region_info *reg, __u64 time)$/;"	f
+update_range	btt/inlines.h	/^static inline void update_range(struct list_head *head_p, __u64 time)$/;"	f
+update_s2g	btt/inlines.h	/^static inline void update_s2g(struct io *iop, __u64 g_time)$/;"	f
+update_tot_qusz	btt/iostat.c	/^static void update_tot_qusz(struct d_info *dip, double now)$/;"	f	file:
+usage	blkparse.c	/^static void usage(char *prog)$/;"	f	file:
+usage	btreplay/btrecord.c	/^static void usage(void)$/;"	f	file:
+usage	btreplay/btreplay.c	/^static inline void usage(void)$/;"	f	file:
+usage	btt/args.c	/^static void usage(char *prog)$/;"	f	file:
+usage_str	blkiomon.c	/^static char usage_str[] = "\\n\\nblkiomon " \\$/;"	v	file:
+usage_str	blkparse.c	/^static char usage_str[] =    "\\n\\n" \\$/;"	v	file:
+usage_str	blktrace.c	/^static char usage_str[] = \\$/;"	v	file:
+usage_str	btreplay/btrecord.c	/^static char usage_str[] =                                                  \\$/;"	v	file:
+usage_str	btreplay/btreplay.c	/^static char usage_str[] = 						\\$/;"	v	file:
+usage_str	btreplay/btreplay.c	/^static char usage_str[];$/;"	v	file:
+usage_str	btt/args.c	/^static char usage_str[] = \\$/;"	v	file:
+use_tracer_devpaths	blktrace.c	/^static inline int use_tracer_devpaths(void)$/;"	f	file:
+used_iocbs	btreplay/btreplay.c	/^	struct list_head head, free_iocbs, used_iocbs;$/;"	m	struct:thr_info	typeref:struct:thr_info::	file:
+vacant_dstats_list	blkiomon.c	/^static struct dstat *vacant_dstats_list = NULL;$/;"	v	typeref:struct:dstat	file:
+vacant_traces	blkiomon.c	/^static int vacant_traces = 0;$/;"	v	file:
+vacant_traces_list	blkiomon.c	/^static struct trace *vacant_traces_list = NULL;$/;"	v	typeref:struct:trace	file:
+val	blkrawverify.c	/^	__u32 val;$/;"	m	struct:act_info	file:
+valid_act_opt	act_mask.c	/^int valid_act_opt(int x)$/;"	f
+valid_spec	blkparse_fmt.c	/^static inline int valid_spec(int spec)$/;"	f	file:
+verbose	blkparse.c	/^static int verbose;$/;"	v	file:
+verbose	btreplay/btrecord.c	/^static int verbose = 0;				\/\/ Boolean: output stats$/;"	v	file:
+verbose	btreplay/btreplay.c	/^static int verbose = 0;			\/\/ Boolean: Output some extra info$/;"	v	file:
+verbose	btt/bno_plot.py	/^verbose	= 0$/;"	v
+verbose	btt/bt_timeline.c	/^int verbose, done, time_bounded, output_all_data, seek_absolute;$/;"	v
+verbose	btt/btt_plot.py	/^verbose		= False$/;"	v
+verify_trace	blktrace.h	/^static inline int verify_trace(struct blk_io_trace *t)$/;"	f
+version	btreplay/btrecord.h	/^	__u64 version;$/;"	m	struct:io_file_hdr
+vfn	btreplay/btrecord.c	/^	char *file_name, *vfn;$/;"	m	struct:io_stream	file:
+vfp	btreplay/btrecord.c	/^	FILE *ofp, *vfp;$/;"	m	struct:io_stream	file:
+vfp	btreplay/btreplay.c	/^	FILE *vfp;$/;"	m	struct:thr_info	file:
+wait	btt/globals.h	/^	__u64 rqm[2], ios[2], sec[2], wait, svctm;$/;"	m	struct:stats
+wait_empty_entries	blktrace.c	/^static int wait_empty_entries(void)$/;"	f	file:
+wait_iter_start	btreplay/btreplay.c	/^static inline void wait_iter_start(void)$/;"	f	file:
+wait_iters_done	btreplay/btreplay.c	/^static inline void wait_iters_done(void)$/;"	f	file:
+wait_reclaims_done	btreplay/btreplay.c	/^static inline void wait_reclaims_done(void)$/;"	f	file:
+wait_replays_done	btreplay/btreplay.c	/^static inline void wait_replays_done(void)$/;"	f	file:
+wait_replays_ready	btreplay/btreplay.c	/^static inline void wait_replays_ready(void)$/;"	f	file:
+wait_tracers	blktrace.c	/^static void wait_tracers(void)$/;"	f	file:
+wait_tracers_leaving	blktrace.c	/^static void wait_tracers_leaving(void)$/;"	f	file:
+wait_tracers_ready	blktrace.c	/^static void wait_tracers_ready(int ncpus_started)$/;"	f	file:
+wfp	btt/bno_dump.c	/^	FILE *rfp, *wfp, *cfp;$/;"	m	struct:bno_dump	file:
+wfp	btt/seek.c	/^	FILE *rfp, *wfp, *cfp, *sps_fp;$/;"	m	struct:seeki	file:
+write_data	blktrace.c	/^static int write_data(char *buf, int len)$/;"	f	file:
+write_enabled	btreplay/btreplay.c	/^static int write_enabled = 0;		\/\/ Boolean: Enable writing$/;"	v	file:
+write_file_hdr	btreplay/btrecord.c	/^static void write_file_hdr(struct io_stream *stream, struct io_file_hdr *hdr)$/;"	f	file:
+wrqueue	blktrace.h	/^	unsigned long ireads, iwrites, rrqueue, wrqueue;$/;"	m	struct:io_stats
+wrqueue_pc	blktrace.h	/^	unsigned long rrqueue_pc, wrqueue_pc, creads_pc, cwrites_pc;$/;"	m	struct:io_stats
+xavgs_ofp	btt/bt_timeline.c	/^FILE *rngs_ofp, *avgs_ofp, *xavgs_ofp, *per_io_ofp, *msgs_ofp;$/;"	v

@@ -994,26 +994,36 @@ static void blk_register_tracepoints(void)
 
 	ret = register_trace_block_rq_abort(blk_add_trace_rq_abort, NULL);
 	WARN_ON(ret);
+	//'I': trace_block_rq_insert --> __elv_add_request
 	ret = register_trace_block_rq_insert(blk_add_trace_rq_insert, NULL);
 	WARN_ON(ret);
+	//'D' : trace_block_rq_issue --> blk_peek_request
 	ret = register_trace_block_rq_issue(blk_add_trace_rq_issue, NULL);
 	WARN_ON(ret);
+	//'R': 
 	ret = register_trace_block_rq_requeue(blk_add_trace_rq_requeue, NULL);
 	WARN_ON(ret);
+	//'C': trace_block_rq_complete  --> blk_update_request
 	ret = register_trace_block_rq_complete(blk_add_trace_rq_complete, NULL);
 	WARN_ON(ret);
 	ret = register_trace_block_bio_bounce(blk_add_trace_bio_bounce, NULL);
 	WARN_ON(ret);
+	//'C': trace_block_bio_complete
 	ret = register_trace_block_bio_complete(blk_add_trace_bio_complete, NULL);
 	WARN_ON(ret);
+	//'M': trace_block_bio_backmerge
 	ret = register_trace_block_bio_backmerge(blk_add_trace_bio_backmerge, NULL);
 	WARN_ON(ret);
+	//'M':  race_block_bio_frontmerge
 	ret = register_trace_block_bio_frontmerge(blk_add_trace_bio_frontmerge, NULL);
 	WARN_ON(ret);
+	//'Q':  TRACE_EVENT(block_bio_queue)  --> trace_block_bio_queue  -->  generic_make_request_checks
 	ret = register_trace_block_bio_queue(blk_add_trace_bio_queue, NULL);
 	WARN_ON(ret);
+	//'G': trace_block_getrq --> __get_request
 	ret = register_trace_block_getrq(blk_add_trace_getrq, NULL);
 	WARN_ON(ret);
+	//'S': 
 	ret = register_trace_block_sleeprq(blk_add_trace_sleeprq, NULL);
 	WARN_ON(ret);
 	ret = register_trace_block_plug(blk_add_trace_plug, NULL);
@@ -1022,8 +1032,10 @@ static void blk_register_tracepoints(void)
 	WARN_ON(ret);
 	ret = register_trace_block_split(blk_add_trace_split, NULL);
 	WARN_ON(ret);
+	//'A': trace_block_bio_remap --> blk_partition_remap
 	ret = register_trace_block_bio_remap(blk_add_trace_bio_remap, NULL);
 	WARN_ON(ret);
+	//'A':
 	ret = register_trace_block_rq_remap(blk_add_trace_rq_remap, NULL);
 	WARN_ON(ret);
 }

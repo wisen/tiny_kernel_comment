@@ -409,6 +409,9 @@ static noinline void __init_refok rest_init(void)
 //然后调用create_kthread为这个function创建线程。kernel里面的很多模块都不是
 //直接创建线程，而是将要执行的function挂载到kthread_create_list中,最后由
 //2号线程kthreadd来分别为他们创建线程,这里可以看看kswapd是怎么做的就知道了
+
+//这里说下0号进程，0号进程就是init_task,它的task_struct是通过INIT_TASK来
+//静态设置的。
 	kernel_thread(kernel_init, NULL, CLONE_FS);
 	numa_default_policy();
 	pid = kernel_thread(kthreadd, NULL, CLONE_FS | CLONE_FILES);
