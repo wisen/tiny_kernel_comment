@@ -2113,6 +2113,38 @@ static void reset_alloc_batches(struct zone *preferred_zone)
  * get_page_from_freelist goes through the zonelist trying to allocate
  * a page.
  */
+/*
+这个函数的参数很有意思, 在3.18上这个函数的参数只能用复杂来形容
+static struct page *  
+get_page_from_freelist(gfp_t gfp_mask, nodemask_t *nodemask, unsigned int order,  
+        struct zonelist *zonelist, int high_zoneidx, int alloc_flags,  
+        struct zone *preferred_zone, int migratetype)  
+但是这仍然不够, 随着内核的不段改进, 所支持的特性也越多, 分配内存时需要参照的标识也越来越多,
+那难道看着这个函数的参数不断膨胀么, 这是kernel开发者们不能容忍的, 于是大家想出了一个解决方案, 
+把那些相关联的参数封装成一个结构
+static struct page *
+get_page_from_freelist(gfp_t gfp_mask, unsigned int order, int alloc_flags, const struct alloc_context *ac) 
+瞬间感觉清爽很多,来看看alloc_context的结构：
+struct alloc_context {
+        struct zonelist *zonelist;
+        nodemask_t *nodemask;
+        struct zoneref *preferred_zoneref;
+        int migratetype;
+        enum zone_type high_zoneidx;
+        bool spread_dirty_pages;
+};
+
+zonelist：当perferred_zone上没有合适的页可以分配时，就要按zonelist中的顺序扫描
+该zonelist中备用zone列表，一个个的试用
+nodemask：表示节点的mask，就是是否能在该节点上分配内存，这是个bit位数组
+preferred_zone：表示从high_zoneidx后找到的合适的zone，一般会从该zone分配；
+分配失败的话，就会在zonelist再找一个preferred_zone = 合适的zone
+migratetype：迁移类型，在zone->free_area.free_list[XXX] 作为分配下标使用，
+这个是用来反碎片化的，修改了以前的free_area结构体，在该结构体中再添加了一个数组，
+该数组以迁移类型为下标，每个数组元素都挂了对应迁移类型的页链表
+high_zoneidx：是表示该分配时，所能分配的最高zone，一般从high-->normal-->dma
+内存越来越昂贵，所以一般从high到dma分配依次分配
+ */
 static struct page *
 get_page_from_freelist(gfp_t gfp_mask, nodemask_t *nodemask, unsigned int order,
 		struct zonelist *zonelist, int high_zoneidx, int alloc_flags,
@@ -2170,7 +2202,10 @@ zonelist_scan:
 		 * lowmem reserves and high watermark so that kswapd
 		 * should be able to balance it without having to
 		 * write pages from its LRU list.
-		 *
+当我们分配一个页是用来做写操作的，那我们最好是从dirty page没有超过dirty limit的zone中分配，
+这样其实是在分配的时候就做平衡，防止有的zone的dirty page变得很高，而有的zone的dirty page还
+很少。		 
+
 		 * This may look like it could increase pressure on
 		 * lower zones by failing allocations in higher zones
 		 * before they are full.  But the pages that do spill
@@ -2187,11 +2222,14 @@ zonelist_scan:
 		 * will require awareness of zones in the
 		 * dirty-throttling and the flusher threads.
 		 */
-		if (consider_zone_dirty && !zone_dirty_ok(zone))//wisen: 当认为consider_zone_dirty或者zone中的dirty pages的数量不在dirty limit之下，就跳出，不继续做下面的page alloc动作
-			continue;//wisen: 所以这里的逻辑就是我认为当前的zone dirty到一定程度了，我就不继续给你分配page了
+		if (consider_zone_dirty && !zone_dirty_ok(zone))
+		//wisen: 当认为consider_zone_dirty或者zone中的dirty pages的数量不在dirty limit之下，就跳出，不继续做下面的page alloc动作
+			continue;
+		//wisen: 所以这里的逻辑就是我认为当前的zone dirty到一定程度了，我就不继续给你分配page了
 
-		mark = zone->watermark[alloc_flags & ALLOC_WMARK_MASK];//wisen: alloc_flags = ALLOC_WMARK_LOW|ALLOC_CPUSET|ALLOC_FAIR=0x141
-		                                                                                        //wisen: 上面的计算结果就是mark = zone->watermark[LOW]
+		mark = zone->watermark[alloc_flags & ALLOC_WMARK_MASK];
+		//wisen: alloc_flags = ALLOC_WMARK_LOW|ALLOC_CPUSET|ALLOC_FAIR=0x141
+		//wisen: 上面的计算结果就是mark = zone->watermark[LOW]
 		if (!zone_watermark_ok(zone, order, mark,
 				       classzone_idx, alloc_flags)) {
 			int ret;

@@ -92,6 +92,19 @@ static inline void set_cold_files(struct f2fs_sb_info *sbi, struct inode *inode,
 
 	int count = le32_to_cpu(sbi->raw_super->extension_count);
 	for (i = 0; i < count; i++) {
+		//f2fs定义一种冷热数据的概念，比如jpg,png,avi等多媒体这些文件就被定义成冷数据，就是不会经常改变的数据
+		//比如db结尾的数据库文件就是一种热数据的概念，会被经常改变到
+		//f2fs会对冷热数据有不同的处理策略
+		//f2fs会根据这些不同的类型聚合成6类不同的segment
+//	enum {
+//	CURSEG_HOT_DATA	= 0,	/* directory entry blocks */
+//	CURSEG_WARM_DATA,	/* data blocks */
+//	CURSEG_COLD_DATA,	/* multimedia or GCed data blocks */
+//	CURSEG_HOT_NODE,	/* direct node blocks of directory files */
+//	CURSEG_WARM_NODE,	/* direct node blocks of normal files */
+//	CURSEG_COLD_NODE,	/* indirect node blocks */
+//	NO_CHECK_TYPE
+//};	
 		if (is_multimedia_file(name, extlist[i])) {
 			file_set_cold(inode);
 			break;

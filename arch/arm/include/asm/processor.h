@@ -25,9 +25,14 @@
 #include <asm/unified.h>
 
 #ifdef __KERNEL__
+/*
+#define TASK_SIZE		(UL(0xC0000000) - UL(SZ_16M))//wisen: (3072-16=3056)在KERNEL_OBJ/.config中CONFIG_PAGE_OFFSET==0xC0000000
+                                                                                                    //wisen: 其实真正的user space的TASK_SIZE还得减去SZ_16M
+                                                                                                    //wisen: 这个SZ_16M是module size
+*/
 #define STACK_TOP	((current->personality & ADDR_LIMIT_32BIT) ? \
 			 TASK_SIZE : TASK_SIZE_26)
-#define STACK_TOP_MAX	TASK_SIZE
+#define STACK_TOP_MAX	TASK_SIZE//0xbf000000
 #endif
 
 struct debug_info {

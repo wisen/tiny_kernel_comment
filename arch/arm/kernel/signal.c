@@ -580,6 +580,7 @@ do_work_pending(struct pt_regs *regs, unsigned int thread_flags, int syscall)
 {
 	do {
 		if (likely(thread_flags & _TIF_NEED_RESCHED)) {
+	//这里判断是否需要进行进程调度
 			schedule();
 		} else {
 			if (unlikely(!user_mode(regs)))

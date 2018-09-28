@@ -50,6 +50,8 @@ do { \
 #define preempt_enable_no_resched() sched_preempt_enable_no_resched()
 
 #if 1//#ifdef //
+//从preempt_enable的代码可以看出，抢占结束后开启抢占后会做一次__preempt_schedule的动作
+//这就是说完成系统调用或中断处理后，返回到用户态前会产生一次调度时机
 #define preempt_enable() \
 do { \
 	barrier(); \

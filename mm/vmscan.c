@@ -2823,6 +2823,7 @@ static bool shrink_zones(struct zonelist *zonelist, struct scan_control *sc)
  */
  //wisen: do_try_to_free_pages这个函数是direct page reclaim入口
  //wisen: 返回0代表没有回收到page
+ //when and who will trigger direct reclaim????
 static unsigned long do_try_to_free_pages(struct zonelist *zonelist,
 					  struct scan_control *sc)
 {

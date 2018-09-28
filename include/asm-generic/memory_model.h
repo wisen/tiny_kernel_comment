@@ -3,7 +3,7 @@
 
 #ifndef __ASSEMBLY__
 
-#if 1/*defined()*/
+#if 1/*defined(CONFIG_FLATMEM)*/
 
 #ifndef ARCH_PFN_OFFSET
 #define ARCH_PFN_OFFSET		(0UL)
@@ -25,9 +25,13 @@
 /*
  * supports 3 memory models.
  */
-#if 1/*defined()*/
+ /*
+linux内核中支持3中内存模型，分别是flat memory model，Discontiguous memory model和sparse memory model
 
-#define __pfn_to_page(pfn)	(mem_map + ((pfn) - ARCH_PFN_OFFSET))
+*/
+#if 1/*defined(CONFIG_FLATMEM)*/
+
+#define __pfn_to_page(pfn)	(mem_map + ((pfn) - ARCH_PFN_OFFSET))//#define ARCH_PFN_OFFSET = 0x80000 = 524288
 #define __page_to_pfn(page)	((unsigned long)((page) - mem_map) + \
 				 ARCH_PFN_OFFSET)
 #elif defined(CONFIG_DISCONTIGMEM)

@@ -422,6 +422,7 @@ static struct task_struct *dup_task_struct(struct task_struct *orig)
 	tsk->splice_pipe = NULL;
 	tsk->task_frag.page = NULL;
 
+//每fork后者clone一个进程或者线程，就把kernel stack的数量加1
 	account_kernel_stack(ti, 1);
 
 	return tsk;

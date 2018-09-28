@@ -206,15 +206,15 @@ typedef struct elf32_hdr{
   Elf32_Half	e_type;
   Elf32_Half	e_machine;
   Elf32_Word	e_version;
-  Elf32_Addr	e_entry;  /* Entry point */
-  Elf32_Off	e_phoff;
-  Elf32_Off	e_shoff;
-  Elf32_Word	e_flags;
-  Elf32_Half	e_ehsize;
-  Elf32_Half	e_phentsize;
-  Elf32_Half	e_phnum;
-  Elf32_Half	e_shentsize;
-  Elf32_Half	e_shnum;
+  Elf32_Addr	e_entry;  //virtual Entry point 
+  Elf32_Off	e_phoff;          //program header table offset
+  Elf32_Off	e_shoff;          //section header table offset
+  Elf32_Word	e_flags;  
+  Elf32_Half	e_ehsize;  //elf header size
+  Elf32_Half	e_phentsize;  //program header entry size
+  Elf32_Half	e_phnum;     //number of program header entries
+  Elf32_Half	e_shentsize;  //section hdeaer entry size
+  Elf32_Half	e_shnum;     //number of section header entries
   Elf32_Half	e_shstrndx;
 } Elf32_Ehdr;
 

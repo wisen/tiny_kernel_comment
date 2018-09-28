@@ -81,6 +81,7 @@ extern void __register_binfmt(struct linux_binfmt *fmt, int insert);
 /* Registration of default binfmt handlers */
 static inline void register_binfmt(struct linux_binfmt *fmt)
 {
+	//fmt = elf_format
 	__register_binfmt(fmt, 0);
 }
 /* Same as above, but adds a new binfmt at the top of the list */

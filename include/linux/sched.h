@@ -154,8 +154,8 @@ extern void get_avenrun(unsigned long *loads, unsigned long offset, int shift);
 #define FSHIFT		11		/* nr of bits of precision */
 #define FIXED_1		(1<<FSHIFT)	/* 1.0 as fixed-point */
 #define LOAD_FREQ	(5*HZ+1)	/* 5 sec intervals */
-//�����exp��ָ��Ȼ����e=2.718
-//��ôEXP_1=1/e^(5/60) * FIXED_1=1/2.718^(0.0833)*2048=1884
+//??????exp??ָ??Ȼ????e=2.718
+//??ôEXP_1=1/e^(5/60) * FIXED_1=1/2.718^(0.0833)*2048=1884
 #define EXP_1		1884		/* 1/exp(5sec/1min) as fixed-point */
 #define EXP_5		2014		/* 1/exp(5sec/5min) */
 #define EXP_15		2037		/* 1/exp(5sec/15min) */
@@ -208,7 +208,7 @@ print_cfs_rq(struct seq_file *m, int cpu, struct cfs_rq *cfs_rq);
  */
 #define TASK_RUNNING		0
 #define TASK_INTERRUPTIBLE	1
-//TASK_UNINTERRUPTIBLE״̬����IO���ȴ����磬swap���ں��е����������ڴ�ֱ��ҳ���յ�˯�ߣ��ں���һЩ����·���ϵ����������ȴ���Դ
+//TASK_UNINTERRUPTIBLE״̬??��IO???ȴ????磬swap???ں??е??????????ڴ?ֱ??ҳ???յ?˯?ߣ??ں???һЩ????·???ϵ??????????ȴ???Դ
 #define TASK_UNINTERRUPTIBLE	2
 #define __TASK_STOPPED		4
 #define __TASK_TRACED		8
@@ -1422,6 +1422,10 @@ struct task_struct {
 	struct rb_node pushable_dl_tasks;
 #endif
 
+	//进程所拥有的用户空间内存描述符，内核线程无的mm为NULL
+	/*
+	active_mm指向进程运行时所使用的内存描述符， 对于普通进程而言，这两个指针变量的值相同。但是内核线程kernel thread是没有进程地址空间的，所以内核线程的tsk->mm域是空（NULL）。但是内核必须知道用户空间包含了什么，因此它的active_mm成员被初始化为前一个运行进程的active_mm值。
+	*/
 	struct mm_struct *mm, *active_mm;
 #if 1//#ifdef //
 	unsigned brk_randomized:1;

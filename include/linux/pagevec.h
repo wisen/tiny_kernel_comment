@@ -14,6 +14,18 @@
 struct page;
 struct address_space;
 
+//LRU 缓存
+//页面根据其活跃程度会在 active 链表和 inactive链表之间来回移动，如果要将某个页面插入到这两个链表中去
+//必须要通过自旋锁(锁的动作在pagevec_lru_move_fn中)以保证对链表的并发访问操作不会出错。
+//为了降低锁的竞争，Linux提供了一种特殊的缓存：
+//LRU 缓存，用以批量地向 LRU 链表中快速地添加页面。有了 LRU缓存之后，新页不会被马上添加到相应的
+//链表上去，而是先被放到一个缓冲区中去，当该缓冲区缓存了足够多的页面之后，
+//缓冲区中的页面才会被一次性地全部添加到相应的LRU 链表中去。
+//Linux采用这种方法降低了锁的竞争，极大地提升了系统的性能。
+
+/*
+ 用来实现 LRU 缓存的两个关键函数是 lru_cache_add() 和 lru_cache_add_active()。前者用于延迟将页面添加到 inactive 链表上去，后者用于延迟将页面添加到 active 链表上去。这两个函数都会将要移动的页面先放到页向量 pagevec 中，当 pagevec满了(已经装了 14个页面的描述符指针)，pagevec 结构中的所有页面才会被一次性地移动到相应的链表上去。
+ */
 struct pagevec {
 	unsigned long nr;
 	unsigned long cold;

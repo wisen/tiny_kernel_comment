@@ -34,10 +34,12 @@ ret_fast_syscall:
  UNWIND(.cantunwind	)
 	disable_irq				@ disable interrupts
 	ldr	r1, [tsk, #TI_FLAGS]		@ re-check for syscall tracing
+//将thread_info中的flags成员存放到r1中
 	tst	r1, #_TIF_SYSCALL_WORK
 	bne	__sys_trace_return
 	tst	r1, #_TIF_WORK_MASK
 	bne	fast_work_pending
+//跳转到fast_work_pending
 	asm_trace_hardirqs_on
 
 	/* perform architecture specific actions before user return */
@@ -370,6 +372,7 @@ ENTRY(vector_swi)
 	zero_fp
 	alignment_trap r10, ip, __cr_alignment
 	enable_irq
+//软中断中允许中断
 	ct_user_exit
 	get_thread_info tsk
 
@@ -402,6 +405,9 @@ ENTRY(vector_swi)
 	tst	r8, #PSR_T_BIT			@ this is SPSR from save_user_regs
 	addne	scno, r7, #__NR_SYSCALL_BASE	@ put OS number in
  USER(	ldreq	scno, [lr, #-4]		)
+//scno中存放的就是引起软中断的那条指令的机器码
+//发生软中断的时候，系统自动将PC-4存放到了lr寄存器，由于是三级流水，
+//并且是ARM状态，还需要减4才能得到发生软中断的那条指令的机器码所在的地址
 
 #else
 	/* Legacy ABI only. */
@@ -409,6 +415,7 @@ ENTRY(vector_swi)
 #endif
 
 	adr	tbl, sys_call_table		@ load syscall table pointer
+//把syscall的table地址赋与tbl
 
 #if 0/*defined()*/
 	/*
@@ -435,7 +442,10 @@ local_restart:
 	cmp	scno, #NR_syscalls		@ check upper syscall limit
 	adr	lr, BSYM(ret_fast_syscall)	@ return address
 	ldrcc	pc, [tbl, scno, lsl #2]		@ call sys_* routine
-
+//这里跳转到具体的系统调用的函数中执行
+//这里的scno是就是寄存器r7的别名，它的值是系统调用号，由于在calls.S中每个
+//系统调用标号占用4个字节，所以这个将scno的值乘以4然后再加上tbl，tbl是系统调用表
+//sys_call_table的基地址。然后就跳入开始执行具体的系统调用了。
 	add	r1, sp, #S_OFF
 2:	cmp	scno, #(__ARM_NR_BASE - __NR_SYSCALL_BASE)
 	eor	r0, scno, #__NR_SYSCALL_BASE	@ put OS number back
@@ -456,6 +466,9 @@ local_restart:
 	sub	lr, lr, #4
 	str	lr, [sp, #S_PC]
 	b	ret_fast_syscall
+//在返回用户空间和从中断返回的时候，内核需要检查need_resched标志，如果这个标志
+//被设置，那么在返回之前会主动调用一次调度程序。
+//这样做的目的是啥？？？？
 #endif
 ENDPROC(vector_swi)
 

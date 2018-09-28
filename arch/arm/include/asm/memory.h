@@ -42,7 +42,7 @@
 #define TASK_SIZE		(UL(0xC0000000/*CONFIG_PAGE_OFFSET=0xC0000000*/) - UL(SZ_16M))//wisen: (3072-16=3056)在KERNEL_OBJ/.config中0xC0000000/*CONFIG_PAGE_OFFSET=0xC0000000*/=0xC0000000
                                                                                                     //wisen: 其实真正的user space的TASK_SIZE还得减去SZ_16M
                                                                                                     //wisen: 这个SZ_16M是module size
-#define TASK_UNMAPPED_BASE	ALIGN(TASK_SIZE / 3, SZ_16M)
+#define TASK_UNMAPPED_BASE	ALIGN(TASK_SIZE / 3, SZ_16M)//wisen: TASK_UNMAPPED_BASE=0x40000000
 
 /*
  * The maximum size of a 26-bit user space task.
@@ -252,8 +252,8 @@ static inline unsigned long __phys_to_virt(phys_addr_t x)
 
 #else
 
-#define PHYS_OFFSET	PLAT_PHYS_OFFSET
-#define PHYS_PFN_OFFSET	((unsigned long)(PHYS_OFFSET >> PAGE_SHIFT))
+#define PHYS_OFFSET	PLAT_PHYS_OFFSET//#define PLAT_PHYS_OFFSET	UL(0x80000000/*CONFIG_PHYS_OFFSET=0x80000000*/)//wisen[x559]: 0x80000000/*CONFIG_PHYS_OFFSET=0x80000000*/=0x80000000
+#define PHYS_PFN_OFFSET	((unsigned long)(PHYS_OFFSET >> PAGE_SHIFT))//0x80000000>>12=0x80000=524288
 
 static inline phys_addr_t __virt_to_phys(unsigned long x)
 {
@@ -349,7 +349,7 @@ static inline __deprecated void *bus_to_virt(unsigned long x)
  *  virt_to_page(k)	convert a _valid_ virtual address to struct page *
  *  virt_addr_valid(k)	indicates whether a virtual address is valid
  */
-#define ARCH_PFN_OFFSET		PHYS_PFN_OFFSET
+#define ARCH_PFN_OFFSET		PHYS_PFN_OFFSET//x559: 0x80000=524288
 
 #define virt_to_page(kaddr)	pfn_to_page(virt_to_pfn(kaddr))
 #define virt_addr_valid(kaddr)	(((unsigned long)(kaddr) >= PAGE_OFFSET && (unsigned long)(kaddr) < (unsigned long)high_memory) \

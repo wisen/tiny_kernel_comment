@@ -560,6 +560,10 @@ static void mt_bio_print_klog(struct mt_bio_trace *tr)
 
 	spin_lock_irqsave(&mt_bio_prbuf_lock, flags);
 
+	//read throughput
+	//#define biolog_fmt_rt "rt:%d,%d,%lld."
+	//rt:31135,10043392,315.
+	//speed size usage
 	if (tr->throughput.r.usage) {
 		n = snprintf(ptr, len, biolog_fmt_rt,
 			tr->throughput.r.speed,
@@ -570,6 +574,10 @@ static void mt_bio_print_klog(struct mt_bio_trace *tr)
 			goto overflow;
 	}
 
+	//write throughput
+	//#define biolog_fmt_wt "wt:%d,%d,%lld."
+	//wt:4717,376832,78.
+	//spped size usage
 	if (tr->throughput.w.usage) {
 		n = snprintf(ptr, len, biolog_fmt_wt,
 			tr->throughput.w.speed,
@@ -581,6 +589,10 @@ static void mt_bio_print_klog(struct mt_bio_trace *tr)
 
 	}
 
+	//work load
+	//#define biolog_fmt "wl:%d%%,%lld,%lld,%d.vm:%lld,%lld,%lld,%lld,%lld.cpu:%llu,%llu,%llu,%llu,%llu,%llu,%llu.pid:%d,"
+	//wl:1%,0,1062651234,0.vm:0,119756,118357092,0,41264976.cpu:3410964,676295,2653838,32198661,283502,0,107.pid:251,
+	//
 	n = snprintf(ptr, len, biolog_fmt,
 		tr->workload.percent,
 		tr->workload.usage,
@@ -611,6 +623,8 @@ static void mt_bio_print_klog(struct mt_bio_trace *tr)
 		if (pe->pid == 0)
 			break;
 
+		//#define pidlog_fmt "{%05d:%05d:%08d:%05d:%08d}"
+		//{09596:00000:00000000:00011:00045056}
 		n = snprintf(ptr, len, pidlog_fmt,
 			pe->pid,
 			pe->w.count,

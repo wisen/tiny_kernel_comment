@@ -411,10 +411,14 @@ unsigned long reclaim_clean_pages_from_list(struct zone *zone,
 /* Mask to get the watermark bits */
 #define ALLOC_WMARK_MASK	(ALLOC_NO_WATERMARKS-1)//wisen: =3
 
+//ALLOC_HARDER 通知伙伴系统在急需内存时放宽分配规则. 在分配高端内存域的内存时, ALLOC_HIGH进一步放宽限制.
 #define ALLOC_HARDER		0x10 /* try to alloc harder */
 #define ALLOC_HIGH		0x20 /* __GFP_HIGH set */
+//ALLOC_CPUSET: 告知内核, 内存只能从当前进程允许运行的CPU相关联的内存结点分配, 该选项只对NUMA系统有意义.
 #define ALLOC_CPUSET		0x40 /* check for correct cpuset */
+//ALLOC_CMA: 通知伙伴系统从CMA区域中分配内存
 #define ALLOC_CMA		0x80 /* allow allocations from CMA areas */
+//ALLOC_FAIR: 希望内核公平(均匀)的从内存域zone中进行内存分配
 #define ALLOC_FAIR		0x100 /* fair zone allocation */
 
 #ifdef CONFIG_MTK_ION

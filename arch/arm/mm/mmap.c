@@ -178,6 +178,7 @@ void arch_pick_mmap_layout(struct mm_struct *mm)
 		random_factor = (get_random_long() & ((1UL << mmap_rnd_bits) - 1)) << PAGE_SHIFT;
 
 	if (mmap_is_legacy()) {
+		//bottom-up: TASK_UNMAPPED_BASE=0x40000000; random_factor=0
 		mm->mmap_base = TASK_UNMAPPED_BASE + random_factor;
 		mm->get_unmapped_area = arch_get_unmapped_area;
 	} else {

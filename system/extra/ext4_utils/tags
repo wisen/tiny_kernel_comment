@@ -1,0 +1,1148 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AGGRESSIVE_TEST_	include/ext4_utils/ext4_extents.h	17;"	d
+BJ_Forget	include/ext4_utils/jbd2.h	133;"	d
+BJ_IO	include/ext4_utils/jbd2.h	134;"	d
+BJ_LogCtl	include/ext4_utils/jbd2.h	136;"	d
+BJ_Metadata	include/ext4_utils/jbd2.h	132;"	d
+BJ_None	include/ext4_utils/jbd2.h	131;"	d
+BJ_Reserved	include/ext4_utils/jbd2.h	137;"	d
+BJ_Shadow	include/ext4_utils/jbd2.h	135;"	d
+BJ_Types	include/ext4_utils/jbd2.h	138;"	d
+BLKDISCARD	wipe.c	29;"	d	file:
+BLKSECDISCARD	wipe.c	33;"	d	file:
+CHAR64LONG16	sha1.c	/^} CHAR64LONG16;$/;"	t	typeref:union:__anon9	file:
+CHECK_BINSEARCH__	include/ext4_utils/ext4_extents.h	21;"	d
+DIV_ROUND_UP	include/ext4_utils/ext4_utils.h	66;"	d
+DX_HASH_HALF_MD4	include/ext4_utils/ext4.h	575;"	d
+DX_HASH_HALF_MD4_UNSIGNED	include/ext4_utils/ext4.h	578;"	d
+DX_HASH_LEGACY	include/ext4_utils/ext4.h	574;"	d
+DX_HASH_LEGACY_UNSIGNED	include/ext4_utils/ext4.h	577;"	d
+DX_HASH_TEA	include/ext4_utils/ext4.h	576;"	d
+DX_HASH_TEA_UNSIGNED	include/ext4_utils/ext4.h	579;"	d
+EXT2_FLAGS_SIGNED_HASH	include/ext4_utils/ext4.h	326;"	d
+EXT2_FLAGS_TEST_FILESYS	include/ext4_utils/ext4.h	328;"	d
+EXT2_FLAGS_UNSIGNED_HASH	include/ext4_utils/ext4.h	327;"	d
+EXT4FS_DEBUG	include/ext4_utils/ext4.h	17;"	d
+EXT4_ADDR_PER_BLOCK	include/ext4_utils/ext4.h	97;"	d
+EXT4_ALIGN	include/ext4_utils/ext4_utils.h	67;"	d
+EXT4_ALLOCATE_FAILED	allocate.h	20;"	d
+EXT4_APPEND_FL	include/ext4_utils/ext4.h	148;"	d
+EXT4_BAD_INO	include/ext4_utils/ext4.h	82;"	d
+EXT4_BG_BLOCK_UNINIT	include/ext4_utils/ext4.h	126;"	d
+EXT4_BG_INODE_UNINIT	include/ext4_utils/ext4.h	125;"	d
+EXT4_BG_INODE_ZEROED	include/ext4_utils/ext4.h	127;"	d
+EXT4_BLOCKS_PER_GROUP	include/ext4_utils/ext4.h	133;"	d
+EXT4_BLOCK_ALIGN	include/ext4_utils/ext4.h	101;"	d
+EXT4_BLOCK_SIZE	include/ext4_utils/ext4.h	96;"	d
+EXT4_BLOCK_SIZE_BITS	include/ext4_utils/ext4.h	98;"	d
+EXT4_BOOT_LOADER_INO	include/ext4_utils/ext4.h	84;"	d
+EXT4_CLEAR_COMPAT_FEATURE	include/ext4_utils/ext4.h	478;"	d
+EXT4_CLEAR_INCOMPAT_FEATURE	include/ext4_utils/ext4.h	480;"	d
+EXT4_CLEAR_RO_COMPAT_FEATURE	include/ext4_utils/ext4.h	479;"	d
+EXT4_COMPRBLK_FL	include/ext4_utils/ext4.h	153;"	d
+EXT4_COMPR_FL	include/ext4_utils/ext4.h	145;"	d
+EXT4_CURRENT_REV	include/ext4_utils/ext4.h	467;"	d
+EXT4_DEFM_ACL	include/ext4_utils/ext4.h	525;"	d
+EXT4_DEFM_BSDGROUPS	include/ext4_utils/ext4.h	523;"	d
+EXT4_DEFM_DEBUG	include/ext4_utils/ext4.h	522;"	d
+EXT4_DEFM_JMODE	include/ext4_utils/ext4.h	527;"	d
+EXT4_DEFM_JMODE_DATA	include/ext4_utils/ext4.h	528;"	d
+EXT4_DEFM_JMODE_ORDERED	include/ext4_utils/ext4.h	529;"	d
+EXT4_DEFM_JMODE_WBACK	include/ext4_utils/ext4.h	530;"	d
+EXT4_DEFM_UID16	include/ext4_utils/ext4.h	526;"	d
+EXT4_DEFM_XATTR_USER	include/ext4_utils/ext4.h	524;"	d
+EXT4_DEF_INODE_READAHEAD_BLKS	include/ext4_utils/ext4.h	520;"	d
+EXT4_DEF_MAX_BATCH_TIME	include/ext4_utils/ext4.h	533;"	d
+EXT4_DEF_MIN_BATCH_TIME	include/ext4_utils/ext4.h	532;"	d
+EXT4_DEF_RESGID	include/ext4_utils/ext4.h	518;"	d
+EXT4_DEF_RESUID	include/ext4_utils/ext4.h	517;"	d
+EXT4_DESC_PER_BLOCK	include/ext4_utils/ext4.h	134;"	d
+EXT4_DESC_SIZE	include/ext4_utils/ext4.h	132;"	d
+EXT4_DFL_CHECKINTERVAL	include/ext4_utils/ext4.h	375;"	d
+EXT4_DFL_MAX_MNT_COUNT	include/ext4_utils/ext4.h	374;"	d
+EXT4_DIND_BLOCK	include/ext4_utils/ext4.h	139;"	d
+EXT4_DIRSYNC_FL	include/ext4_utils/ext4.h	161;"	d
+EXT4_DIRTY_FL	include/ext4_utils/ext4.h	152;"	d
+EXT4_DIR_LINK_EMPTY	include/ext4_utils/ext4.h	572;"	d
+EXT4_DIR_LINK_MAX	include/ext4_utils/ext4.h	571;"	d
+EXT4_DIR_PAD	include/ext4_utils/ext4.h	565;"	d
+EXT4_DIR_REC_LEN	include/ext4_utils/ext4.h	567;"	d
+EXT4_DIR_ROUND	include/ext4_utils/ext4.h	566;"	d
+EXT4_DYNAMIC_REV	include/ext4_utils/ext4.h	465;"	d
+EXT4_EA_INODE_FL	include/ext4_utils/ext4.h	165;"	d
+EXT4_ECOMPR_FL	include/ext4_utils/ext4.h	155;"	d
+EXT4_EINODE_GET_XTIME	include/ext4_utils/ext4.h	310;"	d
+EXT4_EINODE_SET_XTIME	include/ext4_utils/ext4.h	307;"	d
+EXT4_ENCRYPTION_MODE_AES_256_CTS	ext4_crypt.cpp	50;"	d	file:
+EXT4_ENCRYPTION_MODE_AES_256_HEH	ext4_crypt.cpp	53;"	d	file:
+EXT4_ENCRYPTION_MODE_AES_256_XTS	ext4_crypt.cpp	49;"	d	file:
+EXT4_ENCRYPTION_MODE_PRIVATE	ext4_crypt.cpp	54;"	d	file:
+EXT4_ENCRYPTION_MODE_SPECK128_256_CTS	ext4_crypt.cpp	52;"	d	file:
+EXT4_ENCRYPTION_MODE_SPECK128_256_XTS	ext4_crypt.cpp	51;"	d	file:
+EXT4_EOFBLOCKS_FL	include/ext4_utils/ext4.h	166;"	d
+EXT4_EPOCH_BITS	include/ext4_utils/ext4.h	301;"	d
+EXT4_EPOCH_MASK	include/ext4_utils/ext4.h	302;"	d
+EXT4_ERRORS_CONTINUE	include/ext4_utils/ext4.h	377;"	d
+EXT4_ERRORS_DEFAULT	include/ext4_utils/ext4.h	380;"	d
+EXT4_ERRORS_PANIC	include/ext4_utils/ext4.h	379;"	d
+EXT4_ERRORS_RO	include/ext4_utils/ext4.h	378;"	d
+EXT4_ERROR_FILE	include/ext4_utils/ext4.h	27;"	d
+EXT4_ERROR_FS	include/ext4_utils/ext4.h	323;"	d
+EXT4_ERROR_INODE	include/ext4_utils/ext4.h	25;"	d
+EXT4_EXTENTS_FL	include/ext4_utils/ext4.h	164;"	d
+EXT4_EXT_CACHE_EXTENT	include/ext4_utils/ext4_extents.h	67;"	d
+EXT4_EXT_CACHE_GAP	include/ext4_utils/ext4_extents.h	66;"	d
+EXT4_EXT_CACHE_NO	include/ext4_utils/ext4_extents.h	65;"	d
+EXT4_EXT_MAGIC	include/ext4_utils/ext4_extents.h	54;"	d
+EXT4_FEATURE_COMPAT_DIR_INDEX	include/ext4_utils/ext4.h	487;"	d
+EXT4_FEATURE_COMPAT_DIR_PREALLOC	include/ext4_utils/ext4.h	482;"	d
+EXT4_FEATURE_COMPAT_EXT_ATTR	include/ext4_utils/ext4.h	485;"	d
+EXT4_FEATURE_COMPAT_HAS_JOURNAL	include/ext4_utils/ext4.h	484;"	d
+EXT4_FEATURE_COMPAT_IMAGIC_INODES	include/ext4_utils/ext4.h	483;"	d
+EXT4_FEATURE_COMPAT_RESIZE_INODE	include/ext4_utils/ext4.h	486;"	d
+EXT4_FEATURE_COMPAT_SUPP	include/ext4_utils/ext4.h	513;"	d
+EXT4_FEATURE_INCOMPAT_64BIT	include/ext4_utils/ext4.h	506;"	d
+EXT4_FEATURE_INCOMPAT_COMPRESSION	include/ext4_utils/ext4.h	500;"	d
+EXT4_FEATURE_INCOMPAT_DIRDATA	include/ext4_utils/ext4.h	510;"	d
+EXT4_FEATURE_INCOMPAT_EA_INODE	include/ext4_utils/ext4.h	509;"	d
+EXT4_FEATURE_INCOMPAT_ENCRYPT	include/ext4_utils/ext4.h	511;"	d
+EXT4_FEATURE_INCOMPAT_EXTENTS	include/ext4_utils/ext4.h	505;"	d
+EXT4_FEATURE_INCOMPAT_FILETYPE	include/ext4_utils/ext4.h	501;"	d
+EXT4_FEATURE_INCOMPAT_FLEX_BG	include/ext4_utils/ext4.h	508;"	d
+EXT4_FEATURE_INCOMPAT_JOURNAL_DEV	include/ext4_utils/ext4.h	503;"	d
+EXT4_FEATURE_INCOMPAT_META_BG	include/ext4_utils/ext4.h	504;"	d
+EXT4_FEATURE_INCOMPAT_MMP	include/ext4_utils/ext4.h	507;"	d
+EXT4_FEATURE_INCOMPAT_RECOVER	include/ext4_utils/ext4.h	502;"	d
+EXT4_FEATURE_INCOMPAT_SUPP	include/ext4_utils/ext4.h	514;"	d
+EXT4_FEATURE_RO_COMPAT_BIGALLOC	include/ext4_utils/ext4.h	498;"	d
+EXT4_FEATURE_RO_COMPAT_BTREE_DIR	include/ext4_utils/ext4.h	491;"	d
+EXT4_FEATURE_RO_COMPAT_DIR_NLINK	include/ext4_utils/ext4.h	494;"	d
+EXT4_FEATURE_RO_COMPAT_EXTRA_ISIZE	include/ext4_utils/ext4.h	495;"	d
+EXT4_FEATURE_RO_COMPAT_GDT_CSUM	include/ext4_utils/ext4.h	493;"	d
+EXT4_FEATURE_RO_COMPAT_HAS_SNAPSHOT	include/ext4_utils/ext4.h	496;"	d
+EXT4_FEATURE_RO_COMPAT_HUGE_FILE	include/ext4_utils/ext4.h	492;"	d
+EXT4_FEATURE_RO_COMPAT_LARGE_FILE	include/ext4_utils/ext4.h	490;"	d
+EXT4_FEATURE_RO_COMPAT_QUOTA	include/ext4_utils/ext4.h	497;"	d
+EXT4_FEATURE_RO_COMPAT_SPARSE_SUPER	include/ext4_utils/ext4.h	489;"	d
+EXT4_FEATURE_RO_COMPAT_SUPP	include/ext4_utils/ext4.h	515;"	d
+EXT4_FIRST_INO	include/ext4_utils/ext4.h	100;"	d
+EXT4_FITS_IN_INODE	include/ext4_utils/ext4.h	305;"	d
+EXT4_FLEX_SIZE_DIR_ALLOC_SCHEME	include/ext4_utils/ext4.h	535;"	d
+EXT4_FL_INHERITED	include/ext4_utils/ext4.h	172;"	d
+EXT4_FL_USER_MODIFIABLE	include/ext4_utils/ext4.h	170;"	d
+EXT4_FL_USER_VISIBLE	include/ext4_utils/ext4.h	169;"	d
+EXT4_FREE_BLOCKS_FORGET	include/ext4_utils/ext4.h	203;"	d
+EXT4_FREE_BLOCKS_METADATA	include/ext4_utils/ext4.h	202;"	d
+EXT4_FREE_BLOCKS_VALIDATED	include/ext4_utils/ext4.h	204;"	d
+EXT4_FT_BLKDEV	include/ext4_utils/ext4.h	558;"	d
+EXT4_FT_CHRDEV	include/ext4_utils/ext4.h	557;"	d
+EXT4_FT_DIR	include/ext4_utils/ext4.h	556;"	d
+EXT4_FT_FIFO	include/ext4_utils/ext4.h	559;"	d
+EXT4_FT_MAX	include/ext4_utils/ext4.h	563;"	d
+EXT4_FT_REG_FILE	include/ext4_utils/ext4.h	555;"	d
+EXT4_FT_SOCK	include/ext4_utils/ext4.h	560;"	d
+EXT4_FT_SYMLINK	include/ext4_utils/ext4.h	561;"	d
+EXT4_FT_UNKNOWN	include/ext4_utils/ext4.h	554;"	d
+EXT4_GET_BLOCKS_CONVERT	include/ext4_utils/ext4.h	197;"	d
+EXT4_GET_BLOCKS_CREATE	include/ext4_utils/ext4.h	189;"	d
+EXT4_GET_BLOCKS_CREATE_UNINIT_EXT	include/ext4_utils/ext4.h	192;"	d
+EXT4_GET_BLOCKS_DELALLOC_RESERVE	include/ext4_utils/ext4.h	194;"	d
+EXT4_GET_BLOCKS_IO_CONVERT_EXT	include/ext4_utils/ext4.h	200;"	d
+EXT4_GET_BLOCKS_IO_CREATE_EXT	include/ext4_utils/ext4.h	198;"	d
+EXT4_GET_BLOCKS_PRE_IO	include/ext4_utils/ext4.h	196;"	d
+EXT4_GET_BLOCKS_UNINIT_EXT	include/ext4_utils/ext4.h	191;"	d
+EXT4_GOOD_OLD_FIRST_INO	include/ext4_utils/ext4.h	89;"	d
+EXT4_GOOD_OLD_INODE_SIZE	include/ext4_utils/ext4.h	470;"	d
+EXT4_GOOD_OLD_REV	include/ext4_utils/ext4.h	464;"	d
+EXT4_HAS_COMPAT_FEATURE	include/ext4_utils/ext4.h	472;"	d
+EXT4_HAS_INCOMPAT_FEATURE	include/ext4_utils/ext4.h	474;"	d
+EXT4_HAS_RO_COMPAT_FEATURE	include/ext4_utils/ext4.h	473;"	d
+EXT4_HUGE_FILE_FL	include/ext4_utils/ext4.h	163;"	d
+EXT4_IMAGIC_FL	include/ext4_utils/ext4.h	158;"	d
+EXT4_IMMUTABLE_FL	include/ext4_utils/ext4.h	147;"	d
+EXT4_INDEX_FL	include/ext4_utils/ext4.h	157;"	d
+EXT4_IND_BLOCK	include/ext4_utils/ext4.h	138;"	d
+EXT4_INODES_PER_GROUP	include/ext4_utils/ext4.h	135;"	d
+EXT4_INODE_GET_XTIME	include/ext4_utils/ext4.h	308;"	d
+EXT4_INODE_SET_XTIME	include/ext4_utils/ext4.h	306;"	d
+EXT4_INODE_SIZE	include/ext4_utils/ext4.h	99;"	d
+EXT4_IOC32_GETFLAGS	include/ext4_utils/ext4.h	221;"	d
+EXT4_IOC32_GETRSVSZ	include/ext4_utils/ext4.h	225;"	d
+EXT4_IOC32_GETVERSION	include/ext4_utils/ext4.h	223;"	d
+EXT4_IOC32_GETVERSION_OLD	include/ext4_utils/ext4.h	228;"	d
+EXT4_IOC32_GROUP_EXTEND	include/ext4_utils/ext4.h	227;"	d
+EXT4_IOC32_SETFLAGS	include/ext4_utils/ext4.h	222;"	d
+EXT4_IOC32_SETRSVSZ	include/ext4_utils/ext4.h	226;"	d
+EXT4_IOC32_SETVERSION	include/ext4_utils/ext4.h	224;"	d
+EXT4_IOC32_SETVERSION_OLD	include/ext4_utils/ext4.h	229;"	d
+EXT4_IOC_ALLOC_DA_BLKS	include/ext4_utils/ext4.h	218;"	d
+EXT4_IOC_GETFLAGS	include/ext4_utils/ext4.h	206;"	d
+EXT4_IOC_GETRSVSZ	include/ext4_utils/ext4.h	212;"	d
+EXT4_IOC_GETVERSION	include/ext4_utils/ext4.h	208;"	d
+EXT4_IOC_GETVERSION_OLD	include/ext4_utils/ext4.h	210;"	d
+EXT4_IOC_GET_ENCRYPTION_POLICY	ext4_crypt.cpp	65;"	d	file:
+EXT4_IOC_GROUP_ADD	include/ext4_utils/ext4.h	215;"	d
+EXT4_IOC_GROUP_EXTEND	include/ext4_utils/ext4.h	214;"	d
+EXT4_IOC_MIGRATE	include/ext4_utils/ext4.h	216;"	d
+EXT4_IOC_MOVE_EXT	include/ext4_utils/ext4.h	219;"	d
+EXT4_IOC_SETFLAGS	include/ext4_utils/ext4.h	207;"	d
+EXT4_IOC_SETRSVSZ	include/ext4_utils/ext4.h	213;"	d
+EXT4_IOC_SETVERSION	include/ext4_utils/ext4.h	209;"	d
+EXT4_IOC_SETVERSION_OLD	include/ext4_utils/ext4.h	211;"	d
+EXT4_IOC_SET_ENCRYPTION_POLICY	ext4_crypt.cpp	64;"	d	file:
+EXT4_JNL_BACKUP_BLOCKS	include/ext4_utils/ext4_utils.h	58;"	d
+EXT4_JOURNAL_DATA_FL	include/ext4_utils/ext4.h	159;"	d
+EXT4_JOURNAL_INO	include/ext4_utils/ext4.h	87;"	d
+EXT4_KEYREF_DELIMITER	ext4_crypt.cpp	34;"	d	file:
+EXT4_KEY_DESCRIPTOR_SIZE	ext4_crypt.cpp	38;"	d	file:
+EXT4_KEY_DESCRIPTOR_SIZE_HEX	ext4_crypt.cpp	39;"	d	file:
+EXT4_LINK_MAX	include/ext4_utils/ext4.h	91;"	d
+EXT4_MAX_BLOCK_FILE_PHYS	include/ext4_utils/ext4.h	231;"	d
+EXT4_MAX_BLOCK_SIZE	include/ext4_utils/ext4.h	94;"	d
+EXT4_MAX_DESC_SIZE	include/ext4_utils/ext4.h	131;"	d
+EXT4_MAX_REC_LEN	include/ext4_utils/ext4.h	568;"	d
+EXT4_MAX_SUPP_REV	include/ext4_utils/ext4.h	468;"	d
+EXT4_MB_DELALLOC_RESERVED	include/ext4_utils/ext4.h	57;"	d
+EXT4_MB_HINT_BEST	include/ext4_utils/ext4.h	45;"	d
+EXT4_MB_HINT_DATA	include/ext4_utils/ext4.h	47;"	d
+EXT4_MB_HINT_FIRST	include/ext4_utils/ext4.h	43;"	d
+EXT4_MB_HINT_GOAL_ONLY	include/ext4_utils/ext4.h	53;"	d
+EXT4_MB_HINT_GROUP_ALLOC	include/ext4_utils/ext4.h	51;"	d
+EXT4_MB_HINT_MERGE	include/ext4_utils/ext4.h	37;"	d
+EXT4_MB_HINT_METADATA	include/ext4_utils/ext4.h	41;"	d
+EXT4_MB_HINT_NOPREALLOC	include/ext4_utils/ext4.h	49;"	d
+EXT4_MB_HINT_RESERVED	include/ext4_utils/ext4.h	39;"	d
+EXT4_MB_HINT_TRY_GOAL	include/ext4_utils/ext4.h	55;"	d
+EXT4_MB_STREAM_ALLOC	include/ext4_utils/ext4.h	59;"	d
+EXT4_MIN_BLOCK_LOG_SIZE	include/ext4_utils/ext4.h	95;"	d
+EXT4_MIN_BLOCK_SIZE	include/ext4_utils/ext4.h	93;"	d
+EXT4_MIN_DESC_SIZE	include/ext4_utils/ext4.h	129;"	d
+EXT4_MIN_DESC_SIZE_64BIT	include/ext4_utils/ext4.h	130;"	d
+EXT4_MOUNT_BARRIER	include/ext4_utils/ext4.h	347;"	d
+EXT4_MOUNT_BLOCK_VALIDITY	include/ext4_utils/ext4.h	358;"	d
+EXT4_MOUNT_DATA_ERR_ABORT	include/ext4_utils/ext4.h	357;"	d
+EXT4_MOUNT_DATA_FLAGS	include/ext4_utils/ext4.h	338;"	d
+EXT4_MOUNT_DEBUG	include/ext4_utils/ext4.h	332;"	d
+EXT4_MOUNT_DELALLOC	include/ext4_utils/ext4.h	356;"	d
+EXT4_MOUNT_DIOREAD_NOLOCK	include/ext4_utils/ext4.h	352;"	d
+EXT4_MOUNT_DISCARD	include/ext4_utils/ext4.h	359;"	d
+EXT4_MOUNT_ERRORS_CONT	include/ext4_utils/ext4.h	333;"	d
+EXT4_MOUNT_ERRORS_PANIC	include/ext4_utils/ext4.h	335;"	d
+EXT4_MOUNT_ERRORS_RO	include/ext4_utils/ext4.h	334;"	d
+EXT4_MOUNT_GRPID	include/ext4_utils/ext4.h	331;"	d
+EXT4_MOUNT_GRPQUOTA	include/ext4_utils/ext4.h	351;"	d
+EXT4_MOUNT_I_VERSION	include/ext4_utils/ext4.h	355;"	d
+EXT4_MOUNT_JOURNAL_ASYNC_COMMIT	include/ext4_utils/ext4.h	354;"	d
+EXT4_MOUNT_JOURNAL_CHECKSUM	include/ext4_utils/ext4.h	353;"	d
+EXT4_MOUNT_JOURNAL_DATA	include/ext4_utils/ext4.h	339;"	d
+EXT4_MOUNT_MINIX_DF	include/ext4_utils/ext4.h	336;"	d
+EXT4_MOUNT_NOBH	include/ext4_utils/ext4.h	348;"	d
+EXT4_MOUNT_NOLOAD	include/ext4_utils/ext4.h	337;"	d
+EXT4_MOUNT_NO_AUTO_DA_ALLOC	include/ext4_utils/ext4.h	346;"	d
+EXT4_MOUNT_NO_UID32	include/ext4_utils/ext4.h	343;"	d
+EXT4_MOUNT_OLDALLOC	include/ext4_utils/ext4.h	330;"	d
+EXT4_MOUNT_ORDERED_DATA	include/ext4_utils/ext4.h	340;"	d
+EXT4_MOUNT_POSIX_ACL	include/ext4_utils/ext4.h	345;"	d
+EXT4_MOUNT_QUOTA	include/ext4_utils/ext4.h	349;"	d
+EXT4_MOUNT_UPDATE_JOURNAL	include/ext4_utils/ext4.h	342;"	d
+EXT4_MOUNT_USRQUOTA	include/ext4_utils/ext4.h	350;"	d
+EXT4_MOUNT_WRITEBACK_DATA	include/ext4_utils/ext4.h	341;"	d
+EXT4_MOUNT_XATTR_USER	include/ext4_utils/ext4.h	344;"	d
+EXT4_NAME_LEN	include/ext4_utils/ext4.h	537;"	d
+EXT4_NDIR_BLOCKS	include/ext4_utils/ext4.h	137;"	d
+EXT4_NOATIME_FL	include/ext4_utils/ext4.h	150;"	d
+EXT4_NOCOMPR_FL	include/ext4_utils/ext4.h	154;"	d
+EXT4_NODUMP_FL	include/ext4_utils/ext4.h	149;"	d
+EXT4_NOTAIL_FL	include/ext4_utils/ext4.h	160;"	d
+EXT4_NSEC_MASK	include/ext4_utils/ext4.h	303;"	d
+EXT4_N_BLOCKS	include/ext4_utils/ext4.h	141;"	d
+EXT4_ORPHAN_FS	include/ext4_utils/ext4.h	324;"	d
+EXT4_OS_FREEBSD	include/ext4_utils/ext4.h	461;"	d
+EXT4_OS_HURD	include/ext4_utils/ext4.h	459;"	d
+EXT4_OS_LINUX	include/ext4_utils/ext4.h	458;"	d
+EXT4_OS_LITES	include/ext4_utils/ext4.h	462;"	d
+EXT4_OS_MASIX	include/ext4_utils/ext4.h	460;"	d
+EXT4_OTHER_FLMASK	include/ext4_utils/ext4.h	176;"	d
+EXT4_POLICY_FLAGS_PAD_16	ext4_crypt.cpp	58;"	d	file:
+EXT4_POLICY_FLAGS_PAD_32	ext4_crypt.cpp	59;"	d	file:
+EXT4_POLICY_FLAGS_PAD_4	ext4_crypt.cpp	56;"	d	file:
+EXT4_POLICY_FLAGS_PAD_8	ext4_crypt.cpp	57;"	d	file:
+EXT4_POLICY_FLAGS_PAD_MASK	ext4_crypt.cpp	60;"	d	file:
+EXT4_POLICY_FLAGS_VALID	ext4_crypt.cpp	61;"	d	file:
+EXT4_REG_FLMASK	include/ext4_utils/ext4.h	174;"	d
+EXT4_RESERVED_FL	include/ext4_utils/ext4.h	167;"	d
+EXT4_RESIZE_INO	include/ext4_utils/ext4.h	86;"	d
+EXT4_ROOT_INO	include/ext4_utils/ext4.h	83;"	d
+EXT4_SB	include/ext4_utils/ext4.h	454;"	d
+EXT4_SECRM_FL	include/ext4_utils/ext4.h	143;"	d
+EXT4_SET_COMPAT_FEATURE	include/ext4_utils/ext4.h	475;"	d
+EXT4_SET_INCOMPAT_FEATURE	include/ext4_utils/ext4.h	477;"	d
+EXT4_SET_RO_COMPAT_FEATURE	include/ext4_utils/ext4.h	476;"	d
+EXT4_SUPER_MAGIC	include/ext4_utils/ext4_sb.h	22;"	d
+EXT4_SYNC_FL	include/ext4_utils/ext4.h	146;"	d
+EXT4_TIND_BLOCK	include/ext4_utils/ext4.h	140;"	d
+EXT4_TOPDIR_FL	include/ext4_utils/ext4.h	162;"	d
+EXT4_UNDEL_DIR_INO	include/ext4_utils/ext4.h	85;"	d
+EXT4_UNRM_FL	include/ext4_utils/ext4.h	144;"	d
+EXT4_VALID_FS	include/ext4_utils/ext4.h	322;"	d
+EXT4_XATTR_INDEX_SECURITY	include/ext4_utils/xattr.h	7;"	d
+EXT4_XATTR_LEN	include/ext4_utils/xattr.h	35;"	d
+EXT4_XATTR_MAGIC	include/ext4_utils/xattr.h	6;"	d
+EXT4_XATTR_NEXT	include/ext4_utils/xattr.h	38;"	d
+EXT4_XATTR_PAD	include/ext4_utils/xattr.h	33;"	d
+EXT4_XATTR_PAD_BITS	include/ext4_utils/xattr.h	32;"	d
+EXT4_XATTR_ROUND	include/ext4_utils/xattr.h	34;"	d
+EXT4_XATTR_SIZE	include/ext4_utils/xattr.h	41;"	d
+EXTENTS_STATS__	include/ext4_utils/ext4_extents.h	19;"	d
+EXT_BREAK	include/ext4_utils/ext4_extents.h	70;"	d
+EXT_CONTINUE	include/ext4_utils/ext4_extents.h	69;"	d
+EXT_DEBUG__	include/ext4_utils/ext4_extents.h	23;"	d
+EXT_FIRST_EXTENT	include/ext4_utils/ext4_extents.h	78;"	d
+EXT_FIRST_INDEX	include/ext4_utils/ext4_extents.h	79;"	d
+EXT_HAS_FREE_INDEX	include/ext4_utils/ext4_extents.h	80;"	d
+EXT_INIT_MAX_LEN	include/ext4_utils/ext4_extents.h	75;"	d
+EXT_LAST_EXTENT	include/ext4_utils/ext4_extents.h	81;"	d
+EXT_LAST_INDEX	include/ext4_utils/ext4_extents.h	82;"	d
+EXT_MAX_BLOCK	include/ext4_utils/ext4_extents.h	73;"	d
+EXT_MAX_EXTENT	include/ext4_utils/ext4_extents.h	83;"	d
+EXT_MAX_INDEX	include/ext4_utils/ext4_extents.h	84;"	d
+EXT_REPEAT	include/ext4_utils/ext4_extents.h	71;"	d
+EXT_STATS_	include/ext4_utils/ext4_extents.h	30;"	d
+EXT_UNINIT_MAX_LEN	include/ext4_utils/ext4_extents.h	76;"	d
+HEX_LOOKUP	ext4_crypt.cpp	67;"	d	file:
+INODE_BLOCK_SIZE	ext4fixup.c	47;"	d	file:
+IS_LAST_ENTRY	include/ext4_utils/xattr.h	43;"	d
+JBD2_CHECKSUM_BYTES	include/ext4_utils/jbd2.h	49;"	d
+JBD2_COMMIT_BLOCK	include/ext4_utils/jbd2.h	31;"	d
+JBD2_CRC32_CHKSUM	include/ext4_utils/jbd2.h	43;"	d
+JBD2_CRC32_CHKSUM_SIZE	include/ext4_utils/jbd2.h	47;"	d
+JBD2_DEBUG	include/ext4_utils/jbd2.h	15;"	d
+JBD2_DEFAULT_MAX_COMMIT_AGE	include/ext4_utils/jbd2.h	22;"	d
+JBD2_DESCRIPTOR_BLOCK	include/ext4_utils/jbd2.h	30;"	d
+JBD2_FEATURE_COMPAT_CHECKSUM	include/ext4_utils/jbd2.h	121;"	d
+JBD2_FEATURE_INCOMPAT_64BIT	include/ext4_utils/jbd2.h	124;"	d
+JBD2_FEATURE_INCOMPAT_ASYNC_COMMIT	include/ext4_utils/jbd2.h	125;"	d
+JBD2_FEATURE_INCOMPAT_REVOKE	include/ext4_utils/jbd2.h	123;"	d
+JBD2_FLAG_DELETED	include/ext4_utils/jbd2.h	81;"	d
+JBD2_FLAG_ESCAPE	include/ext4_utils/jbd2.h	79;"	d
+JBD2_FLAG_LAST_TAG	include/ext4_utils/jbd2.h	82;"	d
+JBD2_FLAG_SAME_UUID	include/ext4_utils/jbd2.h	80;"	d
+JBD2_HAS_COMPAT_FEATURE	include/ext4_utils/jbd2.h	117;"	d
+JBD2_HAS_INCOMPAT_FEATURE	include/ext4_utils/jbd2.h	119;"	d
+JBD2_HAS_RO_COMPAT_FEATURE	include/ext4_utils/jbd2.h	118;"	d
+JBD2_KNOWN_COMPAT_FEATURES	include/ext4_utils/jbd2.h	127;"	d
+JBD2_KNOWN_INCOMPAT_FEATURES	include/ext4_utils/jbd2.h	129;"	d
+JBD2_KNOWN_ROCOMPAT_FEATURES	include/ext4_utils/jbd2.h	128;"	d
+JBD2_MAGIC_NUMBER	include/ext4_utils/jbd2.h	28;"	d
+JBD2_MD5_CHKSUM	include/ext4_utils/jbd2.h	44;"	d
+JBD2_MIN_JOURNAL_BLOCKS	include/ext4_utils/jbd2.h	26;"	d
+JBD2_PARANOID_IOFAIL	include/ext4_utils/jbd2.h	20;"	d
+JBD2_REVOKE_BLOCK	include/ext4_utils/jbd2.h	34;"	d
+JBD2_SHA1_CHKSUM	include/ext4_utils/jbd2.h	45;"	d
+JBD2_SUPERBLOCK_V1	include/ext4_utils/jbd2.h	32;"	d
+JBD2_SUPERBLOCK_V2	include/ext4_utils/jbd2.h	33;"	d
+JBD2_TAG_SIZE32	include/ext4_utils/jbd2.h	70;"	d
+JBD2_TAG_SIZE64	include/ext4_utils/jbd2.h	71;"	d
+LOCAL_BUILT_MODULE_STEM	Android.mk	/^LOCAL_BUILT_MODULE_STEM := $(notdir $(LOCAL_SRC_FILES))$/;"	m
+LOCAL_CFLAGS	Android.mk	/^LOCAL_CFLAGS := -DREAL_UUID -Wall -Werror$/;"	m
+LOCAL_CFLAGS	Android.mk	/^LOCAL_CFLAGS := -Wall -Werror$/;"	m
+LOCAL_CFLAGS_darwin	Android.mk	/^LOCAL_CFLAGS_darwin := -DHOST$/;"	m
+LOCAL_CFLAGS_linux	Android.mk	/^LOCAL_CFLAGS_linux := -DHOST$/;"	m
+LOCAL_C_INCLUDES	Android.mk	/^LOCAL_C_INCLUDES := \\$/;"	m
+LOCAL_IS_HOST_MODULE	Android.mk	/^LOCAL_IS_HOST_MODULE := true$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := blk_alloc_to_base_fs$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := ext4fixup$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := make_ext4fs$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := mke2fs.conf$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := mkuserimg.sh$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := mkuserimg_mke2fs.sh$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE := setup_fs$/;"	m
+LOCAL_MODULE_CLASS	Android.mk	/^LOCAL_MODULE_CLASS := ETC$/;"	m
+LOCAL_MODULE_CLASS	Android.mk	/^LOCAL_MODULE_CLASS := EXECUTABLES$/;"	m
+LOCAL_MODULE_PATH	Android.mk	/^LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)$/;"	m
+LOCAL_MODULE_PATH	Android.mk	/^LOCAL_MODULE_PATH := $(TARGET_RECOVERY_ROOT_OUT)\/etc$/;"	m
+LOCAL_MODULE_SUFFIX	Android.mk	/^LOCAL_MODULE_SUFFIX :=$/;"	m
+LOCAL_PATH	Android.mk	/^LOCAL_PATH:= $(call my-dir)$/;"	m
+LOCAL_REQUIRED_MODULES	Android.mk	/^LOCAL_REQUIRED_MODULES := mke2fs e2fsdroid$/;"	m
+LOCAL_SHARED_LIBRARIES	Android.mk	/^LOCAL_SHARED_LIBRARIES := \\$/;"	m
+LOCAL_SHARED_LIBRARIES	Android.mk	/^LOCAL_SHARED_LIBRARIES := libcutils$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := $(LOCAL_MODULE)$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := blk_alloc_to_base_fs.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := ext4fixup_main.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := make_ext4fs_main.c$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := mkuserimg.sh$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := mkuserimg_mke2fs.sh$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := setup_fs.c$/;"	m
+L_S_IRUSR	make_ext4fs.c	62;"	d	file:
+L_S_IWUSR	make_ext4fs.c	63;"	d	file:
+L_S_IXUSR	make_ext4fs.c	64;"	d	file:
+MAGIC_STATE_MARKING_INUMS	ext4fixup.c	57;"	d	file:
+MAGIC_STATE_UPDATING_INUMS	ext4fixup.c	58;"	d	file:
+MAGIC_STATE_UPDATING_SB	ext4fixup.c	59;"	d	file:
+MARK_INODE_NUMS	ext4fixup.c	53;"	d	file:
+MAX_BLK_MAPPING_STR	make_ext4fs.c	89;"	d	file:
+MAX_EXT4_BLOCK_SIZE	ext4fixup.c	49;"	d	file:
+MAX_FILE_VERSION	blk_alloc_to_base_fs.c	25;"	d	file:
+MAX_PATH	blk_alloc_to_base_fs.c	24;"	d	file:
+MAX_PATH	make_ext4fs.c	87;"	d	file:
+MAX_PATH	make_ext4fs.c	88;"	d	file:
+NAME_HASH_SHIFT	contents.c	339;"	d	file:
+NAME_HASH_SHIFT	contents.c	368;"	d	file:
+NEXT_ORPHAN	include/ext4_utils/ext4.h	456;"	d
+O_BINARY	make_ext4fs.c	83;"	d	file:
+O_BINARY	make_ext4fs_main.c	47;"	d	file:
+PRIext4u64	include/ext4_utils/ext4_utils.h	79;"	d
+PRIext4u64	include/ext4_utils/ext4_utils.h	84;"	d
+R0	sha1.c	50;"	d	file:
+R1	sha1.c	51;"	d	file:
+R2	sha1.c	52;"	d	file:
+R3	sha1.c	53;"	d	file:
+R4	sha1.c	54;"	d	file:
+SANITY_CHECK_PASS	ext4fixup.c	52;"	d	file:
+SHA1Final	sha1.c	/^void SHA1Final(digest, context)$/;"	f
+SHA1HANDSOFF	sha1.c	18;"	d	file:
+SHA1Init	sha1.c	/^void SHA1Init(context)$/;"	f
+SHA1Transform	sha1.c	/^void SHA1Transform(state, buffer)$/;"	f
+SHA1Update	sha1.c	/^void SHA1Update(context, data, len)$/;"	f
+SHA1_CTX	sha1.h	/^} SHA1_CTX;$/;"	t	typeref:struct:__anon10
+SHA1_DIGEST_LENGTH	sha1.h	27;"	d
+SHA1_DIGEST_STRING_LENGTH	sha1.h	28;"	d
+SPARC64_GCC_WORKAROUND	sha1.c	62;"	d	file:
+SPARC64_GCC_WORKAROUND	sha1.c	64;"	d	file:
+STATE_MARKING_INUMS	ext4fixup.c	63;"	d	file:
+STATE_UNSET	ext4fixup.c	62;"	d	file:
+STATE_UPDATING_INUMS	ext4fixup.c	64;"	d	file:
+STATE_UPDATING_SB	ext4fixup.c	65;"	d	file:
+S_IFLNK	contents.c	39;"	d	file:
+S_IRGRP	make_ext4fs.c	50;"	d	file:
+S_IRGRP	make_ext4fs.c	66;"	d	file:
+S_IROTH	make_ext4fs.c	54;"	d	file:
+S_IROTH	make_ext4fs.c	70;"	d	file:
+S_IRWXG	make_ext4fs.c	53;"	d	file:
+S_IRWXG	make_ext4fs.c	69;"	d	file:
+S_IRWXO	make_ext4fs.c	57;"	d	file:
+S_IRWXO	make_ext4fs.c	73;"	d	file:
+S_IRWXU	make_ext4fs.c	49;"	d	file:
+S_IRWXU	make_ext4fs.c	65;"	d	file:
+S_ISGID	make_ext4fs.c	59;"	d	file:
+S_ISGID	make_ext4fs.c	75;"	d	file:
+S_ISUID	make_ext4fs.c	58;"	d	file:
+S_ISUID	make_ext4fs.c	74;"	d	file:
+S_ISVTX	make_ext4fs.c	60;"	d	file:
+S_ISVTX	make_ext4fs.c	76;"	d	file:
+S_IWGRP	make_ext4fs.c	51;"	d	file:
+S_IWGRP	make_ext4fs.c	67;"	d	file:
+S_IWOTH	make_ext4fs.c	55;"	d	file:
+S_IWOTH	make_ext4fs.c	71;"	d	file:
+S_IXGRP	make_ext4fs.c	52;"	d	file:
+S_IXGRP	make_ext4fs.c	68;"	d	file:
+S_IXOTH	make_ext4fs.c	56;"	d	file:
+S_IXOTH	make_ext4fs.c	72;"	d	file:
+TAG	ext4_crypt_init_extensions.cpp	39;"	d	file:
+UPDATE_INODE_NUMS	ext4fixup.c	54;"	d	file:
+VALUE_HASH_SHIFT	contents.c	340;"	d	file:
+VALUE_HASH_SHIFT	contents.c	369;"	d	file:
+WIPE_IS_SUPPORTED	include/ext4_utils/wipe.h	30;"	d
+WIPE_IS_SUPPORTED	include/ext4_utils/wipe.h	32;"	d
+XATTR_CAPS_SUFFIX	contents.c	36;"	d	file:
+XATTR_NAME_ENCRYPTION_POLICY	ext4_crypt.cpp	33;"	d	file:
+XATTR_SELINUX_SUFFIX	contents.c	35;"	d	file:
+_ALLOCATE_H_	allocate.h	18;"	d
+_DIRECTORY_H_	contents.h	18;"	d
+_EXT4_CRYPT_H_	include/ext4_utils/ext4_crypt.h	18;"	d
+_EXT4_CRYPT_INIT_EXTENSIONS_H_	include/ext4_utils/ext4_crypt_init_extensions.h	18;"	d
+_EXT4_EXTENTS	include/ext4_utils/ext4_extents.h	13;"	d
+_EXT4_H	include/ext4_utils/ext4.h	13;"	d
+_EXT4_UTILS_EXT4_KERNEL_HEADERS_H_	include/ext4_utils/ext4_kernel_headers.h	18;"	d
+_EXT4_UTILS_EXT4_SB_H_	include/ext4_utils/ext4_sb.h	18;"	d
+_EXT4_UTILS_H_	include/ext4_utils/ext4_utils.h	18;"	d
+_EXTENT_H_	extent.h	18;"	d
+_FILE_OFFSET_BITS	include/ext4_utils/ext4_utils.h	27;"	d
+_GNU_SOURCE	include/ext4_utils/ext4_utils.h	25;"	d
+_GNU_SOURCE	make_ext4fs.c	20;"	d	file:
+_INDIRECT_H_	indirect.h	18;"	d
+_LARGEFILE64_SOURCE	ext4fixup.c	20;"	d	file:
+_LARGEFILE64_SOURCE	include/ext4_utils/ext4_utils.h	28;"	d
+_LINUX_JBD2_H	include/ext4_utils/jbd2.h	13;"	d
+_MAKE_EXT4FS_H_	include/ext4_utils/make_ext4fs.h	18;"	d
+_SYSTEM_EXTRAS_EXT4_UTILS_XATTR_H	include/ext4_utils/xattr.h	4;"	d
+_SYS_SHA1_H_	sha1.h	10;"	d
+_WIPE_H_	include/ext4_utils/wipe.h	18;"	d
+__BEGIN_DECLS	sha1.h	21;"	d
+__END_DECLS	sha1.h	22;"	d
+__STRING	blk_alloc_to_base_fs.c	28;"	d	file:
+___STRING	blk_alloc_to_base_fs.c	30;"	d	file:
+__be16	include/ext4_utils/ext4_kernel_headers.h	31;"	d
+__be16	include/ext4_utils/ext4_kernel_headers.h	51;"	d
+__be32	include/ext4_utils/ext4_kernel_headers.h	30;"	d
+__be32	include/ext4_utils/ext4_kernel_headers.h	50;"	d
+__be64	include/ext4_utils/ext4_kernel_headers.h	29;"	d
+__be64	include/ext4_utils/ext4_kernel_headers.h	49;"	d
+__le16	include/ext4_utils/ext4_kernel_headers.h	27;"	d
+__le16	include/ext4_utils/ext4_kernel_headers.h	47;"	d
+__le32	include/ext4_utils/ext4_kernel_headers.h	26;"	d
+__le32	include/ext4_utils/ext4_kernel_headers.h	46;"	d
+__le64	include/ext4_utils/ext4_kernel_headers.h	25;"	d
+__le64	include/ext4_utils/ext4_kernel_headers.h	45;"	d
+__u16	include/ext4_utils/ext4_kernel_headers.h	35;"	d
+__u16	include/ext4_utils/ext4_kernel_headers.h	55;"	d
+__u32	include/ext4_utils/ext4_kernel_headers.h	34;"	d
+__u32	include/ext4_utils/ext4_kernel_headers.h	54;"	d
+__u64	include/ext4_utils/ext4_kernel_headers.h	33;"	d
+__u64	include/ext4_utils/ext4_kernel_headers.h	53;"	d
+__u8	include/ext4_utils/ext4_kernel_headers.h	36;"	d
+__u8	include/ext4_utils/ext4_kernel_headers.h	56;"	d
+add_dentry	contents.c	/^static struct ext4_dir_entry_2 *add_dentry(u8 *data, u32 *offset,$/;"	f	file:
+add_directory	allocate.c	/^void add_directory(u32 inode)$/;"	f
+advance_blocks	allocate.c	/^int advance_blocks(struct block_allocation *alloc, int blocks)$/;"	f
+advance_list_ptr	allocate.c	/^static int advance_list_ptr(struct region_list *list, int blocks)$/;"	f	file:
+advance_oob_blocks	allocate.c	/^int advance_oob_blocks(struct block_allocation *alloc, int blocks)$/;"	f
+allocate_bg_inode_table	allocate.c	/^static void allocate_bg_inode_table(struct block_group_info *bg)$/;"	f	file:
+allocate_block	allocate.c	/^u32 allocate_block()$/;"	f
+allocate_blocks	allocate.c	/^struct block_allocation *allocate_blocks(u32 len)$/;"	f
+allocate_inode	allocate.c	/^u32 allocate_inode()$/;"	f
+append_oob_allocation	allocate.c	/^int append_oob_allocation(struct block_allocation *alloc, u32 len)$/;"	f
+append_region	allocate.c	/^void append_region(struct block_allocation *alloc,$/;"	f
+arbitrary_sequence_number	ext4_crypt_init_extensions.cpp	/^static const std::string arbitrary_sequence_number = "42";$/;"	v	file:
+aux_info	ext4_utils.c	/^struct fs_aux_info aux_info;$/;"	v	typeref:struct:fs_aux_info
+backup_sb	include/ext4_utils/ext4_utils.h	/^	struct ext4_super_block **backup_sb;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::ext4_super_block
+bail_count	ext4fixup.c	/^static int bail_count = 0;$/;"	v	file:
+bail_loc	ext4fixup.c	/^static int bail_loc = 0;$/;"	v	file:
+bail_phase	ext4fixup.c	/^static int bail_phase = 0;$/;"	v	file:
+base_fs_allocations	ext4_utils.c	/^struct block_allocation *base_fs_allocations = NULL;$/;"	v	typeref:struct:block_allocation
+bg	allocate.h	/^	int bg;$/;"	m	struct:region
+bg_block_bitmap	include/ext4_utils/ext4_utils.h	/^	u32 bg_block_bitmap;$/;"	m	struct:ext2_group_desc
+bg_block_bitmap_hi	include/ext4_utils/ext4.h	/^ __le32 bg_block_bitmap_hi;$/;"	m	struct:ext4_group_desc
+bg_block_bitmap_lo	include/ext4_utils/ext4.h	/^ __le32 bg_block_bitmap_lo;$/;"	m	struct:ext4_group_desc
+bg_checksum	include/ext4_utils/ext4.h	/^ __le16 bg_checksum;$/;"	m	struct:ext4_group_desc
+bg_checksum	include/ext4_utils/ext4_utils.h	/^	u16 bg_checksum;$/;"	m	struct:ext2_group_desc
+bg_desc	include/ext4_utils/ext4_utils.h	/^	struct ext2_group_desc *bg_desc;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::ext2_group_desc
+bg_desc_blocks	include/ext4_utils/ext4_utils.h	/^	u32 bg_desc_blocks;$/;"	m	struct:fs_aux_info
+bg_desc_reserve_blocks	include/ext4_utils/ext4_sb.h	/^	uint32_t bg_desc_reserve_blocks;$/;"	m	struct:fs_info
+bg_flags	include/ext4_utils/ext4.h	/^ __le16 bg_flags;$/;"	m	struct:ext4_group_desc
+bg_flags	include/ext4_utils/ext4_utils.h	/^	u16 bg_flags;$/;"	m	struct:ext2_group_desc
+bg_free_blocks_count	include/ext4_utils/ext4_utils.h	/^	u16 bg_free_blocks_count;$/;"	m	struct:ext2_group_desc
+bg_free_blocks_count_hi	include/ext4_utils/ext4.h	/^ __le16 bg_free_blocks_count_hi;$/;"	m	struct:ext4_group_desc
+bg_free_blocks_count_lo	include/ext4_utils/ext4.h	/^ __le16 bg_free_blocks_count_lo;$/;"	m	struct:ext4_group_desc
+bg_free_inodes_count	include/ext4_utils/ext4_utils.h	/^	u16 bg_free_inodes_count;$/;"	m	struct:ext2_group_desc
+bg_free_inodes_count_hi	include/ext4_utils/ext4.h	/^ __le16 bg_free_inodes_count_hi;$/;"	m	struct:ext4_group_desc
+bg_free_inodes_count_lo	include/ext4_utils/ext4.h	/^ __le16 bg_free_inodes_count_lo;$/;"	m	struct:ext4_group_desc
+bg_inode_bitmap	include/ext4_utils/ext4_utils.h	/^	u32 bg_inode_bitmap;$/;"	m	struct:ext2_group_desc
+bg_inode_bitmap_hi	include/ext4_utils/ext4.h	/^ __le32 bg_inode_bitmap_hi;$/;"	m	struct:ext4_group_desc
+bg_inode_bitmap_lo	include/ext4_utils/ext4.h	/^ __le32 bg_inode_bitmap_lo;$/;"	m	struct:ext4_group_desc
+bg_inode_table	include/ext4_utils/ext4_utils.h	/^	u32 bg_inode_table;$/;"	m	struct:ext2_group_desc
+bg_inode_table_hi	include/ext4_utils/ext4.h	/^ __le32 bg_inode_table_hi;$/;"	m	struct:ext4_group_desc
+bg_inode_table_lo	include/ext4_utils/ext4.h	/^ __le32 bg_inode_table_lo;$/;"	m	struct:ext4_group_desc
+bg_itable_unused_hi	include/ext4_utils/ext4.h	/^ __le16 bg_itable_unused_hi;$/;"	m	struct:ext4_group_desc
+bg_itable_unused_lo	include/ext4_utils/ext4.h	/^ __le16 bg_itable_unused_lo;$/;"	m	struct:ext4_group_desc
+bg_reserved	include/ext4_utils/ext4.h	/^ __u32 bg_reserved[2];$/;"	m	struct:ext4_group_desc
+bg_reserved	include/ext4_utils/ext4_utils.h	/^	u32 bg_reserved[2];$/;"	m	struct:ext2_group_desc
+bg_reserved16	include/ext4_utils/ext4_utils.h	/^	u16 bg_reserved16;$/;"	m	struct:ext2_group_desc
+bg_reserved2	include/ext4_utils/ext4.h	/^ __u32 bg_reserved2[3];$/;"	m	struct:ext4_group_desc
+bg_used_dirs_count	include/ext4_utils/ext4_utils.h	/^	u16 bg_used_dirs_count;$/;"	m	struct:ext2_group_desc
+bg_used_dirs_count_hi	include/ext4_utils/ext4.h	/^ __le16 bg_used_dirs_count_hi;$/;"	m	struct:ext4_group_desc
+bg_used_dirs_count_lo	include/ext4_utils/ext4.h	/^ __le16 bg_used_dirs_count_lo;$/;"	m	struct:ext4_group_desc
+bgs	include/ext4_utils/ext4_utils.h	/^	struct block_group_info *bgs;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::block_group_info
+bitmap_clear_bit	ext4_utils.c	/^void bitmap_clear_bit(u8 *bitmap, u32 bit)$/;"	f
+bitmap_get_bit	ext4_utils.c	/^int bitmap_get_bit(u8 *bitmap, u32 bit)$/;"	f
+bitmap_set_8_bits	allocate.c	/^static int bitmap_set_8_bits(u8 *bitmap, u32 bit)$/;"	f	file:
+bitmap_set_bit	allocate.c	/^static int bitmap_set_bit(u8 *bitmap, u32 bit)$/;"	f	file:
+bitmaps	allocate.h	/^	u8 *bitmaps;$/;"	m	struct:block_group_info
+blk	sha1.c	44;"	d	file:
+blk0	sha1.c	39;"	d	file:
+blk0	sha1.c	42;"	d	file:
+blk_file_header_fmt	make_ext4fs.c	/^const char *blk_file_header_fmt = "Base EXT4 version %d.%d";$/;"	v
+blk_file_major_ver	make_ext4fs.c	/^const int blk_file_major_ver = 1;$/;"	v
+blk_file_minor_ver	make_ext4fs.c	/^const int blk_file_minor_ver = 0;$/;"	v
+block	allocate.h	/^	u32 block;$/;"	m	struct:region
+block_allocation	allocate.h	/^struct block_allocation {$/;"	s
+block_allocation_len	allocate.c	/^int block_allocation_len(struct block_allocation *alloc)$/;"	f
+block_allocation_num_regions	allocate.c	/^int block_allocation_num_regions(struct block_allocation *alloc)$/;"	f
+block_allocator_free	allocate.c	/^void block_allocator_free()$/;"	f
+block_allocator_init	allocate.c	/^void block_allocator_init()$/;"	f
+block_bitmap	allocate.h	/^	u8 *block_bitmap;$/;"	m	struct:block_group_info
+block_bitmap	include/ext4_utils/ext4.h	/^ __u64 block_bitmap;$/;"	m	struct:ext4_new_group_data
+block_device	include/ext4_utils/ext4_sb.h	/^	bool block_device;	\/* target fd is a block device? *\/$/;"	m	struct:fs_info
+block_device_write_sb	ext4_utils.c	/^static void block_device_write_sb(int fd)$/;"	f	file:
+block_group_info	allocate.h	/^struct block_group_info {$/;"	s
+block_size	include/ext4_utils/ext4_sb.h	/^	uint32_t block_size;$/;"	m	struct:fs_info
+blocks_count	include/ext4_utils/ext4.h	/^ __u32 blocks_count;$/;"	m	struct:ext4_new_group_data
+blocks_per_dind	include/ext4_utils/ext4_utils.h	/^	u32 blocks_per_dind;$/;"	m	struct:fs_aux_info
+blocks_per_group	include/ext4_utils/ext4_sb.h	/^	uint32_t blocks_per_group;$/;"	m	struct:fs_info
+blocks_per_ind	include/ext4_utils/ext4_utils.h	/^	u32 blocks_per_ind;$/;"	m	struct:fs_aux_info
+blocks_per_tind	include/ext4_utils/ext4_utils.h	/^	u32 blocks_per_tind;$/;"	m	struct:fs_aux_info
+buffer	sha1.h	/^	u_char buffer[64];$/;"	m	struct:__anon10
+build_default_directory_structure	make_ext4fs.c	/^static u32 build_default_directory_structure(const char *dir_path,$/;"	f	file:
+build_directory_structure	make_ext4fs.c	/^static u32 build_directory_structure(const char *full_path, const char *dir_path, const char *target_out_path,$/;"	f	file:
+c	sha1.c	/^    u_char c[64];$/;"	m	union:__anon9	file:
+canonicalize_abs_slashes	make_ext4fs.c	/^static char *canonicalize_abs_slashes(const char *str)$/;"	f	file:
+canonicalize_rel_slashes	make_ext4fs.c	/^static char *canonicalize_rel_slashes(const char *str)$/;"	f	file:
+canonicalize_slashes	make_ext4fs.c	/^static char *canonicalize_slashes(const char *str, bool absolute)$/;"	f	file:
+capabilities	contents.h	/^	uint64_t capabilities;$/;"	m	struct:dentry
+check_inode_bitmap	ext4fixup.c	/^static void check_inode_bitmap(int fd, unsigned int bg_num)$/;"	f	file:
+chunk_count	allocate.h	/^	int chunk_count;$/;"	m	struct:block_group_info
+chunks	allocate.h	/^	struct region *chunks;$/;"	m	struct:block_group_info	typeref:struct:block_group_info::region
+clear_opt	include/ext4_utils/ext4.h	361;"	d
+clk_seq_hi_res	ext4_utils.c	/^    u8 clk_seq_hi_res;$/;"	m	struct:uuid	file:
+clk_seq_low	ext4_utils.c	/^    u8 clk_seq_low;$/;"	m	struct:uuid	file:
+commit_header	include/ext4_utils/jbd2.h	/^struct commit_header {$/;"	s
+compare_chunks	make_ext4fs.c	/^static int compare_chunks(const void* chunk1, const void* chunk2) {$/;"	f	file:
+compute_bg_desc_reserve_blocks	make_ext4fs.c	/^static u32 compute_bg_desc_reserve_blocks()$/;"	f	file:
+compute_block_size	make_ext4fs.c	/^static u32 compute_block_size()$/;"	f	file:
+compute_blocks_per_group	make_ext4fs.c	/^static u32 compute_blocks_per_group()$/;"	f	file:
+compute_inodes	make_ext4fs.c	/^static u32 compute_inodes()$/;"	f	file:
+compute_inodes_per_group	make_ext4fs.c	/^static u32 compute_inodes_per_group()$/;"	f	file:
+compute_journal_blocks	make_ext4fs.c	/^static u32 compute_journal_blocks()$/;"	f	file:
+compute_new_inum	ext4fixup.c	/^static int compute_new_inum(unsigned int old_inum)$/;"	f	file:
+contents_encryption_mode	ext4_crypt.cpp	/^    uint8_t contents_encryption_mode;$/;"	m	struct:ext4_encryption_policy	file:
+count	ext4fixup.c	/^static int count = 0;$/;"	v	file:
+count	sha1.h	/^	uint32_t count[2];$/;"	m	struct:__anon10
+cpu_to_le16	include/ext4_utils/ext4_utils.h	71;"	d
+cpu_to_le32	include/ext4_utils/ext4_utils.h	70;"	d
+crc16_tab	crc16.c	/^static u16 crc16_tab[] = {$/;"	v	file:
+create_allocation	allocate.c	/^struct block_allocation *create_allocation()$/;"	f
+create_backing	indirect.c	/^static u8 *create_backing(struct block_allocation *alloc,$/;"	f	file:
+critical_error	include/ext4_utils/ext4_utils.h	55;"	d
+critical_error_errno	include/ext4_utils/ext4_utils.h	56;"	d
+data_blocks_used	allocate.h	/^	int data_blocks_used;$/;"	m	struct:block_group_info
+default_i_flags	include/ext4_utils/ext4_utils.h	/^	u32 default_i_flags;$/;"	m	struct:fs_aux_info
+dentry	contents.h	/^struct dentry {$/;"	s
+dentry_size	contents.c	/^static u32 dentry_size(u32 entries, struct dentry *dentries)$/;"	f	file:
+do_R01	sha1.c	/^do_R01(u_int32_t *a, u_int32_t *b, u_int32_t *c, u_int32_t *d, u_int32_t *e, CHAR64LONG16 *block)$/;"	f
+do_R2	sha1.c	/^do_R2(u_int32_t *a, u_int32_t *b, u_int32_t *c, u_int32_t *d, u_int32_t *e, CHAR64LONG16 *block)$/;"	f
+do_R3	sha1.c	/^do_R3(u_int32_t *a, u_int32_t *b, u_int32_t *c, u_int32_t *d, u_int32_t *e, CHAR64LONG16 *block)$/;"	f
+do_R4	sha1.c	/^do_R4(u_int32_t *a, u_int32_t *b, u_int32_t *c, u_int32_t *d, u_int32_t *e, CHAR64LONG16 *block)$/;"	f
+do_inode_allocate_extents	extent.c	/^static struct block_allocation *do_inode_allocate_extents($/;"	f	file:
+do_inode_allocate_indirect	indirect.c	/^static struct block_allocation *do_inode_allocate_indirect($/;"	f	file:
+do_inode_attach_indirect	indirect.c	/^static int do_inode_attach_indirect(struct ext4_inode *inode,$/;"	f	file:
+do_split_allocation	allocate.c	/^static struct region *do_split_allocation(struct block_allocation *alloc, u32 len)$/;"	f	file:
+donor_fd	include/ext4_utils/ext4.h	/^ __u32 donor_fd;$/;"	m	struct:move_extent
+donor_start	include/ext4_utils/ext4.h	/^ __u64 donor_start;$/;"	m	struct:move_extent
+e4crypt_get_policy_flags	ext4_crypt.cpp	/^static uint8_t e4crypt_get_policy_flags(int filenames_encryption_mode) {$/;"	f	file:
+e4crypt_install_keyring	ext4_crypt_init_extensions.cpp	/^int e4crypt_install_keyring()$/;"	f
+e4crypt_is_native	ext4_crypt.cpp	/^bool e4crypt_is_native() {$/;"	f
+e4crypt_key_mode	include/ext4_utils/ext4_crypt.h	/^static const char* e4crypt_key_mode = "\/unencrypted\/mode";$/;"	v
+e4crypt_key_ref	include/ext4_utils/ext4_crypt.h	/^static const char* e4crypt_key_ref = "\/unencrypted\/ref";$/;"	v
+e4crypt_policy_check	ext4_crypt.cpp	/^static bool e4crypt_policy_check(const char *directory, const char *policy,$/;"	f	file:
+e4crypt_policy_ensure	ext4_crypt.cpp	/^int e4crypt_policy_ensure(const char *directory, const char *policy,$/;"	f
+e4crypt_policy_get	ext4_crypt.cpp	/^static bool e4crypt_policy_get(const char *directory, char *policy,$/;"	f	file:
+e4crypt_policy_set	ext4_crypt.cpp	/^static bool e4crypt_policy_set(const char *directory, const char *policy,$/;"	f	file:
+e4crypt_set_directory_policy	ext4_crypt_init_extensions.cpp	/^int e4crypt_set_directory_policy(const char* dir)$/;"	f
+e4crypt_unencrypted_folder	include/ext4_utils/ext4_crypt.h	/^static const char* e4crypt_unencrypted_folder = "\/unencrypted";$/;"	v
+e_hash	include/ext4_utils/xattr.h	/^    __le32 e_hash;$/;"	m	struct:ext4_xattr_entry
+e_name	include/ext4_utils/xattr.h	/^    char e_name[0];$/;"	m	struct:ext4_xattr_entry
+e_name_index	include/ext4_utils/xattr.h	/^    __u8 e_name_index;$/;"	m	struct:ext4_xattr_entry
+e_name_len	include/ext4_utils/xattr.h	/^    __u8 e_name_len;$/;"	m	struct:ext4_xattr_entry
+e_value_block	include/ext4_utils/xattr.h	/^    __le32 e_value_block;$/;"	m	struct:ext4_xattr_entry
+e_value_offs	include/ext4_utils/xattr.h	/^    __le16 e_value_offs;$/;"	m	struct:ext4_xattr_entry
+e_value_size	include/ext4_utils/xattr.h	/^    __le32 e_value_size;$/;"	m	struct:ext4_xattr_entry
+ee_block	include/ext4_utils/ext4_extents.h	/^ __le32 ee_block;$/;"	m	struct:ext4_extent
+ee_len	include/ext4_utils/ext4_extents.h	/^ __le16 ee_len;$/;"	m	struct:ext4_extent
+ee_start_hi	include/ext4_utils/ext4_extents.h	/^ __le16 ee_start_hi;$/;"	m	struct:ext4_extent
+ee_start_lo	include/ext4_utils/ext4_extents.h	/^ __le32 ee_start_lo;$/;"	m	struct:ext4_extent
+eh_depth	include/ext4_utils/ext4_extents.h	/^ __le16 eh_depth;$/;"	m	struct:ext4_extent_header
+eh_entries	include/ext4_utils/ext4_extents.h	/^ __le16 eh_entries;$/;"	m	struct:ext4_extent_header
+eh_generation	include/ext4_utils/ext4_extents.h	/^ __le32 eh_generation;$/;"	m	struct:ext4_extent_header
+eh_magic	include/ext4_utils/ext4_extents.h	/^ __le16 eh_magic;$/;"	m	struct:ext4_extent_header
+eh_max	include/ext4_utils/ext4_extents.h	/^ __le16 eh_max;$/;"	m	struct:ext4_extent_header
+ei_block	include/ext4_utils/ext4_extents.h	/^ __le32 ei_block;$/;"	m	struct:ext4_extent_idx
+ei_leaf_hi	include/ext4_utils/ext4_extents.h	/^ __le16 ei_leaf_hi;$/;"	m	struct:ext4_extent_idx
+ei_leaf_lo	include/ext4_utils/ext4_extents.h	/^ __le32 ei_leaf_lo;$/;"	m	struct:ext4_extent_idx
+ei_unused	include/ext4_utils/ext4_extents.h	/^ __u16 ei_unused;$/;"	m	struct:ext4_extent_idx
+err_msg	make_ext4fs.c	583;"	d	file:
+err_msg	make_ext4fs.c	703;"	d	file:
+error	include/ext4_utils/ext4_utils.h	53;"	d
+error_errno	include/ext4_utils/ext4_utils.h	54;"	d
+ext2_group_desc	include/ext4_utils/ext4_utils.h	/^struct ext2_group_desc {$/;"	s
+ext4_allocate_best_fit	allocate.c	/^static struct region *ext4_allocate_best_fit(u32 len)$/;"	f	file:
+ext4_allocate_best_fit_partial	allocate.c	/^static struct region *ext4_allocate_best_fit_partial(u32 len)$/;"	f	file:
+ext4_allocation_request	include/ext4_utils/ext4.h	/^struct ext4_allocation_request {$/;"	s
+ext4_bg_has_super_block	ext4_utils.c	/^int ext4_bg_has_super_block(int bg)$/;"	f
+ext4_clear_bit	include/ext4_utils/ext4.h	367;"	d
+ext4_clear_bit_atomic	include/ext4_utils/ext4.h	368;"	d
+ext4_crc16	crc16.c	/^u16 ext4_crc16(u16 crc_in, const void *buf, int size)$/;"	f
+ext4_create_fs_aux_info	ext4_utils.c	/^void ext4_create_fs_aux_info()$/;"	f
+ext4_create_journal_inode	ext4_utils.c	/^void ext4_create_journal_inode()$/;"	f
+ext4_create_resize_inode	ext4_utils.c	/^void ext4_create_resize_inode()$/;"	f
+ext4_debug	include/ext4_utils/ext4.h	20;"	d
+ext4_debug	include/ext4_utils/ext4.h	22;"	d
+ext4_dir_entry	include/ext4_utils/ext4.h	/^struct ext4_dir_entry {$/;"	s
+ext4_dir_entry_2	include/ext4_utils/ext4.h	/^struct ext4_dir_entry_2 {$/;"	s
+ext4_encryption_policy	ext4_crypt.cpp	/^struct ext4_encryption_policy {$/;"	s	file:
+ext4_ext_path	include/ext4_utils/ext4_extents.h	/^struct ext4_ext_path {$/;"	s
+ext4_extent	include/ext4_utils/ext4_extents.h	/^struct ext4_extent {$/;"	s
+ext4_extent_header	include/ext4_utils/ext4_extents.h	/^struct ext4_extent_header {$/;"	s
+ext4_extent_idx	include/ext4_utils/ext4_extents.h	/^struct ext4_extent_idx {$/;"	s
+ext4_fill_in_sb	ext4_utils.c	/^void ext4_fill_in_sb(int real_uuid)$/;"	f
+ext4_find_first_zero_bit	include/ext4_utils/ext4.h	370;"	d
+ext4_find_next_bit	include/ext4_utils/ext4.h	372;"	d
+ext4_find_next_zero_bit	include/ext4_utils/ext4.h	371;"	d
+ext4_free_fs_aux_info	ext4_utils.c	/^void ext4_free_fs_aux_info()$/;"	f
+ext4_fsblk_t	include/ext4_utils/ext4.h	/^typedef unsigned long long ext4_fsblk_t;$/;"	t
+ext4_group_desc	include/ext4_utils/ext4.h	/^struct ext4_group_desc$/;"	s
+ext4_group_t	include/ext4_utils/ext4.h	/^typedef unsigned int ext4_group_t;$/;"	t
+ext4_grpblk_t	include/ext4_utils/ext4.h	/^typedef int ext4_grpblk_t;$/;"	t
+ext4_inode	include/ext4_utils/ext4.h	/^struct ext4_inode {$/;"	s
+ext4_lblk_t	include/ext4_utils/ext4.h	/^typedef __u32 ext4_lblk_t;$/;"	t
+ext4_new_group_data	include/ext4_utils/ext4.h	/^struct ext4_new_group_data {$/;"	s
+ext4_parse_sb	ext4_sb.c	/^int ext4_parse_sb(struct ext4_super_block *sb, struct fs_info *info)$/;"	f
+ext4_parse_sb_info	ext4_utils.c	/^void ext4_parse_sb_info(struct ext4_super_block *sb)$/;"	f
+ext4_queue_sb	ext4_utils.c	/^void ext4_queue_sb(u64 start_block, struct ext4_super_block *sb)$/;"	f
+ext4_set_bit	include/ext4_utils/ext4.h	365;"	d
+ext4_set_bit_atomic	include/ext4_utils/ext4.h	366;"	d
+ext4_sparse_file	ext4_utils.c	/^struct sparse_file *ext4_sparse_file;$/;"	v	typeref:struct:sparse_file
+ext4_super_block	include/ext4_utils/ext4.h	/^struct ext4_super_block {$/;"	s
+ext4_test_bit	include/ext4_utils/ext4.h	369;"	d
+ext4_update_free	ext4_utils.c	/^void ext4_update_free()$/;"	f
+ext4_xattr_entry	include/ext4_utils/xattr.h	/^struct ext4_xattr_entry {$/;"	s
+ext4_xattr_hash_entry	contents.c	/^static void ext4_xattr_hash_entry(struct ext4_xattr_header *header,$/;"	f	file:
+ext4_xattr_header	include/ext4_utils/xattr.h	/^struct ext4_xattr_header {$/;"	s
+ext4_xattr_ibody_header	include/ext4_utils/xattr.h	/^struct ext4_xattr_ibody_header {$/;"	s
+ext4fixup	ext4fixup.c	/^int ext4fixup(char *fsdev)$/;"	f
+ext4fixup_internal	ext4fixup.c	/^int ext4fixup_internal(char *fsdev, int v_flag, int n_flag,$/;"	f
+ext_debug	include/ext4_utils/ext4_extents.h	25;"	d
+ext_debug	include/ext4_utils/ext4_extents.h	27;"	d
+extent_create_backing	extent.c	/^static u8 *extent_create_backing(struct block_allocation *alloc,$/;"	f	file:
+extent_create_backing_file	extent.c	/^static void extent_create_backing_file(struct block_allocation *alloc,$/;"	f	file:
+extract_base_fs_allocations	make_ext4fs.c	/^static void extract_base_fs_allocations(const char *directory, const char *mountpoint,$/;"	f	file:
+feat_compat	include/ext4_utils/ext4_sb.h	/^	uint32_t feat_compat;$/;"	m	struct:fs_info
+feat_incompat	include/ext4_utils/ext4_sb.h	/^	uint32_t feat_incompat;$/;"	m	struct:fs_info
+feat_ro_compat	include/ext4_utils/ext4_sb.h	/^	uint32_t feat_ro_compat;$/;"	m	struct:fs_info
+file_type	contents.h	/^	u8 file_type;$/;"	m	struct:dentry
+file_type	include/ext4_utils/ext4.h	/^ __u8 file_type;$/;"	m	struct:ext4_dir_entry_2
+filename	allocate.h	/^	char* filename;$/;"	m	struct:block_allocation
+filename	contents.h	/^	const char *filename;$/;"	m	struct:dentry
+filenames_encryption_mode	ext4_crypt.cpp	/^    uint8_t filenames_encryption_mode;$/;"	m	struct:ext4_encryption_policy	file:
+fill_dindirect_block	indirect.c	/^static void fill_dindirect_block(u32 *dind_block, int len, struct block_allocation *alloc)$/;"	f	file:
+fill_indirect_block	indirect.c	/^static void fill_indirect_block(u32 *ind_block, int len, struct block_allocation *alloc)$/;"	f	file:
+fill_tindirect_block	indirect.c	/^static void fill_tindirect_block(u32 *tind_block, int len, struct block_allocation *alloc)$/;"	f	file:
+filter_dot	make_ext4fs.c	/^static int filter_dot(const struct dirent *d)$/;"	f	file:
+first	allocate.h	/^	struct region *first;$/;"	m	struct:region_list	typeref:struct:region_list::region
+first_block	allocate.h	/^	u32 first_block;$/;"	m	struct:block_group_info
+first_data_block	include/ext4_utils/ext4_utils.h	/^	u32 first_data_block;$/;"	m	struct:fs_aux_info
+first_free_inode	allocate.h	/^	u32 first_free_inode;$/;"	m	struct:block_group_info
+flags	allocate.h	/^	u16 flags;$/;"	m	struct:block_group_info
+flags	ext4_crypt.cpp	/^    uint8_t flags;$/;"	m	struct:ext4_encryption_policy	file:
+flags	include/ext4_utils/ext4.h	/^ unsigned int flags;$/;"	m	struct:ext4_allocation_request
+flash_erase_block_size	include/ext4_utils/ext4_sb.h	/^	uint32_t flash_erase_block_size;$/;"	m	struct:fs_info
+flash_logical_block_size	include/ext4_utils/ext4_sb.h	/^	uint32_t flash_logical_block_size;$/;"	m	struct:fs_info
+force	ext4_utils.c	/^int force = 0;$/;"	v
+free_alloc	allocate.c	/^void free_alloc(struct block_allocation *alloc)$/;"	f
+free_blocks	allocate.c	/^static void free_blocks(struct block_group_info *bg, u32 block, u32 num_blocks)$/;"	f	file:
+free_blocks	allocate.h	/^	u32 free_blocks;$/;"	m	struct:block_group_info
+free_blocks_count	include/ext4_utils/ext4.h	/^ __u32 free_blocks_count;$/;"	m	struct:ext4_new_group_data
+free_inodes	allocate.h	/^	u32 free_inodes;$/;"	m	struct:block_group_info
+fs_aux_info	include/ext4_utils/ext4_utils.h	/^struct fs_aux_info {$/;"	s
+fs_config_func_t	include/ext4_utils/ext4_utils.h	/^typedef void (*fs_config_func_t)(const char *path, int dir, const char *target_out_path,$/;"	t
+fs_info	include/ext4_utils/ext4_sb.h	/^struct fs_info {$/;"	s
+ftruncate64	include/ext4_utils/ext4_utils.h	43;"	d
+full_path	contents.h	/^	char *full_path;$/;"	m	struct:dentry
+generate_base_alloc_file_out	make_ext4fs.c	/^void generate_base_alloc_file_out(FILE* base_alloc_file_out, char* dir, char* mountpoint,$/;"	f
+generate_sha1_uuid	ext4_utils.c	/^static void generate_sha1_uuid(const char *namespace, const char *name, u8 result[16])$/;"	f	file:
+get_bg_flags	allocate.c	/^u16 get_bg_flags(int bg)$/;"	f
+get_block	allocate.c	/^u32 get_block(struct block_allocation *alloc, u32 block)$/;"	f
+get_block_device_size	ext4_utils.c	/^u64 get_block_device_size(int fd)$/;"	f
+get_block_group	make_ext4fs.c	/^static int get_block_group(u32 block) {$/;"	f	file:
+get_block_list_extents	ext4fixup.c	/^static int get_block_list_extents(int fd, struct ext4_inode *inode, unsigned long long *block_list)$/;"	f	file:
+get_block_list_indirect	ext4fixup.c	/^static int get_block_list_indirect(int fd, struct ext4_inode *inode, unsigned long long *block_list)$/;"	f	file:
+get_direct_blocks	ext4fixup.c	/^static int get_direct_blocks(struct ext4_inode *inode, unsigned long long *block_list,$/;"	f	file:
+get_directories	allocate.c	/^u16 get_directories(int bg)$/;"	f
+get_extent_ents	ext4fixup.c	/^static int get_extent_ents(struct ext4_extent_header *ext_hdr, unsigned long long *block_list)$/;"	f	file:
+get_extent_idx	ext4fixup.c	/^static int get_extent_idx(int fd, struct ext4_extent_header *ext_hdr, unsigned long long *block_list)$/;"	f	file:
+get_file_size	ext4_utils.c	/^u64 get_file_size(int fd)$/;"	f
+get_free_blocks	allocate.c	/^u32 get_free_blocks(u32 bg)$/;"	f
+get_free_inodes	allocate.c	/^u32 get_free_inodes(u32 bg)$/;"	f
+get_fs_fixup_state	ext4fixup.c	/^static int get_fs_fixup_state(int fd)$/;"	f	file:
+get_indirect_blocks	ext4fixup.c	/^static int get_indirect_blocks(int fd, struct ext4_inode *inode,$/;"	f	file:
+get_inode	allocate.c	/^struct ext4_inode *get_inode(u32 inode)$/;"	f
+get_next_region	allocate.c	/^void get_next_region(struct block_allocation *alloc)$/;"	f
+get_oob_block	allocate.c	/^u32 get_oob_block(struct block_allocation *alloc, u32 block)$/;"	f
+get_region	allocate.c	/^void get_region(struct block_allocation *alloc, u32 *block, u32 *len)$/;"	f
+get_saved_allocation_chain	contents.c	/^struct block_allocation* get_saved_allocation_chain() {$/;"	f
+get_xattr_block_for_inode	allocate.c	/^struct ext4_xattr_header *get_xattr_block_for_inode(struct ext4_inode *inode)$/;"	f
+gid	contents.h	/^	u16 gid;$/;"	m	struct:dentry
+goal	include/ext4_utils/ext4.h	/^ ext4_fsblk_t goal;$/;"	m	struct:ext4_allocation_request
+group	include/ext4_utils/ext4.h	/^ __u32 group;$/;"	m	struct:ext4_new_group_data
+groups	include/ext4_utils/ext4_utils.h	/^	u32 groups;$/;"	m	struct:fs_aux_info
+h_blocks	include/ext4_utils/xattr.h	/^    __le32  h_blocks;$/;"	m	struct:ext4_xattr_header
+h_blocktype	include/ext4_utils/jbd2.h	/^ __be32 h_blocktype;$/;"	m	struct:commit_header
+h_blocktype	include/ext4_utils/jbd2.h	/^ __be32 h_blocktype;$/;"	m	struct:journal_header_s
+h_checksum	include/ext4_utils/xattr.h	/^    __le32  h_checksum;$/;"	m	struct:ext4_xattr_header
+h_chksum	include/ext4_utils/jbd2.h	/^ __be32 h_chksum[JBD2_CHECKSUM_BYTES];$/;"	m	struct:commit_header
+h_chksum_size	include/ext4_utils/jbd2.h	/^ unsigned char h_chksum_size;$/;"	m	struct:commit_header
+h_chksum_type	include/ext4_utils/jbd2.h	/^ unsigned char h_chksum_type;$/;"	m	struct:commit_header
+h_commit_nsec	include/ext4_utils/jbd2.h	/^ __be32 h_commit_nsec;$/;"	m	struct:commit_header
+h_commit_sec	include/ext4_utils/jbd2.h	/^ __be64 h_commit_sec;$/;"	m	struct:commit_header
+h_hash	include/ext4_utils/xattr.h	/^    __le32  h_hash;$/;"	m	struct:ext4_xattr_header
+h_i_author	include/ext4_utils/ext4.h	/^ __u32 h_i_author;$/;"	m	struct:ext4_inode::__anon5::__anon7
+h_i_gid_high	include/ext4_utils/ext4.h	/^ __u16 h_i_gid_high;$/;"	m	struct:ext4_inode::__anon5::__anon7
+h_i_mode_high	include/ext4_utils/ext4.h	/^ __u16 h_i_mode_high;$/;"	m	struct:ext4_inode::__anon5::__anon7
+h_i_reserved1	include/ext4_utils/ext4.h	/^ __le16 h_i_reserved1;$/;"	m	struct:ext4_inode::__anon5::__anon7
+h_i_reserved1	include/ext4_utils/ext4.h	/^ __le16 h_i_reserved1;$/;"	m	struct:ext4_inode::__anon5::__anon8
+h_i_translator	include/ext4_utils/ext4.h	/^ __u32 h_i_translator;$/;"	m	struct:ext4_inode::__anon1::__anon3
+h_i_uid_high	include/ext4_utils/ext4.h	/^ __u16 h_i_uid_high;$/;"	m	struct:ext4_inode::__anon5::__anon7
+h_magic	include/ext4_utils/jbd2.h	/^ __be32 h_magic;$/;"	m	struct:commit_header
+h_magic	include/ext4_utils/jbd2.h	/^ __be32 h_magic;$/;"	m	struct:journal_header_s
+h_magic	include/ext4_utils/xattr.h	/^    __le32  h_magic;$/;"	m	struct:ext4_xattr_header
+h_magic	include/ext4_utils/xattr.h	/^    __le32  h_magic;$/;"	m	struct:ext4_xattr_ibody_header
+h_padding	include/ext4_utils/jbd2.h	/^ unsigned char h_padding[2];$/;"	m	struct:commit_header
+h_refcount	include/ext4_utils/xattr.h	/^    __le32  h_refcount;$/;"	m	struct:ext4_xattr_header
+h_reserved	include/ext4_utils/xattr.h	/^    __u32   h_reserved[3];$/;"	m	struct:ext4_xattr_header
+h_sequence	include/ext4_utils/jbd2.h	/^ __be32 h_sequence;$/;"	m	struct:commit_header
+h_sequence	include/ext4_utils/jbd2.h	/^ __be32 h_sequence;$/;"	m	struct:journal_header_s
+has_superblock	allocate.h	/^	int has_superblock;$/;"	m	struct:block_group_info
+header	allocate.c	/^	struct ext4_xattr_header *header;$/;"	m	struct:xattr_list_element	typeref:struct:xattr_list_element::ext4_xattr_header	file:
+header_blocks	allocate.h	/^	int header_blocks;$/;"	m	struct:block_group_info
+hurd1	include/ext4_utils/ext4.h	/^ } hurd1;$/;"	m	union:ext4_inode::__anon1	typeref:struct:ext4_inode::__anon1::__anon3
+hurd2	include/ext4_utils/ext4.h	/^ } hurd2;$/;"	m	union:ext4_inode::__anon5	typeref:struct:ext4_inode::__anon5::__anon7
+i_atime	include/ext4_utils/ext4.h	/^ __le32 i_atime;$/;"	m	struct:ext4_inode
+i_atime_extra	include/ext4_utils/ext4.h	/^ __le32 i_atime_extra;$/;"	m	struct:ext4_inode
+i_block	include/ext4_utils/ext4.h	/^ __le32 i_block[EXT4_N_BLOCKS];$/;"	m	struct:ext4_inode
+i_blocks_high	include/ext4_utils/ext4.h	315;"	d
+i_blocks_lo	include/ext4_utils/ext4.h	/^ __le32 i_blocks_lo;$/;"	m	struct:ext4_inode
+i_crtime	include/ext4_utils/ext4.h	/^ __le32 i_crtime;$/;"	m	struct:ext4_inode
+i_crtime_extra	include/ext4_utils/ext4.h	/^ __le32 i_crtime_extra;$/;"	m	struct:ext4_inode
+i_ctime	include/ext4_utils/ext4.h	/^ __le32 i_ctime;$/;"	m	struct:ext4_inode
+i_ctime_extra	include/ext4_utils/ext4.h	/^ __le32 i_ctime_extra;$/;"	m	struct:ext4_inode
+i_disk_version	include/ext4_utils/ext4.h	311;"	d
+i_dtime	include/ext4_utils/ext4.h	/^ __le32 i_dtime;$/;"	m	struct:ext4_inode
+i_extra_isize	include/ext4_utils/ext4.h	/^ __le16 i_extra_isize;$/;"	m	struct:ext4_inode
+i_file_acl_high	include/ext4_utils/ext4.h	314;"	d
+i_file_acl_lo	include/ext4_utils/ext4.h	/^ __le32 i_file_acl_lo;$/;"	m	struct:ext4_inode
+i_flags	include/ext4_utils/ext4.h	/^ __le32 i_flags;$/;"	m	struct:ext4_inode
+i_generation	include/ext4_utils/ext4.h	/^ __le32 i_generation;$/;"	m	struct:ext4_inode
+i_gid	include/ext4_utils/ext4.h	/^ __le16 i_gid;$/;"	m	struct:ext4_inode
+i_gid_high	include/ext4_utils/ext4.h	319;"	d
+i_gid_low	include/ext4_utils/ext4.h	317;"	d
+i_links_count	include/ext4_utils/ext4.h	/^ __le16 i_links_count;$/;"	m	struct:ext4_inode
+i_mode	include/ext4_utils/ext4.h	/^ __le16 i_mode;$/;"	m	struct:ext4_inode
+i_mtime	include/ext4_utils/ext4.h	/^ __le32 i_mtime;$/;"	m	struct:ext4_inode
+i_mtime_extra	include/ext4_utils/ext4.h	/^ __le32 i_mtime_extra;$/;"	m	struct:ext4_inode
+i_obso_faddr	include/ext4_utils/ext4.h	/^ __le32 i_obso_faddr;$/;"	m	struct:ext4_inode
+i_pad1	include/ext4_utils/ext4.h	/^ __le16 i_pad1;$/;"	m	struct:ext4_inode
+i_reserved1	include/ext4_utils/ext4.h	313;"	d
+i_reserved2	include/ext4_utils/ext4.h	320;"	d
+i_size_high	include/ext4_utils/ext4.h	/^ __le32 i_size_high;$/;"	m	struct:ext4_inode
+i_size_lo	include/ext4_utils/ext4.h	/^ __le32 i_size_lo;$/;"	m	struct:ext4_inode
+i_uid	include/ext4_utils/ext4.h	/^ __le16 i_uid;$/;"	m	struct:ext4_inode
+i_uid_high	include/ext4_utils/ext4.h	318;"	d
+i_uid_low	include/ext4_utils/ext4.h	316;"	d
+i_version_hi	include/ext4_utils/ext4.h	/^ __le32 i_version_hi;$/;"	m	struct:ext4_inode
+indirect_blocks_needed	indirect.c	/^static u32 indirect_blocks_needed(u32 len)$/;"	f	file:
+info	ext4_utils.c	/^struct fs_info info;$/;"	v	typeref:struct:fs_info
+init_bg	allocate.c	/^static void init_bg(struct block_group_info *bg, unsigned int i)$/;"	f	file:
+inode	allocate.c	/^	struct ext4_inode *inode;$/;"	m	struct:xattr_list_element	typeref:struct:xattr_list_element::ext4_inode	file:
+inode	contents.h	/^	u32 *inode;$/;"	m	struct:dentry
+inode	include/ext4_utils/ext4.h	/^ __le32 inode;$/;"	m	struct:ext4_dir_entry
+inode	include/ext4_utils/ext4.h	/^ __le32 inode;$/;"	m	struct:ext4_dir_entry_2
+inode	include/ext4_utils/ext4.h	/^ struct inode *inode;$/;"	m	struct:ext4_allocation_request	typeref:struct:ext4_allocation_request::inode
+inode_allocate_data_extents	extent.c	/^u8 *inode_allocate_data_extents(struct ext4_inode *inode, u64 len,$/;"	f
+inode_allocate_data_indirect	indirect.c	/^u8 *inode_allocate_data_indirect(struct ext4_inode *inode, unsigned long len,$/;"	f
+inode_allocate_extents	extent.c	/^void inode_allocate_extents(struct ext4_inode *inode, u64 len)$/;"	f
+inode_allocate_file_extents	extent.c	/^struct block_allocation* inode_allocate_file_extents(struct ext4_inode *inode, u64 len,$/;"	f
+inode_allocate_indirect	indirect.c	/^void inode_allocate_indirect(struct ext4_inode *inode, unsigned long len)$/;"	f
+inode_attach_dindirect_blocks	indirect.c	/^static int inode_attach_dindirect_blocks(struct ext4_inode *inode,$/;"	f	file:
+inode_attach_direct_blocks	indirect.c	/^static int inode_attach_direct_blocks(struct ext4_inode *inode,$/;"	f	file:
+inode_attach_indirect_blocks	indirect.c	/^static int inode_attach_indirect_blocks(struct ext4_inode *inode,$/;"	f	file:
+inode_attach_resize	indirect.c	/^void inode_attach_resize(struct ext4_inode *inode,$/;"	f
+inode_attach_tindirect_blocks	indirect.c	/^static int inode_attach_tindirect_blocks(struct ext4_inode *inode,$/;"	f	file:
+inode_bitmap	allocate.h	/^	u8 *inode_bitmap;$/;"	m	struct:block_group_info
+inode_bitmap	include/ext4_utils/ext4.h	/^ __u64 inode_bitmap;$/;"	m	struct:ext4_new_group_data
+inode_set_capabilities	contents.c	/^int inode_set_capabilities(u32 inode_num, uint64_t capabilities) {$/;"	f
+inode_set_permissions	contents.c	/^int inode_set_permissions(u32 inode_num, u16 mode, u16 uid, u16 gid, u32 mtime)$/;"	f
+inode_set_selinux	contents.c	/^int inode_set_selinux(u32 inode_num, const char *secon)$/;"	f
+inode_size	include/ext4_utils/ext4_sb.h	/^	uint32_t inode_size;$/;"	m	struct:fs_info
+inode_table	allocate.h	/^	u8 *inode_table;$/;"	m	struct:block_group_info
+inode_table	include/ext4_utils/ext4.h	/^ __u64 inode_table;$/;"	m	struct:ext4_new_group_data
+inode_table_blocks	include/ext4_utils/ext4_utils.h	/^	u32 inode_table_blocks;$/;"	m	struct:fs_aux_info
+inodes	include/ext4_utils/ext4_sb.h	/^	uint32_t inodes;$/;"	m	struct:fs_info
+inodes_per_group	include/ext4_utils/ext4_sb.h	/^	uint32_t inodes_per_group;$/;"	m	struct:fs_info
+is_block_device_fd	ext4_utils.c	/^int is_block_device_fd(int fd)$/;"	f
+is_dir_empty	ext4_crypt.cpp	/^static bool is_dir_empty(const char *dirname, bool *is_empty)$/;"	f	file:
+is_dx	include/ext4_utils/ext4.h	570;"	d
+is_entry_dir	ext4fixup.c	/^static int is_entry_dir(int fd, struct ext4_dir_entry_2 *dirp, int pass)$/;"	f	file:
+is_power_of	ext4_utils.c	/^static int is_power_of(int a, int b)$/;"	f	file:
+iter	allocate.h	/^	struct region *iter;$/;"	m	struct:region_list	typeref:struct:region_list::region
+jbd2_journal_revoke_header_s	include/ext4_utils/jbd2.h	/^typedef struct jbd2_journal_revoke_header_s$/;"	s
+jbd2_journal_revoke_header_t	include/ext4_utils/jbd2.h	/^} jbd2_journal_revoke_header_t;$/;"	t	typeref:struct:jbd2_journal_revoke_header_s
+jbd_debug	include/ext4_utils/jbd2.h	24;"	d
+jfs_debug	include/ext4_utils/jbd2.h	16;"	d
+journal_block_tag_s	include/ext4_utils/jbd2.h	/^typedef struct journal_block_tag_s$/;"	s
+journal_block_tag_t	include/ext4_utils/jbd2.h	/^} journal_block_tag_t;$/;"	t	typeref:struct:journal_block_tag_s
+journal_blocks	include/ext4_utils/ext4_sb.h	/^	uint32_t journal_blocks;$/;"	m	struct:fs_info
+journal_header_s	include/ext4_utils/jbd2.h	/^typedef struct journal_header_s$/;"	s
+journal_header_t	include/ext4_utils/jbd2.h	/^} journal_header_t;$/;"	t	typeref:struct:journal_header_s
+journal_oom_retry	include/ext4_utils/jbd2.h	18;"	d
+journal_superblock_s	include/ext4_utils/jbd2.h	/^typedef struct journal_superblock_s$/;"	s
+journal_superblock_t	include/ext4_utils/jbd2.h	/^} journal_superblock_t;$/;"	t	typeref:struct:journal_superblock_s
+l	sha1.c	/^    u_int l[16];$/;"	m	union:__anon9	file:
+l_i_blocks_high	include/ext4_utils/ext4.h	/^ __le16 l_i_blocks_high;$/;"	m	struct:ext4_inode::__anon5::__anon6
+l_i_file_acl_high	include/ext4_utils/ext4.h	/^ __le16 l_i_file_acl_high;$/;"	m	struct:ext4_inode::__anon5::__anon6
+l_i_gid_high	include/ext4_utils/ext4.h	/^ __le16 l_i_gid_high;$/;"	m	struct:ext4_inode::__anon5::__anon6
+l_i_reserved2	include/ext4_utils/ext4.h	/^ __u32 l_i_reserved2;$/;"	m	struct:ext4_inode::__anon5::__anon6
+l_i_uid_high	include/ext4_utils/ext4.h	/^ __le16 l_i_uid_high;$/;"	m	struct:ext4_inode::__anon5::__anon6
+l_i_version	include/ext4_utils/ext4.h	/^ __le32 l_i_version;$/;"	m	struct:ext4_inode::__anon1::__anon2
+label	include/ext4_utils/ext4_sb.h	/^	const char *label;$/;"	m	struct:fs_info
+last	allocate.h	/^	struct region *last;$/;"	m	struct:region_list	typeref:struct:region_list::region
+last_region	allocate.c	/^int last_region(struct block_allocation *alloc)$/;"	f
+le16_to_cpu	include/ext4_utils/ext4_utils.h	73;"	d
+le32_to_cpu	include/ext4_utils/ext4_utils.h	72;"	d
+len	allocate.h	/^	u32 len;$/;"	m	struct:region
+len	include/ext4_utils/ext4.h	/^ __u64 len;$/;"	m	struct:move_extent
+len	include/ext4_utils/ext4.h	/^ unsigned int len;$/;"	m	struct:ext4_allocation_request
+len	include/ext4_utils/ext4_sb.h	/^	int64_t len;	\/* If set to 0, ask the block device for the size,$/;"	m	struct:fs_info
+len_blocks	include/ext4_utils/ext4_utils.h	/^	u64 len_blocks;$/;"	m	struct:fs_aux_info
+link	contents.h	/^	char *link;$/;"	m	struct:dentry
+linux1	include/ext4_utils/ext4.h	/^ } linux1;$/;"	m	union:ext4_inode::__anon1	typeref:struct:ext4_inode::__anon1::__anon2
+linux2	include/ext4_utils/ext4.h	/^ } linux2;$/;"	m	union:ext4_inode::__anon5	typeref:struct:ext4_inode::__anon5::__anon6
+list	allocate.h	/^	struct region_list list;$/;"	m	struct:block_allocation	typeref:struct:block_allocation::region_list
+lleft	include/ext4_utils/ext4.h	/^ ext4_lblk_t lleft;$/;"	m	struct:ext4_allocation_request
+log_2	include/ext4_utils/ext4_utils.h	/^static inline int log_2(int j)$/;"	f
+logical	include/ext4_utils/ext4.h	/^ ext4_lblk_t logical;$/;"	m	struct:ext4_allocation_request
+lright	include/ext4_utils/ext4.h	/^ ext4_lblk_t lright;$/;"	m	struct:ext4_allocation_request
+lseek64	ext4fixup.c	40;"	d	file:
+lseek64	include/ext4_utils/ext4_utils.h	42;"	d
+m_i_file_acl_high	include/ext4_utils/ext4.h	/^ __le16 m_i_file_acl_high;$/;"	m	struct:ext4_inode::__anon5::__anon8
+m_i_reserved1	include/ext4_utils/ext4.h	/^ __u32 m_i_reserved1;$/;"	m	struct:ext4_inode::__anon1::__anon4
+m_i_reserved2	include/ext4_utils/ext4.h	/^ __u32 m_i_reserved2[2];$/;"	m	struct:ext4_inode::__anon5::__anon8
+main	blk_alloc_to_base_fs.c	/^int main(int argc, char **argv)$/;"	f
+main	ext4fixup_main.c	/^int main(int argc, char **argv)$/;"	f
+main	make_ext4fs_main.c	/^int main(int argc, char **argv)$/;"	f
+main	setup_fs.c	/^int main(int argc, char **argv)$/;"	f
+make_directory	contents.c	/^u32 make_directory(u32 dir_inode_num, u32 entries, struct dentry *dentries,$/;"	f
+make_ext4fs	make_ext4fs.c	/^int make_ext4fs(const char *filename, long long len,$/;"	f
+make_ext4fs_directory	make_ext4fs.c	/^int make_ext4fs_directory(const char *filename, long long len,$/;"	f
+make_ext4fs_directory_align	make_ext4fs.c	/^int make_ext4fs_directory_align(const char *filename, long long len,$/;"	f
+make_ext4fs_internal	make_ext4fs.c	/^int make_ext4fs_internal(int fd, const char *_directory, const char *_target_out_directory,$/;"	f
+make_ext4fs_sparse_fd	make_ext4fs.c	/^int make_ext4fs_sparse_fd(int fd, long long len,$/;"	f
+make_ext4fs_sparse_fd_align	make_ext4fs.c	/^int make_ext4fs_sparse_fd_align(int fd, long long len,$/;"	f
+make_ext4fs_sparse_fd_directory	make_ext4fs.c	/^int make_ext4fs_sparse_fd_directory(int fd, long long len,$/;"	f
+make_ext4fs_sparse_fd_directory_align	make_ext4fs.c	/^int make_ext4fs_sparse_fd_directory_align(int fd, long long len,$/;"	f
+make_file	contents.c	/^u32 make_file(const char *filename, u64 len)$/;"	f
+make_link	contents.c	/^u32 make_link(const char *link)$/;"	f
+masix1	include/ext4_utils/ext4.h	/^ } masix1;$/;"	m	union:ext4_inode::__anon1	typeref:struct:ext4_inode::__anon1::__anon4
+masix2	include/ext4_utils/ext4.h	/^ } masix2;$/;"	m	union:ext4_inode::__anon5	typeref:struct:ext4_inode::__anon5::__anon8
+master_key_descriptor	ext4_crypt.cpp	/^    uint8_t master_key_descriptor[EXT4_KEY_DESCRIPTOR_SIZE];$/;"	m	struct:ext4_encryption_policy	file:
+max_chunk_count	allocate.h	/^	int max_chunk_count;$/;"	m	struct:block_group_info
+min	include/ext4_utils/ext4_utils.h	62;"	d
+mkfs	setup_fs.c	/^const char *mkfs = "\/system\/bin\/make_ext4fs";$/;"	v
+mmap64	include/ext4_utils/ext4_utils.h	44;"	d
+mode	contents.h	/^	u16 mode;$/;"	m	struct:dentry
+move_extent	include/ext4_utils/ext4.h	/^struct move_extent {$/;"	s
+moved_len	include/ext4_utils/ext4.h	/^ __u64 moved_len;$/;"	m	struct:move_extent
+mtime	contents.h	/^	u32 mtime;$/;"	m	struct:dentry
+nR0	sha1.c	73;"	d	file:
+nR1	sha1.c	74;"	d	file:
+nR2	sha1.c	75;"	d	file:
+nR3	sha1.c	76;"	d	file:
+nR4	sha1.c	77;"	d	file:
+name	include/ext4_utils/ext4.h	/^ char name[EXT4_NAME_LEN];$/;"	m	struct:ext4_dir_entry
+name	include/ext4_utils/ext4.h	/^ char name[EXT4_NAME_LEN];$/;"	m	struct:ext4_dir_entry_2
+name_len	include/ext4_utils/ext4.h	/^ __le16 name_len;$/;"	m	struct:ext4_dir_entry
+name_len	include/ext4_utils/ext4.h	/^ __u8 name_len;$/;"	m	struct:ext4_dir_entry_2
+new_inodes_per_group	ext4fixup.c	/^static int new_inodes_per_group = 0;$/;"	v	file:
+next	allocate.c	/^	struct xattr_list_element *next;$/;"	m	struct:xattr_list_element	typeref:struct:xattr_list_element::xattr_list_element	file:
+next	allocate.h	/^	struct block_allocation* next;$/;"	m	struct:block_allocation	typeref:struct:block_allocation::block_allocation
+next	allocate.h	/^	struct region *next;$/;"	m	struct:region	typeref:struct:region::region
+no_journal	include/ext4_utils/ext4_sb.h	/^	uint8_t no_journal;$/;"	m	struct:fs_info
+no_write	ext4fixup.c	/^static int no_write = 0;$/;"	v	file:
+no_write_fixup_state	ext4fixup.c	/^static int no_write_fixup_state = 0;$/;"	v	file:
+node0_1	ext4_utils.c	/^    u16 node0_1;$/;"	m	struct:uuid	file:
+node2_5	ext4_utils.c	/^    u32 node2_5;$/;"	m	struct:uuid	file:
+off64_t	ext4fixup.c	41;"	d	file:
+off64_t	include/ext4_utils/ext4_utils.h	45;"	d
+oob_list	allocate.h	/^	struct region_list oob_list;$/;"	m	struct:block_allocation	typeref:struct:block_allocation::region_list
+orig_start	include/ext4_utils/ext4.h	/^ __u64 orig_start;$/;"	m	struct:move_extent
+osd1	include/ext4_utils/ext4.h	/^ } osd1;$/;"	m	struct:ext4_inode	typeref:union:ext4_inode::__anon1
+osd2	include/ext4_utils/ext4.h	/^ } osd2;$/;"	m	struct:ext4_inode	typeref:union:ext4_inode::__anon5
+p_bh	include/ext4_utils/ext4_extents.h	/^ struct buffer_head *p_bh;$/;"	m	struct:ext4_ext_path	typeref:struct:ext4_ext_path::buffer_head
+p_block	include/ext4_utils/ext4_extents.h	/^ ext4_fsblk_t p_block;$/;"	m	struct:ext4_ext_path
+p_depth	include/ext4_utils/ext4_extents.h	/^ __u16 p_depth;$/;"	m	struct:ext4_ext_path
+p_ext	include/ext4_utils/ext4_extents.h	/^ struct ext4_extent *p_ext;$/;"	m	struct:ext4_ext_path	typeref:struct:ext4_ext_path::ext4_extent
+p_hdr	include/ext4_utils/ext4_extents.h	/^ struct ext4_extent_header *p_hdr;$/;"	m	struct:ext4_ext_path	typeref:struct:ext4_ext_path::ext4_extent_header
+p_idx	include/ext4_utils/ext4_extents.h	/^ struct ext4_extent_idx *p_idx;$/;"	m	struct:ext4_ext_path	typeref:struct:ext4_ext_path::ext4_extent_idx
+parse_num	ext4_utils.c	/^u64 parse_num(const char *arg)$/;"	f
+partial_iter	allocate.h	/^	u32 partial_iter;$/;"	m	struct:region_list
+path	contents.h	/^	char *path;$/;"	m	struct:dentry
+pleft	include/ext4_utils/ext4.h	/^ ext4_fsblk_t pleft;$/;"	m	struct:ext4_allocation_request
+policy_to_hex	ext4_crypt.cpp	/^static void policy_to_hex(const char* policy, char* hex) {$/;"	f	file:
+prev	allocate.h	/^	struct region *prev;$/;"	m	struct:region	typeref:struct:region::region
+pright	include/ext4_utils/ext4.h	/^ ext4_fsblk_t pright;$/;"	m	struct:ext4_allocation_request
+print_blocks	allocate.c	/^void print_blocks(FILE* f, struct block_allocation *alloc, char separator)$/;"	f
+r_count	include/ext4_utils/jbd2.h	/^ __be32 r_count;$/;"	m	struct:jbd2_journal_revoke_header_s
+r_header	include/ext4_utils/jbd2.h	/^ journal_header_t r_header;$/;"	m	struct:jbd2_journal_revoke_header_s
+read_block	ext4fixup.c	/^static int read_block(int fd, unsigned long long block_num, void *block)$/;"	f	file:
+read_ext	ext4_utils.c	/^int read_ext(int fd, int verbose)$/;"	f
+read_inode	ext4fixup.c	/^static int read_inode(int fd, unsigned int inum, struct ext4_inode *inode)$/;"	f	file:
+read_sb	ext4_utils.c	/^void read_sb(int fd, struct ext4_super_block *sb)$/;"	f
+rec_len	include/ext4_utils/ext4.h	/^ __le16 rec_len;$/;"	m	struct:ext4_dir_entry
+rec_len	include/ext4_utils/ext4.h	/^ __le16 rec_len;$/;"	m	struct:ext4_dir_entry_2
+recurse_dir	ext4fixup.c	/^static int recurse_dir(int fd, struct ext4_inode *inode, char *dirbuf, int dirsize, int mode)$/;"	f	file:
+reduce_allocation	allocate.c	/^void reduce_allocation(struct block_allocation *alloc, u32 len)$/;"	f
+region	allocate.h	/^struct region {$/;"	s
+region_list	allocate.h	/^struct region_list {$/;"	s
+region_list_append	allocate.c	/^void region_list_append(struct region_list *list, struct region *reg)$/;"	f
+region_list_merge	allocate.c	/^void region_list_merge(struct region_list *list1, struct region_list *list2)$/;"	f
+region_list_remove	allocate.c	/^static void region_list_remove(struct region_list *list, struct region *reg)$/;"	f	file:
+reserve_all_indirect_blocks	indirect.c	/^static void reserve_all_indirect_blocks(struct block_allocation *alloc, u32 len)$/;"	f	file:
+reserve_bg_chunk	allocate.c	/^void reserve_bg_chunk(int bg, u32 start_block, u32 size) {$/;"	f
+reserve_blocks	allocate.c	/^static int reserve_blocks(struct block_group_info *bg, u32 bg_num, u32 start, u32 num)$/;"	f	file:
+reserve_blocks_for_allocation	allocate.c	/^int reserve_blocks_for_allocation(struct block_allocation *alloc) {$/;"	f
+reserve_dindirect_block	indirect.c	/^static void reserve_dindirect_block(struct block_allocation *alloc, int len)$/;"	f	file:
+reserve_indirect_block	indirect.c	/^static void reserve_indirect_block(struct block_allocation *alloc, int len)$/;"	f	file:
+reserve_inodes	allocate.c	/^u32 reserve_inodes(int bg, u32 num)$/;"	f
+reserve_oob_blocks	allocate.c	/^int reserve_oob_blocks(struct block_allocation *alloc, int blocks)$/;"	f
+reserve_tindirect_block	indirect.c	/^static void reserve_tindirect_block(struct block_allocation *alloc, int len)$/;"	f	file:
+reserved	include/ext4_utils/ext4.h	/^ __u32 reserved;$/;"	m	struct:move_extent
+reserved_blocks	include/ext4_utils/ext4.h	/^ __u16 reserved_blocks;$/;"	m	struct:ext4_new_group_data
+reset_ext4fs_info	make_ext4fs.c	/^void reset_ext4fs_info() {$/;"	f
+rewind_alloc	allocate.c	/^void rewind_alloc(struct block_allocation *alloc)$/;"	f
+rol	sha1.c	32;"	d	file:
+s64	include/ext4_utils/ext4_utils.h	/^typedef signed long long s64;$/;"	t
+s64	include/ext4_utils/ext4_utils.h	/^typedef signed long s64;$/;"	t
+s_algorithm_usage_bitmap	include/ext4_utils/ext4.h	/^  __le32 s_algorithm_usage_bitmap;$/;"	m	struct:ext4_super_block
+s_block_group_nr	include/ext4_utils/ext4.h	/^ __le16 s_block_group_nr;$/;"	m	struct:ext4_super_block
+s_blocks_count_hi	include/ext4_utils/ext4.h	/^  __le32 s_blocks_count_hi;$/;"	m	struct:ext4_super_block
+s_blocks_count_lo	include/ext4_utils/ext4.h	/^ __le32 s_blocks_count_lo;$/;"	m	struct:ext4_super_block
+s_blocks_per_group	include/ext4_utils/ext4.h	/^  __le32 s_blocks_per_group;$/;"	m	struct:ext4_super_block
+s_blocksize	include/ext4_utils/jbd2.h	/^ __be32 s_blocksize;$/;"	m	struct:journal_superblock_s
+s_checkinterval	include/ext4_utils/ext4.h	/^ __le32 s_checkinterval;$/;"	m	struct:ext4_super_block
+s_creator_os	include/ext4_utils/ext4.h	/^ __le32 s_creator_os;$/;"	m	struct:ext4_super_block
+s_def_hash_version	include/ext4_utils/ext4.h	/^ __u8 s_def_hash_version;$/;"	m	struct:ext4_super_block
+s_def_resgid	include/ext4_utils/ext4.h	/^ __le16 s_def_resgid;$/;"	m	struct:ext4_super_block
+s_def_resuid	include/ext4_utils/ext4.h	/^  __le16 s_def_resuid;$/;"	m	struct:ext4_super_block
+s_default_mount_opts	include/ext4_utils/ext4.h	/^  __le32 s_default_mount_opts;$/;"	m	struct:ext4_super_block
+s_desc_size	include/ext4_utils/ext4.h	/^ __le16 s_desc_size;$/;"	m	struct:ext4_super_block
+s_dynsuper	include/ext4_utils/jbd2.h	/^ __be32 s_dynsuper;$/;"	m	struct:journal_superblock_s
+s_errno	include/ext4_utils/jbd2.h	/^ __be32 s_errno;$/;"	m	struct:journal_superblock_s
+s_errors	include/ext4_utils/ext4.h	/^ __le16 s_errors;$/;"	m	struct:ext4_super_block
+s_feature_compat	include/ext4_utils/ext4.h	/^ __le32 s_feature_compat;$/;"	m	struct:ext4_super_block
+s_feature_compat	include/ext4_utils/jbd2.h	/^ __be32 s_feature_compat;$/;"	m	struct:journal_superblock_s
+s_feature_incompat	include/ext4_utils/ext4.h	/^  __le32 s_feature_incompat;$/;"	m	struct:ext4_super_block
+s_feature_incompat	include/ext4_utils/jbd2.h	/^ __be32 s_feature_incompat;$/;"	m	struct:journal_superblock_s
+s_feature_ro_compat	include/ext4_utils/ext4.h	/^ __le32 s_feature_ro_compat;$/;"	m	struct:ext4_super_block
+s_feature_ro_compat	include/ext4_utils/jbd2.h	/^ __be32 s_feature_ro_compat;$/;"	m	struct:journal_superblock_s
+s_first	include/ext4_utils/jbd2.h	/^ __be32 s_first;$/;"	m	struct:journal_superblock_s
+s_first_data_block	include/ext4_utils/ext4.h	/^ __le32 s_first_data_block;$/;"	m	struct:ext4_super_block
+s_first_ino	include/ext4_utils/ext4.h	/^ __le32 s_first_ino;$/;"	m	struct:ext4_super_block
+s_first_meta_bg	include/ext4_utils/ext4.h	/^ __le32 s_first_meta_bg;$/;"	m	struct:ext4_super_block
+s_flags	include/ext4_utils/ext4.h	/^ __le32 s_flags;$/;"	m	struct:ext4_super_block
+s_free_blocks_count_hi	include/ext4_utils/ext4.h	/^ __le32 s_free_blocks_count_hi;$/;"	m	struct:ext4_super_block
+s_free_blocks_count_lo	include/ext4_utils/ext4.h	/^ __le32 s_free_blocks_count_lo;$/;"	m	struct:ext4_super_block
+s_free_inodes_count	include/ext4_utils/ext4.h	/^  __le32 s_free_inodes_count;$/;"	m	struct:ext4_super_block
+s_hash_seed	include/ext4_utils/ext4.h	/^ __le32 s_hash_seed[4];$/;"	m	struct:ext4_super_block
+s_header	include/ext4_utils/jbd2.h	/^ journal_header_t s_header;$/;"	m	struct:journal_superblock_s
+s_inode_size	include/ext4_utils/ext4.h	/^ __le16 s_inode_size;$/;"	m	struct:ext4_super_block
+s_inodes_count	include/ext4_utils/ext4.h	/^  __le32 s_inodes_count;$/;"	m	struct:ext4_super_block
+s_inodes_per_group	include/ext4_utils/ext4.h	/^ __le32 s_inodes_per_group;$/;"	m	struct:ext4_super_block
+s_jnl_blocks	include/ext4_utils/ext4.h	/^ __le32 s_jnl_blocks[17];$/;"	m	struct:ext4_super_block
+s_journal_dev	include/ext4_utils/ext4.h	/^ __le32 s_journal_dev;$/;"	m	struct:ext4_super_block
+s_journal_inum	include/ext4_utils/ext4.h	/^  __le32 s_journal_inum;$/;"	m	struct:ext4_super_block
+s_journal_uuid	include/ext4_utils/ext4.h	/^  __u8 s_journal_uuid[16];$/;"	m	struct:ext4_super_block
+s_kbytes_written	include/ext4_utils/ext4.h	/^ __le64 s_kbytes_written;$/;"	m	struct:ext4_super_block
+s_last_mounted	include/ext4_utils/ext4.h	/^  char s_last_mounted[64];$/;"	m	struct:ext4_super_block
+s_last_orphan	include/ext4_utils/ext4.h	/^ __le32 s_last_orphan;$/;"	m	struct:ext4_super_block
+s_lastcheck	include/ext4_utils/ext4.h	/^  __le32 s_lastcheck;$/;"	m	struct:ext4_super_block
+s_log_block_size	include/ext4_utils/ext4.h	/^ __le32 s_log_block_size;$/;"	m	struct:ext4_super_block
+s_log_groups_per_flex	include/ext4_utils/ext4.h	/^ __u8 s_log_groups_per_flex;$/;"	m	struct:ext4_super_block
+s_magic	include/ext4_utils/ext4.h	/^ __le16 s_magic;$/;"	m	struct:ext4_super_block
+s_max_mnt_count	include/ext4_utils/ext4.h	/^ __le16 s_max_mnt_count;$/;"	m	struct:ext4_super_block
+s_max_trans_data	include/ext4_utils/jbd2.h	/^ __be32 s_max_trans_data;$/;"	m	struct:journal_superblock_s
+s_max_transaction	include/ext4_utils/jbd2.h	/^ __be32 s_max_transaction;$/;"	m	struct:journal_superblock_s
+s_maxlen	include/ext4_utils/jbd2.h	/^ __be32 s_maxlen;$/;"	m	struct:journal_superblock_s
+s_min_extra_isize	include/ext4_utils/ext4.h	/^ __le16 s_min_extra_isize;$/;"	m	struct:ext4_super_block
+s_minor_rev_level	include/ext4_utils/ext4.h	/^ __le16 s_minor_rev_level;$/;"	m	struct:ext4_super_block
+s_mkfs_time	include/ext4_utils/ext4.h	/^ __le32 s_mkfs_time;$/;"	m	struct:ext4_super_block
+s_mmp_block	include/ext4_utils/ext4.h	/^ __le64 s_mmp_block;$/;"	m	struct:ext4_super_block
+s_mmp_interval	include/ext4_utils/ext4.h	/^ __le16 s_mmp_interval;$/;"	m	struct:ext4_super_block
+s_mnt_count	include/ext4_utils/ext4.h	/^ __le16 s_mnt_count;$/;"	m	struct:ext4_super_block
+s_mtime	include/ext4_utils/ext4.h	/^ __le32 s_mtime;$/;"	m	struct:ext4_super_block
+s_nr_users	include/ext4_utils/jbd2.h	/^ __be32 s_nr_users;$/;"	m	struct:journal_superblock_s
+s_obso_frags_per_group	include/ext4_utils/ext4.h	/^ __le32 s_obso_frags_per_group;$/;"	m	struct:ext4_super_block
+s_obso_log_frag_size	include/ext4_utils/ext4.h	/^ __le32 s_obso_log_frag_size;$/;"	m	struct:ext4_super_block
+s_padding	include/ext4_utils/jbd2.h	/^ __u32 s_padding[44];$/;"	m	struct:journal_superblock_s
+s_prealloc_blocks	include/ext4_utils/ext4.h	/^ __u8 s_prealloc_blocks;$/;"	m	struct:ext4_super_block
+s_prealloc_dir_blocks	include/ext4_utils/ext4.h	/^ __u8 s_prealloc_dir_blocks;$/;"	m	struct:ext4_super_block
+s_r_blocks_count_hi	include/ext4_utils/ext4.h	/^ __le32 s_r_blocks_count_hi;$/;"	m	struct:ext4_super_block
+s_r_blocks_count_lo	include/ext4_utils/ext4.h	/^ __le32 s_r_blocks_count_lo;$/;"	m	struct:ext4_super_block
+s_raid_stride	include/ext4_utils/ext4.h	/^ __le16 s_raid_stride;$/;"	m	struct:ext4_super_block
+s_raid_stripe_width	include/ext4_utils/ext4.h	/^ __le32 s_raid_stripe_width;$/;"	m	struct:ext4_super_block
+s_reserved	include/ext4_utils/ext4.h	/^ __u32 s_reserved[160];$/;"	m	struct:ext4_super_block
+s_reserved_char_pad	include/ext4_utils/ext4.h	/^ __u8 s_reserved_char_pad;$/;"	m	struct:ext4_super_block
+s_reserved_char_pad2	include/ext4_utils/ext4.h	/^ __u8 s_reserved_char_pad2;$/;"	m	struct:ext4_super_block
+s_reserved_gdt_blocks	include/ext4_utils/ext4.h	/^ __le16 s_reserved_gdt_blocks;$/;"	m	struct:ext4_super_block
+s_reserved_pad	include/ext4_utils/ext4.h	/^ __le16 s_reserved_pad;$/;"	m	struct:ext4_super_block
+s_rev_level	include/ext4_utils/ext4.h	/^ __le32 s_rev_level;$/;"	m	struct:ext4_super_block
+s_sequence	include/ext4_utils/jbd2.h	/^ __be32 s_sequence;$/;"	m	struct:journal_superblock_s
+s_start	include/ext4_utils/jbd2.h	/^ __be32 s_start;$/;"	m	struct:journal_superblock_s
+s_state	include/ext4_utils/ext4.h	/^ __le16 s_state;$/;"	m	struct:ext4_super_block
+s_users	include/ext4_utils/jbd2.h	/^ __u8 s_users[16*48];$/;"	m	struct:journal_superblock_s
+s_uuid	include/ext4_utils/ext4.h	/^  __u8 s_uuid[16];$/;"	m	struct:ext4_super_block
+s_uuid	include/ext4_utils/jbd2.h	/^ __u8 s_uuid[16];$/;"	m	struct:journal_superblock_s
+s_volume_name	include/ext4_utils/ext4.h	/^  char s_volume_name[16];$/;"	m	struct:ext4_super_block
+s_want_extra_isize	include/ext4_utils/ext4.h	/^ __le16 s_want_extra_isize;$/;"	m	struct:ext4_super_block
+s_wtime	include/ext4_utils/ext4.h	/^  __le32 s_wtime;$/;"	m	struct:ext4_super_block
+saved_allocation_head	contents.c	/^static struct block_allocation* saved_allocation_head = NULL;$/;"	v	typeref:struct:block_allocation	file:
+sb	include/ext4_utils/ext4_utils.h	/^	struct ext4_super_block *sb;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::ext4_super_block
+sb_block	include/ext4_utils/ext4_utils.h	/^	struct ext4_super_block *sb_block;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::ext4_super_block
+sb_zero	include/ext4_utils/ext4_utils.h	/^	struct ext4_super_block *sb_zero;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::ext4_super_block
+secon	contents.h	/^	char *secon;$/;"	m	struct:dentry
+set_fs_fixup_state	ext4fixup.c	/^static int set_fs_fixup_state(int fd, int state)$/;"	f	file:
+set_opt	include/ext4_utils/ext4.h	362;"	d
+set_system_de_policy_on	ext4_crypt_init_extensions.cpp	/^static int set_system_de_policy_on(char const* dir) {$/;"	f	file:
+setjmp_env	ext4_utils.c	/^jmp_buf setjmp_env;$/;"	v
+setup_fs	setup_fs.c	/^int setup_fs(const char *blockdev)$/;"	f
+sha1_hash	ext4_utils.c	/^static void sha1_hash(const char *namespace, const char *name,$/;"	f	file:
+size	contents.h	/^	unsigned long size;$/;"	m	struct:dentry
+split_allocation	allocate.c	/^static struct region *split_allocation(struct block_allocation *alloc, u32 len)$/;"	f	file:
+state	sha1.h	/^	uint32_t state[5];$/;"	m	struct:__anon10
+t_blocknr	include/ext4_utils/jbd2.h	/^ __be32 t_blocknr;$/;"	m	struct:journal_block_tag_s
+t_blocknr_high	include/ext4_utils/jbd2.h	/^ __be32 t_blocknr_high;$/;"	m	struct:journal_block_tag_s
+t_flags	include/ext4_utils/jbd2.h	/^ __be32 t_flags;$/;"	m	struct:journal_block_tag_s
+test_opt	include/ext4_utils/ext4.h	363;"	d
+time_hi_and_version	ext4_utils.c	/^    u16 time_hi_and_version;$/;"	m	struct:uuid	file:
+time_low	ext4_utils.c	/^    u32 time_low;$/;"	m	struct:uuid	file:
+time_mid	ext4_utils.c	/^    u16 time_mid;$/;"	m	struct:uuid	file:
+u16	include/ext4_utils/ext4_utils.h	/^typedef unsigned short int u16;$/;"	t
+u32	include/ext4_utils/ext4_utils.h	/^typedef unsigned int u32;$/;"	t
+u64	include/ext4_utils/ext4_utils.h	/^typedef unsigned long long u64;$/;"	t
+u64	include/ext4_utils/ext4_utils.h	/^typedef unsigned long u64;$/;"	t
+u8	include/ext4_utils/ext4_utils.h	/^typedef unsigned char u8;$/;"	t
+u_char	sha1.h	/^typedef unsigned char u_char;$/;"	t
+u_int	sha1.h	/^typedef unsigned int u_int;$/;"	t
+u_int32_t	sha1.h	/^typedef unsigned int u_int32_t;$/;"	t
+uid	contents.h	/^	u16 uid;$/;"	m	struct:dentry
+uint32_t	sha1.h	/^typedef unsigned int uint32_t;$/;"	t
+unused	include/ext4_utils/ext4.h	/^ __u16 unused;$/;"	m	struct:ext4_new_group_data
+update_superblocks_and_bg_desc	ext4fixup.c	/^static int update_superblocks_and_bg_desc(int fd, int state)$/;"	f	file:
+usage	blk_alloc_to_base_fs.c	/^static void usage(char *filename)$/;"	f	file:
+usage	ext4fixup_main.c	/^static void usage(char *me)$/;"	f	file:
+usage	make_ext4fs_main.c	/^static void usage(char *path)$/;"	f	file:
+usage	mkuserimg.sh	/^function usage() {$/;"	f
+usage	mkuserimg_mke2fs.sh	/^function usage() {$/;"	f
+used_dirs	allocate.h	/^	u16 used_dirs;$/;"	m	struct:block_group_info
+uuid	ext4_utils.c	/^struct uuid {$/;"	s	file:
+verbose	ext4fixup.c	/^static int verbose = 0;$/;"	v	file:
+version	ext4_crypt.cpp	/^    uint8_t version;$/;"	m	struct:ext4_encryption_policy	file:
+vold_command_timeout_ms	ext4_crypt_init_extensions.cpp	/^static const int vold_command_timeout_ms = 60 * 1000;$/;"	v	file:
+warn	include/ext4_utils/ext4_utils.h	52;"	d
+wipe_block_device	wipe.c	/^int wipe_block_device(int fd, s64 len)$/;"	f
+write_block	ext4fixup.c	/^static int write_block(int fd, unsigned long long block_num, void *block)$/;"	f	file:
+write_ext4_image	ext4_utils.c	/^void write_ext4_image(int fd, int gz, int sparse, int crc)$/;"	f
+write_sb	ext4_utils.c	/^void write_sb(int fd, unsigned long long offset, struct ext4_super_block *sb)$/;"	f
+xattr_add	contents.c	/^static int xattr_add(u32 inode_num, int name_index, const char *name,$/;"	f	file:
+xattr_addto_block	contents.c	/^static int xattr_addto_block(struct ext4_inode *inode, int name_index,$/;"	f	file:
+xattr_addto_inode	contents.c	/^static int xattr_addto_inode(struct ext4_inode *inode, int name_index,$/;"	f	file:
+xattr_addto_range	contents.c	/^static struct ext4_xattr_entry* xattr_addto_range($/;"	f	file:
+xattr_assert_sane	contents.c	/^static void xattr_assert_sane(struct ext4_xattr_entry *entry)$/;"	f	file:
+xattr_free_space	contents.c	/^static size_t xattr_free_space(struct ext4_xattr_entry *entry, char *end)$/;"	f	file:
+xattr_get_last	contents.c	/^static struct ext4_xattr_entry* xattr_get_last(struct ext4_xattr_entry *entry)$/;"	f	file:
+xattr_list_element	allocate.c	/^struct xattr_list_element {$/;"	s	file:
+xattr_list_find	allocate.c	/^static struct ext4_xattr_header *xattr_list_find(struct ext4_inode *inode)$/;"	f	file:
+xattr_list_insert	allocate.c	/^static void xattr_list_insert(struct ext4_inode *inode, struct ext4_xattr_header *header)$/;"	f	file:
+xattrs	include/ext4_utils/ext4_utils.h	/^	struct xattr_list_element *xattrs;$/;"	m	struct:fs_aux_info	typeref:struct:fs_aux_info::xattr_list_element

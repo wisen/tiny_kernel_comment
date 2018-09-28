@@ -77,6 +77,7 @@ void __register_binfmt(struct linux_binfmt * fmt, int insert)
 	if (WARN_ON(!fmt->load_binary))
 		return;
 	write_lock(&binfmt_lock);
+	//fmt = elf_format
 	insert ? list_add(&fmt->lh, &formats) :
 		 list_add_tail(&fmt->lh, &formats);
 	write_unlock(&binfmt_lock);
@@ -265,11 +266,14 @@ static int __bprm_mm_init(struct linux_binprm *bprm)
 	 * use STACK_TOP because that can depend on attributes which aren't
 	 * configured yet.
 	 */
+	//先把vma的vm_end设置到最大化的栈顶STACK_TOP_MAX,后面会在合适的地方再把vm_end和vm_start
+	//置成合适的值。
 	BUILD_BUG_ON(VM_STACK_FLAGS & VM_STACK_INCOMPLETE_SETUP);
-	vma->vm_end = STACK_TOP_MAX;
-	vma->vm_start = vma->vm_end - PAGE_SIZE;
+	vma->vm_end = STACK_TOP_MAX;//0xbf000000
+	vma->vm_start = vma->vm_end - PAGE_SIZE;//0xbefff000
 	vma->vm_flags = VM_SOFTDIRTY | VM_STACK_FLAGS | VM_STACK_INCOMPLETE_SETUP;
 	vma->vm_page_prot = vm_get_page_prot(vma->vm_flags);
+	//初始化anon_vma_chain链表
 	INIT_LIST_HEAD(&vma->anon_vma_chain);
 
 	err = insert_vm_struct(mm, vma);
@@ -358,6 +362,8 @@ static bool valid_arg_len(struct linux_binprm *bprm, long len)
  * flags, permissions, and offset, so we use temporary values.  We'll update
  * them later in setup_arg_pages().
  */
+//这里我们没有足够的信息来设置stack的flags，permissions等，所以我们用了一个临时的值来设置stack
+//然后将这个stack填充到vma中，后面我们会更新stack的信息，也同样更新这个专门存储stack的vma
 static int bprm_mm_init(struct linux_binprm *bprm)
 {
 	int err;
@@ -637,6 +643,8 @@ static int shift_arg_pages(struct vm_area_struct *vma, unsigned long shift)
  * Finalizes the stack vm_area_struct. The flags and permissions are updated,
  * the stack is optionally relocated, and some extra space is added.
  */
+//前面在__bprm_mm_init我们曾经临时的设置了stack，以及用这个临时的stack填充了stack vma
+//现在我们要更新这个stack和这个stack vma
 int setup_arg_pages(struct linux_binprm *bprm,
 		    unsigned long stack_top,
 		    int executable_stack)
@@ -644,6 +652,7 @@ int setup_arg_pages(struct linux_binprm *bprm,
 	unsigned long ret;
 	unsigned long stack_shift;
 	struct mm_struct *mm = current->mm;
+	//bprm->vma initial in __bprm_mm_init
 	struct vm_area_struct *vma = bprm->vma;
 	struct vm_area_struct *prev = NULL;
 	unsigned long vm_flags;
@@ -652,7 +661,7 @@ int setup_arg_pages(struct linux_binprm *bprm,
 	unsigned long stack_expand;
 	unsigned long rlim_stack;
 
-#ifdef CONFIG_STACK_GROWSUP
+#if 0 //#ifdef CONFIG_STACK_GROWSUP
 	/* Limit stack size */
 	stack_base = rlimit_max(RLIMIT_STACK);
 	if (stack_base > STACK_SIZE_MAX)
@@ -671,15 +680,21 @@ int setup_arg_pages(struct linux_binprm *bprm,
 	mm->arg_start = bprm->p - stack_shift;
 	bprm->p = vma->vm_end - stack_shift;
 #else
-	stack_top = arch_align_stack(stack_top);
-	stack_top = PAGE_ALIGN(stack_top);
+	//the stacktop range: 0xbe801000 ~ 0xbf000000, reference to function randomize_stack_top
+	stack_top = arch_align_stack(stack_top);//0xbf000000
+	stack_top = PAGE_ALIGN(stack_top);//0xbf000000
 
+	//mmap_min_addr=32768=0x8000
 	if (unlikely(stack_top < mmap_min_addr) ||
 	    unlikely(vma->vm_end - vma->vm_start >= stack_top - mmap_min_addr))
 		return -ENOMEM;
 
+	//assume that once the stack_top equal 0xbe808000
+	//so the stack_shift = 0xbf000000 - 0xbe808000 = 0x7f8000
 	stack_shift = vma->vm_end - stack_top;
 
+	//origin bprm->p = 0xbf000000 - 0x4
+	//now bprm->p = 0xbf000000 - 0x4 - 0x7f8000
 	bprm->p -= stack_shift;
 	mm->arg_start = bprm->p;
 #endif
@@ -719,7 +734,7 @@ int setup_arg_pages(struct linux_binprm *bprm,
 	/* mprotect_fixup is overkill to remove the temporary stack flags */
 	vma->vm_flags &= ~VM_STACK_INCOMPLETE_SETUP;
 
-	stack_expand = 131072UL; /* randomly 32*4k (or 2*64k) pages */
+	stack_expand = 131072UL; /* randomly 32*4k (or 2*64k) pages *///128k
 	stack_size = vma->vm_end - vma->vm_start;
 	/*
 	 * Align this down to a page boundary as expand_stack
@@ -729,7 +744,7 @@ int setup_arg_pages(struct linux_binprm *bprm,
 
 	stack_expand = rlim_stack;
 
-#ifdef CONFIG_STACK_GROWSUP
+#if 0 //#ifdef CONFIG_STACK_GROWSUP
 	if (stack_size + stack_expand > rlim_stack)
 		stack_base = vma->vm_start + rlim_stack;
 	else
@@ -1102,6 +1117,7 @@ EXPORT_SYMBOL(would_dump);
 
 void setup_new_exec(struct linux_binprm * bprm)
 {
+	//setup mmap bound(32bits arm linux: mmap_base=0x40000000)
 	arch_pick_mmap_layout(current->mm);
 
 	/* This is the point of no return */
@@ -1113,6 +1129,7 @@ void setup_new_exec(struct linux_binprm * bprm)
 		set_dumpable(current->mm, suid_dumpable);
 
 	perf_event_exec();
+	//这里设置进程为binary的文件名
 	__set_task_comm(current, kbasename(bprm->filename), true);
 
 	/* Set the new mm task size. We have to do that late because it may
@@ -1397,6 +1414,7 @@ int search_binary_handler(struct linux_binprm *bprm)
 			continue;
 		read_unlock(&binfmt_lock);
 		bprm->recursion_depth++;
+		//fmt = elf_format
 		//wisen: fmt->load_binary==>load_elf_binary==>start_thread
 		retval = fmt->load_binary(bprm);
 		read_lock(&binfmt_lock);
@@ -1454,6 +1472,15 @@ static int exec_binprm(struct linux_binprm *bprm)
 /*
  * sys_execve() executes a new program.
  */
+/*
+当进程调用一种exec函数时，该进程执行的程序完全替换为新程序，而新程序则从其main函数开始执行。
+因为调用exec并不创建新进程，所以前后的进程ID并未改变。
+exec只是用一个全新的程序替换了当前进程的正文、数据、堆和栈段。
+所以用do_execve_common来运行binary的前提是已经成功创建了进程，在do_execve_common的过程中
+逐渐替换current进程的各个段，堆栈，最后在start_thread中替换current的寄存器。
+比如第一个进程init也是需要成功的创建了kernel_init进程后，在kernel_init进程中逐步的替换成init.
+*/
+
 static int do_execve_common(struct filename *filename,
 				struct user_arg_ptr argv,
 				struct user_arg_ptr envp)
@@ -1519,7 +1546,7 @@ static int do_execve_common(struct filename *filename,
 	bprm->envc = count(envp, MAX_ARG_STRINGS);
 	if ((retval = bprm->envc) < 0)
 		goto out;
-
+//这里只读128字节，估计只读一个elf的头就够了
 	retval = prepare_binprm(bprm);
 	if (retval < 0)
 		goto out;

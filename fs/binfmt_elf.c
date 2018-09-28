@@ -563,12 +563,14 @@ static unsigned long randomize_stack_top(unsigned long stack_top)
 	if ((current->flags & PF_RANDOMIZE) &&
 		!(current->personality & ADDR_NO_RANDOMIZE)) {
 		random_variable = (unsigned long) get_random_int();
-		random_variable &= STACK_RND_MASK;
-		random_variable <<= PAGE_SHIFT;
+		random_variable &= STACK_RND_MASK;//max random_variable = 0x7ff
+		random_variable <<= PAGE_SHIFT;//max random_variable=0x7ff000
 	}
-#ifdef CONFIG_STACK_GROWSUP
+#if 0//ifdef CONFIG_STACK_GROWSUP
 	return PAGE_ALIGN(stack_top) + random_variable;
 #else
+	//0xbf000000-0x7ff000=0xbe801000; so the min stack_top is 0xbe801000
+	//the stacktop range: 0xbe801000 ~ 0xbf000000
 	return PAGE_ALIGN(stack_top) - random_variable;
 #endif
 }
@@ -601,14 +603,43 @@ static int load_elf_binary(struct linux_binprm *bprm)
 		goto out_ret;
 	}
 	
+/*
+Linux内核无法以区(section:readelf -S xxx)的概念来识别可执行文件。
+内核使用包括连续页的VMA（virtual memory area）来识别进程。
+在每个VMA中可能映射了一个或多个区。每个VMA代表一个ELF文件的段(segmant:readelf -l xxx)。 
+那么，内核如何知道哪个区属于某个VMA（段）？映射关系保存在Program Header Table（PHT）中。
+ */
+
 	/* Get the exec-header */
+	//读取elf文件头，host下可以使用命令readelf -h xxx来查看
+	//这里的bprm->buf大小是128bytes，之前已经读取进来了
+/*
+typedef struct elf32_hdr{
+  unsigned char	e_ident[EI_NIDENT];
+  Elf32_Half	e_type;
+  Elf32_Half	e_machine;
+  Elf32_Word	e_version;
+  Elf32_Addr	e_entry;  //virtual Entry point 
+  Elf32_Off	e_phoff;          //program header table offset
+  Elf32_Off	e_shoff;          //section header table offset
+  Elf32_Word	e_flags;  
+  Elf32_Half	e_ehsize;  //elf header size
+  Elf32_Half	e_phentsize;  //program header entry size
+  Elf32_Half	e_phnum;     //number of program header entries
+  Elf32_Half	e_shentsize;  //section hdeaer entry size
+  Elf32_Half	e_shnum;     //number of section header entries
+  Elf32_Half	e_shstrndx;
+} Elf32_Ehdr;
+*/
 	loc->elf_ex = *((struct elfhdr *)bprm->buf);
 
 	retval = -ENOEXEC;
 	/* First of all, some simple consistency checks */
+	//检查magic number
 	if (memcmp(loc->elf_ex.e_ident, ELFMAG, SELFMAG) != 0)
 		goto out;
 
+	//检查elf type：可执行，共享库等
 	if (loc->elf_ex.e_type != ET_EXEC && loc->elf_ex.e_type != ET_DYN)
 		goto out;
 	if (!elf_check_arch(&loc->elf_ex))
@@ -617,6 +648,18 @@ static int load_elf_binary(struct linux_binprm *bprm)
 		goto out;
 
 	/* Now read in all of the header information */
+	/*
+typedef struct elf32_phdr {
+  Elf32_Word p_type;   //segment type
+  Elf32_Off p_offset;    // segment offset
+  Elf32_Addr p_vaddr;  //virtual address of segment
+  Elf32_Addr p_paddr;  // physical address
+  Elf32_Word p_filesz;  //number of bytes in file for seg.
+  Elf32_Word p_memsz;  //number of bytes in mem for seg.
+  Elf32_Word p_flags;   //flags
+  Elf32_Word p_align;  //memory alignment
+} Elf32_Phdr;
+	*/
 	if (loc->elf_ex.e_phentsize != sizeof(struct elf_phdr))
 		goto out;
 	if (loc->elf_ex.e_phnum < 1 ||
@@ -646,6 +689,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 	end_data = 0;
 
 	for (i = 0; i < loc->elf_ex.e_phnum; i++) {
+		//这里查找解释器段，找到后load解释器进来
 		if (elf_ppnt->p_type == PT_INTERP) {
 			/* This is the program interpreter used for
 			 * shared libraries - for now assume that this
@@ -672,9 +716,12 @@ static int load_elf_binary(struct linux_binprm *bprm)
 			}
 			/* make sure path is NULL terminated */
 			retval = -ENOEXEC;
+			//解释器段其实就是一串字符串，我在ubuntu 1604上查看了解释器段的内容
+			//为：/lib/ld-linux.so.2,注意最后一个字符串一定要是'\0'
 			if (elf_interpreter[elf_ppnt->p_filesz - 1] != '\0')
 				goto out_free_interp;
 
+			//这里接着就调用open_exec去打开解释器
 			interpreter = open_exec(elf_interpreter);
 			retval = PTR_ERR(interpreter);
 			if (IS_ERR(interpreter))
@@ -687,6 +734,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 			 */
 			would_dump(bprm, interpreter);
 
+			//这里读取解释器的前128字节
 			retval = kernel_read(interpreter, 0, bprm->buf,
 					     BINPRM_BUF_SIZE);
 			if (retval != BINPRM_BUF_SIZE) {
@@ -696,6 +744,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 			}
 
 			/* Get the exec headers */
+			//这里拿到解释器的elf head
 			loc->interp_elf_ex = *((struct elfhdr *)bprm->buf);
 			break;
 		}
@@ -704,6 +753,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 
 	elf_ppnt = elf_phdata;
 	for (i = 0; i < loc->elf_ex.e_phnum; i++, elf_ppnt++)
+	//回头再来看看GNU_STACK是个什么东西
 		if (elf_ppnt->p_type == PT_GNU_STACK) {
 			if (elf_ppnt->p_flags & PF_X)
 				executable_stack = EXSTACK_ENABLE_X;
@@ -802,7 +852,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 			 * default mmap base, as well as whatever program they
 			 * might try to exec.  This is because the brk will
 			 * follow the loader, and is not movable.  */
-#if 1//#ifdef //
+#if 1//#ifdef CONFIG_ARCH_BINFMT_ELF_RANDOMIZE_PIE
 			/* Memory randomization might have been switched off
 			 * in runtime via sysctl or explicit setting of
 			 * personality flags.
@@ -973,7 +1023,7 @@ static int load_elf_binary(struct linux_binprm *bprm)
 			else
 				break;
 		}
-#if 1//#ifdef //
+#if 1//#ifdef CONFIG_COMPAT_BRK
 		current->brk_randomized = 1;
 #endif
 	}
