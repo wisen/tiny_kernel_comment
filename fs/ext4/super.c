@@ -367,6 +367,7 @@ static void ext4_journal_commit_callback(journal_t *journal, transaction_t *txn)
 				 struct ext4_journal_cb_entry, jce_list);
 		list_del_init(&jce->jce_list);
 		spin_unlock(&sbi->s_md_lock);
+		//jce_func = ext4_free_data_callback
 		jce->jce_func(sb, jce, error);
 		spin_lock(&sbi->s_md_lock);
 	}

@@ -1092,6 +1092,7 @@ restart_loop:
 
 	write_unlock(&journal->j_state_lock);
 
+//j_commit_callback = ext4_journal_commit_callback
 	if (journal->j_commit_callback)
 		journal->j_commit_callback(journal, commit_transaction);
 

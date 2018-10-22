@@ -956,6 +956,7 @@ static int test_bdev_super(struct super_block *s, void *data)
 struct dentry *mount_bdev(struct file_system_type *fs_type,
 	int flags, const char *dev_name, void *data,
 	int (*fill_super)(struct super_block *, void *, int))
+//fs_type=ext4 or f2fs, dev_name=/dev/blkdev
 {
 	struct block_device *bdev;
 	struct super_block *s;
@@ -1116,6 +1117,7 @@ mount_fs(struct file_system_type *type, int flags, const char *name, void *data)
 
 	//调用具体文件系统中的.mount函数，比如f2fs： f2fs_mount
 	//在具体文件的.mount函数中，最主要的function是要创建super block,并保存在全局变量super_blocks中去。
+	//type=ext4 or f2fs, name=/dev/blkdev
 	root = type->mount(type, flags, name, data);
 	if (IS_ERR(root)) {
 		error = PTR_ERR(root);

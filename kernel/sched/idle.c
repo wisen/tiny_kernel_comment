@@ -173,6 +173,22 @@ exit_idle:
  *
  * Called with polling cleared.
  */
+/*
+ 因為idle進程中並不執行什麼有意義的任務，所以通常考慮的是兩點：
+ 1. 節能。
+ 2. 低退出延遲。
+ */
+/*
+循環判斷need_resched以降低退出延遲，用idle()來節能。
+默認的idle實現是hlt指令，hlt指令使CPU處於暫停狀態，等待硬件中斷髮生的時候恢復，
+從而達到節能的目的。即從處理器C0態變到 C1態(見 ACPI標準)。
+所以总结0号进程：
+1.idle是一個進程，其pid為0。
+2.主處理器上的idle由原始進程(pid=0)演變而來。從處理器上的idle由init進程fork得到，
+但是它們的pid都為0。
+3.Idle進程為最低優先級，且不參與調度，只是在運行隊列為空的時候才被調度。
+4.Idle循環等待need_resched置位。默認使用hlt節能。
+ */
 static void cpu_idle_loop(void)
 {
 	while (1) {

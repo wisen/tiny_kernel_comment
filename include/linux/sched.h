@@ -1422,10 +1422,7 @@ struct task_struct {
 	struct rb_node pushable_dl_tasks;
 #endif
 
-	//进程所拥有的用户空间内存描述符，内核线程无的mm为NULL
-	/*
-	active_mm指向进程运行时所使用的内存描述符， 对于普通进程而言，这两个指针变量的值相同。但是内核线程kernel thread是没有进程地址空间的，所以内核线程的tsk->mm域是空（NULL）。但是内核必须知道用户空间包含了什么，因此它的active_mm成员被初始化为前一个运行进程的active_mm值。
-	*/
+
 	struct mm_struct *mm, *active_mm;
 #if 1//#ifdef //
 	unsigned brk_randomized:1;

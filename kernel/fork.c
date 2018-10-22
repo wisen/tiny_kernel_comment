@@ -985,8 +985,10 @@ static int copy_mm(unsigned long clone_flags, struct task_struct *tsk)
 	 * We need to steal a active VM for that..
 	 */
 	oldmm = current->mm;
+	//current->mm为空表示内核线程，但是即使是kernel线程，那么它的active_mm是在哪赋值的?
+	//难道是在进程切换的时候借用前一个进程的？
 	if (!oldmm)
-		return 0;
+	  return 0;
 
 	/* initialize the new vmacache entries */
 	vmacache_flush(tsk);
@@ -1311,6 +1313,7 @@ static struct task_struct *copy_process(unsigned long clone_flags,
 	 * thread groups also imply shared VM. Blocking this case allows
 	 * for various simplifications in other code.
 	 */
+	//共享信号需要共享内存空间
 	if ((clone_flags & CLONE_SIGHAND) && !(clone_flags & CLONE_VM)) {
 		pr_err("[%d:%s] fork fail at cpp 3, clone_flags:0x%x\n",
 			current->pid, current->comm, (unsigned int)clone_flags);
@@ -1322,6 +1325,7 @@ static struct task_struct *copy_process(unsigned long clone_flags,
 	 * multi-rooted process trees, prevent global and container-inits
 	 * from creating siblings.
 	 */
+	//init是所有用户空间进程父进程，如果和init兄弟关系，那么进程将无法被回收，从而变成僵尸进程。
 	if ((clone_flags & CLONE_PARENT) &&
 				current->signal->flags & SIGNAL_UNKILLABLE) {
 		pr_err("[%d:%s] fork fail at cpp 4, clone_flags:0x%x\n",
@@ -1386,7 +1390,9 @@ static struct task_struct *copy_process(unsigned long clone_flags,
 		goto bad_fork_cleanup_count;
 
 	delayacct_tsk_init(p);	/* Must remain after dup_task_struct() */
+	//告诉系统不使用超级用户权限，并且不是workqueue内核线程。
 	p->flags &= ~(PF_SUPERPRIV | PF_WQ_WORKER);
+	//执行fork但不立即执行
 	p->flags |= PF_FORKNOEXEC;
 	INIT_LIST_HEAD(&p->children);
 	INIT_LIST_HEAD(&p->sibling);
@@ -1469,6 +1475,7 @@ static struct task_struct *copy_process(unsigned long clone_flags,
 #endif
 
 	/* Perform scheduler related setup. Assign this task to a CPU. */
+	//初始化进程调度相关数据结构，将进程指定到某一CPU上。
 	retval = sched_fork(clone_flags, p);
 	if (retval)
 		goto bad_fork_cleanup_policy;

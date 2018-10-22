@@ -412,6 +412,9 @@ static noinline void __init_refok rest_init(void)
 
 //这里说下0号进程，0号进程就是init_task,它的task_struct是通过INIT_TASK来
 //静态设置的。
+//虽然init为1号进程，但是他却在2号kthreadd完成之后才开始执行的
+//这个1号等待2号完成的过程是通过kthreadd_done条件来sync的。
+//1号进程通过smp_init为每个CPU创建一个idle进程(PID=0)
 	kernel_thread(kernel_init, NULL, CLONE_FS);
 	numa_default_policy();
 	pid = kernel_thread(kthreadd, NULL, CLONE_FS | CLONE_FILES);
@@ -423,6 +426,12 @@ static noinline void __init_refok rest_init(void)
 	/*
 	 * The boot idle thread must execute schedule()
 	 * at least once to get things moving:
+	 */
+	//init_idle_bootup_task将0号进程归属到idle调度类中
+	/*	 
+		 接着通過schedule_preempt_disabled來執行調用schedule()函數切換當前進程，
+		 在調用該函數之前，Linux系統中只有兩個進程，即0號進程init_task和1號進程kernel_init，
+		 其中kernel_init進程也是剛剛被創建的。調用該函數後，1號進程kernel_init將會運行
 	 */
 	init_idle_bootup_task(current);
 	schedule_preempt_disabled();
@@ -1012,6 +1021,7 @@ static noinline void __init kernel_init_freeable(void)
 	/*
 	 * Wait until kthreadd is all set-up.
 	 */
+	//这里就是在等到2号进程kthreadd完成
 	wait_for_completion(&kthreadd_done);
 
 	/* Now the scheduler is fully set up and can do blocking allocations */
@@ -1033,6 +1043,7 @@ static noinline void __init kernel_init_freeable(void)
 	do_pre_smp_initcalls();
 	lockup_detector_init();
 
+	//smp_init为每个CPU创建一个idle进程
 	smp_init();
 	sched_init_smp();
 

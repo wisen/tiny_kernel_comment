@@ -825,6 +825,8 @@ static void wait_on_all_pages_writeback(struct f2fs_sb_info *sbi)
 	finish_wait(&sbi->cp_wait, &wait);
 }
 
+//f2fs  will trigger DISCARD to eMMC when do_checkpoint, ext4 will do discard in ext4_issue_discard
+//do_checkpoint -> clear_prefree_segments -> f2fs_issue_discard -> blkdev_issue_discard
 static void do_checkpoint(struct f2fs_sb_info *sbi, struct cp_control *cpc)
 {
 	struct f2fs_checkpoint *ckpt = F2FS_CKPT(sbi);

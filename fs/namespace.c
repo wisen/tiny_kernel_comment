@@ -902,6 +902,7 @@ vfs_kern_mount(struct file_system_type *type, int flags, const char *name, void 
 	if (!type)
 		return ERR_PTR(-ENODEV);
 
+	//name=/dev/blkdev
 	mnt = alloc_vfsmnt(name);
 	if (!mnt)
 		return ERR_PTR(-ENOMEM);
@@ -2364,6 +2365,7 @@ static int do_new_mount(struct path *path, const char *fstype, int flags,
 	if (!fstype)
 		return -EINVAL;
 
+	//fstype=ext4
 	type = get_fs_type(fstype);
 	if (!type)
 		return -ENODEV;
@@ -2386,6 +2388,7 @@ static int do_new_mount(struct path *path, const char *fstype, int flags,
 		}
 	}
 
+	//name=/dev/blkdev
 	mnt = vfs_kern_mount(type, flags, name, data);
 	if (!IS_ERR(mnt) && (type->fs_flags & FS_HAS_SUBTYPE) &&
 	    !mnt->mnt_sb->s_subtype)
@@ -2695,6 +2698,16 @@ long do_mount(const char *dev_name, const char __user *dir_name,
 	if (flags & MS_REMOUNT)
 		retval = do_remount(&path, flags & ~MS_REMOUNT, mnt_flags,
 				    data_page);
+//what's the "--bind" option mean?
+/*
+Since Linux 2.4.0 it is possible to remount part of the file hierarchy somewhere else.  The call is:
+                     mount --bind olddir newdir
+              or by using this fstab entry:
+                     /olddir /newdir none bind
+It's also possible  to  use
+              the bind mount to create a mountpoint from a regular directory, for example:
+                     mount --bind foo foo
+*/
 	else if (flags & MS_BIND)
 		retval = do_loopback(&path, dev_name, flags & MS_REC);
 	else if (flags & (MS_SHARED | MS_PRIVATE | MS_SLAVE | MS_UNBINDABLE))
@@ -2878,11 +2891,13 @@ SYSCALL_DEFINE5(mount, char __user *, dev_name, char __user *, dir_name,
 	char *kernel_dev;
 	unsigned long data_page;
 
+	//kernel_type=ext4
 	kernel_type = copy_mount_string(type);
 	ret = PTR_ERR(kernel_type);
 	if (IS_ERR(kernel_type))
 		goto out_type;
 
+	//kernel_dev=/dev/blkdev
 	kernel_dev = copy_mount_string(dev_name);
 	ret = PTR_ERR(kernel_dev);
 	if (IS_ERR(kernel_dev))
@@ -2892,6 +2907,7 @@ SYSCALL_DEFINE5(mount, char __user *, dev_name, char __user *, dir_name,
 	if (ret < 0)
 		goto out_data;
 
+	//kernel_dev=/dev/blkdev, dir_name=/mnt, kernel_type=ext4
 	ret = do_mount(kernel_dev, dir_name, kernel_type, flags,
 		(void *) data_page);
 

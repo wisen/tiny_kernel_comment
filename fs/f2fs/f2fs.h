@@ -365,7 +365,7 @@ static inline void set_new_dnode(struct dnode_of_data *dn, struct inode *inode,
 enum {
 	CURSEG_HOT_DATA	= 0,	/* directory entry blocks */
 	CURSEG_WARM_DATA,	/* data blocks */
-	CURSEG_COLD_DATA,	/* multimedia or GCed data blocks */
+	CURSEG_COLD_DATA,	/* multimedia or GCed data blocks *///多媒体和gc之后的数据
 	CURSEG_HOT_NODE,	/* direct node blocks of directory files */
 	CURSEG_WARM_NODE,	/* direct node blocks of normal files */
 	CURSEG_COLD_NODE,	/* indirect node blocks */

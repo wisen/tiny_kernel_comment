@@ -1096,6 +1096,8 @@ static const int prio_to_weight[40] = {
  * precalculated inverse to speed up arithmetics by turning divisions
  * into multiplications:
  */
+//prio_to_wmult[]為了方便計算vruntime而預先計算結果。
+//inv_weight=2^32/weight
 static const u32 prio_to_wmult[40] = {
  /* -20 */     48388,     59856,     76040,     92818,    118348,
  /* -15 */    147320,    184698,    229616,    287308,    360437,

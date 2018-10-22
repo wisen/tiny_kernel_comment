@@ -1053,12 +1053,12 @@ static inline int normal_prio(struct task_struct *p)
 {
 	int prio;
 
-	if (task_has_dl_policy(p))
+	if (task_has_dl_policy(p))//對於DEADLINE類進程來説固定值為-1
 		prio = MAX_DL_PRIO-1;
-	else if (task_has_rt_policy(p))
+	else if (task_has_rt_policy(p))//對於實時進程來説，normal_prio=99-rt_priority
 		prio = MAX_RT_PRIO-1 - p->rt_priority;
 	else
-		prio = __normal_prio(p);
+		prio = __normal_prio(p);//對普通進程來説normal_prio=static_prio
 	return prio;
 }
 
@@ -2029,7 +2029,7 @@ int sysctl_numa_balancing(struct ctl_table *table, int write,
 int sched_fork(unsigned long clone_flags, struct task_struct *p)
 {
 	unsigned long flags;
-	int cpu = get_cpu();
+	int cpu = get_cpu();//首先禁止内核抢占
 
 	__sched_fork(clone_flags, p);
 	/*
@@ -2101,7 +2101,7 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
 	RB_CLEAR_NODE(&p->pushable_dl_tasks);
 #endif
 
-	put_cpu();
+	put_cpu();//再次允许内核抢占
 	return 0;
 }
 
@@ -2449,11 +2449,27 @@ asmlinkage __visible void schedule_tail(struct task_struct *prev)
 static inline void
 context_switch(struct rq *rq, struct task_struct *prev,
 	       struct task_struct *next)
+/*
+ 1. 一旦調度器算法確定了pre task和next task，那麼就可以調用context_switch
+    函數實際執行進行切換的工作了，這裏我們先看看參數傳遞情況：
+    rq：在多核系統中，進程切換總是發生在各個cpu core上，參數rq指向本次切換髮生的那個cpu對應的run queue 
+    prev：將要被剝奪執行權利的那個進程 
+	next：被選擇在該cpu上執行的那個進程
+ */
 {
 	struct mm_struct *mm, *oldmm;
 
 	prepare_task_switch(rq, prev, next);
 
+/*
+2.  next是馬上就要被切入的進程（後面簡稱B進程），prev是馬上就要被剝奪執行權利的
+    進程（後面簡稱A進程）。
+    mm變量指向B進程的地址空間描述符，oldmm變量指向A進程的當前正在使用的地址空間
+    描述符（active_mm）。
+    對於normal進程，其任務描述符（task_struct）的mm和active_mm相同，都是指向其進程地址空間。
+    對於內核線程而言，其task_struct的mm成員為NULL（內核線程沒有進程地址空間），但是，
+   內核線程被調度執行的時候，總是需要一個進程地址空間，而active_mm就是指向它借用的那個進程地址空間。
+ */
 	mm = next->mm;
 	oldmm = prev->active_mm;
 	/*
@@ -2463,14 +2479,39 @@ context_switch(struct rq *rq, struct task_struct *prev,
 	 */
 	arch_start_context_switch(prev);
 
-	if (!mm) {
+	if (!mm) {//mm为空，说明next是内核线程
+/*
+ 3. mm為空的話，説明B進程是內核線程，這時候，只能借用A進程當前正在使用的
+    那個地址空間（prev->active_mm）。注意：這裏不能借用A進程的地址空間（prev->mm），
+	因為A進程也可能是一個內核線程，不擁有自己的地址空間描述符。
+ */
 		next->active_mm = oldmm;
 		atomic_inc(&oldmm->mm_count);
+/*
+ 4. 如果要切入的B進程是內核線程，那麼調用體系結構相關的代碼enter_lazy_tlb，標識該cpu進入
+    lazy tlb mode。那麼什麼是lazy tlb mode呢？如果要切入的進程實際上是內核線程，
+    那麼我們也暫時不需要flush TLB，因為內核線程不會訪問usersapce，所以那些無效的TLB entry
+    也不會影響內核線程的執行。在這種情況下，為了性能，我們會進入lazy tlb mode。
+	如果要切入的B進程是內核線程，那麼由於是借用當前正在使用的地址空間，因此沒有必要
+	調用switch_mm進行地址空間切換，只有要切入的B進程是一個普通進程的情況下
+	（有自己的地址空間）才會調用switch_mm，真正執行地址空間切換。
+ */
 		enter_lazy_tlb(oldmm, next);
 	} else
+/*
+ 5. 如果切入的是普通進程，那麼這時候進程的地址空間已經切換了，也就是説
+    在A--->B進程的過程中，進程本身尚未切換，而進程的地址空間已經切換到了B進程了。
+	這樣會不會造成問題呢?還好，呵呵，這時候代碼執行在kernel space，A和B進程的kernel space
+	都是一樣一樣的啊，即便是切了進程地址空間，不過內核空間實際上保持不變的。
+ */
 		switch_mm(oldmm, mm, next);
 
 	if (!prev->mm) {
+/*
+6.  如果切出的A進程是內核線程，那麼其借用的那個地址空間（active_mm）已經不需要繼續
+    使用了（內核線程A被掛起了，根本不需要地址空間了）。除此之外，我們這裏還設定了
+	run queue上一次使用的mm struct（rq->prev_mm）為oldmm。為何要這麼做？稍后解释.
+ */		
 		prev->active_mm = NULL;
 		rq->prev_mm = oldmm;
 	}
@@ -2484,6 +2525,13 @@ context_switch(struct rq *rq, struct task_struct *prev,
 
 	context_tracking_task_switch(prev, next);
 	/* Here we just switch the register state and the stack. */
+/*
+ 7. 一次進程切換，表面上看起來涉及兩個進程，實際上涉及到了三個進程。
+    switch_to是一個有魔力的符號，和一般的調用函數不同，當A進程在CPUa調用它切換到
+    B進程的時候，switch_to一去不回，直到在某個cpu上（我們稱之CPUx）完成
+    從X進程（就是last進程）到A進程切換的時候，switch_to返回到A進程的現場。
+    switch_to完成了具體prev到next進程的切換，當switch_to返回的時候，説明A進程再次被調度執行了。
+ */
 	switch_to(prev, next, prev);
 
 	barrier();
@@ -2666,7 +2714,10 @@ void scheduler_tick(void)
 
 	raw_spin_lock(&rq->lock);
 	update_rq_clock(rq);
-//fair_sched_class : .task_tick		= task_tick_fair,
+//fair_sched_class :  .task_tick		= task_tick_fair,
+//rt_sched_class: .task_tick      = task_tick_rt,
+//dl_sched_class:  task_tick_dl
+//idle_sched_class:  task_tick_idle
 	curr->sched_class->task_tick(rq, curr, 0);
 	update_cpu_load_active(rq);
 #if 1//#ifdef CONFIG_MT_SCHED_MONITOR//CONFIG_MT_SCHED_MONITOR=y
@@ -2928,9 +2979,15 @@ pick_next_task(struct rq *rq, struct task_struct *prev)
 	/*
 	 * Optimization: we know that if all tasks are in
 	 * the fair class we can call that function directly:
+     * 这里的注释的意思是如果我们知道所有的task都是fair class，那么我们就可以
+     * 直接调用fair_sched_class.pick_next_task
 	 */
+	//cfs.h_nr_running是指属于fair class的task，每次调用enqueue_task_fair，h_nr_running就加1
 	if (likely(prev->sched_class == class &&
 		   rq->nr_running == rq->cfs.h_nr_running)) {
+    //如果当前进程属于fair_sched_class调度类，并且当前cpu的run queue中的task数量等于cfs run queue
+    //中的task数量（也就是所有的当前cpu上的所有task都属于fair class），那么就调用
+    //fair_sched_class.pick_next_task
 		p = fair_sched_class.pick_next_task(rq, prev);
 		if (unlikely(p == RETRY_TASK))
 			goto again;
@@ -2941,6 +2998,7 @@ pick_next_task(struct rq *rq, struct task_struct *prev)
 
 		return p;
 	}
+
 
 again:
 	for_each_class(class) {
@@ -2998,6 +3056,41 @@ again:
 static unsigned long long ktime_ns;
 static long curtask_state;
 //wisen add for dump the backtrace of Uninterruptible sleep end
+/*
+调度的主要轨迹:
+__schedule()
+  ->pick_next_task()
+    ->pick_next_task_fair()
+  ->context_switch()
+    ->switch_mm()
+      ->cpu_v7_switch_mm()
+    ->switch_to()
+      ->__switch_to 
+ */
+/*
+調度的時機分為如下3種：
+
+1. 阻塞操作：互斥量(mutex)、信號量(semaphore)、等待隊列(waitqueue)等。
+
+2. 在中斷返回前和系統調用返回用户空間時，去檢查TIF_NEED_RESCHED 標誌位以判斷是否需要調度。
+   所以说系统调用的代价很大，因为系统调用后，不一定及时的返回用户空间，而是可能做了一次
+   进程调度，这样用户逻辑就被延后执行了；那为什么系统调用返回用户空间前会判断一次是否需要
+   调度呢？
+
+3. 將要被喚醒的進程不會馬上調用schedule()要求被調度，而是會被添加到cfs就緒隊列中，
+   並且設置TIF_NEED_RESCHED標誌位。那麼喚醒進程什麼時候被調度呢？這要根據內核是否
+   具有可搶佔功能(CONFIG_PREEMPT=y)分兩種情況。
+
+   3.1 如果內核可搶佔，則：
+     如果喚醒動作發生在系統調用或者異常處理上下文中，在下一次調用preempt_enable()時
+     會檢查是否需要搶佔調度。如果喚醒動作發生在硬中斷處理上下文中，硬件中斷處理返回
+     前夕(不管中斷髮生點在內核空間還是用户空間)會檢查是否要搶佔當前進程。
+   3.2 如果內核不可搶佔，則：
+     當前進程調用cond_resched()時會檢查是否要調度。
+     主動調度用schedule()。
+     系統調用或者異常處理返回用户空間時。
+     中斷處理完成返回用户空間時(只有中斷髮生點在用户空間才會檢查)。
+*/
 static void __sched __schedule(void)
 {
 	struct task_struct *prev, *next;
@@ -3055,6 +3148,8 @@ need_resched:
 	if (task_on_rq_queued(prev) || rq->skip_clock_update < 0)
 		update_rq_clock(rq);
 
+	//rq：当前cpu上的run queue
+	//prev: 就是当前进程
 	next = pick_next_task(rq, prev);
 	clear_tsk_need_resched(prev);
 	clear_preempt_need_resched();
