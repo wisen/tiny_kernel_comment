@@ -261,6 +261,8 @@ void zpool_free(struct zpool *zpool, unsigned long handle)
 int zpool_shrink(struct zpool *zpool, unsigned int pages,
 			unsigned int *reclaimed)
 {
+	//zbud: zpool_register_driver(&zbud_zpool_driver);
+	//zsmalloc: zpool_register_driver(&zs_zpool_driver);
 	return zpool->driver->shrink(zpool->pool, pages, reclaimed);
 }
 

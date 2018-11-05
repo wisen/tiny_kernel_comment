@@ -237,6 +237,8 @@ int swap_writepage(struct page *page, struct writeback_control *wbc)
 		unlock_page(page);
 		goto out;
 	}
+	//这里先存到frontswap中，如果成功了，说明zswap没满，直接跳出go out
+	//如果frontswap_store失败，说明zswap满了，那么继续下面的__swap_writepage，也就是开始写zram
 	if (frontswap_store(page) == 0) {
 		set_page_writeback(page);
 		unlock_page(page);

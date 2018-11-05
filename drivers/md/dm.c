@@ -1684,9 +1684,10 @@ static void dm_request(struct request_queue *q, struct bio *bio)
 {
 	struct mapped_device *md = q->queuedata;
 
+	//wisen: request-based or bio-based ?
 	if (dm_request_based(md))
 		blk_queue_bio(q, bio);
-	else
+	else//bio-based case:
 		_dm_request(q, bio);
 }
 

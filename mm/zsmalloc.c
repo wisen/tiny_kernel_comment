@@ -321,8 +321,8 @@ static void record_obj(unsigned long handle, unsigned long obj)
 
 /* zpool driver */
 
-//#ifdef CONFIG_ZPOOL //wisen: CONFIG_ZPOOL not set
-#if 0
+#ifdef CONFIG_ZPOOL //wisen: CONFIG_ZPOOL not set
+//#if 0
 static void *zs_zpool_create(char *name, gfp_t gfp, struct zpool_ops *zpool_ops,
 			     struct zpool *zpool)
 {
@@ -2026,7 +2026,7 @@ static int __init zs_init(void)
 
 	init_zs_size_classes();
 
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //wisen: CONFIG_ZPOOL not set
 	zpool_register_driver(&zs_zpool_driver);
 #endif
 
@@ -2038,7 +2038,7 @@ static int __init zs_init(void)
 	return 0;
 
 stat_fail:
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //wisen: CONFIG_ZPOOL not set
 	zpool_unregister_driver(&zs_zpool_driver);
 #endif
 notifier_fail:
@@ -2049,7 +2049,7 @@ notifier_fail:
 
 static void __exit zs_exit(void)
 {
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //wisen: CONFIG_ZPOOL not set#if 0//#ifdef //
 	zpool_unregister_driver(&zs_zpool_driver);
 #endif
 	zs_unregister_cpu_notifier();

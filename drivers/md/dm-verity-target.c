@@ -1079,6 +1079,7 @@ static struct target_type verity_target = {
 	.module		= THIS_MODULE,
 	.ctr		= verity_ctr,
 	.dtr		= verity_dtr,
+	//map_rq is null, so verity target will be bio_based
 	.map		= verity_map,
 	.status		= verity_status,
 	.ioctl		= verity_ioctl,

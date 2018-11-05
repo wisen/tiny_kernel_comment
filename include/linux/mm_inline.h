@@ -19,6 +19,7 @@
  */
 static inline int page_is_file_cache(struct page *page)
 {
+	//set PG_swapbacked in function 
 	return !PageSwapBacked(page);
 }
 

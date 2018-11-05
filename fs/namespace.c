@@ -2306,6 +2306,12 @@ static struct vfsmount *fs_set_subtype(struct vfsmount *mnt, const char *fstype)
 /*
  * add a mount into a namespace's mount tree
  */
+/*
+ do_add_mount函数主要做两件事：
+ 1、lock_mount确定本次挂载要挂载到哪个父挂载实例parent的哪个挂载点mp上。
+ 2、把newmnt挂载到parent的mp下，完成newmnt到全局的安装。
+ 所以说有两个地方是重要的，一个是lock_mount，一个是graft_tree。
+ */
 static int do_add_mount(struct mount *newmnt, struct path *path, int mnt_flags)
 {
 	struct mountpoint *mp;
@@ -2330,12 +2336,14 @@ static int do_add_mount(struct mount *newmnt, struct path *path, int mnt_flags)
 	}
 
 	/* Refuse the same filesystem on the same mount point */
+    //不允许同一文件系统挂载到同一个挂载点，因为这样做实在没有什么用	
 	err = -EBUSY;
 	if (path->mnt->mnt_sb == newmnt->mnt.mnt_sb &&
 	    path->mnt->mnt_root == path->dentry)
 		goto unlock;
 
 	err = -EINVAL;
+	//新文件系统的挂载实例的根inode不应该是一个符号链接
 	if (S_ISLNK(newmnt->mnt.mnt_root->d_inode->i_mode))
 		goto unlock;
 

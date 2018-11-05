@@ -1670,6 +1670,7 @@ static struct target_type multipath_target = {
 	.module = THIS_MODULE,
 	.ctr = multipath_ctr,
 	.dtr = multipath_dtr,
+	//wisen: map_rq is not null, the target will be request_based
 	.map_rq = multipath_map,
 	.rq_end_io = multipath_end_io,
 	.presuspend = multipath_presuspend,

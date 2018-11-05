@@ -2594,6 +2594,17 @@ static bool swap_discardable(struct swap_info_struct *si)
 	return true;
 }
 
+//wisen comment about zram
+//mkswap /dev/block/zram0  //mkswap仅仅是在/dev/block/zram0的头部写上一些magic number类似的一些信息
+//swapon /dev/block/zram0
+/*
+device create: 
+mkswap /dev/block/zram0
+swapon /dev/block/zram0
+
+disk driver:
+zram_init
+*/
 SYSCALL_DEFINE2(swapon, const char __user *, specialfile, int, swap_flags)
 {
 	struct swap_info_struct *p;

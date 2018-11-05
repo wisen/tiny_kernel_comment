@@ -90,6 +90,105 @@ int dm_setup_md_queue(struct mapped_device *md);
  */
 #define dm_target_is_valid(t) ((t)->table)
 
+//从函数dm_target_bio_based和dm_target_request_based的实现可知，如果target的target_type中的map有定义，那么它就是
+//bio-based, 如果target_type中的map_rq有定义，那么它就是request-based.
+//从目前的内核支持的target: linear,strip等都是bio-based,只有multipath是request-based
+/*
+multipath:
+static struct target_type multipath_target = {
+	.name = "multipath",
+	.version = {1, 7, 0},
+	.module = THIS_MODULE,
+	.ctr = multipath_ctr,
+	.dtr = multipath_dtr,
+	//wisen: map_rq is not null, the target will be request_based
+	.map_rq = multipath_map,  //define the map_rq, it's request-based
+	.rq_end_io = multipath_end_io,
+	.presuspend = multipath_presuspend,
+	.postsuspend = multipath_postsuspend,
+	.resume = multipath_resume,
+	.status = multipath_status,
+	.message = multipath_message,
+	.ioctl  = multipath_ioctl,
+	.iterate_devices = multipath_iterate_devices,
+	.busy = multipath_busy,
+};
+
+linear:
+static struct target_type linear_target = {
+	.name   = "linear",
+	.version = {1, 2, 1},
+	.module = THIS_MODULE,
+	.ctr    = dm_linear_ctr,
+	.dtr    = dm_linear_dtr,
+	.map    = dm_linear_map,  //just define map
+	.status = dm_linear_status,
+	.ioctl  = dm_linear_ioctl,
+	.merge  = dm_linear_merge,
+	.iterate_devices = dm_linear_iterate_devices,
+};
+
+verify:
+static struct target_type verity_target = {
+	.name		= "verity",
+	.version	= {1, 3, 0},
+	.module		= THIS_MODULE,
+	.ctr		= verity_ctr,
+	.dtr		= verity_dtr,
+	//map_rq is null, so verity target will be bio_based
+	.map		= verity_map,
+	.status		= verity_status,
+	.ioctl		= verity_ioctl,
+	.merge		= verity_merge,
+	.iterate_devices = verity_iterate_devices,
+	.io_hints	= verity_io_hints,
+};
+
+3 snapshot targets:
+static struct target_type origin_target = {
+	.name    = "snapshot-origin",
+	.version = {1, 9, 0},
+	.module  = THIS_MODULE,
+	.ctr     = origin_ctr,
+	.dtr     = origin_dtr,
+	.map     = origin_map,
+	.resume  = origin_resume,
+	.postsuspend = origin_postsuspend,
+	.status  = origin_status,
+	.merge	 = origin_merge,
+	.iterate_devices = origin_iterate_devices,
+};
+
+static struct target_type snapshot_target = {
+	.name    = "snapshot",
+	.version = {1, 13, 0},
+	.module  = THIS_MODULE,
+	.ctr     = snapshot_ctr,
+	.dtr     = snapshot_dtr,
+	.map     = snapshot_map,
+	.end_io  = snapshot_end_io,
+	.preresume  = snapshot_preresume,
+	.resume  = snapshot_resume,
+	.status  = snapshot_status,
+	.iterate_devices = snapshot_iterate_devices,
+};
+
+static struct target_type merge_target = {
+	.name    = dm_snapshot_merge_target_name,
+	.version = {1, 3, 0},
+	.module  = THIS_MODULE,
+	.ctr     = snapshot_ctr,
+	.dtr     = snapshot_dtr,
+	.map     = snapshot_merge_map,
+	.end_io  = snapshot_end_io,
+	.presuspend = snapshot_merge_presuspend,
+	.preresume  = snapshot_preresume,
+	.resume  = snapshot_merge_resume,
+	.status  = snapshot_status,
+	.iterate_devices = snapshot_iterate_devices,
+};
+
+*/
 /*
  * To check whether the target type is bio-based or not (request-based).
  */

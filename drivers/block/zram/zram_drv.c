@@ -1750,7 +1750,15 @@ static const struct file_operations zraminfo_proc_fops = {
 	.release	= single_release,
 };
 #endif
+/*
+wisen comment about zram
+device create: 
+mkswap /dev/block/zram0
+swapon /dev/block/zram0
 
+disk driver:
+zram_init
+*/
 static int __init zram_init(void)
 {
 	int ret, dev_id;

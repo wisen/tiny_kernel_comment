@@ -180,7 +180,9 @@ void blk_queue_make_request(struct request_queue *q, make_request_fn *mfn)
 	 */
 	q->nr_requests = BLKDEV_MAX_RQ;
 
-	//wisen: q->make_request_fn = mfn = blk_queue_bio
+	//wisen: different driver has different make_request_fn
+	//normal case: blk_queue_make_request(q, blk_queue_bio);
+	//device mapper: blk_queue_make_request(md->queue, dm_request);
 	q->make_request_fn = mfn;
 	blk_queue_dma_alignment(q, 511);
 	blk_queue_congestion_threshold(q);

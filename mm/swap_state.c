@@ -93,6 +93,7 @@ int __add_to_swap_cache(struct page *page, swp_entry_t entry)
 	VM_BUG_ON_PAGE(!PageSwapBacked(page), page);
 
 	page_cache_get(page);
+	//wisen: set page flag to PG_swapcache
 	SetPageSwapCache(page);
 	set_page_private(page, entry.val);
 
@@ -366,6 +367,7 @@ struct page *read_swap_cache_async(swp_entry_t entry, gfp_t gfp_mask,
 
 		/* May fail (-ENOMEM) if radix-tree node allocation failed. */
 		__set_page_locked(new_page);
+		//wisen: PG_swapbacked mean Page is backed by RAM/swap
 		SetPageSwapBacked(new_page);
 		err = __add_to_swap_cache(new_page, entry);
 		if (likely(!err)) {

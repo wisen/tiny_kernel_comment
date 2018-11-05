@@ -122,8 +122,7 @@ struct zbud_header {
 /*****************
  * zpool
  ****************/
-
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //CONFIG_ZPOOL is not set
 
 static int zbud_zpool_evict(struct zbud_pool *pool, unsigned long handle)
 {
@@ -615,7 +614,7 @@ static int __init init_zbud(void)
 	BUILD_BUG_ON(sizeof(struct zbud_header) > ZHDR_SIZE_ALIGNED);
 	pr_info("loaded\n");
 
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //CONFIG_ZPOOL is not set
 	zpool_register_driver(&zbud_zpool_driver);
 #endif
 
@@ -624,7 +623,7 @@ static int __init init_zbud(void)
 
 static void __exit exit_zbud(void)
 {
-#if 0//#ifdef //
+#ifdef CONFIG_ZPOOL //CONFIG_ZPOOL is not set
 	zpool_unregister_driver(&zbud_zpool_driver);
 #endif
 

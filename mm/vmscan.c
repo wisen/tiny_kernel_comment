@@ -832,6 +832,7 @@ static void page_check_dirty_writeback(struct page *page,
 	 * Anonymous pages are not handled by flushers and must be written
 	 * from reclaim context. Do not stall reclaim based on them
 	 */
+	//如果page不是file page，那就不存在dirty或者writeback了
 	if (!page_is_file_cache(page)) {
 		*dirty = false;
 		*writeback = false;
@@ -907,6 +908,8 @@ static unsigned long shrink_page_list(struct list_head *page_list,
 		if (page_mapped(page) || PageSwapCache(page))
 			sc->nr_scanned++;
 
+		//may_enter_fs的意思就是有可能进入文件系统
+		//sc中带有__GFP_FS或者__GFP_IO,或者是swapcache都有可能最终进入文件系统
 		may_enter_fs = (sc->gfp_mask & __GFP_FS) ||
 			(PageSwapCache(page) && (sc->gfp_mask & __GFP_IO));
 
@@ -916,6 +919,7 @@ static unsigned long shrink_page_list(struct list_head *page_list,
 		 * will stall and start writing pages if the tail of the LRU
 		 * is all dirty unqueued pages.
 		 */
+		//检查当前的page是不是dirty或者处于writeback状态，如果是就将nr_dirty加一
 		page_check_dirty_writeback(page, &dirty, &writeback);
 		if (dirty || writeback)
 			nr_dirty++;
@@ -937,7 +941,7 @@ static unsigned long shrink_page_list(struct list_head *page_list,
 		/*
 		 * If a page at the tail of the LRU is under writeback, there
 		 * are three cases to consider.
-		 * wisen: 如果一个在LRU尾部的页正在writeback，要考虑三种情况：
+		 * wisen: 如果一个在LRU尾部的页处于writeback状态，要考虑三种情况：
 		 *
 		 * 1) If reclaim is encountering an excessive number of pages
 		 *    under writeback and this page is both under writeback and

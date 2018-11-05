@@ -2045,6 +2045,7 @@ bio_list_pop(bio_list)
 	//mq或者sq, 取决于当前块设备层支持多个hardware queue还是单个hardware queue
 	//而blk_mq_init_queue一般在具体的硬件driver中调用，比如在scsi的driver中
 	//调用了scsi_mq_alloc_queue中就调用blk_mq_init_queue来注册mq或者sq
+	//devicemapper: dm_init_md_queue --> blk_queue_make_request(md->queue, dm_request);
 
 	//在3.18的kernel 开启zram后, zram的流程会走到这里, make_request_fn=zram_make_request
 		q->make_request_fn(q, bio);
